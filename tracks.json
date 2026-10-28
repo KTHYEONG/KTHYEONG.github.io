@@ -1,0 +1,14 @@
+[
+ {
+  "id": "quant",
+  "pdf": "portfolio-quant.pdf"
+ },
+ {
+  "id": "finance-data",
+  "pdf": "portfolio-finance-data.pdf"
+ },
+ {
+  "id": "ai-llm",
+  "pdf": "portfolio-ai-llm.pdf"
+ }
+]
