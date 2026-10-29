@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emori · 김태형 포트폴리오</title>
+<meta name="description" content="뇌파와 상담 텍스트를 함께 보는 멀티모달 AI, 뇌파 요약 LLM 담당">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Emori · 김태형 포트폴리오"><meta property="og:description" content="뇌파와 상담 텍스트를 함께 보는 멀티모달 AI, 뇌파 요약 LLM 담당"><meta property="og:type" content="website">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="web proj-page">
+<header class="site-head"><div class="wrap bar">
+  <a class="brand" href="../">김태형</a>
+  <nav aria-label="페이지 이동"><a href="../#tracks">← 분야별 보기</a><a class="gh" href="https://github.com/KTHYEONG/Emori">GitHub</a></nav>
+</div></header>
+<main class="wrap proj">
+  <header class="pj-head">
+    <p class="crumb"><a href="../">포트폴리오</a> / 프로젝트</p>
+    <div class="pj-kicker"><span class="kind kind-team">팀</span><span class="status">완료</span><a class="field" href="../#ai-llm">AI · LLM</a></div>
+    <h1>Emori</h1>
+    <p class="pj-tag">뇌파와 상담 텍스트를 함께 보는 멀티모달 AI, 뇌파 요약 LLM 담당</p>
+  </header>
+  <section class="pj-sec">
+    <h2 class="part">개요</h2>
+    <p class="pj-summary">VR 체험 중 측정한 뇌파와 상담 인터뷰 텍스트를 함께 분석해, 상담자가 학생의 상태를 빠르게 파악하도록 돕는 프로젝트입니다(산학협력, 협력기관 (주)모티버). 저는 수치로 된 뇌파 지표를 상담자가 바로 읽을 수 있는 서술형 리포트로 바꾸는 부분을 맡았습니다. 데이터가 100개 이하로 적어, 규칙 기반 증강과 여러 문체의 정답 문장을 만들어 Llama 3.1 8B를 LoRA로 파인튜닝했습니다.</p>
+    <dl class="meta"><div><dt>기간</dt><dd>2025.09 ~ 2025.12</dd></div><div><dt>역할</dt><dd>뇌파 데이터 전처리, 학습 데이터 구축, Llama 3.1 8B LoRA 파인튜닝 (팀 프로젝트)</dd></div><div><dt>수상</dt><dd>2025 한국정보기술학회 추계종합학술대회 우수논문상(동상) · 팀 논문</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Llama 3.1 8B</li><li>Transformers</li><li>TRL</li><li>PEFT(LoRA)</li><li>bitsandbytes</li><li>pandas</li><li>numpy</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/Emori">github.com/KTHYEONG/Emori</a></dd></div></dl>
+    <div class="scope">
+        <div class="scope-mine"><h5>제가 맡은 일</h5><ul><li>뇌파·VR 결과 TXT를 JSON으로 통합하고 값·라벨 정리</li><li>규칙 기반 데이터 증강 50세트</li><li>정답 문장 4가지 문체 작성 (70세트 x 4문체 = 280개)</li><li>Llama 3.1 8B LoRA 파인튜닝과 서술형 요약 생성</li></ul></div>
+        <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>상담 인터뷰 텍스트의 감정 키워드 추출(형태소 분석과 BERT 결합), 키워드와 감정의 연관 분석, 통합 대시보드는 팀원이 맡았습니다. 이 자료에서는 제 성과로 주장하지 않습니다.</p></div>
+      </div>
+    <ul class="metrics"><li class="metric"><div class="m-label">증강 학습 데이터</div><div class="m-value">50세트</div><div class="m-note">규칙 기반 생성, 감정·강도 값은 모두 단어표 값</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">정답 문장</div><div class="m-value">280개 중 210개 사용</div><div class="m-note">70세트 x 4문체 중 단순 나열 문체를 제외</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">학습 / 검증 분할</div><div class="m-value">168 / 42</div><div class="m-note">80 : 20, 에폭마다 검증</div><span class="basis basis-code">코드로 확인</span></li></ul>
+  </section>
+  <section class="pj-sec">
+    <h2 class="part">핵심 설계 판단 <span class="part-hint">문제 → 분석 → 실행 → 결과</span></h2>
+    <div class="cases"><article class="case" id="finetune">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div><h3>규칙 템플릿도, 범용 LLM도 아닌 파인튜닝을 선택한 이유</h3></header>
+    <ol class="flow" style="--n:5"><li><strong>원본 통합</strong><span>뇌파·VR TXT를 JSON으로</span></li><li class="hl"><strong>증강</strong><span>규칙 기반 50세트</span></li><li><strong>정답 작성</strong><span>4문체 280개</span></li><li class="hl"><strong>LoRA 학습</strong><span>Llama 3.1 8B</span></li><li><strong>리포트</strong><span>서술형 요약 생성</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>뇌파 지표는 숫자라 상담자가 바로 읽기 어려워, 협력 기업과 협의해 정해진 형식에 가까운 서술형 답변을 만드는 방향으로 정했습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>규칙 기반 템플릿은 문장이 반복적이고 지표를 하나씩만 해석해, 여러 지표가 함께 움직이는 패턴을 못 담아 제외했습니다.</li><li>LLM을 그대로 호출하면 도메인 표현이 부족하고 일반적인 말만 해서 제외했습니다.</li><li>학습 가능한 데이터가 100개 이하라, 파인튜닝에 데이터 증강과 여러 문체의 정답을 결합하기로 했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>Llama 3.1 8B Instruct를 4비트(NF4) 양자화하고 LoRA(r=32, alpha=16, 대상 q_proj/v_proj)로 학습했습니다.</li><li>에폭 7, 배치 1 x 누적 8, 학습률 3e-4(cosine)로 개인 PC(RTX 4070 Ti)에서 학습했습니다.</li><li>변환부터 요약 생성까지 한 번에 실행하는 파이프라인을 구성했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>체험 시작, 중간, 마지막 3단계를 각각 한 문장으로 서술하는 요약이 생성됩니다. 정량 평가는 하지 않았고 생성 문장을 직접 읽어 확인했습니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="augment">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div><h3>비현실적인 조합이 생기지 않도록 증강 규칙을 직접 정한 이유</h3></header>
+    
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>제공받은 학생 데이터가 적어 증강이 필요했습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단순 무작위 생성은 스트레스와 이완이 함께 높은 식의 비현실적인 조합을 만들어 제외했습니다.</li><li>정서 이론(러셀의 감정 이론 등)을 처음 공부하며 참고해, 지표 간 관계를 반영하는 규칙을 직접 정했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>처음 9세트는 제공받은 기록의 흐름을 유지하고, 나머지는 +-20% 범위에서 생성했습니다.</li><li>스트레스는 이완의 반대 방향으로 만들고, 서로 어긋나는 극단 조합의 빈도를 제한했습니다.</li><li>시드를 고정해 재현할 수 있게 했고, 코드와 단어표의 값 이름(Full/Half/Low 등)을 원본 기준으로 통일해 증강 JSON을 다시 만들었습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>50세트를 생성했고 감정 종류와 강도 값이 모두 단어표에 있는 값임을 확인했습니다. 실제 사람 데이터와의 유사도는 검증하지 못했습니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="labels">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div><h3>정답 문장을 4가지 문체로 쓰고, 부자연스러운 문체는 학습에서 뺀 판단</h3></header>
+    
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>같은 말만 하는 리포트는 단조롭고 학습 데이터 양도 부족했습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>같은 입력에 여러 관점의 정답을 주면 표현이 다양해지고 데이터 양도 늘릴 수 있다고 판단했습니다.</li><li>4번째 문체(단순 나열)는 생성 결과를 읽어 보니 너무 형식적이라 학습에서 제외했습니다. 정량 비교가 아니라 직접 읽고 내린 판단입니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>상반된 지표 강조, 긍정 결과 강조, 흐름과 전문 어휘 강조, 단순 나열의 4기준으로 70세트의 정답을 작성했습니다.</li><li>단순 나열을 빼 280개에서 210개로 줄이고, 학습 80% : 검증 20%로 나눠 에폭마다 검증했습니다.</li><li>에폭을 10에서 7로 줄였습니다(커밋 메모상 7로도 충분하다고 판단, 비교 수치는 남아 있지 않음).</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>학습 168개, 검증 42개로 학습합니다.</p></section>
+    </div>
+    
+  </article></div>
+  </section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>파인튜닝 결과의 정량 평가(정확도, 손실 곡선 비교 등)를 하지 않았고, 품질은 생성 문장을 직접 읽어 확인한 수준입니다.</li><li>학습 데이터는 소규모 실제 기록과 증강본이 섞여 있어 실제 학생 분포와의 유사도는 검증하지 못했고, 일부 감정 단어 대응 값은 협력 기업 표준값 확인이 필요합니다.</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/Emori#readme">저장소 README</a>에 있습니다.</p></section>
+  <nav class="pj-nav" aria-label="다른 프로젝트">
+    <a class="pn prev" href="etf-manager.html"><span>이전 프로젝트</span><strong>ETF-Manager</strong></a>
+    <a class="pn next" href="witches-chat-core.html"><span>다음 프로젝트</span><strong>Witches-Chat-Core</strong></a>
+  </nav>
+</main>
+<footer class="site-foot"><div class="wrap">김태형 · <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></div></footer>
+</body>
+</html>

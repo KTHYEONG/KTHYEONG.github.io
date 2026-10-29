@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SaveTax · 김태형 포트폴리오</title>
+<meta name="description" content="나라장터 납품 데이터에서 시중가보다 비싼 물품을 찾는 감사 도구">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="SaveTax · 김태형 포트폴리오"><meta property="og:description" content="나라장터 납품 데이터에서 시중가보다 비싼 물품을 찾는 감사 도구"><meta property="og:type" content="website">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="web proj-page">
+<header class="site-head"><div class="wrap bar">
+  <a class="brand" href="../">김태형</a>
+  <nav aria-label="페이지 이동"><a href="../#tracks">← 분야별 보기</a></nav>
+</div></header>
+<main class="wrap proj">
+  <header class="pj-head">
+    <p class="crumb"><a href="../">포트폴리오</a> / 프로젝트</p>
+    <div class="pj-kicker"><span class="kind kind-personal">개인</span><span class="status">완료</span><a class="field" href="../#finance-data">데이터 · 금융 IT</a></div>
+    <h1>SaveTax</h1>
+    <p class="pj-tag">나라장터 납품 데이터에서 시중가보다 비싼 물품을 찾는 감사 도구</p>
+  </header>
+  <section class="pj-sec">
+    <h2 class="part">개요</h2>
+    <p class="pj-summary">나라장터 해커톤은 공공조달 공개 자료에서 시중가보다 과하게 집행된 금액을 찾아 제출하는 대회입니다. 조달 데이터는 같은 주문이 여러 물품에 중복으로 붙어 있어 그대로 더하면 금액이 부풀려지고, 제보에는 시중가 근거가 필요합니다. 중복을 먼저 정리하고, 네 가지 방식으로 비교 가격 근거를 모은 뒤, 사람이 승인한 건만 제출하는 흐름으로 풀었습니다.</p>
+    <dl class="meta"><div><dt>기간</dt><dd>2026.10</dd></div><div><dt>역할</dt><dd>나라장터 해커톤 참가작. 데이터 정리, 비교 가격 근거 수집, 제출 안전장치까지 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>DuckDB</li><li>Parquet</li><li>Decimal</li><li>pytest</li><li>mypy</li><li>ruff</li></ul></dd></div><div><dt>저장소</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
+    
+    <ul class="metrics"><li class="metric"><div class="m-label">중복 주문 보정</div><div class="m-value">약 24%</div><div class="m-note">중복을 그대로 더하면 부풀려지는 비율. 대회 데이터 안내 기준</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">비교 가격 근거</div><div class="m-value">4종</div><div class="m-note">cross · retail · agency · recipe, 종류별 기준 배율 설정</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">단위 테스트</div><div class="m-value">1,513개</div><div class="m-note">pytest 수집 기준, mypy strict와 ruff 통과</div><span class="basis basis-code">코드로 확인</span></li></ul>
+  </section>
+  <section class="pj-sec">
+    <h2 class="part">핵심 설계 판단 <span class="part-hint">문제 → 분석 → 실행 → 결과</span></h2>
+    <div class="cases"><article class="case" id="dedupe">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div><h3>같은 주문이 여러 물품에 중복돼 합계가 부풀려지는 문제를, 불일치는 멈추는 방식으로 풀기</h3></header>
+    <ol class="flow" style="--n:5"><li><strong>로드</strong><span>Parquet 직접 조회</span></li><li class="hl"><strong>무결성 검사</strong><span>dlv_key별 일치 확인</span></li><li class="hl"><strong>불일치 중단</strong><span>오류로 멈춤</span></li><li><strong>정규화 뷰</strong><span>주문당 1건</span></li><li><strong>집계</strong><span>빈 값은 0 아님</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>같은 주문 기록(dlv_key)이 여러 물품 아래에 반복돼, 단순 합계가 실제보다 큽니다. 집계 기준이 틀리면 이후의 모든 후보 판정이 어긋납니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>합계 전에 중복을 없애야 하지만, 묶은 기록끼리 계약번호나 금액이 다르면 합치면 안 됩니다.</li><li>주문이 없는 물품(약 71%)은 값이 비어 있는 것이지 0이 아니므로, 0으로 채우면 평균이 왜곡돼 제외했습니다.</li><li>불일치를 조용히 넘기는 것보다, 데이터를 불러오는 시점에 멈추는 쪽을 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>DuckDB로 Parquet을 직접 조회하며 dlv_key별 계약번호·금액이 하나로 일치하는지 검사합니다.</li><li>주문당 한 건으로 집계하는 정규화 뷰를 만들고, 불일치하면 오류로 중단합니다.</li><li>빈 값은 0으로 바꾸지 않고 그대로 둡니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>주문당 한 건으로 집계하는 뷰를 쓰고, 불일치 데이터는 조용히 넘어가지 않고 중단됩니다. 약 24%라는 수치는 대회 데이터 안내의 값입니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="recipe">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div><h3>시중에 같은 모델이 없는 전용 품목을, 부품 가격 합산으로 비교하고 출처를 남기기</h3></header>
+    <ol class="flow" style="--n:5"><li><strong>사양 정리</strong><span>CPU·메모리·SSD</span></li><li class="hl"><strong>부품 가격</strong><span>쇼핑몰 2곳 근거</span></li><li><strong>공임 가산</strong><span>표준품셈 적용</span></li><li class="hl"><strong>합산 원가</strong><span>기준가 산출</span></li><li><strong>제보 본문</strong><span>출처·합산식 기재</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>데스크톱 PC, 패치패널, 서버랙은 공공기관 전용 모델명이라 쇼핑몰에서 같은 제품을 찾을 수 없습니다. 시중가 비교만으로는 이런 품목이 후보에서 빠집니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>같은 모델이 없으면 동급 사양의 부품 가격 합계로 대신 비교할 수 있습니다.</li><li>다만 근거가 약해 보일 수 있어, 어느 쇼핑몰 어느 페이지에서 가져온 값인지 제보에 그대로 남겨야 한다고 판단했습니다.</li><li>근거 종류마다 기준이 달라 하나로 합치지 않고, cross·retail·agency·recipe 4종으로 나눠 배율을 따로 두었습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>CPU·메모리·SSD 같은 사양을 정리해 시판 부품 가격을 합산하고, 설치가 필요한 품목은 표준품셈 공임을 더합니다.</li><li>부품마다 다른 쇼핑몰 두 곳을 근거로 두고, 기준가 대비 1.2~1.3배 구간은 두 번째 쇼핑몰 가격으로도 확인합니다.</li><li>기준 배율(cross·agency·recipe 1.20배, retail 1.10배)은 타입이 있는 설정 한곳에 모았습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>레시피 부품 정의는 32개, 쇼핑몰 검색 규칙은 18곳이며, 제보 본문에 출처 페이지와 합산식이 들어갑니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="variants">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div><h3>옵션이 섞인 계약에서 허위 후보가 나오지 않도록, 오탐을 줄이는 쪽으로 기준 세우기</h3></header>
+    <ol class="flow" style="--n:4"><li><strong>옵션 확인</strong><span>단가가 여럿인지</span></li><li class="hl"><strong>대표 단가</strong><span>가장 높은 값</span></li><li class="hl"><strong>계열 분리</strong><span>다른 블록은 비교 안 함</span></li><li><strong>시점 검증</strong><span>납품일에 유효한지</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>한 계약 안에 단가가 다른 옵션(저가 옵션, 일반형·내진형)이 섞여 있으면, 비싼 본품을 싼 옵션과 비교해 허위 후보가 나옵니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>옵션 단가를 평균 내거나 가장 낮은 값을 쓰면 과다 집행처럼 보이는 후보가 늘어 제외했습니다.</li><li>가장 높은 대표 단가를 기준으로 삼으면 후보는 줄지만 잘못된 제보 위험이 줄어, 제보 횟수 한도를 고려해 이쪽을 택했습니다.</li><li>비교하는 단가가 납품일에 실제로 유효했는지도 따로 확인해야 합니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>옵션이 여럿이면 가장 높은 대표 단가를 비교 기준으로 씁니다.</li><li>순번 블록이 다른 계열(일반형·내진형 등)끼리는 비교하지 않도록 분리합니다.</li><li>변경계약일과 납품 이력으로 비교 단가의 유효 시점을 확인합니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>후보를 덜 내는 쪽으로 설계했고, 각 문턱은 단위 테스트로 확인합니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="ledger">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div><h3>제보 횟수 한도가 있는 제출에서, 재실행해도 같은 건이 두 번 나가지 않게 하기</h3></header>
+    <ol class="flow" style="--n:5"><li><strong>사람 승인</strong><span>내용 해시에 묶음</span></li><li><strong>가격 재확인</strong><span>제출 직전</span></li><li class="hl"><strong>원장 기록</strong><span>전송 전에 먼저</span></li><li><strong>전송</strong><span>고유 키 포함</span></li><li class="hl"><strong>재실행 확인</strong><span>미결 건 서버 조회</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>제보 횟수에 한도가 있어, 네트워크가 끊긴 뒤 다시 실행하면 같은 건이 두 번 차감될 수 있습니다. 참가자 토큰이 로그나 리다이렉트로 새는 것도 막아야 합니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>전송 후에 기록하면 &#39;보냈는데 기록이 없는&#39; 상태가 생겨 복구할 수 없습니다.</li><li>전송 전에 기록하면 &#39;기록은 있는데 보냈는지 모르는&#39; 상태가 생기지만, 재실행 때 서버에 조회해 확인할 수 있어 이쪽을 선택했습니다.</li><li>승인은 사람이 하되, 승인 후 내용이 바뀌면 무효가 되도록 제출 내용에 묶어야 합니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>요청 고유 키를 원장 파일에 먼저 쓰고(flock으로 잠그고 fsync로 디스크에 반영), 재실행 시 미결 건을 확인합니다.</li><li>승인을 제출 내용의 SHA-256 해시에 묶고, 제출 직전에 쇼핑몰 가격을 다시 확인합니다.</li><li>토큰은 공식 호스트 외로 보내지 않고, 리다이렉트는 따라가지 않으며, 로그에서는 가립니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>재실행해도 같은 건을 다시 보내지 않는 구조이고, 이 경로들은 단위 테스트가 있습니다.</p></section>
+    </div>
+    
+  </article></div>
+  </section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>데이터(data/)와 참가자 토큰이 저장소에 없어, 저장소만으로는 CLI를 처음부터 끝까지 재현할 수 없습니다. 테스트는 합성 데이터로 돌아갑니다.</li><li>후보의 과다 집행 판정은 시중가와의 비교 추정이라, 대회 심사에서 근거 부족으로 인정되지 않을 수 있습니다. 대회 결과는 확정 전이라 싣지 않았습니다.</li></ul></section>
+  <nav class="pj-nav" aria-label="다른 프로젝트">
+    <a class="pn prev" href="k-closing-alpha.html"><span>이전 프로젝트</span><strong>K-Closing Alpha</strong></a>
+    <a class="pn next" href="quant-dashboard.html"><span>다음 프로젝트</span><strong>Quant Dashboard</strong></a>
+  </nav>
+</main>
+<footer class="site-foot"><div class="wrap">김태형 · <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></div></footer>
+</body>
+</html>

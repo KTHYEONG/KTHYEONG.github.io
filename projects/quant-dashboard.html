@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quant Dashboard · 김태형 포트폴리오</title>
+<meta name="description" content="퀀트 수집 작업이 제때 돌았는지 읽기만 하는 상태판">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Quant Dashboard · 김태형 포트폴리오"><meta property="og:description" content="퀀트 수집 작업이 제때 돌았는지 읽기만 하는 상태판"><meta property="og:type" content="website">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="web proj-page">
+<header class="site-head"><div class="wrap bar">
+  <a class="brand" href="../">김태형</a>
+  <nav aria-label="페이지 이동"><a href="../#tracks">← 분야별 보기</a></nav>
+</div></header>
+<main class="wrap proj">
+  <header class="pj-head">
+    <p class="crumb"><a href="../">포트폴리오</a> / 프로젝트</p>
+    <div class="pj-kicker"><span class="kind kind-personal">개인</span><a class="field" href="../#finance-data">데이터 · 금융 IT</a></div>
+    <h1>Quant Dashboard</h1>
+    <p class="pj-tag">퀀트 수집 작업이 제때 돌았는지 읽기만 하는 상태판</p>
+  </header>
+  <section class="pj-sec">
+    <h2 class="part">개요</h2>
+    <p class="pj-summary">한 서버에서 도는 여러 퀀트 프로젝트의 자동 수집 작업이 오늘 제때 실행됐는지, 서버에 접속하지 않고 한 화면에서 확인하려고 만들었습니다. systemd, Docker, 각 프로젝트가 남기는 파일을 읽기만 해서 상태를 OK / WARN / UNKNOWN / FAIL로 판정하고, 감시 대상에 영향을 주지 않는 것을 가장 중요한 요구사항으로 삼았습니다.</p>
+    <dl class="meta"><div><dt>기간</dt><dd>2026.10 ~</dd></div><div><dt>역할</dt><dd>상태 수집, 거래일 판정, 이벤트·리포트 저장, 배포 구성까지 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>systemd</li><li>Tailscale</li><li>HTML/CSS/JavaScript</li><li>pytest</li><li>mypy</li><li>ruff</li></ul></dd></div><div><dt>저장소</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
+    
+    <ul class="metrics"><li class="metric"><div class="m-label">단위·계약 테스트</div><div class="m-value">179개 통과</div><div class="m-note">WSL에서 pytest 실행, 0.46초</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">런타임 의존성</div><div class="m-value">0개</div><div class="m-note">Python 표준 라이브러리만 사용 (pyproject.toml)</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">감시 일정</div><div class="m-value">32개 슬롯</div><div class="m-note">kca, krx, crypto, kse 하루 일정표 (config.toml)</div><span class="basis basis-code">코드로 확인</span></li></ul>
+  </section>
+  <section class="pj-sec">
+    <h2 class="part">핵심 설계 판단 <span class="part-hint">문제 → 분석 → 실행 → 결과</span></h2>
+    <div class="cases"><article class="case" id="calendar">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">Quant Dashboard</span><span class="kind kind-personal">개인</span></div><h3>휴장일·동시호가의 정상적인 공백을 장애로 보지 않도록 날짜 분류를 판정 앞단에 두었다</h3></header>
+    <ol class="flow" style="--n:5"><li><strong>날짜 분류</strong><span>5가지 중 하나로 분류</span></li><li class="hl"><strong>할 일 결정</strong><span>일정표와 비교</span></li><li><strong>시간대 판정</strong><span>정규장·동시호가·애프터</span></li><li><strong>단계 부여</strong><span>OK/WARN/FAIL</span></li><li><strong>미확인 처리</strong><span>범위 밖은 UNKNOWN</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>같은 &#39;데이터가 안 들어옴&#39;도 거래일 장중이면 장애이고 휴장일이나 동시호가(15:20~15:30)면 정상입니다. 개발 중 이를 장애로 잘못 판정한 오탐이 세 번 나왔습니다(커밋 이력 기준).</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>시간대마다 임계값만 따로 두는 방법은 오늘이 어떤 날인지 모르면 &#39;해야 할 일&#39; 자체를 정할 수 없어 제외했습니다.</li><li>하루를 거래일·휴장일·주말·시간 변경일·미확인으로 먼저 분류하는 방법을 선택했습니다. 확인된 기간(2026년) 밖은 UNKNOWN으로 둡니다.</li><li>정규장은 틱이 120초 넘게 없으면 WARN, 300초 넘으면 FAIL로 두고, 15:20~15:40은 판정을 보류했다가 애프터마켓 600초 기준으로 넘깁니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>달력을 TRADING / HOLIDAY / WEEKEND / SHIFTED / UNKNOWN으로 분류하는 모듈을 만들었습니다.</li><li>휴장일에 정상 종료된 작업은 &#39;결측&#39;이 아니라 정상 종료로 표시하게 했습니다.</li><li>달력 분류와 시간대별 판정을 단위 테스트로 고정했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>휴장일·동시호가·마감 후처리 중 하트비트 단절, 세 가지 오탐을 각각 수정하고 테스트로 고정했습니다. 오탐이 줄어든 정도를 수치로 측정하지는 않았습니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="readonly">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Quant Dashboard</span><span class="kind kind-personal">개인</span></div><h3>감시자가 감시 대상을 느리게 하지 않도록 읽기 전용과 수정 시각 확인만 쓰도록 했다</h3></header>
+    <ol class="flow" style="--n:4"><li><strong>명령 요청</strong><span>외부 명령은 한 곳으로</span></li><li class="hl"><strong>허용 목록</strong><span>읽기 명령만 통과</span></li><li><strong>수정 시각</strong><span>파일 내용은 안 읽음</span></li><li><strong>자원 상한</strong><span>128MB</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>대시보드가 서비스를 건드리거나 큰 틱(체결) 파일을 읽어 디스크를 같이 쓰면, 수집을 지키려는 도구가 수집을 방해하게 됩니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>명령을 내릴 수 있게 두고 조심하는 방법은 코드가 바뀔 때 깨질 수 있어 제외했습니다.</li><li>명령 자체를 막는 방법을 선택해 외부 명령 실행을 한 곳에 모으고 허용 목록의 읽기 명령만 통과시켰습니다.</li><li>수집이 이어지는지는 파일 내용 파싱 없이 최신 파일의 수정 시각만으로 충분하다고 판단했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>systemctl show, is-active, list-timers 등만 허용하고 그 밖의 명령은 예외를 내게 했습니다.</li><li>os.scandir로 수정 시각만 읽고 심볼릭 링크는 따라가지 않았으며, 내용을 읽어야 하는 이벤트 로그는 끝에서 최대 2MiB만 읽었습니다.</li><li>수집기 서비스에 메모리 128MB, CPU 25% 상한을 걸고 배포 스크립트는 감시 유닛 5종만 등록하게 했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>코드 기준으로 틱 파일 내용은 읽지 않고, 대시보드 코드로는 대상 서비스를 바꿀 수 없는 구조입니다. 자원 상한은 설정값이며 실제 사용량을 측정한 수치는 아닙니다.</p></section>
+    </div>
+    
+  </article></div>
+  </section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>감시 대상의 데이터와 로그가 저장소에 없고 개인 서버 구조에 맞춰져 있어 다른 환경에서 재현하기 어렵습니다.</li><li>휴장일 달력은 직접 입력한 2026년 값이고, 오탐·미탐을 정량 평가하지 않았으며, 알림 기능은 없습니다.</li></ul></section>
+  <nav class="pj-nav" aria-label="다른 프로젝트">
+    <a class="pn prev" href="savetax.html"><span>이전 프로젝트</span><strong>SaveTax</strong></a>
+    <a class="pn next" href="crypto-pilot.html"><span>다음 프로젝트</span><strong>Crypto Pilot</strong></a>
+  </nav>
+</main>
+<footer class="site-foot"><div class="wrap">김태형 · <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MT ETF King 2026 · 김태형 포트폴리오</title>
+<meta name="description" content="ETF 모의투자 대회용 백테스트·순위 분석 시스템">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="MT ETF King 2026 · 김태형 포트폴리오"><meta property="og:description" content="ETF 모의투자 대회용 백테스트·순위 분석 시스템"><meta property="og:type" content="website">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="web proj-page">
+<header class="site-head"><div class="wrap bar">
+  <a class="brand" href="../">김태형</a>
+  <nav aria-label="페이지 이동"><a href="../#tracks">← 분야별 보기</a><a class="gh" href="https://github.com/KTHYEONG/mt-etf-king-2026">GitHub</a></nav>
+</div></header>
+<main class="wrap proj">
+  <header class="pj-head">
+    <p class="crumb"><a href="../">포트폴리오</a> / 프로젝트</p>
+    <div class="pj-kicker"><span class="kind kind-personal">개인</span><span class="status">진행 중</span><a class="field" href="../#quant">퀀트</a></div>
+    <h1>MT ETF King 2026</h1>
+    <p class="pj-tag">ETF 모의투자 대회용 백테스트·순위 분석 시스템</p>
+  </header>
+  <section class="pj-sec">
+    <h2 class="part">개요</h2>
+    <p class="pj-summary">머니투데이 ETF 투자왕 대회(8주, 모의투자)에 쓰려고 만든 퀀트 프로젝트입니다. 상금이 상위권에 몰린 대회라 평균 수익률보다 &quot;8주 안에 큰 수익이 날 확률&quot;이 중요하다고 보고, 이를 과거 데이터로 측정하는 백테스트와 매일 쓰는 매매 카드 생성 도구를 만들었습니다. 대회는 2026-11-13에 끝나므로 최종 순위와 결과는 적지 않았습니다.</p>
+    <dl class="meta"><div><dt>기간</dt><dd>2026.08 ~ 진행 중</dd></div><div><dt>역할</dt><dd>KRX 시세 수집, 백테스트, 전략, 순위표 분석, 일일 매매 카드까지 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Polars</li><li>Parquet</li><li>Pydantic</li><li>httpx</li><li>pytest</li><li>systemd</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/mt-etf-king-2026">github.com/KTHYEONG/mt-etf-king-2026</a></dd></div></dl>
+    
+    <ul class="metrics"><li class="metric"><div class="m-label">8주 +30% 이상 비율</div><div class="m-value">7.77%</div><div class="m-note">반등 앵커 전략, 2,097개 롤링 구간. 기본형 6.78%, 단순 보유 2.54%</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">하위 5% 평균 손실(CVaR)</div><div class="m-value">-21.56%</div><div class="m-note">반등 앵커 전략. 기본형 -23.16%, 단순 보유 -15.09%</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">롤링 검증 구간</div><div class="m-value">2,097개</div><div class="m-note">36거래일 단위로 하루씩 이동, 2018-01 ~ 2026-09, 비용 반영</div><span class="basis basis-backtest">백테스트</span></li></ul>
+  </section>
+  <section class="pj-sec">
+    <h2 class="part">핵심 설계 판단 <span class="part-hint">문제 → 분석 → 실행 → 결과</span></h2>
+    <div class="cases"><article class="case" id="pit">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>백테스트에 미래 정보가 섞이지 않도록 사람의 주의가 아닌 코드로 막은 과정</h3></header>
+    <ol class="flow" style="--n:5"><li class="hl"><strong>신호</strong><span>결정일까지의 데이터</span></li><li class="hl"><strong>PIT 검사</strong><span>미래 행 있으면 예외</span></li><li><strong>주문 생성</strong><span>다음 거래일 예약</span></li><li class="hl"><strong>시가 체결</strong><span>비용·유동성 반영</span></li><li><strong>원장 기록</strong><span>포지션 갱신</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>오늘 종가를 보고 오늘 종가에 사는 식으로 계산하면 실제로는 불가능한 수익이 나옵니다. 백테스트 신뢰도의 바탕이라 가장 먼저 해결해야 했습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>지표 계산 때 조심해서 쓰는 방식은 실수가 한 번만 나와도 결과 전체가 오염되어 제외했습니다.</li><li>어디서든 실패하는 강제 장치가 필요해, 결정 날짜보다 뒤의 행이 있으면 예외를 던지는 방식을 선택했습니다.</li><li>신호와 체결을 한 단계에서 처리하면 같은 날 가격을 쓰게 되므로 둘을 분리했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li><code>assert_pit</code>으로 결정 시점 이후 데이터가 보이면 실행을 멈추게 했습니다.</li><li>주문은 신호 다음 거래일 시가에만 체결되도록 체결기를 분리했습니다.</li><li>거래 없는 날의 가격 처리는 원장 테스트로 확인했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>미래 데이터가 섞이면 조용히 넘어가지 않고 실행이 멈추도록 했습니다. 정량 지표(예: 유출 0건)는 따로 측정하지 않았습니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="krx-clean">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>KRX 시세의 빈 값과 가짜 휴장일이 수익률을 왜곡하지 않게 한 처리</h3></header>
+    <ol class="flow" style="--n:5"><li><strong>수집</strong><span>KRX Open API 일별 시세</span></li><li class="hl"><strong>스키마</strong><span>빈 문자열을 None으로</span></li><li class="hl"><strong>휴장 판정</strong><span>유효 가격 50% 미만</span></li><li><strong>캘린더 대조</strong><span>빠진 거래일 탐지</span></li><li><strong>Parquet</strong><span>원자적 교체 저장</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>값이 없을 때 빈 문자열이 오면 숫자 변환에서 0처럼 취급되어 수익률이 크게 틀어질 수 있습니다. 휴장일에도 가격이 빈 레코드가 올 수 있었습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>모든 필드를 느슨하게 받으면 이상한 값이 지표로 흘러가 제외했습니다.</li><li>너무 엄격하게 막으면 하루 데이터가 깨졌을 때 파이프라인 전체가 멈추는 문제가 있었습니다.</li><li>스키마 단계에서 빈 값을 명시적으로 None으로 바꾸고, 휴장일은 별도 규칙으로 분류하는 쪽을 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>빈 문자열을 스키마 단계에서 None으로 변환했습니다.</li><li>그날 종목 가격 중 유효한 비율이 50% 미만이면 휴장일로 분류하는 검증기를 만들었습니다.</li><li>거래소 캘린더와 대조해 빠진 거래일을 찾고, 괴리가 큰 종목은 거래 가능 여부를 표시합니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>휴장일 판정, 빠진 거래일 탐지, 괴리 종목 표시를 단위 테스트로 확인했습니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="anchor">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>급락 직후 현금 도피로 반등을 놓치는 문제를 반등 앵커 규칙으로 보완한 과정</h3></header>
+    
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>기본 전략은 60일 모멘텀이 마이너스면 현금으로 빠져, 폭락 직후 첫 반등을 놓칠 수 있습니다. 8주 안에 큰 수익을 노리는 대회에서는 이 비용이 큽니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>반등을 매번 따라 사는 방식은 하락장에서 손실이 커져 제외했습니다.</li><li>60일 모멘텀이 음수여도 20일 모멘텀이 양전환할 때만 지정 종목을 사고, 고점 대비 15% 하락 시 손절하는 조건부 규칙을 선택했습니다.</li><li>같은 기초지수의 1배·2배·인버스를 함께 담으면 사실상 중복이므로 한 묶음으로 보고 한 종목만 담게 했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li><code>sticky.mom60_post_crash_anchor</code> 전략을 설정과 팩토리로 추가했습니다.</li><li>같은 기초지수 상품을 묶는 분류기를 만들어 중복 편입을 막았습니다.</li><li>기본형과 같은 롤링 구간·비용 조건으로 전략 4종을 비교했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-backtest">백테스트</span></h5><p>2,097개 롤링 구간(2018-01~2026-09, 비용 반영)에서 8주 +30% 도달 비율이 기본형 6.78%에서 7.77%로, 하위 5% 평균 손실은 -23.16%에서 -21.56%로 좋아졌습니다. 다만 상위 5% 구간 수익률은 기본형보다 낮고, 구간 수가 전략마다 조금 다르며 승격 판정은 RESEARCH_ONLY(채택 기준 미통과)입니다.</p></section>
+    </div>
+    <figure class="chart">
+    <figcaption class="chart-title">8주 안에 +30% 이상 수익이 난 구간의 비율 <span class="chart-unit">%</span> <span class="basis basis-backtest">백테스트</span></figcaption>
+    <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
+        <div class="chart-label">단순 보유</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:32.69%"></span></div>
+        <div class="chart-val">2.54</div>
+      </div><div class="chart-row">
+        <div class="chart-label">20일 모멘텀 Top-1</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:49.29%"></span></div>
+        <div class="chart-val">3.83</div>
+      </div><div class="chart-row">
+        <div class="chart-label">60일 모멘텀</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:87.26%"></span></div>
+        <div class="chart-val">6.78</div>
+      </div><div class="chart-row">
+        <div class="chart-label">반등 앵커</div>
+        <div class="chart-track"><span class="cbar hl" style="left:0.00%;width:100.00%"></span></div>
+        <div class="chart-val hl">7.77</div>
+      </div></div>
+    <p class="chart-caption">36거래일 롤링 구간, 2018-01 ~ 2026-09, 구간 수 2,088 ~ 2,097개</p>
+  </figure>
+  </article><article class="case" id="leaderboard">
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>평균 수익률 대신 상위권에 오를 확률로 포지션 교체를 판단하도록 한 과정</h3></header>
+    <ol class="flow" style="--n:5"><li><strong>순위표 보관</strong><span>날짜별 덧붙이기</span></li><li class="hl"><strong>분포 가정</strong><span>참가자 1</span></li><li class="hl"><strong>시나리오</strong><span>8</span></li><li><strong>1위 확률</strong><span>후보별 비교</span></li><li class="hl"><strong>교체 판단</strong><span>5%p 이상일 때만</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>매일 16:00에 순위표 파일이 덮어써져 과거 이력이 남지 않고, 시상은 상위권에만 있어 평균 성과로는 의사결정이 어렵습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>남들이 많이 든 종목을 그대로 사면 순위를 뒤집을 수 없어 제외했습니다.</li><li>매일 포지션을 바꾸면 비용만 늘어, 개선 폭이 충분할 때만 바꾸는 기준이 필요했습니다.</li><li>참가자 보유 종목 분포를 가정한 시나리오 시뮬레이션으로 후보별 1위 확률을 비교하는 방식을 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>순위표를 날짜별로 덧붙이기만 하는 보관소에 저장했습니다.</li><li>참가자 1,268명의 분포를 가정해 4개 기간 × 2개 프로필마다 8,000개 시나리오를 생성했습니다.</li><li>1위 확률이 5%p 이상 높아질 때만 포지션을 바꾸도록 의사결정 규칙을 구현했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>의사결정 도구로 구현해 테스트까지 마쳤습니다. 참가자 분포는 가정값이라 이 확률 자체는 검증하지 못했습니다.</p></section>
+    </div>
+    
+  </article></div>
+  </section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>이 연구의 승격 판정은 <code>RESEARCH_ONLY</code>(채택 기준 미통과)입니다. 반등 앵커 개선은 실험 결과일 뿐 대회 운용 전략으로 확정됐다는 뜻이 아닙니다.</li><li>모든 수치는 과거 데이터 백테스트이며 실제 대회 성적이 아닙니다. 구간이 하루씩 밀려 서로 겹치므로 2,000여 개 구간은 독립 표본이 아닙니다.</li><li>순위 시뮬레이션의 참가자 분포는 가정이고, 일부 레버리지·인버스 상품은 기초지수 배수로 합성해 실제 추적오차와 다를 수 있습니다.</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/mt-etf-king-2026#readme">저장소 README</a>에 있습니다.</p></section>
+  <nav class="pj-nav" aria-label="다른 프로젝트">
+    <a class="pn prev" href="crypto-pilot.html"><span>이전 프로젝트</span><strong>Crypto Pilot</strong></a>
+    <a class="pn next" href="etf-manager.html"><span>다음 프로젝트</span><strong>ETF-Manager</strong></a>
+  </nav>
+</main>
+<footer class="site-foot"><div class="wrap">김태형 · <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></div></footer>
+</body>
+</html>
