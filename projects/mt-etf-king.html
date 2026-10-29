@@ -45,6 +45,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 조용히 넘어가지 않고 실행이 멈춥니다. 유출 0건 같은 정량 지표는 측정하지 않았습니다. </p></section>
     </div>
     
+    
   </article><article class="case" id="krx-clean">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>빈 값과 가짜 휴장일을 데이터 입력 단계에서 정리</h3></header>
     <ol class="flow" style="--n:5"><li><strong>수집</strong><span>한국거래소 Open API 일별 시세</span></li><li class="hl"><strong>입력 정리</strong><span>빈 값을 '값 없음'으로</span></li><li class="hl"><strong>휴장 판정</strong><span>유효 가격 50% 미만</span></li><li><strong>달력 대조</strong><span>빠진 거래일 탐지</span></li><li><strong>Parquet 저장</strong><span>통째로 교체해 깨짐 방지</span></li></ol>
@@ -55,6 +56,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>휴장일 판정, 빠진 거래일 탐지, 괴리 종목 표시를 단위 테스트로 확인했습니다. </p></section>
     </div>
     
+    
   </article><article class="case" id="anchor">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>급락 직후 반등을 놓치는 문제, 반등 앵커 규칙으로 보완</h3></header>
     
@@ -64,6 +66,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>급락 직후 반등 시점에만 사는 &#39;반등 앵커&#39; 전략 추가</li><li>같은 지수 상품을 분류해 중복 편입 차단</li><li>같은 구간·비용 조건에서 전략 4종 비교</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>2,097개 구간에서 8주 +30% 비율 6.78%에서 7.77%, 하위 5% 평균 손실 -23.16%에서 -21.56%. 상위 5% 구간 수익률은 기본형보다 낮고, 운용 전략 채택 기준은 통과하지 못해 연구용으로만 분류했습니다. <span class="basis basis-backtest">백테스트</span></p></section>
     </div>
+    
     <figure class="chart">
     <figcaption class="chart-title">8주 안에 +30% 이상 수익이 난 구간의 비율 <span class="chart-unit">%</span> <span class="basis basis-backtest">백테스트</span></figcaption>
     <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
@@ -94,6 +97,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>순위표를 날짜별로 이어 붙여 저장</li><li>참가자 1,268명 분포를 가정하고, 4개 기간 × 2개 참가자 유형마다 8,000개 시나리오 생성</li><li>1위 확률이 5%p 이상 오를 때만 종목을 바꾸는 규칙 구현</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>종목 교체 판단 도구로 구현하고 테스트까지 마쳤습니다. 참가자 분포는 가정값이라 확률 자체는 검증하지 못했습니다. </p></section>
     </div>
+    
     
   </article></div>
   </section>

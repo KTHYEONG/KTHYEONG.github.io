@@ -47,6 +47,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>형식별 변환기를 두되 결과 구조는 동일하게</li><li>초기에는 HWP를 DOCX로 수동 변환</li><li>이후 HWP 직접 변환 추가</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>원본 HWP 20·DOCX 5·PDF 4개를 Markdown 28개로 정리해 문서 쪼개기 단계에 전달. </p></section>
     </div>
+    
     <figure class="chart">
     <figcaption class="chart-title">원본 형식과 변환 결과 <span class="chart-unit">개</span> </figcaption>
     <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
@@ -78,6 +79,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>계층이 Markdown 기호로 남아 문서 쪼개기 단계가 구조를 읽을 수 있음. 단서 문장 등 예외 조항은 원문 순서 유지. </p></section>
     </div>
     
+    
   </article><article class="case" id="form-split">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div><h3>표와 신청서 양식을 구분해 본문에서 분리</h3></header>
     
@@ -88,6 +90,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>양식 표가 본문과 분리되어 문서 쪼개기 단계로 전달. 판별 정확도는 미측정. </p></section>
     </div>
     
+    
   </article><article class="case" id="speed">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div><h3>DOCX·PDF 변환, 범용 도구 대신 직접 읽기</h3></header>
     
@@ -97,6 +100,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>DOCX: 파일 내부 XML에서 본문·표·텍스트 상자를 직접 읽기</li><li>깨진 제어 문자를 한 번에 제거</li><li>PDF: 표 영역과 본문 덩어리를 나눠 읽기</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>커밋 메시지 기준 PDF 변환 약 70초에서 15초. 측정 파일·환경 기록 없는 참고 수치. <span class="basis basis-ops">운영 기록</span></p></section>
     </div>
+    
     
   </article></div>
   </section>

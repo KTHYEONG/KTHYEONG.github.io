@@ -45,6 +45,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>받는 단계와 해석 단계를 코드상 분리. 실제 데이터 손실률은 측정하지 않음. </p></section>
     </div>
     
+    
   </article><article class="case" id="gapfill">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>끊긴 구간을 체결 번호로 찾아 타사 자료로 보충</h3></header>
     <ol class="flow" style="--n:5"><li class="hl"><strong>번호 감사</strong><span>종목별 빈 구간 계산</span></li><li><strong>구간 확정</strong><span>시간대·종목 특정</span></li><li class="hl"><strong>타사 보충</strong><span>키움·한국투자증권 체결 이력</span></li><li><strong>병합</strong><span>디스크 기반 정렬</span></li><li><strong>출처 표시</strong><span>별도 파일로 저장</span></li></ol>
@@ -54,6 +55,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>감사: 체결 번호가 비는 구간을 종목별로 계산</li><li>보충: 키움증권·한국투자증권 체결 이력으로 빈 구간 채움</li><li>병합: 디스크 기반 정렬로 합치며 중복 제거</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>감사·보충·병합이 따로 실행되는 단계. 원본은 바꾸지 않음. 당일 체결만 제공하는 등 복구 불가 구간은 남을 수 있음. </p></section>
     </div>
+    
     
   </article><article class="case" id="disk">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>백업이 확인된 파일만 삭제해 작은 디스크 운영</h3></header>
@@ -65,6 +67,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>업로드 미확인 날짜분은 보존 기간이 지나도 삭제 제외. 확인 시간 단축 폭은 미측정. </p></section>
     </div>
     
+    
   </article><article class="case" id="paper">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>호가 잔량을 반영한 모의 체결, 실계좌 오주문 차단</h3></header>
     
@@ -74,6 +77,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>10단계 호가를 소진하며 체결가·수량 계산, 지정가 한도를 넘으면 체결 중단</li><li>모든 주문이 하나의 주문 관리 시스템(OMS)과 위험 한도 검사(주문 금액·분당 주문 수·일 손실 한도·허용 종목) 통과</li><li>실계좌: 실거래 허용을 명시하지 않으면 시작 단계에서 오류, 기본값은 모의</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>모의·모의투자·실계좌가 같은 주문 처리부를 쓰고 실계좌만 명시 허용 필요. 모의 체결과 실제 체결의 일치 여부는 미검증. </p></section>
     </div>
+    
     
   </article></div>
   </section>

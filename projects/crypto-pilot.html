@@ -45,6 +45,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>재현 시뮬레이션($1,000, 2021-04 ~ 2026-10)에서 강제청산 0회, 최대 낙폭 -51.2%. 평균 배율 약 3.8배라 낙폭이 큰 점은 한계로 기록. <span class="basis basis-replay">재현 시뮬레이션</span></p></section>
     </div>
     
+    
   </article><article class="case" id="execution">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Crypto Pilot</span><span class="kind kind-personal">개인</span></div><h3>종가에 체결됐다는 가정 대신 3분 단위로 지정가 체결 재현</h3></header>
     <ol class="flow" style="--n:5"><li><strong>주문 발생</strong><span>지정가 주문</span></li><li class="hl"><strong>3분 단위 추적</strong><span>30분 구간</span></li><li class="hl"><strong>체결 판정</strong><span>지나간 만큼만</span></li><li><strong>월 단위 이어가기</strong><span>보유·대기 주문</span></li><li><strong>결과 비교</strong><span>전체 처리와 일치 확인</span></li></ol>
@@ -55,6 +56,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>지정가 중심 매매를 계좌 시뮬레이션 기본값으로 채택. 월 단위 처리가 전체 처리와 같은 결과임을 테스트로 확인. </p></section>
     </div>
     
+    
   </article><article class="case" id="trials">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Crypto Pilot</span><span class="kind kind-personal">개인</span></div><h3>반복 시험으로 생기는 착시, 시험 횟수 기록과 샤프지수 보정</h3></header>
     <ol class="flow" style="--n:5"><li><strong>후보 시험</strong><span>매번 기록 남김</span></li><li><strong>횟수 반영</strong><span>시험 기록 52줄</span></li><li class="hl"><strong>보정값 판정</strong><span>0.95 이상만</span></li><li class="hl"><strong>승격 기록</strong><span>통과 판정 저장</span></li><li><strong>확인용 데이터</strong><span>07-01 이후 분리</span></li></ol>
@@ -64,6 +66,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>시험마다 기록(52줄), 보정값 계산의 시도 횟수로 반영</li><li>보정값 0.95 이상만 승격 기록 파일에 올리고 기준값과 판정 기록</li><li>설계용 데이터는 2026-07-01까지, 이후는 확인용으로 분리</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>기준값 0.95를 넘어 통과 판정을 기록. 확인용 구간까지 넣은 연평균 수익률 +212.7%로 설계 구간 +220.4%와 비슷. 확인용 구간은 3개월로 짧음. <span class="basis basis-backtest">백테스트</span></p></section>
     </div>
+    
     <figure class="chart">
     <figcaption class="chart-title">구간별 연평균 수익률 <span class="chart-unit">%</span> <span class="basis basis-backtest">백테스트</span></figcaption>
     <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
@@ -87,11 +90,12 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>변경 판단과 대기 조건을 단위 테스트로 검증. 업데이트 중 끊김 시간 실측치는 없음. </p></section>
     </div>
     
+    
   </article></div>
   </section>
   <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>모든 수익률은 재현 시뮬레이션, 실제 운용 결과 아님. 자동 매매는 모의 모드.</li><li>평균 배율 약 3.8배, 최대 낙폭 -51%로 실제 운용에서 버티기 어려움.</li><li>펀딩 손익의 약 91%가 상위 5개 종목에 집중, 확인용 구간은 3개월.</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/crypto-pilot#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
-    <a class="pn prev" href="quant-dashboard.html"><span>이전 프로젝트</span><strong>Quant Dashboard</strong></a>
+    <a class="pn prev" href="savetax.html"><span>이전 프로젝트</span><strong>SaveTax</strong></a>
     <a class="pn next" href="mt-etf-king.html"><span>다음 프로젝트</span><strong>MT ETF King 2026</strong></a>
   </nav>
 </main>

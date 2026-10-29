@@ -45,6 +45,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>모든 백테스트가 15:20 정보만 사용, 15:30 종가 매수·다음 날 09:00 시초가 청산(연구 문서 기준). </p></section>
     </div>
     
+    
   </article><article class="case" id="cost">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>호가 한 칸 비용이 큰 종목은 순위 매기기 전에 제외</h3></header>
     
@@ -54,6 +55,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>가격대별 호가 단위 표로 &#39;호가 한 칸 ÷ 현재가&#39; 계산, 0.12% 초과 종목 제외</li><li>거래세는 날짜별 세율표 적용, 수수료는 증권사 우대율 적용(왕복 약 0.0073%)</li><li>상한가 근처 종목 처리도 같은 전략 규칙에 포함</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>5,000원 미만만 매수 -12.53bp/일(약 -0.13%), 5,000~20,000원 +24.02bp/일(약 +0.24%). 백테스트, 연구 문서 4절. <span class="basis basis-backtest">백테스트</span></p></section>
     </div>
+    
     <figure class="chart">
     <figcaption class="chart-title">가격대별 일평균 순수익 <span class="chart-unit">bp/일 (1bp=0.01%)</span> <span class="basis basis-backtest">백테스트</span></figcaption>
     <div class="chart-body" style="--zero:34.28%"><div class="chart-row">
@@ -77,6 +79,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>기준 미달 모델은 운영에 못 올라갑니다. 118개 중 고른 결과라 선택 편향은 남고 보정 결과는 없습니다. </p></section>
     </div>
     
+    
   </article><article class="case" id="journal">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>주문을 먼저 기록하고 체결 내역을 확인해 중복 주문 차단</h3></header>
     <ol class="flow" style="--n:5"><li class="hl"><strong>의도 기록</strong><span>주문 내용을 디스크에 저장</span></li><li><strong>주문 전송</strong><span>전송 사실 기록</span></li><li><strong>응답 불확실</strong><span>미확인 상태로 표시</span></li><li class="hl"><strong>체결 내역 조회</strong><span>같은 주문 탐색</span></li><li><strong>인정/종결</strong><span>있으면 인정</span></li></ol>
@@ -86,6 +89,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>주문 의도와 전송 사실을 디스크에 먼저 기록</li><li>응답이 불확실하면 &#39;미확인&#39; 상태로 두고, 체결 내역에 같은 주문이 있으면 그 주문으로 인정, 없을 때만 종결</li><li>종가 확정 판단: 시각, 장 운영 상태, 현재가와 호가 가격 일치의 3조건</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>주문 상태 변화, 기존 주문 인정, 종가 확정 판단을 구현하고 단위 테스트 작성. 실거래 운영 기록은 없음. </p></section>
     </div>
+    
     
   </article></div>
   </section>

@@ -27,7 +27,7 @@
     <p class="pj-summary">공공조달 공개 자료에서 시중가보다 비싸게 집행된 금액을 찾는 해커톤 참가작입니다. 중복 정리, 4종 비교 근거 수집, 사람 승인 후 제출 순서로 풀었습니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026.10</dd></div><div><dt>역할</dt><dd>나라장터 해커톤 참가작, 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>DuckDB</li><li>Parquet</li><li>Decimal</li><li>pytest</li><li>mypy</li><li>ruff</li></ul></dd></div><div><dt>저장소</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
     
-    <ul class="metrics"><li class="metric"><div class="m-label">중복 주문 보정</div><div class="m-value">약 24%</div><div class="m-note">중복을 그대로 합산하면 부풀려지는 비율, 대회 안내 기준</div></li><li class="metric"><div class="m-label">비교 가격 근거</div><div class="m-value">4종</div><div class="m-note">타 계약·쇼핑몰·타 기관·부품 합산, 종류별 기준 배율 설정</div></li><li class="metric"><div class="m-label">단위 테스트</div><div class="m-value">1,513개</div><div class="m-note">자동 테스트 수집 기준, 타입·코드 스타일 검사 통과</div></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">중복 주문 보정</div><div class="m-value">약 24%</div><div class="m-note">중복을 그대로 합산하면 부풀려지는 비율, 대회 안내 기준</div></li><li class="metric"><div class="m-label">비교 가격 근거</div><div class="m-value">4종</div><div class="m-note">타 계약·쇼핑몰·타 기관·부품 합산, 종류별 기준 배율 설정</div></li><li class="metric"><div class="m-label">제출 건수</div><div class="m-value">117건</div><div class="m-note">접수 139건 중 철회 22건 제외, 모두 심사 대기(확정 전)</div><span class="basis basis-ops">운영 기록</span></li><li class="metric"><div class="m-label">접수 금액 합계</div><div class="m-value">약 13.7억 원</div><div class="m-note">제출 117건의 접수 시 금액 합, 인정액 아님(확정 전)</div><span class="basis basis-ops">운영 기록</span></li></ul>
   </section>
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
     <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>입력</h4><div class="arch-node"><strong>조달 데이터</strong><span>Parquet</span></div></div><div class="arch-stage"><h4>선별</h4><div class="arch-node hl"><strong>후보 선별</strong><span>비싼 집행 의심 건 추림</span></div></div><div class="arch-stage"><h4>근거 수집</h4><div class="arch-node"><strong>타 계약 비교</strong><span>같은 물품의 다른 계약</span></div><div class="arch-node"><strong>쇼핑몰 비교</strong><span>쇼핑몰 최저가</span></div><div class="arch-node"><strong>타 기관 비교</strong><span>다른 기관의 납품가</span></div><div class="arch-node hl"><strong>부품 합산</strong><span>부품 가격을 더한 원가</span></div></div><div class="arch-stage"><h4>검토</h4><div class="arch-node"><strong>검토</strong><span>사람이 근거 확인</span></div><div class="arch-node"><strong>승인</strong><span>내용에 묶은 서명</span></div></div><div class="arch-stage"><h4>제출</h4><div class="arch-node"><strong>제출</strong><span>직전 가격 재확인</span></div><div class="arch-node hl"><strong>제출 기록 파일</strong><span>전송 전에 먼저 기록</span></div></div></div>
@@ -45,6 +45,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>주문당 1건으로 집계하고 불일치 데이터는 중단. 약 24%는 중복 합산 시 부풀려지는 정도로, 대회 안내 수치. </p></section>
     </div>
     
+    
   </article><article class="case" id="recipe">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div><h3>전용 품목은 부품 가격을 더해 비교하고 출처 기록</h3></header>
     <ol class="flow" style="--n:5"><li><strong>사양 정리</strong><span>CPU·메모리·SSD</span></li><li class="hl"><strong>부품 가격</strong><span>쇼핑몰 2곳 근거</span></li><li><strong>공임 가산</strong><span>표준품셈 적용</span></li><li class="hl"><strong>합산 원가</strong><span>기준가 산출</span></li><li><strong>제보 본문</strong><span>출처·합산식 기재</span></li></ol>
@@ -54,6 +55,7 @@
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>사양 정리 후 시판 부품 가격 합산, 설치 품목은 표준품셈 공임 가산</li><li>부품별 쇼핑몰 2곳 근거, 1.2~1.3배 구간은 두 번째 가격으로 재확인</li><li>기준 배율(쇼핑몰 비교 1.10, 나머지 3종 1.20)을 설정 한곳에 모음</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>부품 구성 정의 32개, 쇼핑몰 검색 규칙 18곳. 제보 본문에 출처와 합산식 포함. </p></section>
     </div>
+    
     
   </article><article class="case" id="variants">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div><h3>옵션이 섞인 계약에서 잘못된 후보를 줄이는 기준</h3></header>
@@ -65,6 +67,7 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>후보를 적게 내는 방향으로 설계, 기준마다 자동 테스트 작성. </p></section>
     </div>
     
+    
   </article><article class="case" id="ledger">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div><h3>다시 실행해도 같은 건은 두 번 제출되지 않음</h3></header>
     <ol class="flow" style="--n:5"><li><strong>사람 승인</strong><span>내용 해시에 묶음</span></li><li><strong>가격 재확인</strong><span>제출 직전</span></li><li class="hl"><strong>제출 기록</strong><span>전송 전에 먼저</span></li><li><strong>전송</strong><span>고유 번호 포함</span></li><li class="hl"><strong>재실행 확인</strong><span>결과 미확인 건 서버 조회</span></li></ol>
@@ -75,12 +78,13 @@
       <section class="p-r"><h5><b>R</b> 결과</h5><p>다시 실행해도 같은 건을 다시 보내지 않는 구조. 해당 경로는 자동 테스트 있음. </p></section>
     </div>
     
+    
   </article></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>원본 데이터와 참가자 인증 정보가 저장소에 없어 전체 실행 재현 불가, 테스트는 합성 데이터.</li><li>과다 집행 판정은 시중가 비교 추정, 심사에서 근거 부족일 수 있음.</li><li>대회 결과는 확정 전이라 싣지 않음.</li></ul></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>원본 데이터와 참가자 인증 정보가 저장소에 없어 전체 실행 재현 불가, 테스트는 합성 데이터.</li><li>과다 집행 판정은 시중가 비교 추정, 심사에서 근거 부족일 수 있음.</li><li>제출 건수·금액은 내 제출 기록 파일 기준(저장소 미포함), 심사 인정액과 다를 수 있음.</li><li>대회 결과는 확정 전이라 싣지 않음.</li></ul></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="k-closing-alpha.html"><span>이전 프로젝트</span><strong>K-Closing Alpha</strong></a>
-    <a class="pn next" href="quant-dashboard.html"><span>다음 프로젝트</span><strong>Quant Dashboard</strong></a>
+    <a class="pn next" href="crypto-pilot.html"><span>다음 프로젝트</span><strong>Crypto Pilot</strong></a>
   </nav>
 </main>
 <footer class="site-foot"><div class="wrap">김태형 · <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></div></footer>
