@@ -25,23 +25,23 @@
   <section class="pj-sec">
     <h2 class="part">개요</h2>
     <p class="pj-summary">일반계좌·연금저축·ISA는 세금, 납입 한도, 인출 조건이 달라 최선의 구성이 다릅니다. 계좌별로 후보를 비교해 세후·실질 원화 기준으로 안정적으로 나은 구성을 골랐습니다.</p>
-    <dl class="meta"><div><dt>기간</dt><dd>2026</dd></div><div><dt>역할</dt><dd>단독 설계·구현 (데이터 계층, 세후 원장, 검증)</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Polars</li><li>Parquet</li><li>Pydantic</li><li>pytest</li><li>mypy</li><li>uv</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/ETF-Manager">github.com/KTHYEONG/ETF-Manager</a></dd></div></dl>
+    <dl class="meta"><div><dt>기간</dt><dd>2026</dd></div><div><dt>역할</dt><dd>단독 설계·구현 (데이터 계층, 세후 계산 장부, 검증)</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Polars</li><li>Parquet</li><li>Pydantic</li><li>pytest</li><li>mypy</li><li>uv</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/ETF-Manager">github.com/KTHYEONG/ETF-Manager</a></dd></div></dl>
     
     <ul class="metrics"><li class="metric"><div class="m-label">일반계좌 실질 연수익률</div><div class="m-value">24.7%</div><div class="m-note">QQQ 90%+SOXX 10%, QQQ 100%는 23.3%. 세후·실질 원화</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">연금저축 채택안(세 구간 상대값)</div><div class="m-value">1.039 / 1.057 / 1.024</div><div class="m-note">QQQ 90%+SCHD 10%. 100년·현대·실제 ETF 구간, 기준 조합=1.000</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">ISA 연금 이전 방식 상대값</div><div class="m-value">0.970~0.990</div><div class="m-note">3개 예산 모두 계속 보유가 1위. 기준 조합=1.000</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
-    <div class="arch-grid" style="--n:4"><div class="arch-stage"><h4>수집</h4><div class="arch-node"><strong>외부 데이터</strong><span>주가·물가·환율</span></div></div><div class="arch-stage"><h4>데이터</h4><div class="arch-node hl"><strong>공개 시각 태깅</strong><span>available_at</span></div><div class="arch-node"><strong>품질 검사</strong><span>이상치 확인</span></div><div class="arch-node"><strong>Parquet 저장소</strong><span>해시 이름</span></div></div><div class="arch-stage"><h4>시뮬레이션</h4><div class="arch-node hl"><strong>시점 안전 피처</strong><span>목표 비중</span></div><div class="arch-node"><strong>계좌별 원장</strong><span>일반·연금·ISA</span></div><div class="arch-node"><strong>세법 설정</strong><span>configs/tax</span></div></div><div class="arch-stage"><h4>검증</h4><div class="arch-node hl"><strong>다중 구간 비교</strong><span>부트스트랩</span></div><div class="arch-node"><strong>결정 동결 기록</strong><span>data/frozen</span></div></div></div>
+    <div class="arch-grid" style="--n:4"><div class="arch-stage"><h4>수집</h4><div class="arch-node"><strong>외부 데이터</strong><span>주가·물가·환율</span></div></div><div class="arch-stage"><h4>데이터</h4><div class="arch-node hl"><strong>공개 시각 태깅</strong><span>데이터가 공개된 시각 기록</span></div><div class="arch-node"><strong>품질 검사</strong><span>이상한 값 확인</span></div><div class="arch-node"><strong>데이터 저장소</strong><span>내용 기반 파일명</span></div></div><div class="arch-stage"><h4>시뮬레이션</h4><div class="arch-node hl"><strong>시점 안전 피처</strong><span>당시 정보로 목표 비중 계산</span></div><div class="arch-node"><strong>계좌별 세후 장부</strong><span>일반·연금·ISA</span></div><div class="arch-node"><strong>세법 설정</strong><span>세율·한도 설정 파일</span></div></div><div class="arch-stage"><h4>검증</h4><div class="arch-node hl"><strong>다중 구간 비교</strong><span>재표본 반복 비교</span></div><div class="arch-node"><strong>결정 동결 기록</strong><span>채택 결정을 고정 보존</span></div></div></div>
     <figcaption>시점 안전 데이터 → 계좌별 세후 원장 → 검증·동결</figcaption>
   </figure></section>
   <section class="pj-sec">
     <h2 class="part">사례</h2>
     <div class="cases"><article class="case" id="pit">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div><h3>미래 데이터 조회 시 실행 중단, 시점을 코드로 강제</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div><h3>미래에 공개될 데이터를 쓰면 실행 중단</h3></header>
     <ol class="flow" style="--n:5"><li class="hl"><strong>수집</strong><span>공개 시각 태깅</span></li><li class="hl"><strong>조회</strong><span>미래 행이면 중단</span></li><li><strong>신호</strong><span>시점 안전 피처</span></li><li><strong>체결</strong><span>다음 거래일 종가</span></li><li><strong>평가</strong><span>실질 원화</span></li></ol>
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>물가 지표는 월 종료 6~8주 뒤 발표됩니다. 관측 월로 조회하면 결과가 현실보다 좋게 나옵니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>관측일 정렬: 미래 누출 못 막아 제외</li><li>모든 행에 공개 시각(available_at) 부여 선택</li><li>같은 종가 체결은 비현실적, 다음 거래일 체결</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>시점 이후 공개 행 조회 시 LookAheadError 중단</li><li>다음 거래일 종가, 정수 주수 체결</li><li>한국 CPI 반영한 실질 원화로 평가</li></ul></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>물가 지표는 월 종료 6~8주 뒤 발표됩니다. 발표 전인데 해당 월 값을 쓰면 결과가 현실보다 좋게 나옵니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>관측일 정렬: 미래 누출 못 막아 제외</li><li>모든 데이터에 공개 시각을 붙이는 방식 선택</li><li>같은 종가 체결은 비현실적, 다음 거래일 체결</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>조회 시점 이후에 공개된 값을 읽으면 오류로 중단</li><li>다음 거래일 종가, 정수 주수 체결</li><li>한국 소비자물가 반영한 실질 원화로 평가</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 실행 중단. 다음 거래일 체결의 1일 지연은 비용으로 수용. </p></section>
     </div>
     
@@ -50,8 +50,8 @@
     
     <div class="paar">
       <section class="p-p"><h5><b>P</b> 문제</h5><p>장기 지수(1927~)에서 높게 나온 조합이 실제 ETF 구간에서는 기준보다 나빴습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>장기 지수 한 구간만 비교: 착시로 제외</li><li>장기 지수(1927~)·현대(1999~)·실제 ETF 구간 분리</li><li>후보 점수는 모든 칸의 최저값</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>기준 대비 0.995 미만 칸 또는 실제 ETF 구간 실패 시 탈락</li><li>부트스트랩(2,000회, 승률 0.6 이상), 전체 원장 순위 일치 확인</li><li>통과 결정은 동결 기록으로 보존</li></ul></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>장기 지수 한 구간만 비교: 착시로 제외</li><li>장기 지수(1927~)·현대(1999~)·실제 ETF 구간 분리</li><li>후보 점수는 세 구간 중 최저값</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>기준 대비 0.995 미만 칸 또는 실제 ETF 구간 실패 시 탈락</li><li>재표본 비교 2,000회에서 승률 0.6 이상, 전체 세후 계산 순위 일치 확인</li><li>통과 결정은 동결 기록으로 보존</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>QQQ 90%+SCHD 10%: 100년 1.039, 현대 1.057, 실제 ETF 1.024로 통과(기준 QQQ 80%+SPY 20%=1.000). QQQ 80%+SCHD 20%는 실제 ETF 0.992, QQQ 100%는 100년 0.995로 탈락. <span class="basis basis-backtest">백테스트</span></p></section>
     </div>
     <figure class="chart">
@@ -77,13 +77,13 @@
     <div class="paar">
       <section class="p-p"><h5><b>P</b> 문제</h5><p>ISA 만기마다 연금으로 넘기면 이득이라는 통념이 있습니다. 해지세와 복리 중단은 빠져 있습니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>ISA 안만 비교: 판단 어긋나 제외</li><li>가구 전체 세후 자산, 외부 납입 총액 동일 조건 비교</li><li>세율은 법령 원문 확인 값만 반영, 현행법 외 한도 확대 제외</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>운용 6종 × 예산 3종 × 소득 경로 4종 시뮬레이션</li><li>세법 값은 JSON 설정 3종 분리, 키 불일치 시 중단</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>운용 방식 6종 × 예산 3종 × 소득 변화 4종 시뮬레이션</li><li>세법 값은 설정 파일 3종으로 분리, 항목이 맞지 않으면 중단</li></ul></section>
       <section class="p-r"><h5><b>R</b> 결과</h5><p>예산 600만·1,200만·2,000만 원 모두 계속 보유 1위. 3년마다 전액 이전은 0.970·0.977·0.990. 추가 세액공제가 해지세 9.9%를 못 넘음. <span class="basis basis-backtest">백테스트</span></p></section>
     </div>
     
   </article></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>세 결정이 같은 데이터를 공유, 사후 선택 편향 존재</li><li>한국 CPI 가용 기간(2012-08~)이 실질 비교 구간을 제한</li><li>ISA 3년 미만 해지, 2027년 세제개편안 미반영. 현행법 전제</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/ETF-Manager#readme">저장소 README</a>에 있습니다.</p></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>세 결정이 같은 데이터를 공유, 사후 선택 편향 존재</li><li>한국 물가지수 제공 기간(2012-08~)이 실질 비교 구간을 제한</li><li>ISA 3년 미만 해지, 2027년 세제개편안 미반영. 현행법 전제</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/ETF-Manager#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="mt-etf-king.html"><span>이전 프로젝트</span><strong>MT ETF King 2026</strong></a>
     <a class="pn next" href="emori.html"><span>다음 프로젝트</span><strong>Emori</strong></a>
