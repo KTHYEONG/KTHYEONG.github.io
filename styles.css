@@ -20,7 +20,7 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+html { scroll-behavior: smooth; scroll-padding-top: 124px; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font: 400 16px/1.7 'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
@@ -99,6 +99,55 @@ ul, ol { padding: 0; list-style: none; }
 .pc-pdf { display: grid; gap: 6px; }
 .pc-pdf a { display: block; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 13.5px; font-weight: 600; text-decoration: none; }
 .pc-pdf a:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+
+/* 대표 프로젝트(첫 화면) */
+.featured { margin-top: 36px; }
+.featured .pick { margin: 0 0 12px; }
+.feat-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.feat { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); text-decoration: none; transition: border-color .15s, box-shadow .15s; }
+.feat:hover, .feat:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.feat-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 16.5px; }
+.feat-tag { font-size: 13.5px; color: var(--muted); line-height: 1.55; flex: 1; }
+.feat-res { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.feat .basis { align-self: flex-start; }
+.feat-res b { font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+.feat-res span { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+details.how { margin-top: 24px; border-left: 3px solid var(--line); padding: 4px 14px; }
+details.how summary { cursor: pointer; font-size: 13px; font-weight: 700; color: var(--muted); padding: 6px 0; }
+details.how p { font-size: 14px; color: var(--muted); margin: 6px 0 10px; }
+
+/* 분야 선택 막대 + 분야별 색 */
+.tracks-area { margin-top: 28px; }
+.track-switch { position: sticky; top: 56px; z-index: 9; background: rgba(251,251,249,.97); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); }
+.switch-in { display: flex; align-items: center; gap: 8px; min-height: 56px; overflow-x: auto; scrollbar-width: none; }
+.switch-label { font-size: 12.5px; font-weight: 700; color: var(--faint); margin-right: 4px; white-space: nowrap; }
+.sw { flex: none; padding: 9px 16px; border-radius: 99px; border: 1.5px solid var(--line); background: #fff; color: var(--muted); font-size: 14.5px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.sw:hover { color: var(--ink); border-color: #b8bec5; }
+.sw.on { color: #fff; border-color: var(--sw); background: var(--sw); }
+.sw[data-track="finance-data"] { --sw: #1d4f91; }
+.sw[data-track="quant"] { --sw: #0f766e; }
+.sw[data-track="ai-llm"] { --sw: #6d3fb2; }
+.track[data-track="finance-data"] { --accent: #1d4f91; --accent-soft: #e8eef7; }
+.track[data-track="quant"] { --accent: #0f766e; --accent-soft: #e4f3f1; }
+.track[data-track="ai-llm"] { --accent: #6d3fb2; --accent-soft: #f0eafa; }
+.web .track { border-top: 4px solid var(--accent); }
+.js .track.active { animation: trackin .25s ease-out; }
+@keyframes trackin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .js .track.active { animation: none; } html { scroll-behavior: auto; } }
+.part-hint { margin-left: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0; color: var(--faint); }
+
+/* 접는 사례 카드(웹) */
+details.case { padding: 0; }
+.c-sum { list-style: none; cursor: pointer; padding: 18px 22px; display: grid; gap: 6px; position: relative; padding-right: 52px; }
+.c-sum::-webkit-details-marker { display: none; }
+.c-sum::after { content: '＋'; position: absolute; right: 20px; top: 18px; font-size: 18px; color: var(--accent); font-weight: 700; }
+details.case[open] > .c-sum::after { content: '－'; }
+.c-sum:hover h3 { color: var(--accent); }
+.c-sum h3 { margin: 4px 0 2px; }
+.c-brief { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+.c-body { padding: 0 22px 20px; }
+details.case[open] > .c-sum { padding-bottom: 12px; }
 
 /* 구역 제목 */
 .part { font-size: 13px; font-weight: 800; letter-spacing: .1em; color: var(--accent); margin: 44px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
@@ -204,6 +253,7 @@ ul, ol { padding: 0; list-style: none; }
 .site-foot { padding: 20px 0 32px; font-size: 12.5px; color: var(--faint); }
 
 @media screen and (max-width: 860px) {
+  .feat-list { grid-template-columns: 1fr; }
   .hero-grid { grid-template-columns: 1fr; gap: 20px; }
   .principles, .track-cards, .strengths, .highlights { grid-template-columns: 1fr; }
   .ov-row { grid-template-columns: 1fr; gap: 10px; }
@@ -227,6 +277,11 @@ ul, ol { padding: 0; list-style: none; }
   .case { padding: 16px; }
   .others li { grid-template-columns: 1fr; gap: 2px; }
   .hero { padding-top: 36px; }
+  .c-sum { padding: 14px 44px 14px 16px; }
+  .c-sum::after { right: 14px; top: 14px; }
+  .c-body { padding: 0 16px 16px; }
+  .switch-label { display: none; }
+  html { scroll-padding-top: 116px; }
 }
 
 /* ===== 인쇄(PDF) ===== */

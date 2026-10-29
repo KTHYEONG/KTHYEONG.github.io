@@ -6,7 +6,7 @@
   function show(id, scroll) {
     if (ids.indexOf(id) < 0) id = ids[0];
     tracks.forEach(function (t) { t.classList.toggle('active', t.id === id); });
-    links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-track') === id); });
+    links.forEach(function (a) { var on = a.getAttribute('data-track') === id; a.classList.toggle('on', on); if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     if (scroll) { var el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }
   function fromHash() {
