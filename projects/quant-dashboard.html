@@ -27,7 +27,7 @@
     <p class="pj-summary">한 서버의 퀀트 수집 작업이 오늘 제때 돌았는지, 접속 없이 한 화면에서 봅니다. systemd, Docker, 프로젝트 파일을 읽기만 해 OK / WARN / UNKNOWN / FAIL로 판정하며, 감시 대상에 영향을 주지 않는 것이 핵심 요구사항입니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026.10 ~</dd></div><div><dt>역할</dt><dd>상태 수집·거래일 판정·리포트·배포 단독 구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>systemd</li><li>Tailscale</li><li>HTML/CSS/JavaScript</li><li>pytest</li><li>mypy</li><li>ruff</li></ul></dd></div><div><dt>저장소</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
     
-    <ul class="metrics"><li class="metric"><div class="m-label">단위·계약 테스트</div><div class="m-value">179개 통과</div><div class="m-note">WSL pytest, 0.46초</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">런타임 의존성</div><div class="m-value">0개</div><div class="m-note">표준 라이브러리만 사용</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">감시 일정</div><div class="m-value">32개 슬롯</div><div class="m-note">kca, krx, crypto, kse 일정표</div><span class="basis basis-code">코드로 확인</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">단위·계약 테스트</div><div class="m-value">179개 통과</div><div class="m-note">WSL pytest, 0.46초</div></li><li class="metric"><div class="m-label">런타임 의존성</div><div class="m-value">0개</div><div class="m-note">표준 라이브러리만 사용</div></li><li class="metric"><div class="m-label">감시 일정</div><div class="m-value">32개 슬롯</div><div class="m-note">kca, krx, crypto, kse 일정표</div></li></ul>
   </section>
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
     <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>감시 대상</h4><div class="arch-node"><strong>systemd</strong><span>타이머·서비스</span></div><div class="arch-node"><strong>Docker</strong><span>컨테이너</span></div><div class="arch-node"><strong>프로젝트 파일</strong><span>하트비트·틱 시각</span></div></div><div class="arch-stage"><h4>수집</h4><div class="arch-node"><strong>1분 타이머</strong><span>128MB</span></div><div class="arch-node hl"><strong>어댑터</strong><span>프로젝트별 판정</span></div></div><div class="arch-stage"><h4>상태 모델</h4><div class="arch-node hl"><strong>불변 상태</strong><span>가장 나쁜 단계로 합산</span></div></div><div class="arch-stage"><h4>저장</h4><div class="arch-node"><strong>status.json</strong><span>원자적 교체</span></div><div class="arch-node"><strong>96시간 리포트</strong><span>6시간마다</span></div></div><div class="arch-stage"><h4>표시</h4><div class="arch-node"><strong>정적 웹 페이지</strong><span>Tailscale 주소만</span></div></div></div>
@@ -42,7 +42,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>같은 &#39;데이터 없음&#39;도 장중이면 장애, 휴장일·동시호가면 정상입니다. 개발 중 오탐이 세 번 났습니다(커밋 이력).</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>시간대별 임계값만 두는 방식 제외: 날짜를 모르면 할 일을 못 정함</li><li>거래일·휴장일·주말·시간 변경일·미확인으로 먼저 분류</li><li>정규장 틱 120초 WARN, 300초 FAIL, 15:20~15:40 보류</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>달력 5분류 모듈 작성, 2026년 밖은 UNKNOWN</li><li>휴장일 정상 종료 작업은 결측 아닌 정상 종료로 표시</li><li>달력 분류·시간대 판정 단위 테스트로 고정</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>휴장일·동시호가·마감 후처리 하트비트 단절, 오탐 세 가지 수정 후 테스트 고정. 오탐 감소량은 측정하지 않음.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>휴장일·동시호가·마감 후처리 하트비트 단절, 오탐 세 가지 수정 후 테스트 고정. 오탐 감소량은 측정하지 않음. </p></section>
     </div>
     
   </article><article class="case" id="readonly">
@@ -52,7 +52,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>대시보드가 서비스를 건드리거나 틱 파일을 읽으면, 수집을 지키는 도구가 수집을 방해합니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>명령을 허용하고 조심하는 방식 제외: 코드 변경 시 깨질 수 있음</li><li>외부 명령을 한 곳에 모으고 허용 목록만 통과</li><li>수집 지속 여부는 최신 파일 수정 시각으로 충분</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>systemctl show, is-active, list-timers만 허용, 나머지 예외</li><li>os.scandir로 수정 시각만 조회, 심볼릭 링크 미추적</li><li>이벤트 로그는 끝에서 최대 2MiB만 읽기</li><li>수집기 128MB·CPU 25% 상한, 배포는 감시 유닛 5종만 등록</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>코드 기준 틱 파일 내용은 읽지 않고, 대상 서비스를 바꿀 수 없는 구조. 자원 상한은 설정값이며 실측 아님.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>코드 기준 틱 파일 내용은 읽지 않고, 대상 서비스를 바꿀 수 없는 구조. 자원 상한은 설정값이며 실측 아님. </p></section>
     </div>
     
   </article></div>

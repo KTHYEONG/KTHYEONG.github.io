@@ -30,7 +30,7 @@
         <div class="scope-mine"><h5>제가 맡은 일</h5><ul><li>HWP·DOCX·PDF 규정을 Markdown으로 변환하는 형식별 변환기</li><li>편·장·절·조·항·호·목을 Markdown 기호로 표시</li><li>제어문자·서식 노이즈 제거, 표와 양식을 본문에서 분리</li><li>DOCX·PDF 변환 속도 개선, 변환 전후 글자 수 점검 로그</li><li>오피스·이미지·음성 변환 추가, 청킹용 블록 정보(chunk:block 주석) 전달</li></ul></div>
         <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>청킹·임베딩·소속별 검색, 입력 가드레일, 출력 개인정보 마스킹, Open WebUI 연동, 서버·인프라는 팀원 담당. 블록 정보 형식은 팀원과 함께 정함.</p></div>
       </div>
-    <ul class="metrics"><li class="metric"><div class="m-label">정리된 규정 문서</div><div class="m-value">Markdown 28개</div><div class="m-note">HWP 20·DOCX 5·PDF 4개에서 변환(중복 형식 포함)</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">PDF 변환 시간(참고)</div><div class="m-value">약 70초 → 15초</div><div class="m-note">커밋 메시지 기록, 측정 환경 기록 없음</div><span class="basis basis-ops">운영 기록</span></li><li class="metric"><div class="m-label">팀 가드레일 공격 차단율</div><div class="m-value">98.46%</div><div class="m-note">자체 악성 입력 130개 중 128개 차단(논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">정리된 규정 문서</div><div class="m-value">Markdown 28개</div><div class="m-note">HWP 20·DOCX 5·PDF 4개에서 변환(중복 형식 포함)</div></li><li class="metric"><div class="m-label">PDF 변환 시간(참고)</div><div class="m-value">약 70초 → 15초</div><div class="m-note">커밋 메시지 기록, 측정 환경 기록 없음</div><span class="basis basis-ops">운영 기록</span></li><li class="metric"><div class="m-label">팀 가드레일 공격 차단율</div><div class="m-value">98.46%</div><div class="m-note">자체 악성 입력 130개 중 128개 차단(논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
   </section>
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
     <div class="arch-grid" style="--n:4"><div class="arch-stage"><h4>문서 준비</h4><div class="arch-node mine"><strong>규정 원본</strong><span>HWP·DOCX·PDF</span></div><div class="arch-node hl mine"><strong>Markdown 변환</strong><span>구조 표시·정리</span></div></div><div class="arch-stage"><h4>색인</h4><div class="arch-node"><strong>청킹</strong><span>블록 단위 분할</span></div><div class="arch-node"><strong>ChromaDB</strong><span>벡터 저장</span></div></div><div class="arch-stage"><h4>질문</h4><div class="arch-node"><strong>입력 가드레일</strong><span>규칙→유사도→BERT</span></div><div class="arch-node"><strong>검색</strong><span>소속 권한 필터</span></div></div><div class="arch-stage"><h4>답변</h4><div class="arch-node"><strong>로컬 LLM</strong><span>답변 생성</span></div><div class="arch-node"><strong>개인정보 마스킹</strong><span>출력 단계</span></div></div></div>
@@ -45,9 +45,29 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>규정이 세 형식으로 섞여 있고 조·항·호 계층이 의미를 정합니다. 형식별로 다루면 청킹·검색이 형식에 묶입니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>형식별 청킹: 팀원이 입력을 따로 처리해야 해 제외</li><li>Markdown: 청킹 표준 입력, 제목·목록·표 표현 가능</li><li>팀원 모두 같은 입력 형식 사용 가능</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>형식별 변환기 등록, 같은 출력 구조</li><li>초기에는 HWP를 DOCX로 수동 변환</li><li>이후 HWP 직접 변환 추가</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>원본 HWP 20·DOCX 5·PDF 4개를 Markdown 28개로 정리해 청킹 단계에 전달.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>원본 HWP 20·DOCX 5·PDF 4개를 Markdown 28개로 정리해 청킹 단계에 전달. </p></section>
     </div>
-    
+    <figure class="chart">
+    <figcaption class="chart-title">원본 형식과 변환 결과 <span class="chart-unit">개</span> </figcaption>
+    <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
+        <div class="chart-label">HWP</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:71.43%"></span></div>
+        <div class="chart-val">20</div>
+      </div><div class="chart-row">
+        <div class="chart-label">DOCX</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:17.86%"></span></div>
+        <div class="chart-val">5</div>
+      </div><div class="chart-row">
+        <div class="chart-label">PDF</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:14.29%"></span></div>
+        <div class="chart-val">4</div>
+      </div><div class="chart-row">
+        <div class="chart-label">Markdown</div>
+        <div class="chart-track"><span class="cbar hl" style="left:0.00%;width:100.00%"></span></div>
+        <div class="chart-val hl">28</div>
+      </div></div>
+    <p class="chart-caption">형식별 원본 파일 수와 Markdown 변환 결과</p>
+  </figure>
   </article><article class="case" id="hierarchy">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div><h3>원문은 두고 조·항·호 계층 표시만 추가</h3></header>
     
@@ -55,7 +75,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>조·항·호·목이 같은 줄글이면 청킹이 조항 중간을 자를 수 있습니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>문장 다듬기·요약: 조항 의미가 달라질 수 있어 제외</li><li>원문 유지, 표시만 추가</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>줄 앞머리(제N편/장/절/관, 제N조, ①, 1., 가.) 인식</li><li>제목·굵은 소제목·목록으로 표시</li><li>학칙 변환 결과에서 장·절 제목, 조 소제목, 항·호 목록 확인</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>계층이 Markdown 기호로 남아 청킹이 읽을 수 있음. 단서 문장 등 예외 조항은 원문 순서 유지.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>계층이 Markdown 기호로 남아 청킹이 읽을 수 있음. 단서 문장 등 예외 조항은 원문 순서 유지. </p></section>
     </div>
     
   </article><article class="case" id="form-split">
@@ -65,7 +85,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>신청서 서식과 빈 칸 많은 표가 본문에 섞이면 검색이 오염되고 청킹이 어렵습니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표 일괄 처리: 내용 표와 양식 구분 불가, 제외</li><li>빈 칸 비율 등 구조 단서와 양식 표현으로 판별</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>빈 칸 많은 다열 표, 양식 표현(예/아니오), 지정 패턴이면 양식 판별</li><li>양식은 본문과 따로 변환</li><li>청킹이 표를 별도 임베딩 가능</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>양식 표가 본문과 분리되어 청킹 단계로 전달. 판별 정확도는 미측정.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>양식 표가 본문과 분리되어 청킹 단계로 전달. 판별 정확도는 미측정. </p></section>
     </div>
     
   </article><article class="case" id="speed">
@@ -75,7 +95,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>큰 규정집의 DOCX·PDF 변환이 느려 규정 수정 후 재변환이 부담이었습니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>병목: python-docx의 객체 생성, pymupdf4llm의 글꼴·정렬·표 처리</li><li>옵션 조정보다 필요한 부분만 직접 읽는 방식 선택</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>DOCX: XML 노드(본문·표·텍스트 상자) 직접 순회</li><li>제어문자 한 번에 제거</li><li>PDF: PyMuPDF로 표 영역과 본문 블록 분리 읽기</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-ops">운영 기록</span></h5><p>커밋 메시지 기준 PDF 변환 약 70초에서 15초. 측정 파일·환경 기록 없는 참고 수치.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>커밋 메시지 기준 PDF 변환 약 70초에서 15초. 측정 파일·환경 기록 없는 참고 수치. <span class="basis basis-ops">운영 기록</span></p></section>
     </div>
     
   </article></div>

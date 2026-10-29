@@ -42,7 +42,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>15:30 확정 종가가 15:20 판단에 섞이면 불가능한 수익이 나옵니다. 두 시각이 10분 차이라 실수하기 쉽습니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>전체 기간 일괄 사용: 누출을 코드로 못 막아 제외</li><li>시점별 별도 저장: 누출 검증이 쉬워 선택</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>수집 시점 가격(결정_종가)과 확정 종가(종가) 컬럼 분리</li><li>과거 구간은 1분봉에서 15:20 상태 복원</li><li>작업 규칙에 &#39;관측 불가능한 가격 체결 가정 금지&#39; 명시</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>모든 백테스트가 15:20 정보만 사용, 15:30 종가 매수·다음 날 09:00 시초가 청산(연구 문서 기준).</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>모든 백테스트가 15:20 정보만 사용, 15:30 종가 매수·다음 날 09:00 시초가 청산(연구 문서 기준). </p></section>
     </div>
     
   </article><article class="case" id="cost">
@@ -52,7 +52,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>상위 종목에 호가 간격 큰 저가주가 몰립니다. 1틱이 20~50bp인 종목은 세금·슬리피지 후 손실입니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>상한 6·9·12·15bp, 상한 없음 비교</li><li>15bp: Sharpe 2.88로 높지만 매매일 83.3%(12bp는 99.7%)라 제외</li><li>12bp 선택: 후보 종목 7.5bp 대비 2.6배, Sharpe도 높음</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>가격대별 호가 단위 표로 <code>1틱 / 현재가</code> 계산, 12bp 초과 제외</li><li>거래세 날짜별 세율표, 수수료 증권사 우대율(왕복 약 0.73bp)</li><li>상한가 근처 종목 처리도 같은 전략 계약에 포함</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-backtest">백테스트</span></h5><p>5,000원 미만만 매수 -12.53bp/일, 5,000~20,000원 +24.02bp/일(백테스트, 연구 문서 4절).</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>5,000원 미만만 매수 -12.53bp/일, 5,000~20,000원 +24.02bp/일(백테스트, 연구 문서 4절). <span class="basis basis-backtest">백테스트</span></p></section>
     </div>
     <figure class="chart">
     <figcaption class="chart-title">가격대별 일평균 순수익 <span class="chart-unit">bp/일</span> <span class="basis basis-backtest">백테스트</span></figcaption>
@@ -74,7 +74,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>라벨 기간이 겹치는 데이터를 무작위로 나누면 학습과 평가가 섞입니다. 118개 전략 비교 시 우연히 좋은 전략을 고를 위험도 있습니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단순 시간 분할: 평가 경로 1개라 운에 좌우, 제외</li><li>8구간 중 2구간 시험(CPCV): 평가 경로 다수, 선택</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>CPCV(8, 2): 28개 분할, 독립 경로 7개</li><li>시험 구간 앞뒤 1구간씩 학습에서 제외</li><li>주간 재학습 모델은 최근 20거래일 순위 일치도 0.95 이상 등 통과해야 운영</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>기준 미달 모델은 운영에 못 올라갑니다. 118개 중 고른 결과라 선택 편향은 남고 보정 결과는 없습니다.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>기준 미달 모델은 운영에 못 올라갑니다. 118개 중 고른 결과라 선택 편향은 남고 보정 결과는 없습니다. </p></section>
     </div>
     
   </article><article class="case" id="journal">
@@ -84,7 +84,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>주문 응답이 타임아웃되면 접수 여부를 모릅니다. 재전송하면 이중 매수가 됩니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>재시도 횟수 제한: 접수된 주문을 못 막아 제외</li><li>전송 전 기록 + 불확실 시 원장 조회: 선택</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>주문 의도(INTENT)·전송(SEND)을 디스크에 먼저 기록</li><li>응답 불확실 시 UNKNOWN, 원장에 같은 주문 있으면 채택(ADOPT), 없을 때만 종결</li><li>종가 확정: 시각·장운영 구분코드·현재가와 호가 가격 일치 3조건</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>상태 전이·채택 로직·종가 확정 함수 구현, 단위 테스트 있음. 실거래 운영 기록은 없음.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>상태 전이·채택 로직·종가 확정 함수 구현, 단위 테스트 있음. 실거래 운영 기록은 없음. </p></section>
     </div>
     
   </article></div>

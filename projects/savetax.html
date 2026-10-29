@@ -27,7 +27,7 @@
     <p class="pj-summary">공공조달 공개 자료에서 시중가보다 비싸게 집행된 금액을 찾는 해커톤 참가작입니다. 중복 정리, 4종 비교 근거 수집, 사람 승인 후 제출 순서로 풀었습니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026.10</dd></div><div><dt>역할</dt><dd>나라장터 해커톤 참가작, 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>DuckDB</li><li>Parquet</li><li>Decimal</li><li>pytest</li><li>mypy</li><li>ruff</li></ul></dd></div><div><dt>저장소</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
     
-    <ul class="metrics"><li class="metric"><div class="m-label">중복 주문 보정</div><div class="m-value">약 24%</div><div class="m-note">중복 합산 시 부풀려지는 비율, 대회 안내 기준</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">비교 가격 근거</div><div class="m-value">4종</div><div class="m-note">cross·retail·agency·recipe, 종류별 배율 설정</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">단위 테스트</div><div class="m-value">1,513개</div><div class="m-note">pytest 수집 기준, mypy strict·ruff 통과</div><span class="basis basis-code">코드로 확인</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">중복 주문 보정</div><div class="m-value">약 24%</div><div class="m-note">중복 합산 시 부풀려지는 비율, 대회 안내 기준</div></li><li class="metric"><div class="m-label">비교 가격 근거</div><div class="m-value">4종</div><div class="m-note">cross·retail·agency·recipe, 종류별 배율 설정</div></li><li class="metric"><div class="m-label">단위 테스트</div><div class="m-value">1,513개</div><div class="m-note">pytest 수집 기준, mypy strict·ruff 통과</div></li></ul>
   </section>
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
     <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>입력</h4><div class="arch-node"><strong>조달 데이터</strong><span>Parquet</span></div></div><div class="arch-stage"><h4>선별</h4><div class="arch-node hl"><strong>screen</strong><span>후보 선별</span></div></div><div class="arch-stage"><h4>근거 수집</h4><div class="arch-node"><strong>cross</strong><span>다른 계약 비교</span></div><div class="arch-node"><strong>retail</strong><span>쇼핑몰 최저가</span></div><div class="arch-node"><strong>agency</strong><span>다른 기관 비교</span></div><div class="arch-node hl"><strong>recipe</strong><span>부품 합산 원가</span></div></div><div class="arch-stage"><h4>검토</h4><div class="arch-node"><strong>review</strong><span>사람이 검토</span></div><div class="arch-node"><strong>approve</strong><span>서명 승인</span></div></div><div class="arch-stage"><h4>제출</h4><div class="arch-node"><strong>submit</strong><span>직전 가격 재확인</span></div><div class="arch-node hl"><strong>원장 파일</strong><span>전송 전 기록</span></div></div></div>
@@ -42,7 +42,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>같은 주문이 여러 물품에 반복돼 단순 합계가 부풀려집니다. 집계가 틀리면 이후 판정이 모두 어긋납니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>합계 전 중복 제거 필요</li><li>계약번호·금액이 다르면 합치지 않음</li><li>주문 없는 물품(약 71%)은 0이 아닌 빈 값, 0 채움은 평균 왜곡으로 제외</li><li>불일치를 넘기지 않고 로드 시점에 중단 선택</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>DuckDB로 Parquet 직접 조회, dlv_key별 일치 검사</li><li>주문당 1건 정규화 뷰 생성, 불일치 시 오류 중단</li><li>빈 값은 0으로 바꾸지 않고 유지</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>주문당 1건 뷰 사용, 불일치 데이터는 중단. 약 24%는 대회 안내 수치.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>주문당 1건 뷰 사용, 불일치 데이터는 중단. 약 24%는 대회 안내 수치. </p></section>
     </div>
     
   </article><article class="case" id="recipe">
@@ -52,7 +52,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>PC, 패치패널, 서버랙은 전용 모델이라 쇼핑몰에 같은 제품이 없습니다. 시중가 비교로는 후보에서 빠집니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>동급 사양 부품 가격 합계로 대체 비교</li><li>근거가 약해 보이므로 쇼핑몰·페이지 출처를 제보에 기재</li><li>근거 종류별 기준이 달라 4종으로 나눠 배율 분리</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>사양 정리 후 시판 부품 가격 합산, 설치 품목은 표준품셈 공임 가산</li><li>부품별 쇼핑몰 2곳 근거, 1.2~1.3배 구간은 두 번째 가격으로 재확인</li><li>기준 배율(cross·agency·recipe 1.20, retail 1.10) 설정 한곳에 통합</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>레시피 부품 정의 32개, 쇼핑몰 검색 규칙 18곳. 제보 본문에 출처와 합산식 포함.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>레시피 부품 정의 32개, 쇼핑몰 검색 규칙 18곳. 제보 본문에 출처와 합산식 포함. </p></section>
     </div>
     
   </article><article class="case" id="variants">
@@ -62,7 +62,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>단가 다른 옵션이 섞인 계약에서 비싼 본품을 싼 옵션과 비교해 허위 후보가 나옵니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>평균·최저 단가 기준은 과다 집행처럼 보이는 후보 증가로 제외</li><li>최고 대표 단가 기준은 후보 감소, 제보 횟수 한도 고려해 선택</li><li>비교 단가의 납품일 유효 여부 별도 확인</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>옵션 다수면 최고 대표 단가 기준</li><li>순번 블록 다른 계열(일반형·내진형)은 비교 제외</li><li>변경계약일·납품 이력으로 단가 유효 시점 확인</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>후보를 덜 내는 방향으로 설계, 문턱마다 단위 테스트.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>후보를 덜 내는 방향으로 설계, 문턱마다 단위 테스트. </p></section>
     </div>
     
   </article><article class="case" id="ledger">
@@ -72,7 +72,7 @@
       <section class="p-p"><h5><b>P</b> 문제</h5><p>제보 횟수 한도 때문에 재실행하면 같은 건이 이중 차감될 수 있습니다. 토큰 유출도 막아야 합니다.</p></section>
       <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>전송 후 기록은 &#39;보냈는데 기록 없음&#39; 상태가 생겨 복구 불가</li><li>전송 전 기록은 재실행 때 서버 조회로 확인 가능, 이쪽 선택</li><li>승인은 사람이 하고, 내용 변경 시 무효가 되도록 내용에 결합</li></ul></section>
       <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>요청 고유 키를 원장에 선기록(flock 잠금, fsync 반영), 재실행 시 미결 건 확인</li><li>승인을 제출 내용 SHA-256 해시에 결합, 제출 직전 가격 재확인</li><li>토큰은 공식 호스트만 전송, 리다이렉트 불가, 로그 마스킹</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>재실행해도 같은 건을 다시 보내지 않는 구조. 해당 경로는 단위 테스트 있음.</p></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>재실행해도 같은 건을 다시 보내지 않는 구조. 해당 경로는 단위 테스트 있음. </p></section>
     </div>
     
   </article></div>
