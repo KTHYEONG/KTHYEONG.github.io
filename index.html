@@ -27,227 +27,153 @@
   <div class="track-cards"><a class="track-card" href="#quant" data-track="quant">
       <span class="tc-target">증권사 S&amp;T · 퀀트 리서치 · 자산운용</span>
       <strong>S&amp;T / 퀀트</strong>
-      <span class="tc-projects">K-Closing Alpha · Crypto Pilot · MT ETF King 2026</span>
+      <span class="tc-projects">K-Closing Alpha · Crypto Pilot · MT ETF King 2026 · ETF-Manager</span>
     </a><a class="track-card" href="#finance-data" data-track="finance-data">
       <span class="tc-target">금융 IT · 데이터 엔지니어링 · 데이터 플랫폼</span>
       <strong>금융 IT / 데이터 엔지니어</strong>
-      <span class="tc-projects">KRX-Alpha · K-Closing Alpha · SaveTax</span>
+      <span class="tc-projects">KRX-Alpha · K-Closing Alpha · SaveTax · Quant Dashboard · Port Entity Matching</span>
     </a><a class="track-card" href="#ai-llm" data-track="ai-llm">
       <span class="tc-target">AI 엔지니어 · 디지털 · LLM/RAG 데이터 · 머신러닝</span>
       <strong>AI / Digital / LLM·RAG</strong>
-      <span class="tc-projects">Emori · K-Closing Alpha · Witches-Chat-Core</span>
+      <span class="tc-projects">Emori · Witches-Chat-Core · Port Entity Matching</span>
     </a></div>
-  <div class="how"><h4>수치를 읽는 법</h4><p>모든 수치에는 측정 방식을 함께 표시했습니다. 「백테스트」는 과거 데이터 시뮬레이션, 「재현 시뮬레이션」은 원장 리플레이, 「README 기재」는 저장소 문서에 적힌 운영 기록입니다. 실계좌 수익이나 수상 실적은 이 자료에 포함하지 않았습니다.</p><ul class="legend"><li><span class="basis basis-backtest">백테스트</span><span>과거 데이터 백테스트</span></li><li><span class="basis basis-replay">재현 시뮬레이션</span><span>체결·증거금 규칙을 적용한 원장 리플레이</span></li><li><span class="basis basis-ops">운영 기록</span><span>저장소 README에 기재된 운영 기록</span></li><li><span class="basis basis-doc">README 기재</span><span>저장소 문서에 기재된 값</span></li></ul></div>
+  <div class="how"><h4>수치를 읽는 법</h4><p>모든 수치에는 측정 방식을 함께 표시했습니다. 실계좌 수익이나 대회 순위, 수상 실적(Emori 팀 논문 제외)은 이 자료에 포함하지 않았습니다. 자세한 근거와 실행 방법은 각 저장소 README에 있습니다.</p><ul class="legend"><li><span class="basis basis-backtest">백테스트</span><span>과거 데이터 시뮬레이션</span></li><li><span class="basis basis-replay">재현 시뮬레이션</span><span>체결·증거금 규칙을 적용한 원장 리플레이</span></li><li><span class="basis basis-eval">평가셋 측정</span><span>정해진 평가 데이터로 잰 값</span></li><li><span class="basis basis-team">팀 측정</span><span>팀 전체 측정값(제 기여분만의 값이 아님)</span></li><li><span class="basis basis-ops">운영 기록</span><span>실제로 돌린 기록</span></li><li><span class="basis basis-code">코드로 확인</span><span>코드·설정·테스트로 확인한 설계 사실</span></li></ul></div>
 </div></section>
 <section class="track" id="quant" data-track="quant" aria-labelledby="h-quant">
       <div class="wrap">
         <div class="track-head">
           <p class="eyebrow">S&amp;T / 퀀트</p>
-          <h2 id="h-quant">전략을 연구하고, 거래비용을 넣어 검증하고, 실행 시스템까지 이어 봤습니다</h2>
-          <p class="lead">세 개의 대표 프로젝트(국내 종가매매, 암호화폐 선물, ETF 대회 운용)에서 같은 순서를 반복했습니다. 판단 시각의 정보만 쓰고, 호가·세금·수수료·펀딩비를 반영해 검증하고, 결과를 매일 도는 시스템으로 옮겼습니다.</p>
+          <h2 id="h-quant">전략을 비용까지 넣어 검증하고, 체결과 리스크를 원장으로 재현해 봤습니다</h2>
+          <p class="lead">국내 종가매매, 암호화폐 선물, ETF 투자대회에서 같은 순서를 반복했습니다. 판단 시각에 알 수 있는 정보만 쓰고, 호가·세금·수수료를 반영해 검증하고, 여러 번 시험한 편향까지 보정했습니다. 수익률보다 &quot;이 숫자를 믿어도 되는가&quot;를 먼저 따졌습니다.</p>
           <a class="pdf-link" href="pdf/portfolio-quant.pdf" download>이 직무용 PDF 받기 <span>portfolio-quant.pdf</span></a>
         </div>
-        <ul class="strengths"><li><h4>전략 연구</h4><p>수급·호가 불균형·모멘텀·펀딩 신호를 종목 랭킹과 포트폴리오 신호로 만들고, 118개 전략을 같은 틀에서 비교했습니다.</p></li><li><h4>시장 미시구조와 거래비용</h4><p>호가 단위, 증권거래세, 동시호가 구간, 지정가 체결 가능성을 모델에 직접 넣었습니다.</p></li><li><h4>리스크 관리</h4><p>낙폭, 하위 5% 손실, 증거금과 강제청산, 레버리지 상한을 수익률과 같은 비중으로 평가했습니다.</p></li><li><h4>시계열 검증</h4><p>미래 정보 차단, 라벨 중첩 제거(purging)·엠바고를 둔 CPCV, 다중검정 보정(DSR), 롤링 구간 평가를 사용했습니다.</p></li></ul>
-        <article class="project" id="quant-k-closing-alpha">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 01</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>K-Closing Alpha</h3>
-      <p class="tagline">15:20에 알 수 있는 정보만으로 종목을 고르고, 종가에 사서 다음 날 시초가에 파는 국내주식 퀀트 시스템</p>
+        <ul class="strengths"><li><h4>비용과 시점을 먼저 반영</h4><p>호가 단위·거래세 같은 비용을 순위를 매기기 전에 넣고, 판단 시점과 확정 값을 컬럼부터 분리했습니다.</p></li><li><h4>시계열 검증 설계</h4><p>겹치는 라벨을 제거한 교차검증(CPCV)과 시험 횟수를 반영한 Sharpe 보정(DSR)으로 우연한 결과를 걸러냈습니다.</p></li><li><h4>체결·리스크 모델링</h4><p>3분봉 단위 지정가 체결과 증거금·강제청산 규칙을 원장으로 재현해 레버리지를 정했습니다.</p></li></ul>
+        <ul class="highlights"><li><span class="h-proj">K-Closing Alpha</span><strong class="h-val">+34.58bp</strong><span class="h-label">일평균 순수익</span><span class="h-note">886거래일(2023-01~2026-09), 거래세·왕복 2틱 호가 비용·수수료 차감 후 (1bp=0.01%)</span><span class="basis basis-backtest">백테스트</span></li><li><span class="h-proj">K-Closing Alpha</span><strong class="h-val">4틱까지 양(+)</strong><span class="h-label">비용 민감도</span><span class="h-note">왕복 호가 비용을 1~6틱으로 올린 시험, 6틱에서 음수</span><span class="basis basis-backtest">백테스트</span></li><li><span class="h-proj">Crypto Pilot</span><strong class="h-val">0회</strong><span class="h-label">강제청산</span><span class="h-note">같은 시뮬레이션. 심볼별 유지증거금 규칙을 계좌 시뮬레이터에 반영</span><span class="basis basis-replay">재현 시뮬레이션</span></li></ul>
+        <h3 class="part">프로젝트 한눈에 보기</h3>
+        <ol class="ov"><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">01</span>
+          <div>
+            <strong class="ov-name">K-Closing Alpha</strong> <span class="kind kind-personal">개인</span>
+            <p class="ov-pitch">비용을 낸 뒤에도 남는 알파인지를 가장 엄격하게 검증한 프로젝트</p>
+            <p class="ov-meta">2026 · 기획부터 데이터 수집, 모델, 검증, 주문 실행까지 단독 설계·구현</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>+34.58bp</strong><span>일평균 순수익</span><em>886거래일(2023-01~2026-09), 거래세·왕복 2틱 호가 비용·수수료 차감 후 (1bp=0.01%)</em><span class="basis basis-backtest">백테스트</span></li><li><strong>2.73</strong><span>Sharpe</span><em>t값 5.12, 승률 56.3%, 최대낙폭 28.98%</em><span class="basis basis-backtest">백테스트</span></li></ul>
+        <div class="ov-link"><a class="repo" href="https://github.com/KTHYEONG/k-closing-alpha">github.com/KTHYEONG/k-closing-alpha</a></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">02</span>
+          <div>
+            <strong class="ov-name">Crypto Pilot</strong> <span class="kind kind-personal">개인</span><span class="status">진행 중</span>
+            <p class="ov-pitch">신호를 체결·증거금·강제청산까지 재현한 원장으로 검증한 프로젝트</p>
+            <p class="ov-meta">2026 · 단독 설계·구현 (전략 검증 엔진, 수집·집행 데몬, 배포 운영)</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>+212.7%</strong><span>$1,000 계좌 시뮬레이션 연복리(CAGR)</span><em>재현 시뮬레이션, 2021-04 ~ 2026-10(홀드아웃 포함), 지정가 집행, 수수료·펀딩비·증거금 반영</em><span class="basis basis-replay">재현 시뮬레이션</span></li><li><strong>-51.2%</strong><span>최대 낙폭(MDD)</span><em>같은 시뮬레이션, 3분봉 가격 경로 기준 (일별 종가 기준 -46.3%)</em><span class="basis basis-replay">재현 시뮬레이션</span></li></ul>
+        <div class="ov-link"><a class="repo" href="https://github.com/KTHYEONG/crypto-pilot">github.com/KTHYEONG/crypto-pilot</a></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">03</span>
+          <div>
+            <strong class="ov-name">MT ETF King 2026</strong> <span class="kind kind-personal">개인</span><span class="status">진행 중</span>
+            <p class="ov-pitch">평균이 아닌 목표 도달 확률로 대회 전략을 평가한 프로젝트</p>
+            <p class="ov-meta">2026.08 ~ 진행 중 · 단독 설계·구현 (데이터 수집부터 백테스트, 전략, 순위표 분석, 일일 배치까지)</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>7.77%</strong><span>8주 +30% 이상 비율</span><em>반등 앵커 전략, 2,097개 롤링 구간. 기본형 6.78%, 단순 보유 2.54%</em><span class="basis basis-backtest">백테스트</span></li><li><strong>-21.56%</strong><span>하위 5% 평균 손실(CVaR)</span><em>반등 앵커 전략. 기본형 -23.16%, 단순 보유 -15.09%</em><span class="basis basis-backtest">백테스트</span></li></ul>
+        <div class="ov-link"><a class="repo" href="https://github.com/KTHYEONG/mt-etf-king-2026">github.com/KTHYEONG/mt-etf-king-2026</a></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">04</span>
+          <div>
+            <strong class="ov-name">ETF-Manager</strong> <span class="kind kind-personal">개인</span>
+            <p class="ov-pitch">세금까지 넣은 장기 적립식 자산배분 연구 (보조)</p>
+            <p class="ov-meta">2026 · 단독 설계·구현. 모든 수치는 과거 데이터 백테스트이며 실계좌 수익이 아닙니다.</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>24.7%</strong><span>일반계좌 실질 연수익률</span><em>QQQ 90%+SOXX 10%, QQQ 100%는 23.3%. 세후·실질 원화</em><span class="basis basis-backtest">백테스트</span></li><li><strong>1.039 / 1.057 / 1.024</strong><span>연금저축 채택안(세 구간 상대값)</span><em>QQQ 90%+SCHD 10%. 100년·현대·실제 ETF 구간, 기준 조합=1.000</em><span class="basis basis-backtest">백테스트</span></li></ul>
+        <div class="ov-link"><a class="repo" href="https://github.com/KTHYEONG/ETF-Manager">github.com/KTHYEONG/ETF-Manager</a></div>
+      </li></ol>
+        <h3 class="part">문제 해결 사례</h3>
+        <div class="cases"><article class="case" id="quant-k-closing-alpha-cost">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div>
+      <h3>1틱 비용이 12bp를 넘는 종목을 순위 매기기 전에 제외해 비용에 지는 매매를 걸러냈다</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>기획·데이터 수집·피처·모델·검증·주문 실행 로직까지 전 과정을 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026</dd></div><div><dt>기술</dt><dd>Python · LightGBM · Pandas · PyArrow(Parquet) · aiohttp · Pydantic · pytest · systemd</dd></div><div><dt>GitHub</dt><dd><a class="repo" href="https://github.com/KTHYEONG/k-closing-alpha">github.com/KTHYEONG/k-closing-alpha</a></dd></div></dl>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>비용을 낸 뒤에도 남는 알파인지를 가장 엄격하게 검증한 프로젝트.</strong> 시점 분리, 호가 비용 필터, CPCV 검증이 핵심입니다. 비용을 3틱까지 키워도 알파가 남는지, 6틱에서 무너지는지까지 확인했습니다.</p></div>
-    <div class="background"><p>한국 시장의 장 마감 동시호가(15:20~15:30)는 기관·외국인의 포지션 정리와 패시브 수급이 몰려 하루 중 수급 불균형이 가장 큰 구간입니다. 그러나 이 구간을 백테스트하면 마감 후 확정되는 종가가 판단에 섞이기 쉽고, 저가주는 호가 비용과 거래세가 수익을 지우며, 10분 안에 데이터를 모아야 하는 현실적 제약도 있습니다.</p>
-<p>그래서 &quot;수익이 나는 모델&quot;보다 먼저 <strong>미래 정보 없이, 비용을 낸 뒤에도, 시간 안에 실행 가능한가</strong>를 검증하는 구조를 만들었습니다. 연구(백테스트)에서 끝나지 않고 데이터 수집, 주문 저널, 종가 확정, 야간 감사까지 이어지는 일일 파이프라인으로 구현했습니다.</p>
-</div>
-    <figure class="fig"><a href="assets/k-closing-alpha/architecture.png" target="_blank" rel="noopener" aria-label="구조도 원본 크기로 열기"><img src="assets/k-closing-alpha/architecture.png" alt="K-Closing Alpha 4단계 시스템 구조도"></a><figcaption>저장소 문서의 시스템 구조도. 증권사 연동 → 15:20 추론 → 주문·종가 확정 → 야간 백필·감사의 4단계. (이미지를 누르면 원본 크기로 열립니다)</figcaption></figure>
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">검증 기간</div>
-      <div class="m-value">886거래일</div>
-      <div class="m-note">2023-01 ~ 2026-09 · 68,493개 일별 종목 단면</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">일평균 순수익</div>
-      <div class="m-value">+34.58bp</div>
-      <div class="m-note">거래세·왕복 2틱 호가 비용·수수료 차감 후</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">Sharpe</div>
-      <div class="m-value">2.73</div>
-      <div class="m-note">t-stat 5.12 · 일별 승률 56.3%</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">최대 낙폭</div>
-      <div class="m-value">28.98%</div>
-      <div class="m-note">현행 선정 규칙 기준</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">탐색한 전략</div>
-      <div class="m-value">118개</div>
-      <div class="m-note">CPCV(8,2) 28개 경로 + 5거래일 엠바고로 비교</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">후보 종목 확대</div>
-      <div class="m-value">2.6배</div>
-      <div class="m-note">고정 주가 하한 대신 1틱 비용 상한을 쓴 효과 · Sharpe +0.84</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li></ul>
-    <div class="charts n2"><figure class="chart">
-    <figcaption class="chart-title">호가 비용을 늘리면 알파가 어떻게 줄어드는가 <span class="chart-unit">bp/일 (순수익)</span> <span class="basis basis-backtest">백테스트</span></figcaption>
-    <div class="chart-body" style="--zero:12.30%"><div class="chart-row">
-        <div class="chart-label">1.0틱</div>
-        <div class="chart-track"><span class="cbar" style="left:12.30%;width:87.70%"></span></div>
-        <div class="chart-val">+41.92</div>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>점수 상위 종목을 그대로 사면 호가 간격이 큰 저가주가 많이 들어옵니다. 1틱이 가격의 20~50bp인 종목은 세금과 슬리피지를 빼면 손실이 납니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>상한을 6, 9, 12, 15bp와 상한 없음으로 바꿔 비교했습니다.</li><li>15bp는 Sharpe가 2.88로 더 높지만 매매가 이뤄진 날이 83.3%로 12bp의 99.7%보다 적어 제외했습니다.</li><li>12bp는 후보 종목 수를 7.5bp 대비 2.6배로 늘리면서 Sharpe도 높아 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>가격대별 호가 단위 표를 코드에 넣고 <code>1틱 / 현재가</code>를 계산해 12bp 초과 종목을 제외했습니다.</li><li>거래세는 날짜별 세율표로, 수수료는 적용받는 증권사 우대율(왕복 약 0.73bp)로 반영했습니다.</li><li>상한가 근처 종목 처리도 같은 전략 계약 안에 두었습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-backtest">백테스트</span></h5><p>5,000원 미만 종목만 사면 일평균 -12.53bp, 5,000~20,000원 구간은 +24.02bp였습니다(백테스트, 연구 문서 4절).</p></section>
+    </div>
+    <figure class="chart">
+    <figcaption class="chart-title">가격대별 일평균 순수익 <span class="chart-unit">bp/일</span> <span class="basis basis-backtest">백테스트</span></figcaption>
+    <div class="chart-body" style="--zero:34.28%"><div class="chart-row">
+        <div class="chart-label">5천원 미만</div>
+        <div class="chart-track"><span class="cbar neg" style="left:0.00%;width:34.28%"></span></div>
+        <div class="chart-val">-12.53</div>
       </div><div class="chart-row">
-        <div class="chart-label">2.0틱 (기본)</div>
-        <div class="chart-track"><span class="cbar hl" style="left:12.30%;width:67.70%"></span></div>
-        <div class="chart-val hl">+32.36</div>
-      </div><div class="chart-row">
-        <div class="chart-label">3.0틱</div>
-        <div class="chart-track"><span class="cbar" style="left:12.30%;width:47.70%"></span></div>
-        <div class="chart-val">+22.80</div>
-      </div><div class="chart-row">
-        <div class="chart-label">4.0틱</div>
-        <div class="chart-track"><span class="cbar" style="left:12.30%;width:27.70%"></span></div>
-        <div class="chart-val">+13.24</div>
-      </div><div class="chart-row">
-        <div class="chart-label">6.0틱</div>
-        <div class="chart-track"><span class="cbar neg" style="left:0.00%;width:12.30%"></span></div>
-        <div class="chart-val">-5.88</div>
+        <div class="chart-label">5천~2만원</div>
+        <div class="chart-track"><span class="cbar hl" style="left:34.28%;width:65.72%"></span></div>
+        <div class="chart-val hl">24.02</div>
       </div></div>
-    <p class="chart-caption">왕복 호가 비용 가정(틱)별 일평균 순수익. 2.0틱이 기본 가정입니다. 이 표는 대표 수치(+34.58bp)와 산출 설정이 달라 기준선이 +32.36bp입니다.</p>
-  </figure><figure class="chart">
-    <figcaption class="chart-title">모델과 손실 함수에 따른 일평균 순수익 <span class="chart-unit">bp/일 (순수익)</span> <span class="basis basis-backtest">백테스트</span></figcaption>
-    <div class="chart-body" style="--zero:26.19%"><div class="chart-row">
-        <div class="chart-label">ElasticNet</div>
-        <div class="chart-track"><span class="cbar neg" style="left:0.00%;width:26.19%"></span></div>
-        <div class="chart-val">-12.27</div>
-      </div><div class="chart-row">
-        <div class="chart-label">Huber</div>
-        <div class="chart-track"><span class="cbar neg" style="left:7.39%;width:18.80%"></span></div>
-        <div class="chart-val">-8.81</div>
-      </div><div class="chart-row">
-        <div class="chart-label">ExtraTrees</div>
-        <div class="chart-track"><span class="cbar" style="left:26.19%;width:38.38%"></span></div>
-        <div class="chart-val">+17.98</div>
-      </div><div class="chart-row">
-        <div class="chart-label">LightGBM (L1)</div>
-        <div class="chart-track"><span class="cbar" style="left:26.19%;width:57.14%"></span></div>
-        <div class="chart-val">+26.77</div>
-      </div><div class="chart-row">
-        <div class="chart-label">현행 선정 규칙</div>
-        <div class="chart-track"><span class="cbar hl" style="left:26.19%;width:73.81%"></span></div>
-        <div class="chart-val hl">+34.58</div>
-      </div></div>
-    <p class="chart-caption">같은 검증 틀(886거래일, 비용 차감)에서 비교한 대표 모델.</p>
-  </figure></div>
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">15:30 종가를 15:20 판단에 섞지 않기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>백테스트에서 장 마감 후 확정되는 종가나 피처가 15:20 판단에 섞이면 수익률이 비현실적으로 좋아집니다. 이 프로젝트는 판단 시각(15:20)과 종가 확정 시각(15:30)이 10분 차이라 실수하기 쉬웠습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>15:20 관찰 가격(결정_종가)과 15:30 확정 종가를 서로 다른 컬럼으로 분리해 저장</li><li>과거 1분봉에서 15:20 시점의 상태를 복원하는 패널 빌더를 만들고, 피처마다 사용 가능 시각(available_by) 검증기 적용</li><li>판단은 15:20 정보로만, 체결은 종가 매수 → 다음 날 09:00 시초가 전량 청산으로 고정하고 사후 갭 필터는 금지</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>문서 기준 미래 정보 참조율 0.00%. 수익률이 올라가는 사후 필터를 쓰지 않는 대신 결과가 보수적으로 나옵니다.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">02</span><span class="d-title">점수 상위가 아니라 &quot;비용을 내고도 남는&quot; 종목만 후보로</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>예측 점수 상위를 그대로 사면 5,000원 미만 저가주가 많이 들어옵니다. 이런 종목은 1틱 호가 간격만으로 20~50bp를 잃어, 거래세(18~23bp)까지 내면 일평균 -12.53bp, 최대 낙폭 77.64%가 나왔습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>KRX 가격대별 호가 단위를 반영해 &quot;1틱 / 현재가&quot;가 12bp를 넘는 종목과 상한가 근접 종목(당일 +29.5% 이상)을 순위 매기기 전에 제외</li><li>모델 비교(118개 전략)는 CPCV로 하고, 학습 구간과 겹치는 라벨은 제거(purging) 후 5거래일 엠바고 적용</li><li>주간 재학습 모델은 최근 20거래일 순위 상관 0.95 이상, Top-3 중복 2/3 이상일 때만 운영 모델 교체</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>후보 종목 2.6배, Sharpe +0.84 개선. 비용을 3틱까지 늘려도 +22.80bp가 남지만 6틱에서는 손실로 전환되어, 알파가 비용에 크게 의존함을 확인했습니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>118개 전략을 탐색한 뒤 고른 결과라 선택 편향이 남아 있습니다. CPCV와 엠바고로 줄였지만 없애지는 못했습니다.</li><li>표본이 약 3년 8개월의 한 시장입니다. 다른 국면에서의 재현은 확인하지 못했습니다.</li><li>호가 비용이 6틱까지 커지면 손실로 바뀝니다. 체결 품질이 전략 성패를 좌우합니다.</li><li>실계좌 수익 실적은 없고, 이 자료의 모든 수익률은 백테스트입니다.</li></ul><h5>배운 점</h5><p>수익률을 올리는 작업보다 &quot;어디서 숫자가 부풀려질 수 있는지&quot;를 하나씩 막는 작업이 결과를 믿게 만든다는 점을 배웠습니다.</p></div>
-  </article><article class="project" id="quant-crypto-pilot">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 02</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>Crypto Pilot</h3>
-      <p class="tagline">바이낸스 무기한 선물 시장에서 신호 연구부터 비용 반영 검증, 24시간 자동 집행까지 연결한 디지털자산 퀀트 시스템</p>
+    <p class="chart-caption">886거래일 백테스트, 비용 차감 후, 해당 가격대 종목만 매수했을 때</p>
+  </figure>
+  </article><article class="case" id="quant-k-closing-alpha-cv">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div>
+      <h3>겹치는 라벨을 제거한 CPCV와 교체 게이트로, 우연히 좋은 모델이 운영에 들어가는 길을 막았다</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>신호 연구, 체결·증거금 시뮬레이터, 통계 검증, 24/7 수집·집행 데몬, 배포·백업 운영까지 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026</dd></div><div><dt>기술</dt><dd>Python · Pandas · PyArrow(Parquet) · asyncio/aiohttp · ccxt · Pydantic · Docker Compose · Oracle Cloud · Cloudflare R2 · pytest</dd></div><div><dt>GitHub</dt><dd><a class="repo" href="https://github.com/KTHYEONG/crypto-pilot">github.com/KTHYEONG/crypto-pilot</a></dd></div></dl>
+    <ol class="flow" style="--n:5"><li class="hl"><strong>8구간 분할</strong><span>2구간을 시험용</span></li><li><strong>앞뒤 제외</strong><span>시험 구간 인접 1구간</span></li><li><strong>28개 분할</strong><span>독립 경로 7개</span></li><li><strong>주간 재학습</strong><span>신규 모델 생성</span></li><li class="hl"><strong>교체 게이트</strong><span>순위 일치도 0.95 이상</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>라벨 기간이 겹치는 데이터를 무작위로 나누면 학습과 평가가 섞입니다. 118개 전략을 비교하면 우연히 좋은 전략을 고를 위험도 있습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단순 시간 분할은 평가 경로가 한 개뿐이라 한 번의 운에 좌우되어 제외했습니다.</li><li>데이터를 8구간으로 나눠 2구간을 시험용으로 뽑는 조합 방식(CPCV)은 평가 경로를 여러 개 만들어 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>CPCV(8, 2)로 28개 분할(독립 경로 7개)을 만들고, 시험 구간 앞뒤 1구간씩을 학습에서 뺐습니다.</li><li>매주 재학습한 모델은 최근 20거래일 예측 순위 일치도 0.95 이상 등의 기준을 통과해야 운영 모델이 되도록 게이트를 만들었습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>기준 미달 모델은 운영에 올라가지 못하는 구조를 갖췄습니다. 다만 118개 중 고른 결과라 선택 편향은 남아 있고, 보정 결과는 제시하지 않았습니다.</p></section>
+    </div>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>신호를 체결·증거금·강제청산까지 재현한 원장으로 검증한 프로젝트.</strong> 같은 신호도 지정가냐 시장가냐, 레버리지를 어떻게 정하느냐에 따라 결과가 달라지는 것을 원장으로 확인했습니다.</p></div>
-    <div class="background"><p>암호화폐 선물은 24시간 열려 있고 비용 구조가 복잡합니다(수수료, 펀딩비, 증거금 규칙, 강제청산). 신호가 좋아 보여도 체결 방식과 레버리지에 따라 결과가 크게 달라지는데, 이를 가정이 아니라 <strong>재현 가능한 원장</strong>으로 확인하고 싶었습니다.</p>
-<p>여러 시간대의 모멘텀·수급·펀딩 신호를 하나의 포트폴리오로 합치고, 3분봉 체결과 거래소 증거금 규칙을 반영해 검증한 뒤, Docker와 Oracle Cloud에서 매일 자동으로 집행·백업하는 시스템으로 구현했습니다.</p>
-</div>
-    <figure class="fig"><a href="assets/crypto-pilot/architecture.png" target="_blank" rel="noopener" aria-label="구조도 원본 크기로 열기"><img src="assets/crypto-pilot/architecture.png" alt="Crypto Pilot 시스템 구조도"></a><figcaption>저장소 문서의 시스템 구조도. 거래소 스트림 수집 → 인과적 알파 연산 → 체결·원장 검증 → 24/7 집행·운영. (이미지를 누르면 원본 크기로 열립니다)</figcaption></figure>
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">검증 기간</div>
-      <div class="m-value">5.25년</div>
-      <div class="m-note">2021-04 ~ 2026-07 · 이후 2026-07 ~ 10은 홀드아웃</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">1배 기준 연복리</div>
-      <div class="m-value">+44.0 ~ +49.4%</div>
-      <div class="m-note">최대 낙폭 -13.6 ~ -17.9% · 고정 1.0배 · 지정가/시장가 혼합</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">지정가 vs 시장가</div>
-      <div class="m-value">+10.8%p</div>
-      <div class="m-note">연복리 +151.5% vs +140.7% · 낙폭 -36.0% vs -38.9% (2.5배 북)</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">증거금 원장 재현</div>
-      <div class="m-value">강제청산 0회</div>
-      <div class="m-note">$1,000 원금 · 연복리 +212.7% · 최대 낙폭 -39.4% · 2021-04 ~ 2026-10</div>
-      <span class="basis basis-replay">재현 시뮬레이션</span>
-    </li><li class="metric">
-      <div class="m-label">다중검정 보정</div>
-      <div class="m-value">DSR ≥ 0.95</div>
-      <div class="m-note">52회 탐색 이력을 반영한 Deflated Sharpe</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li></ul>
-    <div class="charts n1"><figure class="chart">
-    <figcaption class="chart-title">같은 신호, 다른 집행 방식 <span class="chart-unit">연복리 % (2.5배 성장 북)</span> <span class="basis basis-backtest">백테스트</span></figcaption>
-    <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
-        <div class="chart-label">즉시 시장가</div>
-        <div class="chart-track"><span class="cbar" style="left:0.00%;width:92.87%"></span></div>
-        <div class="chart-val">140.7</div>
-      </div><div class="chart-row">
-        <div class="chart-label">수동 지정가</div>
-        <div class="chart-track"><span class="cbar hl" style="left:0.00%;width:100.00%"></span></div>
-        <div class="chart-val hl">151.5</div>
-      </div></div>
-    <p class="chart-caption">3분봉 체결 모델로 비교한 즉시 시장가 vs 수동 지정가. 2021-04 ~ 2026-07, 수수료·펀딩비 반영.</p>
-  </figure></div>
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">체결을 가정하지 않고 3분봉 단위로 재현하기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>일반적인 벡터화 백테스트는 목표 비중이 종가에 100% 체결된다고 가정합니다. 변동성이 큰 선물 시장에서는 시장가로 넣으면 수수료와 스프레드를 내고, 지정가로 넣으면 일부만 체결되거나 불리한 방향으로만 체결됩니다. 1시간봉 엔진으로는 이 차이를 숫자로 비교할 수 없었습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>1시간 의사결정 구간을 3분봉 20개로 나눠 지정가 대기열, 부분 체결, 미체결 이월, 타임아웃 청산을 순서대로 재현하는 체결 모델 구현</li><li>거대한 전체 기간 패널을 한 번에 계산하는 기준 구현과 구간별 스트리밍 구현을 만들고, 두 결과가 같은지 단위 테스트로 대조</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>같은 신호에서 지정가 집행이 시장가 대비 연복리 +10.8%p, 낙폭 2.9%p 개선(백테스트). 이 결과로 지정가를 라이브 기본 집행 방식으로 정했습니다.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">02</span><span class="d-title">고정 레버리지가 파산하는 지점을 원장으로 확인하기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>단위 수익률에 배율을 곱한 백테스트는 증거금 부족과 강제청산을 반영하지 못합니다. 배율이 높을수록 수익은 커 보이지만 실제 계좌에서는 중간에 청산될 수 있습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>바이낸스 심볼별 유지증거금률(MMR) 구간표, 8시간 펀딩비, 수수료, 최소 주문 단위를 반영한 달러 원장 리플레이 구현</li><li>직전 시점까지 실현된 수익률만 사용하는 베이지안 Kelly로 레버리지를 조절(3년 롤링 사전분포, 지수 감쇠 관측, 반(半) Kelly, 노출 상한 10배)</li><li>현금 보존 법칙과 청산 이후 거래 중단을 불변식 테스트로 고정</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>재현 시뮬레이션에서 5.5년 연속 강제청산 0회, 최대 낙폭 -39.4%. 높은 연복리 수치는 실거래 성과가 아니라 가정된 체결·증거금 규칙 아래의 시뮬레이션입니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>가장 큰 수치(연복리 +212.7%)는 재현 시뮬레이션이며, 라이브 집행 데몬의 실현 수익이 아닙니다.</li><li>최대 낙폭이 -36 ~ -39%인 공격적인 구성입니다. 낮은 낙폭이 필요한 운용에는 레버리지 상한을 낮춰야 합니다.</li><li>암호화폐 한 시장, 한 전략이고, 52회 탐색 후 DSR로 보정했지만 구조적 변화가 오면 알파가 사라질 수 있습니다.</li></ul><h5>배운 점</h5><p>결정 시각이 알파의 일부라는 것을 알게 되면서, 운영 안정성(배포·백업·멱등성)도 전략 성능의 일부라고 보게 되었습니다.</p></div>
-  </article><article class="project" id="quant-mt-etf-king">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 03</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>MT ETF King 2026</h3>
-      <p class="tagline">36거래일 대회에서 &quot;평균 수익률&quot; 대신 &quot;목표 수익 도달 확률&quot;을 목표로 설계한 ETF 운용 시스템</p>
+  </article><article class="case" id="quant-crypto-pilot-sizing">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Crypto Pilot</span><span class="kind kind-personal">개인</span></div>
+      <h3>수익 극대화 대신 강제청산 규칙을 넣은 계좌 시뮬레이션으로 레버리지 정하기</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>데이터 수집·검증, 전략 설계, 롤링 백테스트, 경쟁자 분석, 일일 실행 파이프라인을 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026</dd></div><div><dt>기술</dt><dd>Python · Polars · Parquet · Pydantic · pytest</dd></div><div><dt>GitHub</dt><dd><a class="repo" href="https://github.com/KTHYEONG/mt-etf-king-2026">github.com/KTHYEONG/mt-etf-king-2026</a></dd></div></dl>
+    <ol class="flow" style="--n:5"><li><strong>수익 분포</strong><span>시점별 갱신</span></li><li class="hl"><strong>배율 선택</strong><span>기대 성장 최대</span></li><li><strong>상한 적용</strong><span>10배·증거금 90%</span></li><li class="hl"><strong>계좌 시뮬</strong><span>유지증거금·펀딩비</span></li><li><strong>청산 확인</strong><span>강제청산 여부</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>같은 신호도 레버리지를 높이면 수익이 커 보이지만, 급락 때 유지증거금(포지션 유지에 필요한 최소 증거금)이 모자라면 강제청산됩니다. 비중만 계산하는 백테스트는 이 위험과 최소 주문 수량 때문에 거절되는 주문을 반영하지 못합니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>전체 기간 수익률을 보고 고정 배율을 고르면 미래 정보를 쓴 셈이라 제외했습니다.</li><li>과거 수익만으로 매일 배율을 다시 정하는 방식은 그 시점에 알 수 있는 정보만 쓰므로 선택했습니다.</li><li>배율을 정하는 것과 별개로, 증거금 규칙을 넣은 계좌 시뮬레이터가 있어야 청산 여부를 확인할 수 있다고 판단했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>신호 수익률 분포를 시점마다 갱신해 기대 로그 성장이 가장 큰 배율을 고르고, 상한 10배와 증거금 한도(초기 증거금의 90%)를 두었습니다.</li><li>심볼별 유지증거금 구간, 펀딩비, 수수료, 최소 주문 단위를 반영하는 계좌 시뮬레이터를 구현했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-replay">재현 시뮬레이션</span></h5><p>재현 시뮬레이션($1,000, 2021-04 ~ 2026-10)에서 강제청산 0회, MDD -51.2%였습니다. 평균 배율이 약 3.8배라 낙폭이 커서 실제 운용에서 버티기 어려운 수준이라는 점도 한계로 적어 두었습니다.</p></section>
+    </div>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>평균 수익률이 아닌 목표 도달 확률로 목표를 재정의한 프로젝트.</strong> 36거래일 대회라는 제약에서 평가 지표부터 다시 정하고, 급락 후 반등 구간을 놓치는 약점을 롤링 검증으로 보완했습니다.</p></div>
-    <div class="background"><p>머니투데이·한국거래소 ETF 실전투자대회는 8주(36거래일) 동안 수익률 순위를 겨루고 상위 소수에게 보상이 집중됩니다. 평균 수익률이나 샤프지수를 높이는 전통적 접근은 코스피200처럼 변동이 작은 지수에 갇혀 상위권에 닿기 어렵습니다.</p>
-<p>그래서 이 프로젝트는 36거래일 롤링 구간에서 <strong>목표 수익에 도달할 확률</strong>과 <strong>하위 5% 손실</strong>을 함께 평가 기준으로 삼았습니다. KRX ETF 데이터를 매일 받아 투자 가능한 종목군을 구성하고, 신호는 다음 날 시가로만 체결하는 원장으로 검증했습니다.</p>
-</div>
-    <figure class="fig"><a href="assets/mt-etf-king/architecture.png" target="_blank" rel="noopener" aria-label="구조도 원본 크기로 열기"><img src="assets/mt-etf-king/architecture.png" alt="MT ETF King 2026 시스템 구조도"></a><figcaption>저장소 문서의 시스템 구조도. 데이터 수집·정제 → 신호·포트폴리오 → 체결 원장·검증 → 대회 운영. (이미지를 누르면 원본 크기로 열립니다)</figcaption></figure>
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">롤링 검증 구간</div>
-      <div class="m-value">2,097개</div>
-      <div class="m-note">36거래일 윈도우 · 2018-01 ~ 2026-09</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">36일 내 +30% 초과 확률</div>
-      <div class="m-value">7.77%</div>
-      <div class="m-note">단순 보유 2.54% 대비 3.06배 · 수수료·슬리피지 반영, 다음 날 시가 체결</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">하위 5% 평균 손실</div>
-      <div class="m-value">-21.56%</div>
-      <div class="m-note">60일 모멘텀 기본형은 -23.16%</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li></ul>
-    <div class="charts n1"><figure class="chart">
-    <figcaption class="chart-title">36거래일 안에 +30% 이상 수익이 날 확률 <span class="chart-unit">% (롤링 36거래일 구간)</span> <span class="basis basis-backtest">백테스트</span></figcaption>
+  </article><article class="case" id="quant-crypto-pilot-execution">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">Crypto Pilot</span><span class="kind kind-personal">개인</span></div>
+      <h3>종가 체결 가정 대신 3분봉으로 지정가 체결을 재현하기</h3>
+    </header>
+    <ol class="flow" style="--n:5"><li><strong>주문 발생</strong><span>지정가 주문</span></li><li class="hl"><strong>3분봉 순회</strong><span>30분 구간</span></li><li class="hl"><strong>체결 판정</strong><span>지나간 만큼만</span></li><li><strong>월 단위 이월</strong><span>보유·대기 주문</span></li><li><strong>동치 검증</strong><span>전체 처리와 비교</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>1시간봉 종가에 바로 체결된다고 가정하면 수수료, 호가 차이, 지정가 미체결이 모두 빠져 실제와 결과가 달라집니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>시장가(테이커)는 체결이 확실하지만 수수료가 높아(이 프로젝트 설정 6bp, 1bp=0.01%) 제외했습니다.</li><li>지정가(메이커)는 수수료가 낮지만(2bp) 체결이 안 될 수 있어, 체결 여부를 가격 경로로 판정해야 했습니다.</li><li>5.25년치 3분봉을 한 번에 올리면 메모리가 부족해, 월 단위로 나눠 처리하되 결과는 한 번에 처리한 것과 같아야 한다고 정했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>주문 시점 이후 3분봉 10개 구간(30분) 동안 가격이 지정가를 지나간 만큼만 체결로 인정하는 집행 시뮬레이터를 구현했습니다.</li><li>월 단위로 읽으며 보유 수량과 대기 주문을 다음 구간으로 넘기도록 했습니다.</li><li>월 단위 처리 결과와 전체 한 번에 처리한 결과가 같은지 동치 테스트로 확인합니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>지정가 중심 집행으로 정하고 이를 계좌 시뮬레이션의 기본 집행 방식으로 썼습니다. 월 단위 처리가 전체 처리와 같은 결과를 내는지는 테스트로 검증합니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="quant-mt-etf-king-anchor">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 05</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
+      <h3>급락 직후 현금 도피로 반등을 놓치는 문제를 반등 앵커 규칙으로 보완한 과정</h3>
+    </header>
+    
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>기본 전략은 60일 모멘텀이 마이너스면 현금으로 빠져, 폭락 직후 첫 반등을 놓칠 수 있습니다. 8주 안에 큰 수익을 노리는 대회에서는 이 비용이 큽니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>반등을 매번 따라 사는 방식은 하락장에서 손실이 커져 제외했습니다.</li><li>60일 모멘텀이 음수여도 20일 모멘텀이 양전환할 때만 지정 종목을 사고, 고점 대비 15% 하락 시 손절하는 조건부 규칙을 선택했습니다.</li><li>같은 기초지수의 1배·2배·인버스를 함께 담으면 사실상 중복이므로 한 묶음으로 보고 한 종목만 담게 했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li><code>sticky.mom60_post_crash_anchor</code> 전략을 설정과 팩토리로 추가했습니다.</li><li>같은 기초지수 상품을 묶는 분류기를 만들어 중복 편입을 막았습니다.</li><li>기본형과 같은 롤링 구간·비용 조건으로 전략 4종을 비교했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-backtest">백테스트</span></h5><p>2,097개 롤링 구간(2018-01~2026-09, 비용 반영)에서 8주 +30% 도달 비율이 기본형 6.78%에서 7.77%로, 하위 5% 평균 손실은 -23.16%에서 -21.56%로 좋아졌습니다. 다만 상위 5% 구간 수익률은 기본형보다 낮고, 구간 수가 전략마다 조금 다르며 승격 판정은 RESEARCH_ONLY(채택 기준 미통과)입니다.</p></section>
+    </div>
+    <figure class="chart">
+    <figcaption class="chart-title">8주 안에 +30% 이상 수익이 난 구간의 비율 <span class="chart-unit">%</span> <span class="basis basis-backtest">백테스트</span></figcaption>
     <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
         <div class="chart-label">단순 보유</div>
         <div class="chart-track"><span class="cbar" style="left:0.00%;width:32.69%"></span></div>
@@ -261,486 +187,320 @@
         <div class="chart-track"><span class="cbar" style="left:0.00%;width:87.26%"></span></div>
         <div class="chart-val">6.78</div>
       </div><div class="chart-row">
-        <div class="chart-label">+ 급락 반등 보완</div>
+        <div class="chart-label">반등 앵커</div>
         <div class="chart-track"><span class="cbar hl" style="left:0.00%;width:100.00%"></span></div>
         <div class="chart-val hl">7.77</div>
       </div></div>
-    <p class="chart-caption">전략별 2,088 ~ 2,097개 구간. 실제 수수료·슬리피지 반영, 신호 다음 날 시가 체결.</p>
-  </figure></div>
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">폭락 직후 현금으로 도망가 반등을 놓치는 문제</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>60일 모멘텀 전략은 평소엔 좋았지만 급락 직후 60일 수익률이 마이너스가 되면 전부 현금이 됩니다. 그런데 36일 대회에서 가장 큰 수익 구간은 폭락 직후 반등 초입에 몰려 있었습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>꼬리 수익 분석으로 상위 수익 구간이 어디서 생기는지 역추적</li><li>60일 모멘텀이 음수여도 20일 모멘텀이 양전환되면 대표 2배 레버리지 ETF를 사는 보완 규칙 설계. 동일 기초지수 ETF 중복은 1종목으로 제한하고 고점 대비 -15% 손절 가드 결합</li><li>2,097개 롤링 구간 전체에서 동일 조건으로 비교</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>36일 내 +30% 초과 확률이 6.78%에서 7.77%로, 하위 5% 손실은 -23.16%에서 -21.56%로 개선됐습니다(백테스트). 둘 다 동시에 좋아진 점을 중요하게 봤습니다.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">02</span><span class="d-title">평균 수익률이 아니라 &quot;1위 할 확률&quot;을 목표로</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>상위 소수만 보상받는 대회에서는 선두 그룹과 같은 종목을 들면 역전할 수 없고, 불필요한 매매는 수수료로 탈락합니다. 리더보드는 매일 전일 데이터를 덮어써 과거 이력도 남지 않았습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>매일 리더보드 수익률을 저장하고 종목 수익률과 대조해 상위권의 보유 종목을 역추론</li><li>8개 시장 국면 시나리오에서 1,268명의 경쟁 시뮬레이션을 돌려, 1위 확률이 5%p 이상 확실히 높아질 때만 포지션 교체</li><li>동시호가의 ETF 가격 왜곡을 피해 정규장 시작 직후(09:05~09:15)와 마감 직전(15:10~15:19)에만 주문</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>최종 구성으로 SK하이닉스 2배 레버리지·인버스 페어를 선택했습니다. README 기재 8년 OOS 워크포워드 일평균 +60.7bp(t=4.06). 대회 실제 순위는 이 자료에 포함하지 않습니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>단기 대회에 맞춘 고집중(최대 95%) 운용이라 일반 자산운용의 기준에는 맞지 않습니다. 하위 5% 구간에서 평균 -21.56%를 잃습니다.</li><li>+30% 확률이 7.77%라는 것은 92% 이상의 구간에서는 못 미친다는 뜻입니다. &quot;높은 확률&quot;이 아니라 &quot;벤치마크보다 높은 확률&quot;입니다.</li><li>대회 순위·수상 실적은 포함하지 않았습니다. 레버리지·인버스 ETF는 장기 보유용이 아닙니다.</li></ul><h5>배운 점</h5><p>목표를 평균 수익률에서 도달 확률로 바꾸니 평가 지표, 위험 관리, 종목 선택이 한꺼번에 바뀌었습니다. 지표 선택이 전략 설계의 첫 단계라는 점을 배웠습니다.</p></div>
-  </article><article class="project compact" id="quant-etf-manager">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 04</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>ETF-Manager</h3>
-      <p class="tagline">월 100만 원 적립식 투자에서 어떤 ETF 배분이 더 나은지 세금·환율·물가까지 반영해 비교한 자산배분 연구</p>
-    </header>
-    <dl class="meta"><div><dt>역할</dt><dd>시뮬레이션 설계·구현, 검증 구간 설계, 결과 해석</dd></div><div><dt>기간</dt><dd>2026</dd></div><div><dt>기술</dt><dd>Python · NumPy · pytest</dd></div><div><dt>GitHub</dt><dd><a class="repo" href="https://github.com/KTHYEONG/ETF-Manager">github.com/KTHYEONG/ETF-Manager</a></dd></div></dl>
+    <p class="chart-caption">36거래일 롤링 구간, 2018-01 ~ 2026-09, 구간 수 2,088 ~ 2,097개</p>
+  </figure>
+  </article></div>
+        <h3 class="part">추가 근거</h3>
+        <div class="evidence">
+    <div class="ev-block"><h4 class="sub">사용한 기술</h4><ul class="chips"><li>Python</li><li>pytest</li><li>Pydantic</li><li>pandas</li><li>systemd</li><li>Polars</li><li>Parquet</li><li>LightGBM</li><li>PyArrow(Parquet)</li><li>aiohttp</li><li>pydantic</li><li>PyArrow</li><li>asyncio</li><li>ccxt</li><li>Docker Compose</li><li>httpx</li><li>mypy</li><li>uv</li></ul></div>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>장기 적립식 자산배분 연구 (보조 프로젝트).</strong> 더 수익률이 높은 안을 섹터 집중 위험 때문에 제외한 판단을 보여 줍니다.</p></div>
-    
-    
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">일반계좌 세후 실질 연수익률</div>
-      <div class="m-value">24.7%</div>
-      <div class="m-note">QQQ 90% + SOXX 10% · QQQ 100%는 23.3% · 월 100만 원 동일 납입</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">최악 코호트</div>
-      <div class="m-value">1.022배</div>
-      <div class="m-note">QQQ 100%(1.000) 대비 · 4개 검증 기간 모두 우세</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">더 높은 수익률의 안을 일부러 버린 이유</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>QQQ 85% / SOXX 15% 조합이 수익률은 더 높았지만, 반도체 한 섹터에 쏠려 있었습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>모든 전략에 월 100만 원을 동일하게 납입해 자산배분 효과만 비교</li><li>기존 보유 자산은 팔지 않고 신규 납입금만 부족한 자산에 배분하는 Buy-Only 리밸런싱, 거래비용·환율·물가·익거래일 체결 반영</li><li>여러 기간과 재표본으로 안정성을 보고, 섹터 집중 위험이 큰 안은 최종안에서 제외</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>최종안은 QQQ 90% / SOXX 10%. 높은 수익률보다 모든 구간에서 기준을 이기는지를 우선했습니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>문서에도 적혀 있듯 QQQ·SOXX를 고른 것 자체에 사후 선택 편향이 남아 있습니다.</li><li>30년 코호트는 ETF 실데이터로 검증하지 못했습니다(문서에 한계로 기재).</li></ul></div>
-  </article>
+    <div class="ev-block"><h4 class="sub">개발 과정에서의 AI 활용</h4><p class="ai-text">AI 코딩 도구를 주로 코드를 쓰는 데 사용했고, 아이디어를 다듬거나 처음 접하는 분야를 공부할 때도 썼습니다. 수치와 동작은 직접 확인했고, 확인하지 못한 것은 성과로 쓰지 않았습니다.</p>
+      <table class="ai-table"><thead><tr><th>AI에 맡긴 일</th><th>직접 한 일</th></tr></thead><tbody><tr><td>코드 작성</td><td>결과 수치와 동작을 직접 확인</td></tr><tr><td>아이디어 정리와 도메인 학습 보조</td><td>확인하지 못한 내용은 성과로 쓰지 않기</td></tr></tbody></table></div>
+    <div class="ev-block"><h4 class="sub">프로젝트별 한계</h4><ul class="lim"><li><strong>K-Closing Alpha</strong> 모든 수익 수치는 과거 데이터 백테스트이며, 실계좌나 모의투자의 누적 손익 기록은 없습니다. 118개 전략 중 좋은 결과를 골랐기 때문에 실제 성과는 이보다 낮을 수 있습니다.</li><li><strong>Crypto Pilot</strong> 모든 수익률은 재현 시뮬레이션이며 실제 돈으로 운용한 결과가 아닙니다. 집행 데몬은 아직 모의(paper) 모드입니다.</li><li><strong>MT ETF King 2026</strong> 모든 수치는 과거 데이터 백테스트이며 실제 대회 성적이 아닙니다. 구간이 하루씩 밀려 서로 겹치므로 2,000여 개 구간은 독립 표본이 아닙니다.</li><li><strong>ETF-Manager</strong> 세 결정이 같은 과거 데이터를 공유해 독립된 발견이 아니며 사후 선택 편향이 남아 있습니다. 한국 CPI 가용 기간(2012-08~)이 실질 비교 구간을 제한합니다.</li></ul></div>
+  </div>
       </div>
     </section><section class="track" id="finance-data" data-track="finance-data" aria-labelledby="h-finance-data">
       <div class="wrap">
         <div class="track-head">
           <p class="eyebrow">금융 IT / 데이터 엔지니어</p>
           <h2 id="h-finance-data">데이터가 빠지거나 틀리거나 두 번 처리되는 순간을 설계로 막아 왔습니다</h2>
-          <p class="lead">증권사 API와 거래소 스트림에서 데이터를 모으고, 품질을 검증하고, 백업하고, 주문 직전까지 안전하게 연결하는 시스템을 혼자 만들고 운영했습니다. 장애가 났을 때 무엇을 복구했고 무엇을 못 했는지까지 측정하는 것을 기준으로 삼았습니다.</p>
+          <p class="lead">증권사 API와 거래소 스트림에서 데이터를 모으고, 품질을 검증하고, 주문 직전까지 안전하게 연결하는 시스템을 혼자 만들었습니다. 장애가 났을 때 무엇이 빠졌는지 찾고 메우는 방법, 같은 요청을 두 번 보내지 않는 방법을 사례로 정리했습니다.</p>
           <a class="pdf-link" href="pdf/portfolio-finance-data.pdf" download>이 직무용 PDF 받기 <span>portfolio-finance-data.pdf</span></a>
         </div>
-        <ul class="strengths"><li><h4>실시간 수집 파이프라인</h4><p>증권사 웹소켓·REST를 비동기로 연동하고, 장중에는 파싱 없이 저장해 지연과 손실을 피했습니다.</p></li><li><h4>데이터 정합성과 장애 복구</h4><p>체결 시퀀스 감사, 보조 소스 교차 백필, 중복 제거 병합으로 누락 구간을 복구했습니다.</p></li><li><h4>저장·백업 효율과 안전</h4><p>압축 원본(zstd)에서 Parquet으로의 승격, 크기 대사 후 삭제 방식으로 작은 서버에서도 안전하게 순환했습니다.</p></li><li><h4>운영 안정성</h4><p>멱등 주문 저널, 원자적 파일 교체, 결정 시각을 피하는 배포 가드, AST 구조 검사로 실수가 사고가 되지 않게 했습니다.</p></li></ul>
-        <article class="project" id="finance-data-krx-alpha">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 01</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>KRX-Alpha</h3>
-      <p class="tagline">국내주식 체결·10호가 틱 데이터를 하루도 빠짐없이 모으고, 품질을 검증하고, 안전하게 백업하는 금융 데이터 파이프라인</p>
+        <ul class="strengths"><li><h4>수집 무결성</h4><p>장중에는 파싱 없이 원본을 먼저 저장하고, 연결이 끊긴 구간은 순번으로 찾아 다른 증권사 API로 보충했습니다.</p></li><li><h4>안전한 실행과 운영</h4><p>주문을 보내기 전에 먼저 기록하고, 불확실하면 원장으로 확인해 중복 주문과 재실행 중복을 막았습니다.</p></li><li><h4>데이터 정합성 검증</h4><p>중복 집계로 부풀려진 합계를 멈추는 방식으로 막고, 검증 점수와 실제 점수의 차이는 원인을 나눠 확인했습니다.</p></li></ul>
+        <ul class="highlights"><li><span class="h-proj">SaveTax</span><strong class="h-val">약 24%</strong><span class="h-label">중복 주문 보정</span><span class="h-note">중복을 그대로 더하면 부풀려지는 비율. 대회 데이터 안내 기준</span><span class="basis basis-code">코드로 확인</span></li><li><span class="h-proj">Port Entity Matching</span><strong class="h-val">0.8162 → 0.9477</strong><span class="h-label">스트레스 스위트 점수</span><span class="h-note">20개 교란 시나리오, 로컬 모의 교란 기준</span><span class="basis basis-backtest">백테스트</span></li><li><span class="h-proj">Quant Dashboard</span><strong class="h-val">179개 통과</strong><span class="h-label">단위·계약 테스트</span><span class="h-note">WSL에서 pytest 실행, 0.46초</span><span class="basis basis-code">코드로 확인</span></li></ul>
+        <h3 class="part">프로젝트 한눈에 보기</h3>
+        <ol class="ov"><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">01</span>
+          <div>
+            <strong class="ov-name">KRX-Alpha</strong> <span class="kind kind-personal">개인</span><span class="status">진행 중</span>
+            <p class="ov-pitch">장중 틱을 놓치지 않고 모으고, 결손을 찾아 메우는 수집·검증 인프라</p>
+            <p class="ov-meta">2026.09 ~ 진행 중 · 단독 설계·구현 (수집, 누락 감사·보충, 정규화, 원격 백업·보존, 모의 OMS, 구조 검사 테스트)</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>약 3만 줄</strong><span>코드 규모</span><em>src 134개 파일 · 저장소 파일 집계</em><span class="basis basis-code">코드로 확인</span></li><li><strong>약 2,860개</strong><span>테스트</span><em>def test_ 개수 · 파라미터 확장 전</em><span class="basis basis-code">코드로 확인</span></li></ul>
+        <div class="ov-link"><a class="repo" href="https://github.com/KTHYEONG/krx-alpha">github.com/KTHYEONG/krx-alpha</a></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">02</span>
+          <div>
+            <strong class="ov-name">K-Closing Alpha</strong> <span class="kind kind-personal">개인</span>
+            <p class="ov-pitch">주문 안전성(쓰기 전 기록)을 다룬 종가매매 자동 집행 시스템 (요약)</p>
+            <p class="ov-meta">2026 · 기획부터 데이터 수집, 모델, 검증, 주문 실행까지 단독 설계·구현</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>+34.58bp</strong><span>일평균 순수익</span><em>886거래일(2023-01~2026-09), 거래세·왕복 2틱 호가 비용·수수료 차감 후 (1bp=0.01%)</em><span class="basis basis-backtest">백테스트</span></li><li><strong>2.73</strong><span>Sharpe</span><em>t값 5.12, 승률 56.3%, 최대낙폭 28.98%</em><span class="basis basis-backtest">백테스트</span></li></ul>
+        <div class="ov-link"><a class="repo" href="https://github.com/KTHYEONG/k-closing-alpha">github.com/KTHYEONG/k-closing-alpha</a></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">03</span>
+          <div>
+            <strong class="ov-name">SaveTax</strong> <span class="kind kind-personal">개인</span><span class="status">완료</span>
+            <p class="ov-pitch">중복 집계와 허위 후보를 막는 공공 조달 데이터 분석 (해커톤)</p>
+            <p class="ov-meta">2026.10 · 개인 프로젝트로, 설계와 구현을 단독으로 진행했습니다. AI 도구로 코드를 작성했고, 설계 방향과 비교 기준 결정, 수치와 동작 확인은 직접 했습니다.</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>약 24%</strong><span>중복 주문 보정</span><em>중복을 그대로 더하면 부풀려지는 비율. 대회 데이터 안내 기준</em><span class="basis basis-code">코드로 확인</span></li><li><strong>1,513개</strong><span>단위 테스트</span><em>pytest 수집 기준, mypy strict와 ruff 통과</em><span class="basis basis-code">코드로 확인</span></li></ul>
+        <div class="ov-link"><span class="repo none">비공개 저장소</span></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">04</span>
+          <div>
+            <strong class="ov-name">Quant Dashboard</strong> <span class="kind kind-personal">개인</span>
+            <p class="ov-pitch">서버 상태를 서버에 부담 없이 감시하는 대시보드 (보조)</p>
+            <p class="ov-meta">2026.10 ~ · 단독 설계·구현 (감시 대상 수집기와 데이터는 별도 프로젝트)</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>179개 통과</strong><span>단위·계약 테스트</span><em>WSL에서 pytest 실행, 0.46초</em><span class="basis basis-code">코드로 확인</span></li><li><strong>0개</strong><span>런타임 의존성</span><em>Python 표준 라이브러리만 사용 (pyproject.toml)</em><span class="basis basis-code">코드로 확인</span></li></ul>
+        <div class="ov-link"><span class="repo none">비공개 저장소</span></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">05</span>
+          <div>
+            <strong class="ov-name">Port Entity Matching</strong> <span class="kind kind-personal">개인</span><span class="status">진행 중</span>
+            <p class="ov-pitch">해운물류 데이터의 개체 매칭 대회 (진행 중)</p>
+            <p class="ov-meta">2026.10 ~ 진행 중 · 개인 참가로 정규화, 후보 검색, 특징, 랭커, 평가 도구, 제출 코드를 단독 설계·구현했습니다.</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>0.9910</strong><span>로컬 교차검증 점수</span><em>선박 단위 5-fold, 최종 채택 설정(LLM 채널 추가 전 번들)</em><span class="basis basis-backtest">백테스트</span></li><li><strong>0.8162 → 0.9477</strong><span>스트레스 스위트 점수</span><em>20개 교란 시나리오, 로컬 모의 교란 기준</em><span class="basis basis-backtest">백테스트</span></li></ul>
+        <div class="ov-link"><span class="repo none">비공개 저장소</span></div>
+      </li></ol>
+        <h3 class="part">문제 해결 사례</h3>
+        <div class="cases"><article class="case" id="finance-data-krx-alpha-rawfirst">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div>
+      <h3>개장 직후 메시지 폭주에도 놓치지 않도록, 장중에는 파싱하지 않고 원본만 기록했다</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>수집기·정규화·검증·백업·주문 관리(OMS) 계층까지 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026</dd></div><div><dt>기술</dt><dd>Python · asyncio/WebSocket · Polars · PyArrow(Parquet) · zstandard · SQLite · rclone · Docker Compose · Pydantic · pytest</dd></div><div><dt>GitHub</dt><dd><a class="repo" href="https://github.com/KTHYEONG/krx-alpha">github.com/KTHYEONG/krx-alpha</a></dd></div></dl>
+    <ol class="flow" style="--n:5"><li><strong>수신</strong><span>WebSocket 메시지</span></li><li class="hl"><strong>원본 기록</strong><span>recv_ts만 붙임</span></li><li><strong>L0 보관</strong><span>jsonl.zst 이어쓰기</span></li><li><strong>장마감 후</strong><span>파싱·중복 제거</span></li><li><strong>L1 변환</strong><span>Parquet + 품질 검사</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>개장 직후에는 초당 메시지가 몰립니다. 수신 중에 파싱·검증까지 하면 처리가 밀려 메시지를 놓칠 수 있습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>수신하며 바로 정제하는 방식은 구현이 단순하지만, 파싱 오류가 곧 데이터 손실이 되어 제외했습니다.</li><li>원본을 먼저 남기는 방식은 나중에 규칙을 고쳐도 다시 계산할 수 있어 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>수신 경로는 받은 메시지에 수신 시각(recv_ts)만 붙여 압축 파일(.jsonl.zst)에 이어 쓰기만 하도록 했습니다.</li><li>파싱·중복 제거·품질 검사는 장마감 후 정규화 단계(L0 원본 → L1 Parquet)로 분리했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>수신 경로와 해석 단계가 코드상 분리되어 있습니다. 실제 손실률은 측정해 기록하지 않았습니다.</p></section>
+    </div>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>수집부터 검증·백업·주문 관리까지 데이터 인프라 전 구간.</strong> 장중 무손실 수집, 장애 복구, 안전한 백업 순환, 모의·실전 분리를 다룹니다.</p></div>
-    <div class="background"><p>틱·호가 데이터는 장 시작 순간에 가장 많이 몰리고, 그때 한 번 놓치면 다시 얻기 어렵습니다. 이 프로젝트는 최대 90종목(프리·정규·애프터마켓)의 체결과 10단계 호가를 저사양 클라우드 서버에서 매일 무인으로 수집합니다.</p>
-<p>장중에는 <strong>파싱 없이 수신 시각만 붙여 압축 저장</strong>해 지연과 손실을 피하고, 장 마감 후에 시퀀스 감사, 갭 복구, 10호가 단조성·거래량 보존 검증, Parquet 변환, 원격 백업 대사를 거쳐 로컬 원본을 순환 삭제합니다.</p>
-</div>
-    <figure class="fig"><a href="assets/krx-alpha/architecture.png" target="_blank" rel="noopener" aria-label="구조도 원본 크기로 열기"><img src="assets/krx-alpha/architecture.png" alt="KRX-Alpha 4단계 시스템 구조도"></a><figcaption>저장소 문서의 시스템 구조도. 4개 금융 벤더 → 장전 선별·무파싱 수집 → 정합성 검증·백업 → 섀도 OMS. (이미지를 누르면 원본 크기로 열립니다)</figcaption></figure>
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">장중 틱 손실률</div>
-      <div class="m-value">0.00%</div>
-      <div class="m-note">수신 즉시 파싱 없이 append-only 저장</div>
-      <span class="basis basis-ops">운영 기록</span>
-    </li><li class="metric">
-      <div class="m-label">개장 직후 누락 복원</div>
-      <div class="m-value">99.5%</div>
-      <div class="m-note">15,873건 중 15,713건 · 2026-10-20 사고 1건 기준</div>
-      <span class="basis basis-ops">운영 기록</span>
-    </li><li class="metric">
-      <div class="m-label">백업 바이트 일치</div>
-      <div class="m-value">247개 100%</div>
-      <div class="m-note">삭제 전 원격 파일 크기 대조 · 디스크 여유 3.0GB 유지</div>
-      <span class="basis basis-ops">운영 기록</span>
-    </li><li class="metric">
-      <div class="m-label">구조 위반</div>
-      <div class="m-value">0건</div>
-      <div class="m-note">110개 모듈 · AST로 8개 계층의 단방향 참조 검사</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">테스트</div>
-      <div class="m-value">3,041개</div>
-      <div class="m-note">품질 게이트(Ruff·Mypy·변경 영향 테스트) 포함</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">연결이 55초 끊겨 틱 15,873건이 사라졌을 때</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>2026-10-20 09:00 개장 직후 증권사 서버 트래픽 폭주로 웹소켓이 55초간 끊겨, 42개 종목에서 체결 15,873건이 누락됐습니다. 수집 프로세스 자체는 정상(초당 1,586건 처리)이었습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>체결 틱의 고유 체결 카운터를 대조해 빈 구간의 시간대와 종목을 전수 산출</li><li>끊긴 증권사 대신 보조 증권사(키움·KIS)의 체결 조회 API로 해당 구간을 다시 채움</li><li>SQLite 외부 정렬로 원본과 백필 데이터의 중복을 제거해 밀리초 단위로 병합</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>15,713건(99.5%) 복원, 이후 정상 거래일의 최종 결손 0건(README 기재). 복원하지 못한 160건은 숨기지 않고 기록으로 남깁니다.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">02</span><span class="d-title">디스크가 가득 차기 전에 지우되, 백업이 안 된 건 절대 지우지 않기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>작은 VPS라 원본을 주기적으로 지워야 하는데, 단순 보존기간으로 지우면 네트워크 오류로 백업이 덜 된 데이터가 영구히 사라질 수 있었습니다. 반대로 백업 목록 전체를 매번 조회하면 수십 분이 걸려 마감 시간을 넘겼습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>날짜 접두사 단건 조회(rclone lsjson)로 원격 파일 크기만 확인하는 방식으로 대사 시간을 단축</li><li>메모리 부족으로 인한 변환 실패는 자동 재시도, 데이터 규격 오류는 격리 폴더로 분리해 파이프라인은 계속 진행</li><li>원격 크기가 로컬과 정확히 같고 복구 작업이 끝난 파일만 로컬에서 삭제(Offload-before-Delete)</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>247개 파티션 바이트 일치 100%, 디스크 여유 최소 3.0GB를 사람 개입 없이 유지(README 기재).</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">03</span><span class="d-title">모의 매매가 실전을 속이지 않게, 그리고 실계좌로는 실수로 나가지 않게</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>모의 매매에서 &quot;현재가에 전량 체결&quot;로 가정하면 실전의 호가 잔량 부족과 슬리피지를 알 수 없습니다. 반대로 같은 코드가 실계좌 주문까지 낼 수 있으면 사고 위험이 있습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>가상 주문도 실시간 10호가의 실제 잔량을 순서대로 깎아 체결가와 수량 산출</li><li>하나의 OMS에서 주문 전문을 실전과 똑같이 만들되, LIVE_ARMED=true가 명시되지 않으면 소켓 송출만 물리적으로 차단</li><li>Python AST로 8개 계층의 단방향 참조와 환경변수 직접 접근 금지를 CI에서 검사. 장중 배포는 자동 동결</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>모의와 실전이 같은 리스크 게이트를 통과하고, 110개 모듈 구조 위반 0건을 유지합니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>이 프로젝트는 알파가 아니라 데이터 인프라입니다. 수집한 데이터로 만든 수익 성과는 없습니다.</li><li>복원률은 2026-10-20 사고 한 건의 수치입니다. 다른 유형의 장애 빈도는 아직 충분히 쌓이지 않았습니다.</li><li>실계좌 주문 기능은 기본적으로 차단된 상태로 운영하며, 실전 체결 성과는 없습니다.</li></ul><h5>배운 점</h5><p>장애는 반드시 나므로, 무엇을 얼마나 못 복구했는지까지 측정할 수 있게 만드는 것이 신뢰성의 시작이라는 점을 배웠습니다.</p></div>
-  </article><article class="project" id="finance-data-k-closing-alpha">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 02</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>K-Closing Alpha</h3>
-      <p class="tagline">15:20에 알 수 있는 정보만으로 종목을 고르고, 종가에 사서 다음 날 시초가에 파는 국내주식 퀀트 시스템</p>
+  </article><article class="case" id="finance-data-krx-alpha-gapfill">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div>
+      <h3>연결이 끊긴 구간의 체결을 순번으로 찾아 다른 증권사 API로 보충했다</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>기획·데이터 수집·피처·모델·검증·주문 실행 로직까지 전 과정을 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026</dd></div><div><dt>기술</dt><dd>Python · LightGBM · Pandas · PyArrow(Parquet) · aiohttp · Pydantic · pytest · systemd</dd></div><div><dt>GitHub</dt><dd><a class="repo" href="https://github.com/KTHYEONG/k-closing-alpha">github.com/KTHYEONG/k-closing-alpha</a></dd></div></dl>
+    <ol class="flow" style="--n:5"><li class="hl"><strong>순번 감사</strong><span>종목별 빈틈 계산</span></li><li><strong>구간 확정</strong><span>시간대·종목 특정</span></li><li class="hl"><strong>타사 보충</strong><span>키움·KIS 체결 이력</span></li><li><strong>병합</strong><span>SQLite 외부 정렬</span></li><li><strong>출처 표시</strong><span>별도 파일로 저장</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>수신 지연이 커지다 연결이 끊기면 그 구간의 체결은 증권사가 다시 보내 주지 않아 영구히 빠집니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>같은 증권사에 다시 요청해도 이미 지나간 체결은 받을 수 없어 제외했습니다.</li><li>다른 증권사의 체결 이력 API로 채우되, 어느 시간대·종목이 비었는지 먼저 정확히 알아야 한다고 판단했습니다.</li><li>원본을 고치지 않도록, 보충분은 출처(vendor, provenance)를 붙인 별도 파일로만 쌓았습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>틱마다 붙은 체결 순번의 빈틈을 종목별로 계산하는 감사 단계를 만들었습니다.</li><li>키움증권 체결 이력과 한국투자증권 API로 빈 구간을 채우는 보충 단계를 만들었습니다.</li><li>원본과 보충분을 SQLite 외부 정렬로 합치며 중복을 제거하는 병합 단계를 만들었습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>감사 → 보충 → 병합이 각각 독립된 CLI 단계로 나뉘어 있고, L0 원본은 건드리지 않습니다. 증권사가 당일 체결만 제공하는 등 복구할 수 없는 구간은 남을 수 있습니다.</p></section>
+    </div>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>10분 안에 여러 외부 API에서 데이터를 모으고 주문까지 안전하게 연결하는 시스템.</strong> 증권사별 호출 제한과 토큰 제한 아래에서의 수집 설계와, 타임아웃에도 중복 주문이 나가지 않는 주문 저널이 중심입니다.</p></div>
-    <div class="background"><p>한국 시장의 장 마감 동시호가(15:20~15:30)는 기관·외국인의 포지션 정리와 패시브 수급이 몰려 하루 중 수급 불균형이 가장 큰 구간입니다. 그러나 이 구간을 백테스트하면 마감 후 확정되는 종가가 판단에 섞이기 쉽고, 저가주는 호가 비용과 거래세가 수익을 지우며, 10분 안에 데이터를 모아야 하는 현실적 제약도 있습니다.</p>
-<p>그래서 &quot;수익이 나는 모델&quot;보다 먼저 <strong>미래 정보 없이, 비용을 낸 뒤에도, 시간 안에 실행 가능한가</strong>를 검증하는 구조를 만들었습니다. 연구(백테스트)에서 끝나지 않고 데이터 수집, 주문 저널, 종가 확정, 야간 감사까지 이어지는 일일 파이프라인으로 구현했습니다.</p>
-</div>
-    
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">결정창 수집</div>
-      <div class="m-value">95초 이내</div>
-      <div class="m-note">최대 1,247개 후보 단면 · 쿼터 차단 0건</div>
-      <span class="basis basis-ops">운영 기록</span>
-    </li><li class="metric">
-      <div class="m-label">중복 주문</div>
-      <div class="m-value">0건</div>
-      <div class="m-note">Write-Ahead 저널 · 모의투자 원장 기준</div>
-      <span class="basis basis-ops">운영 기록</span>
-    </li><li class="metric">
-      <div class="m-label">검증 기간</div>
-      <div class="m-value">886거래일</div>
-      <div class="m-note">2023-01 ~ 2026-09 · 68,493개 일별 종목 단면</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">10분 결정창 안에 전 종목 데이터 모으기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>15:20~15:30 사이에 전 종목 스캔, 10호가, 예상체결, 투자자 수급을 모아야 하는데 증권사 한 곳의 호출 제한(초당 18건 등)으로는 시간 안에 끝낼 수 없었고, 여러 프로세스가 동시에 뜨면 토큰 발급 제한까지 걸렸습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>증권사별 강점에 맞춰 역할 분담. 키움은 전 종목 스캔(1회 200종목), KIS는 10호가·수급, DB금융투자·LS는 분봉, 토스는 시세 교차 확인</li><li>여러 프로세스가 토큰과 호출 간격을 하나의 파일 락(flock)과 세대 번호로 공유하도록 하고, 매일 07:05에 토큰을 미리 발급</li><li>KIS 키를 용도별 슬롯으로 나눠, 15:20 실시간 경로가 장후 백필 작업의 호출 한도에 영향받지 않게 격리</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>README 기재 기준 최대 1,247개 후보를 95초 안에 수집하고 호출 제한·토큰 충돌 차단 0건.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">02</span><span class="d-title">타임아웃 때 &quot;다시 보내지 않기&quot;, 종가가 확정되기 전엔 &quot;기록하지 않기&quot;</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>주문 응답이 타임아웃되면 접수 여부를 알 수 없고, 그대로 재전송하면 이중 주문이 됩니다. 또 15:30 직후 일부 시세 API는 아직 확정되지 않은 예상체결가를 돌려주어 종가 장부가 틀어질 수 있었습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>전송 직전 주문 의도를 디스크에 fsync로 먼저 기록(Write-Ahead). 타임아웃 시 상태를 UNKNOWN으로 두고 브로커 원장을 조회해 이미 접수됐으면 채택, 아니면 종료</li><li>종가는 ① 15:30 도달 ② 장운영 구분코드 &#39;3&#39; ③ 현재가·호가 TR의 종가 일치, 세 조건이 모두 맞을 때만 확정하고 아니면 백오프 재조회 후 미확정으로 격리</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>README 기재 기준 모의투자 원장에서 중복 주문 0건, 현금·포지션·NAV 정산 오차 0원.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>118개 전략을 탐색한 뒤 고른 결과라 선택 편향이 남아 있습니다. CPCV와 엠바고로 줄였지만 없애지는 못했습니다.</li><li>표본이 약 3년 8개월의 한 시장입니다. 다른 국면에서의 재현은 확인하지 못했습니다.</li><li>호가 비용이 6틱까지 커지면 손실로 바뀝니다. 체결 품질이 전략 성패를 좌우합니다.</li><li>실계좌 수익 실적은 없고, 이 자료의 모든 수익률은 백테스트입니다.</li></ul><h5>배운 점</h5><p>수익률을 올리는 작업보다 &quot;어디서 숫자가 부풀려질 수 있는지&quot;를 하나씩 막는 작업이 결과를 믿게 만든다는 점을 배웠습니다.</p></div>
-  </article><article class="project" id="finance-data-savetax">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 03</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>SaveTax</h3>
-      <p class="tagline">105만 건의 공공조달 데이터에서 세금이 과다 집행된 품목을 찾아, 근거와 함께 제보하는 감사 엔진</p>
+  </article><article class="case" id="finance-data-k-closing-alpha-journal">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div>
+      <h3>주문을 보내기 전에 먼저 기록하고, 응답이 불확실하면 증권사 원장으로 확인해 중복 주문을 막았다</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>데이터 정규화, 4가지 시장가 증거 수집, 오비교 방지 규칙, 중복 없는 제출 원장까지 단독 설계·구현 (SaveTax 해커톤 참가)</dd></div><div><dt>기간</dt><dd>2026.1</dd></div><div><dt>기술</dt><dd>Python · DuckDB · Parquet · Decimal · pytest · mypy(strict) · ruff</dd></div><div><dt>GitHub</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
+    <ol class="flow" style="--n:5"><li class="hl"><strong>의도 기록</strong><span>INTENT 디스크 저장</span></li><li><strong>주문 전송</strong><span>SEND 기록</span></li><li><strong>응답 불확실</strong><span>UNKNOWN 상태</span></li><li class="hl"><strong>원장 조회</strong><span>같은 주문 탐색</span></li><li><strong>채택/종결</strong><span>ADOPT 또는 종결</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>주문 응답이 타임아웃되면 접수 여부를 알 수 없습니다. 그대로 재전송하면 이중 매수가 됩니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>재시도 횟수를 제한하는 방법은 이미 접수된 주문을 막지 못해 제외했습니다.</li><li>보내기 전에 기록을 남기고, 결과가 불확실하면 증권사 원장을 조회해 맞추는 방식을 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>주문 의도(INTENT)와 전송(SEND)을 디스크에 먼저 쓰고 전송했습니다.</li><li>응답이 불확실하면 UNKNOWN 상태로 두고, 원장에서 같은 주문을 찾으면 채택(ADOPT), 없을 때만 종결하도록 했습니다.</li><li>종가는 시각, 장운영 구분코드, 현재가와 호가 조회 가격 일치의 3조건을 모두 만족할 때만 확정합니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>상태 전이와 채택 로직, 종가 확정 조건 함수를 구현했고 단위 테스트가 있습니다. 실거래 운영 기록은 없습니다.</p></section>
+    </div>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>105만 건의 공공 데이터를 정제하고, 외부 웹 가격을 모아 근거와 함께 제출하는 파이프라인.</strong> 중복으로 부풀려진 집계를 바로잡는 데이터 정제, 쇼핑몰마다 다른 형식을 다루는 수집, 네트워크 오류에도 중복 없는 제출이 중심입니다.</p></div>
-    <div class="background"><p>SaveTax 해커톤은 과도하게 집행된 세금의 흔적을 근거와 함께 찾아 제보하는 대회입니다. 나라장터 납품 카탈로그는 규모가 크고 중복이 많아, 숫자를 그대로 믿으면 오히려 틀린 제보를 만들게 됩니다.</p>
-<p>그래서 데이터 정규화로 모수를 바로잡고, 시중가·타 계약·타 기관·조립 원가의 네 경로로 가격 근거를 모은 뒤, 오비교를 막는 규칙과 제출 직전 재확인을 거쳐 제보하는 파이프라인을 만들었습니다. 저장소는 비공개입니다.</p>
-</div>
-    <figure class="fig"><a href="assets/savetax/architecture.png" target="_blank" rel="noopener" aria-label="구조도 원본 크기로 열기"><img src="assets/savetax/architecture.png" alt="SaveTax 4단계 처리 구조도"></a><figcaption>저장소 문서의 구조도. 데이터 추출·보안 통신 → 증거 수집 → 오비교 방지 게이트 → 승인·중복 방지 제출. (이미지를 누르면 원본 크기로 열립니다)</figcaption></figure>
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">분석한 조달 데이터</div>
-      <div class="m-value">105.2만 건</div>
-      <div class="m-note">47MB Parquet를 DuckDB로 메모리 내 정규화 · 고유 납품번호 300,431개</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">바로잡은 집계 왜곡</div>
-      <div class="m-value">4.19조 원</div>
-      <div class="m-note">중복 매핑으로 17.57조 원이 21.76조 원(+23.9%)으로 부풀려진 것을 제거</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">해커톤 제출 결과</div>
-      <div class="m-value">10.2억 원</div>
-      <div class="m-note">제보 슬롯 100/100 사용 · 유효 수락 78건 · 수락 품목 기준 10억 2,142만 9,243원</div>
-      <span class="basis basis-ops">운영 기록</span>
-    </li><li class="metric">
-      <div class="m-label">중복 제보</div>
-      <div class="m-value">0건</div>
-      <div class="m-note">네트워크 오류 후 재실행에서도 슬롯 중복 차감 없음</div>
-      <span class="basis basis-ops">운영 기록</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">부풀려진 모수를 먼저 바로잡고, 비교 대상을 잘못 고르지 않기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>카탈로그 한 행이 아니라 납품번호(dlv_key) 하나가 여러 등재 품목에 중복 매핑되어, 그대로 합치면 전체 주문액이 17.57조 원에서 21.76조 원으로 23.9% 부풀려졌습니다. 또 같은 물품번호 안의 저가 옵션이나 일반형 모델을 고가 납품건과 비교하면 허위 제보가 됩니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>고유 납품번호별 계약번호·금액 무결성을 전수 검사해 중복을 제거한 정규화 뷰 구축(DuckDB)</li><li>단가가 여러 개면 가장 높은 대표 단가만 비교 기준으로 쓰고, 일반형·내진형처럼 순번 블록이 다른 모델은 교차 비교하지 않도록 계열 분리</li><li>비교하는 계약이 해당 납품일에 실제로 유효했는지 변경계약일과 납품 이력으로 확인</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>300,431개 고유 납품번호 기준으로 모수를 산출했고 과대 계상을 제거했습니다. 잘못된 비교로 나가는 제보를 규칙으로 막았습니다.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">02</span><span class="d-title">시중에 같은 모델이 없는 조달 전용 품목의 기준가 만들기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>가장 큰 금액의 데스크톱 PC, 패치판넬, 서버랙은 공공기관 전용 모델명이라 쇼핑몰에서 같은 제품을 찾을 수 없었습니다. 쇼핑몰마다 문자 인코딩(CP949) 깨짐, 숨은 가격 태그, 배송 문구와 품절 표기가 섞여 자동 판정이 흔들렸습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>품목 사양(CPU·RAM·SSD·규격)을 정규화해 동급 시판 부품으로 분해하고, 2026 표준품셈의 설치 공임 5종을 더한 조립 원가 모델 구축</li><li>한글 인코딩 자동 복구, 숨은 태그 선제거, 품절 문구 정규식 필터로 쇼핑몰 파서 보강</li><li>부품마다 서로 다른 2개 쇼핑몰 가격을 수집하고, 기준가 대비 1.2~1.3배 경계에 걸리면 2순위 가격에서도 1.2배 이상일 때만 통과</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>32종 표준 부품과 5종 공임을 자동 수집해 조달 전용 모델에서 적발 금액의 대부분(데스크톱 PC 6.6억 원, 패치판넬 1.9억 원, 서버랙 1.7억 원)을 찾았습니다.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">03</span><span class="d-title">100번뿐인 제보 기회를 네트워크 오류에도 잃지 않기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>제보는 참가자당 100회로 제한되어, 타임아웃이나 중단 후 재실행에서 같은 품목이 중복 차감될 위험이 있었습니다. 인증 키(PAT)가 로그나 리다이렉트로 새는 위험도 있었습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>전송 전에 파일 락(flock)과 fsync를 쓴 로컬 원장에 고유 요청 키를 먼저 기록하고, 재실행 시 미결 요청을 자동 복구</li><li>제출 직전에 쇼핑몰 URL을 다시 조회해 품절·가격 변동이 있으면 제보를 자동 취소</li><li>공식 호스트 3곳 외로는 전송을 차단하고 리다이렉트를 막으며, 모든 로그에서 키를 자동 마스킹</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>중복 청구 0건으로 100개 슬롯을 모두 사용했고, 키 유출은 없었습니다(README 기재).</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>10.2억 원은 해커톤 시스템의 수락 기준 금액이며, 실제 환수나 과다 집행 확정을 뜻하지 않습니다. 대회 순위와 수상은 포함하지 않았습니다.</li><li>적발의 약 65%가 데스크톱 PC 한 범주에 집중되어, 품목 구성이 달라지면 같은 방식의 성과를 기대하기 어렵습니다.</li><li>조립 원가 모델은 표준품셈과 판매처 가격에 의존하므로, 가격 변동이나 사양 정규화 오류가 기준가를 흔들 수 있습니다.</li></ul><h5>배운 점</h5><p>큰 숫자를 찾는 것보다, 그 숫자가 잘못된 비교에서 나온 것이 아님을 규칙으로 증명하는 일이 더 많은 시간을 차지한다는 것을 배웠습니다.</p></div>
-  </article><article class="project compact" id="finance-data-quant-dashboard">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 04</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>Quant Dashboard</h3>
-      <p class="tagline">매일 도는 퀀트·수집 파이프라인이 정상인지, 트레이딩 프로세스를 방해하지 않고 지켜보는 읽기 전용 관제 도구</p>
+  </article><article class="case" id="finance-data-savetax-dedupe">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div>
+      <h3>같은 주문이 여러 물품에 중복돼 합계가 부풀려지는 문제를, 불일치는 멈추는 방식으로 풀기</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>상태 수집기, 시장 캘린더 판정, 이벤트·리포트 저장, 배포 구성까지 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026.1</dd></div><div><dt>기술</dt><dd>Python(표준 라이브러리만) · systemd · Tailscale · 순수 HTML/CSS/JS · pytest · mypy(strict)</dd></div><div><dt>GitHub</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
+    <ol class="flow" style="--n:5"><li><strong>로드</strong><span>Parquet 직접 조회</span></li><li class="hl"><strong>무결성 검사</strong><span>dlv_key별 일치 확인</span></li><li class="hl"><strong>불일치 중단</strong><span>오류로 멈춤</span></li><li><strong>정규화 뷰</strong><span>주문당 1건</span></li><li><strong>집계</strong><span>빈 값은 0 아님</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>같은 주문 기록(dlv_key)이 여러 물품 아래에 반복돼, 단순 합계가 실제보다 큽니다. 집계 기준이 틀리면 이후의 모든 후보 판정이 어긋납니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>합계 전에 중복을 없애야 하지만, 묶은 기록끼리 계약번호나 금액이 다르면 합치면 안 됩니다.</li><li>주문이 없는 물품(약 71%)은 값이 비어 있는 것이지 0이 아니므로, 0으로 채우면 평균이 왜곡돼 제외했습니다.</li><li>불일치를 조용히 넘기는 것보다, 데이터를 불러오는 시점에 멈추는 쪽을 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>DuckDB로 Parquet을 직접 조회하며 dlv_key별 계약번호·금액이 하나로 일치하는지 검사합니다.</li><li>주문당 한 건으로 집계하는 정규화 뷰를 만들고, 불일치하면 오류로 중단합니다.</li><li>빈 값은 0으로 바꾸지 않고 그대로 둡니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>주문당 한 건으로 집계하는 뷰를 쓰고, 불일치 데이터는 조용히 넘어가지 않고 중단됩니다. 약 24%라는 수치는 대회 데이터 안내의 값입니다.</p></section>
+    </div>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>운영 중인 수집·퀀트 파이프라인을 부하 없이 지켜보는 관제 도구.</strong> 정상 상태를 장애로 오판하지 않는 규칙과, 대상 시스템에 I/O 부담을 주지 않는 수집 방식을 보여 줍니다.</p></div>
-    
-    
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">런타임 외부 의존성</div>
-      <div class="m-value">0개</div>
-      <div class="m-note">표준 라이브러리만 사용</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">수집기 자원 상한</div>
-      <div class="m-value">128MB · CPU 25%</div>
-      <div class="m-note">systemd cgroup으로 본 트레이딩 프로세스와 분리</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">틱 파일 읽기</div>
-      <div class="m-value">0 Byte</div>
-      <div class="m-note">대용량 압축 파일은 열지 않고 수정 시각(mtime)만 확인</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">정상인데 장애로 보이는 상태를 구분하기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>휴장일·주말에 시세 수집기가 켜지지 않는 것은 정상인데, 하트비트가 없다고 FAIL로 판정해 불필요한 알람이 나가고 가용성 지표도 왜곡됐습니다. 15:20~15:30 동시호가에는 체결 틱이 없는 것이 정상이라, 120초 지연 규칙이 매일 같은 시각에 오탐했습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>거래소 연간 일정을 반영한 캘린더로 당일을 5가지(거래일·휴장일·주말·이동·미확인)로 판정</li><li>휴장일에 멈춰 있는 타이머는 결측이 아니라 CLOSED_DAY_NOOP로 분리하고, 동시호가 구간은 체결 판정을 보류했다가 15:40 이후 애프터마켓 규칙으로 인계</li><li>정규장·동시호가·애프터마켓 시간대별 판정을 단위 테스트로 고정</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>설계상 휴장일·동시호가 허위 경보를 제거했습니다(README 기재).</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>기능은 관제와 리포트에 한정되며, 장애 자동 복구는 하지 않습니다.</li><li>허위 경보 제거 효과는 회귀 테스트와 설계 기준이며, 장기 운영 통계로 측정한 값은 아닙니다.</li><li>저장소는 비공개이며 개인 사설망 안에서만 운영합니다.</li></ul></div>
-  </article><article class="project compact" id="finance-data-port-entity-matching">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 05</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>Port Entity Matching</h3>
-      <p class="tagline">오타와 누락이 섞인 입출항 기록을 7만 8천 척의 표준 선박 카탈로그에 연결하는 매칭 모델 (DACON 항만 AI 대회)</p>
+  </article><article class="case" id="finance-data-port-entity-matching-cv-lb-gap">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 05</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div>
+      <h3>교차검증 0.9875인데 리더보드는 0.8805였을 때, 원인을 가설로 나눠 하나씩 확인한 사례</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>정규화, 후보 검색, 학습 랭커, 평가 도구, LLM 음역 채널까지 대회 개인 참가로 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026.1</dd></div><div><dt>기술</dt><dd>Python · LightGBM(lambdarank) · LLM(Kanana·Qwen · 고정 가중치) · pytest · uv</dd></div><div><dt>GitHub</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>오타·표기 변형이 섞인 기록을 7만 8천 건 카탈로그에 연결하는 대규모 매칭.</strong> 표기 정규화와 인덱스 기반 후보 생성으로 전수 비교를 피하고, 한 행의 결과가 다른 행에 의존하지 않도록 설계했습니다.</p></div>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>로컬 점수와 리더보드의 차이가 컸습니다. 원인을 모른 채 모델을 고치면 제출 기회만 낭비하므로 먼저 원인을 좁혀야 했습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>학습과 서빙 경로 불일치는 저장한 모델과 교차검증 예측을 비교해 차이 0건이라 제외했습니다.</li><li>처음 보는 선박(정확도 0.998), 라틴 톤수 잡음(0.9965), 라틴 이름 오타(0.957)도 모두 낮은 점수를 설명하지 못해 제외했습니다.</li><li>토큰 순서를 바꾸거나 하나를 빼자 정확도가 0.4~0.5로 무너졌습니다. 학습 데이터는 한 선박이 늘 같은 철자를 써서 교차검증으로는 이 변화를 볼 수 없었습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>깨끗한 교차검증 점수만으로 모델을 고르지 않고, 20개 교란 시나리오를 묶은 스트레스 스위트 점수를 함께 보기로 했습니다.</li><li>표기 증강을 학습에 넣고, 순서에 상관없는 검색(정렬 키, 토큰 색인)과 순서 불변 특징 7종을 추가했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-backtest">백테스트</span></h5><p>로컬 스위트 점수가 0.8162에서 0.9477로 올랐고 토큰 순서를 바꾼 라틴 이름 정확도는 0.486에서 0.999가 됐습니다. 학습 데이터로 만든 모의 교란 기준이며 실제 테스트의 교란 비율을 보여 주지는 않습니다.</p></section>
+    </div>
+    <figure class="chart">
+    <figcaption class="chart-title">스트레스 스위트 점수 변화 <span class="chart-unit">점수</span> <span class="basis basis-backtest">백테스트</span></figcaption>
+    <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
+        <div class="chart-label">v2 기준</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:86.12%"></span></div>
+        <div class="chart-val">0.8162</div>
+      </div><div class="chart-row">
+        <div class="chart-label">+ 표기 증강</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:93.19%"></span></div>
+        <div class="chart-val">0.8832</div>
+      </div><div class="chart-row">
+        <div class="chart-label">+ 순서 불변 검색·특징</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:99.09%"></span></div>
+        <div class="chart-val">0.9391</div>
+      </div><div class="chart-row">
+        <div class="chart-label">최종 채택 설정</div>
+        <div class="chart-track"><span class="cbar hl" style="left:0.00%;width:100.00%"></span></div>
+        <div class="chart-val hl">0.9477</div>
+      </div></div>
+    <p class="chart-caption">선박 단위 5-fold, 모의 교란 20개 시나리오 (로컬)</p>
+  </figure>
+  </article></div>
+        <h3 class="part">추가 근거</h3>
+        <div class="evidence">
+    <div class="ev-block"><h4 class="sub">사용한 기술</h4><ul class="chips"><li>Python</li><li>pytest</li><li>PyArrow(Parquet)</li><li>LightGBM</li><li>systemd</li><li>mypy</li><li>ruff</li><li>asyncio/WebSocket</li><li>Polars</li><li>SQLite</li><li>zstandard</li><li>Docker Compose</li><li>pandas</li><li>aiohttp</li><li>pydantic</li><li>DuckDB</li><li>Parquet</li><li>Decimal</li></ul></div>
     
-    
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">데이터 규모</div>
-      <div class="m-value">78,595척</div>
-      <div class="m-note">카탈로그 · 학습 12,222행</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">후보 생성 속도</div>
-      <div class="m-value">90초</div>
-      <div class="m-note">학습 12,222행 전체 · 인덱스 구축 1.5초 · 최대 메모리 0.25GB</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">로컬 교차검증 점수</div>
-      <div class="m-value">0.9875</div>
-      <div class="m-note">선박 단위로 분리한 5-fold · 한글명 0.9824 · 비한글명 0.9995 · 가중 0.7/0.3</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">표기 잡음을 규칙과 인덱스로 풀기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>한글 선박명은 영문 카탈로그명의 한글 표기라 외래어(리플렉션), 로마자(흥아), 약어(케이엠티씨), 번호(제2)가 뒤섞이고, 영문명은 1~2글자 오타가 있고, 톤수도 ±3~5% 변형돼 있습니다. 한글 행은 데이터의 9.7%인데 점수의 70%를 차지합니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>유니코드 정규화와 기호 정리, 한글 자모 기반 음운 키, 톤수 허용 구간을 결합한 후보 검색. 7만 8천 행 전체를 쌍으로 비교하지 않고 인덱스로 후보를 좁힘</li><li>영문 문자열 유사도, 한글 음운 유사도, 톤수 일치, 숫자 일치 등 쌍 특성 40여 개로 LightGBM 랭커 학습. 선박 단위로 분리한 교차검증으로 평가</li><li>다른 테스트 행의 통계를 쓰지 않는 행 독립 추론 계약을 코드와 테스트로 강제</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>선박 분리 5-fold 교차검증 점수 0.9875(한글명 0.9824). 후보 생성 재현율 1.000은 일부 기억을 포함한 진단이라 낙관적인 값으로 따로 표기합니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>대회가 2026-11-02까지 진행 중이라 최종 순위와 비공개 리더보드 점수는 아직 없습니다.</li><li>교차검증(0.9875)과 리더보드(0.9163)의 격차는 아직 남아 있습니다. 한글 규칙을 학습 데이터 이름을 본 뒤에 작성해 로컬 점수가 낙관적일 수 있음을 문서에도 적었습니다.</li><li>서버 시간 예산은 L4 서버 실측이 아니라 로컬 GPU 기반 추정치이며, 대회 규칙상 데이터와 코드는 외부에 공유할 수 없어 저장소는 비공개입니다.</li></ul></div>
-  </article>
+    <div class="ev-block"><h4 class="sub">개발 과정에서의 AI 활용</h4><p class="ai-text">AI 코딩 도구를 주로 코드를 쓰는 데 사용했고, 아이디어를 다듬거나 처음 접하는 분야를 공부할 때도 썼습니다. 수치와 동작은 직접 확인했고, 확인하지 못한 것은 성과로 쓰지 않았습니다.</p>
+      <table class="ai-table"><thead><tr><th>AI에 맡긴 일</th><th>직접 한 일</th></tr></thead><tbody><tr><td>코드 작성</td><td>결과 수치와 동작을 직접 확인</td></tr><tr><td>아이디어 정리와 도메인 학습 보조</td><td>확인하지 못한 내용은 성과로 쓰지 않기</td></tr></tbody></table></div>
+    <div class="ev-block"><h4 class="sub">프로젝트별 한계</h4><ul class="lim"><li><strong>KRX-Alpha</strong> 전략(알파) 단계가 없습니다. 신호 생성과 백테스트 엔진은 이 저장소에 없고, 수익 성과 수치도 없습니다.</li><li><strong>K-Closing Alpha</strong> 모든 수익 수치는 과거 데이터 백테스트이며, 실계좌나 모의투자의 누적 손익 기록은 없습니다. 118개 전략 중 좋은 결과를 골랐기 때문에 실제 성과는 이보다 낮을 수 있습니다.</li><li><strong>SaveTax</strong> 데이터(data/)와 참가자 토큰이 저장소에 없어, 저장소만으로는 CLI를 처음부터 끝까지 재현할 수 없습니다. 테스트는 합성 데이터로 돌아갑니다.</li><li><strong>Quant Dashboard</strong> 감시 대상의 데이터와 로그가 저장소에 없고 개인 서버 구조에 맞춰져 있어 다른 환경에서 재현하기 어렵습니다.</li><li><strong>Port Entity Matching</strong> 로컬 점수 0.9910은 LLM 채널을 넣기 전 번들의 값이고, LLM 채널을 포함한 현재 코드의 교차검증 점수는 아직 측정하지 않았습니다. 대회 진행 중이라 최종 순위도 없습니다.</li></ul></div>
+  </div>
       </div>
     </section><section class="track" id="ai-llm" data-track="ai-llm" aria-labelledby="h-ai-llm">
       <div class="wrap">
         <div class="track-head">
           <p class="eyebrow">AI / Digital / LLM·RAG</p>
-          <h2 id="h-ai-llm">모델 앞의 데이터를 정리하고, 모델을 실제 시스템 안에서 쓰는 데까지 해 봤습니다</h2>
-          <p class="lead">뇌파·인터뷰 데이터의 전처리와 LLM 파인튜닝(팀), 학사 규정 문서의 RAG용 구조화(팀), 시점 정합 피처와 LightGBM 앙상블을 실시간 시스템에 올린 개인 프로젝트를 했습니다. 팀 프로젝트에서 제가 맡은 범위는 각 항목에 구분해 적었습니다.</p>
+          <h2 id="h-ai-llm">모델 앞의 데이터를 정리하고, 학습 데이터를 설계하는 데까지 해 봤습니다</h2>
+          <p class="lead">뇌파 기반 상담 문장 생성 모델의 학습 데이터 설계(팀), 학사 규정 문서를 검색에 쓸 수 있게 구조화한 작업(팀), 한글 선박명을 LLM 후보로 푼 대회 프로젝트(개인)를 했습니다. 팀 프로젝트에서는 제가 맡은 부분과 팀 전체 결과를 구분해 적었습니다.</p>
           <a class="pdf-link" href="pdf/portfolio-ai-llm.pdf" download>이 직무용 PDF 받기 <span>portfolio-ai-llm.pdf</span></a>
         </div>
-        <ul class="strengths"><li><h4>데이터 전처리와 품질 관리</h4><p>형식과 라벨이 제각각인 EEG·텍스트·HWP 문서를 모델과 검색이 쓸 수 있는 입력으로 정리했습니다.</p></li><li><h4>모델 파인튜닝</h4><p>Llama 3.1 8B를 LoRA로 파인튜닝하고 학습/검증 분리로 결과를 비교했습니다.</p></li><li><h4>머신러닝 검증</h4><p>미래 정보 차단 피처, 모델·손실 함수 비교, CPCV, 재학습 승격 게이트로 모델을 교체해도 되는지 판단했습니다.</p></li><li><h4>실제 시스템에서의 AI 활용</h4><p>모델 추론을 데이터 수집·검증·실행 파이프라인에 넣어 매일 자동으로 돌렸습니다.</p></li></ul>
-        <article class="project" id="ai-llm-emori">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 01</span><span class="kind kind-team">팀 프로젝트</span></div>
-      <h3>Emori</h3>
-      <p class="tagline">EEG(뇌파)와 상담 인터뷰 텍스트를 함께 분석하는 멀티모달 AI 프로젝트</p>
+        <ul class="strengths"><li><h4>문서 전처리와 구조화</h4><p>HWP·DOCX·PDF를 Markdown 하나로 통일하고, 조·항·호 계층을 표시해 청킹이 조항 경계를 알게 했습니다.</p></li><li><h4>학습 데이터 설계</h4><p>증강 규칙과 정답 문장의 문체를 직접 정하고, 부자연스러운 문체는 학습에서 뺐습니다.</p></li><li><h4>평가와 한계의 정직한 표기</h4><p>팀 전체 지표에는 팀 라벨을 붙이고, 평가 데이터가 작아 흔들리는 점수는 통계 기준으로 판단했습니다.</p></li></ul>
+        <ul class="highlights"><li><span class="h-proj">Emori</span><strong class="h-val">280개 중 210개 사용</strong><span class="h-label">정답 문장</span><span class="h-note">70세트 x 4문체 중 단순 나열 문체를 제외</span><span class="basis basis-code">코드로 확인</span></li><li><span class="h-proj">Witches-Chat-Core</span><strong class="h-val">98.46%</strong><span class="h-label">팀 가드레일 공격 차단율</span><span class="h-note">직접 만든 악성 입력 130개 중 128개 차단(논문 기준). 팀 전체 결과</span><span class="basis basis-team">팀 측정</span></li><li><span class="h-proj">Port Entity Matching</span><strong class="h-val">0.8805 → 0.9163</strong><span class="h-label">공개 리더보드 점수</span><span class="h-note">규칙 기반 v2 대비 LLM 후보 채널 제출 (테스트 50%, 대회 진행 중)</span><span class="basis basis-ops">운영 기록</span></li></ul>
+        <h3 class="part">프로젝트 한눈에 보기</h3>
+        <ol class="ov"><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">01</span>
+          <div>
+            <strong class="ov-name">Emori</strong> <span class="kind kind-team">팀</span><span class="status">완료</span>
+            <p class="ov-pitch">뇌파·감정을 상담 문장으로 바꾸는 모델의 학습 데이터 설계와 파인튜닝</p>
+            <p class="ov-meta">2025.09 ~ 2025.12 · 내 담당은 뇌파 전처리, 학습 데이터(증강·정답 문장), 모델 파인튜닝입니다. 인터뷰 키워드 분석과 연관 분석 대시보드는 팀원이 맡았습니다.</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>50세트</strong><span>증강 학습 데이터</span><em>규칙 기반 생성, 감정·강도 값은 모두 단어표 값</em><span class="basis basis-code">코드로 확인</span></li><li><strong>280개 중 210개 사용</strong><span>정답 문장</span><em>70세트 x 4문체 중 단순 나열 문체를 제외</em><span class="basis basis-code">코드로 확인</span></li><li><strong>168 / 42</strong><span>학습 / 검증 분할</span><em>80 : 20, 에폭마다 검증</em><span class="basis basis-code">코드로 확인</span></li></ul>
+        <div class="ov-link"><a class="repo" href="https://github.com/KTHYEONG/Emori">github.com/KTHYEONG/Emori</a></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">02</span>
+          <div>
+            <strong class="ov-name">Witches-Chat-Core</strong> <span class="kind kind-team">팀</span><span class="status">완료</span>
+            <p class="ov-pitch">학사 규정 문서를 검색용 Markdown으로 구조화한 RAG 전처리</p>
+            <p class="ov-meta">2026.03 ~ 2026.06 · 내 담당은 문서 변환·구조 표시·표/양식 분리·변환 점검이고, 청킹·검색·가드레일·서비스 인프라는 팀원이 구현했습니다(저장소 커밋 37개, git blame 기준 processors.py 952줄 중 546줄).</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>Markdown 28개</strong><span>정리된 규정 문서</span><em>HWP 20·DOCX 5·PDF 4개 원본에서 변환(같은 규정이 여러 형식인 경우 포함)</em><span class="basis basis-code">코드로 확인</span></li><li><strong>98.46%</strong><span>팀 가드레일 공격 차단율</span><em>직접 만든 악성 입력 130개 중 128개 차단(논문 기준). 팀 전체 결과</em><span class="basis basis-team">팀 측정</span></li></ul>
+        <div class="ov-link"><span class="repo none">비공개 저장소</span></div>
+      </li><li class="ov-row">
+        <div class="ov-main">
+          <span class="ov-n">03</span>
+          <div>
+            <strong class="ov-name">Port Entity Matching</strong> <span class="kind kind-personal">개인</span><span class="status">진행 중</span>
+            <p class="ov-pitch">규칙으로 풀기 어려운 한글 선박명을 LLM 후보로 보완한 대회 (진행 중)</p>
+            <p class="ov-meta">2026.10 ~ 진행 중 · 개인 참가로 정규화, 후보 검색, 특징, 랭커, 평가 도구, 제출 코드를 단독 설계·구현했습니다.</p>
+          </div>
+        </div>
+        <ul class="ov-res"><li><strong>0.9910</strong><span>로컬 교차검증 점수</span><em>선박 단위 5-fold, 최종 채택 설정(LLM 채널 추가 전 번들)</em><span class="basis basis-backtest">백테스트</span></li><li><strong>0.8805 → 0.9163</strong><span>공개 리더보드 점수</span><em>규칙 기반 v2 대비 LLM 후보 채널 제출 (테스트 50%, 대회 진행 중)</em><span class="basis basis-ops">운영 기록</span></li></ul>
+        <div class="ov-link"><span class="repo none">비공개 저장소</span></div>
+      </li></ol>
+        <h3 class="part">문제 해결 사례</h3>
+        <div class="cases"><article class="case" id="ai-llm-emori-finetune">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div>
+      <h3>규칙 템플릿도, 범용 LLM도 아닌 파인튜닝을 선택한 이유</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>팀 프로젝트 · 담당: EEG·관련 데이터 전처리, Llama 3.1 8B 파인튜닝</dd></div><div><dt>기간</dt><dd>2025</dd></div><div><dt>수상</dt><dd>2025 한국정보기술학회 추계종합학술대회 우수논문상 (동상) · 팀 논문</dd></div><div><dt>기술</dt><dd>Python · PyTorch · Transformers · LoRA · scikit-learn</dd></div><div><dt>GitHub</dt><dd><a class="repo" href="https://github.com/KTHYEONG/Emori">github.com/KTHYEONG/Emori</a></dd></div></dl>
-    <div class="scope">
-    <div class="scope-mine"><h5>제가 맡은 범위</h5><ul><li>EEG 6개 지표와 감정·신체감각 데이터를 학습에 쓸 수 있는 형식으로 정제·구조화</li><li>데이터 형식과 라벨을 통일하고 노이즈를 정리해 모델 입력 데이터셋 구성</li><li>원본 EEG 패턴을 기반으로 학습 데이터 50개 세트 생성(데이터 증강)</li><li>Llama 3.1 8B LoRA 파인튜닝, 학습/검증 80:20 분리, 결과 비교·개선</li><li>전처리 데이터와 모델 출력을 후속 분석·리포트 단계에서 쓰기 좋게 정리</li></ul></div>
-    <div class="scope-others"><h5>팀 프로젝트 전체에서 제 기여가 아닌 부분</h5><p>상담 발화 분석, 시맨틱 토픽망, Streamlit 대시보드, 임상 리포트 생성 등 시스템의 나머지 구성은 팀원이 구현했으며 이 자료의 성과로 주장하지 않습니다.</p></div>
-  </div>
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>EEG와 인터뷰 텍스트를 다루는 멀티모달 팀 프로젝트, 데이터 전처리와 파인튜닝 담당.</strong> 서로 다른 형식의 데이터를 학습 가능한 형태로 통일하고, 그 위에 Llama 3.1 8B를 파인튜닝했습니다.</p></div>
-    <div class="background"><p>Emori는 아동·청소년 심리 상담에서 말로 표현된 감정과 신체 반응(뇌파)이 어긋나는 경우를 함께 살펴보기 위해 만든 팀 프로젝트입니다. 저는 그중 <strong>데이터 전처리와 모델 파인튜닝</strong> 파트를 맡았습니다.</p>
-</div>
+    <ol class="flow" style="--n:5"><li><strong>원본 통합</strong><span>뇌파·VR TXT를 JSON으로</span></li><li class="hl"><strong>증강</strong><span>규칙 기반 50세트</span></li><li><strong>정답 작성</strong><span>4문체 280개</span></li><li class="hl"><strong>LoRA 학습</strong><span>Llama 3.1 8B</span></li><li><strong>리포트</strong><span>서술형 요약 생성</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>뇌파 지표는 숫자라 상담자가 바로 읽기 어려워, 협력 기업과 협의해 정해진 형식에 가까운 서술형 답변을 만드는 방향으로 정했습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>규칙 기반 템플릿은 문장이 반복적이고 지표를 하나씩만 해석해, 여러 지표가 함께 움직이는 패턴을 못 담아 제외했습니다.</li><li>LLM을 그대로 호출하면 도메인 표현이 부족하고 일반적인 말만 해서 제외했습니다.</li><li>학습 가능한 데이터가 100개 이하라, 파인튜닝에 데이터 증강과 여러 문체의 정답을 결합하기로 했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>Llama 3.1 8B Instruct를 4비트(NF4) 양자화하고 LoRA(r=32, alpha=16, 대상 q_proj/v_proj)로 학습했습니다.</li><li>에폭 7, 배치 1 x 누적 8, 학습률 3e-4(cosine)로 개인 PC(RTX 4070 Ti)에서 학습했습니다.</li><li>변환부터 요약 생성까지 한 번에 실행하는 파이프라인을 구성했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>체험 시작, 중간, 마지막 3단계를 각각 한 문장으로 서술하는 요약이 생성됩니다. 정량 평가는 하지 않았고 생성 문장을 직접 읽어 확인했습니다.</p></section>
+    </div>
     
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">정제한 EEG 지표</div>
-      <div class="m-value">6개</div>
-      <div class="m-note">감정·신체감각 데이터와 함께 학습 형식으로 구조화</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">학습/검증 분리</div>
-      <div class="m-value">80 : 20</div>
-      <div class="m-note">Llama 3.1 8B LoRA 파인튜닝</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">증강 학습 세트</div>
-      <div class="m-value">50개</div>
-      <div class="m-note">원본 EEG 패턴 기반</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">모델이 읽을 수 있는 입력으로 뇌파와 인터뷰 데이터를 맞추기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>EEG 로그와 인터뷰 텍스트는 형식과 라벨 기준이 서로 달랐고 노이즈도 섞여 있어, 그대로는 모델 학습에 쓸 수 없었습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>원시 데이터를 파싱해 EEG 지표 6개와 감정·신체감각 라벨을 한 형식으로 통일</li><li>노이즈를 정리하고 학습/검증을 80:20으로 나눠 평가 기준을 먼저 고정</li><li>원본 패턴을 바탕으로 학습 데이터 50개 세트를 만들어 양을 보완</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>파인튜닝과 이후 리포트 단계가 같은 데이터 형식을 쓰게 되어, 전처리가 모델·분석 양쪽의 공통 입력이 되었습니다.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">02</span><span class="d-title">프로젝트 데이터에 맞춰 Llama 3.1 8B를 파인튜닝</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>범용 모델은 EEG 지표와 인터뷰 맥락을 함께 해석하는 프로젝트 요구에 맞지 않았습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>전처리한 데이터셋으로 Llama 3.1 8B를 LoRA 방식으로 파인튜닝(저장소 문서는 4-bit QLoRA 추론 구성으로 설명)</li><li>검증 세트로 결과를 비교하고 개선 반복</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>파인튜닝한 모델이 팀의 분석·리포트 단계에서 사용됩니다. 정량 성능 수치는 이 자료에 싣지 않았습니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>학습 데이터가 소규모 원본에서 증강한 50개 세트라, 일반화 성능을 주장하지 않습니다.</li><li>파인튜닝 전후의 정량 비교는 공개 자료로 확인한 값이 없어 수치를 쓰지 않았습니다.</li><li>저장소 README에는 팀 시스템 전체의 지표가 있으나, 개인 기여와 분리할 수 없어 이 자료에서는 인용하지 않았습니다.</li></ul><h5>배운 점</h5><p>모델 성능보다 앞서 데이터 형식과 라벨 기준, 평가 분리를 정하는 것이 결과를 해석 가능하게 만든다는 점을 배웠습니다.</p></div>
-  </article><article class="project" id="ai-llm-k-closing-alpha">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 02</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>K-Closing Alpha</h3>
-      <p class="tagline">15:20에 알 수 있는 정보만으로 종목을 고르고, 종가에 사서 다음 날 시초가에 파는 국내주식 퀀트 시스템</p>
+  </article><article class="case" id="ai-llm-emori-augment">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div>
+      <h3>비현실적인 조합이 생기지 않도록 증강 규칙을 직접 정한 이유</h3>
     </header>
-    <dl class="meta"><div><dt>역할</dt><dd>기획·데이터 수집·피처·모델·검증·주문 실행 로직까지 전 과정을 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026</dd></div><div><dt>기술</dt><dd>Python · LightGBM · Pandas · PyArrow(Parquet) · aiohttp · Pydantic · pytest · systemd</dd></div><div><dt>GitHub</dt><dd><a class="repo" href="https://github.com/KTHYEONG/k-closing-alpha">github.com/KTHYEONG/k-closing-alpha</a></dd></div></dl>
     
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>ML 모델을 실제 매일 도는 시스템에 올리고, 교체 기준까지 만든 개인 프로젝트.</strong> 시점 정합 피처, 선형 대 트리 모델 비교, LightGBM 5시드 앙상블, 모델 교체 승격 게이트가 핵심입니다.</p></div>
-    <div class="background"><p>한국 시장의 장 마감 동시호가(15:20~15:30)는 기관·외국인의 포지션 정리와 패시브 수급이 몰려 하루 중 수급 불균형이 가장 큰 구간입니다. 그러나 이 구간을 백테스트하면 마감 후 확정되는 종가가 판단에 섞이기 쉽고, 저가주는 호가 비용과 거래세가 수익을 지우며, 10분 안에 데이터를 모아야 하는 현실적 제약도 있습니다.</p>
-<p>그래서 &quot;수익이 나는 모델&quot;보다 먼저 <strong>미래 정보 없이, 비용을 낸 뒤에도, 시간 안에 실행 가능한가</strong>를 검증하는 구조를 만들었습니다. 연구(백테스트)에서 끝나지 않고 데이터 수집, 주문 저널, 종가 확정, 야간 감사까지 이어지는 일일 파이프라인으로 구현했습니다.</p>
-</div>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>제공받은 학생 데이터가 적어 증강이 필요했습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단순 무작위 생성은 스트레스와 이완이 함께 높은 식의 비현실적인 조합을 만들어 제외했습니다.</li><li>정서 이론(러셀의 감정 이론 등)을 처음 공부하며 참고해, 지표 간 관계를 반영하는 규칙을 직접 정했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>처음 9세트는 제공받은 기록의 흐름을 유지하고, 나머지는 +-20% 범위에서 생성했습니다.</li><li>스트레스는 이완의 반대 방향으로 만들고, 서로 어긋나는 극단 조합의 빈도를 제한했습니다.</li><li>시드를 고정해 재현할 수 있게 했고, 코드와 단어표의 값 이름(Full/Half/Low 등)을 원본 기준으로 통일해 증강 JSON을 다시 만들었습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>50세트를 생성했고 감정 종류와 강도 값이 모두 단어표에 있는 값임을 확인했습니다. 실제 사람 데이터와의 유사도는 검증하지 못했습니다.</p></section>
+    </div>
     
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">검증 기간</div>
-      <div class="m-value">886거래일</div>
-      <div class="m-note">2023-01 ~ 2026-09 · 68,493개 일별 종목 단면</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">일평균 순수익</div>
-      <div class="m-value">+34.58bp</div>
-      <div class="m-note">거래세·왕복 2틱 호가 비용·수수료 차감 후</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">Sharpe</div>
-      <div class="m-value">2.73</div>
-      <div class="m-note">t-stat 5.12 · 일별 승률 56.3%</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">탐색한 전략</div>
-      <div class="m-value">118개</div>
-      <div class="m-note">CPCV(8,2) 28개 경로 + 5거래일 엠바고로 비교</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li></ul>
-    <div class="charts n1"><figure class="chart">
-    <figcaption class="chart-title">모델과 손실 함수에 따른 일평균 순수익 <span class="chart-unit">bp/일 (순수익)</span> <span class="basis basis-backtest">백테스트</span></figcaption>
-    <div class="chart-body" style="--zero:26.19%"><div class="chart-row">
-        <div class="chart-label">ElasticNet</div>
-        <div class="chart-track"><span class="cbar neg" style="left:0.00%;width:26.19%"></span></div>
-        <div class="chart-val">-12.27</div>
-      </div><div class="chart-row">
-        <div class="chart-label">Huber</div>
-        <div class="chart-track"><span class="cbar neg" style="left:7.39%;width:18.80%"></span></div>
-        <div class="chart-val">-8.81</div>
-      </div><div class="chart-row">
-        <div class="chart-label">ExtraTrees</div>
-        <div class="chart-track"><span class="cbar" style="left:26.19%;width:38.38%"></span></div>
-        <div class="chart-val">+17.98</div>
-      </div><div class="chart-row">
-        <div class="chart-label">LightGBM (L1)</div>
-        <div class="chart-track"><span class="cbar" style="left:26.19%;width:57.14%"></span></div>
-        <div class="chart-val">+26.77</div>
-      </div><div class="chart-row">
-        <div class="chart-label">현행 선정 규칙</div>
-        <div class="chart-track"><span class="cbar hl" style="left:26.19%;width:73.81%"></span></div>
-        <div class="chart-val hl">+34.58</div>
+  </article><article class="case" id="ai-llm-witches-chat-core-md-unify">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
+      <h3>HWP·DOCX·PDF가 섞인 규정을 형식별로 처리하지 않고 Markdown 하나로 통일했다</h3>
+    </header>
+    <ol class="flow" style="--n:5"><li><strong>규정 원본</strong><span>HWP·DOCX·PDF</span></li><li class="hl"><strong>형식별 변환</strong><span>변환기 등록</span></li><li class="hl"><strong>구조 표시</strong><span>조·항·호 기호</span></li><li><strong>노이즈 정리</strong><span>제어문자·표</span></li><li><strong>청킹 전달</strong><span>블록 정보 포함</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>규정이 세 가지 형식으로 섞여 있고 조·항·호 계층이 의미를 정합니다. 형식마다 따로 다루면 청킹과 검색이 형식에 묶입니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>형식별로 각각 청킹하는 방안은 팀원이 형식마다 입력을 따로 처리해야 해서 제외했습니다.</li><li>Markdown은 청킹 단계의 표준 입력 형식이고 제목·목록·표를 표현할 수 있어 LLM이 읽기에도 좋아 선택했습니다.</li><li>팀원 모두가 같은 입력 형식을 쓸 수 있다는 점도 판단에 반영했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>파일 형식별 변환기를 등록해 어떤 형식이든 같은 출력 구조를 내게 했습니다.</li><li>처음에는 HWP를 DOCX로 수동 변환해 시작했고, 이후 HWP 직접 변환을 추가했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>규정 원본 HWP 20·DOCX 5·PDF 4개가 Markdown 28개로 정리되어 청킹 단계로 넘어갑니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="ai-llm-witches-chat-core-form-split">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
+      <h3>의미 있는 표와 신청서 양식을 구분해 본문에서 분리했다</h3>
+    </header>
+    
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>규정 문서에는 신청서 서식과 빈 칸이 많은 표가 섞여 있어, 본문과 섞이면 검색 결과를 오염시키고 청킹도 어려워집니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표를 모두 같은 방식으로 다루면 실제 내용을 담은 표와 양식을 구분할 수 없어 제외했습니다.</li><li>빈 칸 비율 같은 구조 단서와 양식 표현으로 양식을 판별하는 방식을 선택했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>빈 칸이 많은 다열 표, 양식에 쓰는 표현(예: 예/아니오), 지정한 패턴이 있으면 양식으로 판별했습니다.</li><li>양식은 본문과 따로 변환해 넘기고, 청킹 단계가 표를 별도 임베딩으로 처리할 수 있게 했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>양식 표가 규정 본문과 분리되어 청킹 단계로 넘어갑니다. 판별 규칙의 정확도는 따로 측정하지 못했습니다.</p></section>
+    </div>
+    
+  </article><article class="case" id="ai-llm-port-entity-matching-korean-match">
+    <header class="c-head">
+      <div class="c-kicker"><span class="c-num">CASE 05</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div>
+      <h3>규칙으로 풀기 어려운 한글 선박명을, 규칙 소리 키와 LLM 후보로 나눠 푼 사례</h3>
+    </header>
+    <ol class="flow" style="--n:6"><li><strong>정규화</strong><span>이름 정리</span></li><li><strong>후보 검색</strong><span>소리 키 + 톤수 창</span></li><li><strong>LLM 표기</strong><span>라틴 후보 추가</span></li><li class="hl"><strong>랭커</strong><span>LightGBM lambdarank</span></li><li><strong>재순위</strong><span>한글 상위 10개</span></li><li><strong>선박 1척</strong><span>vessel_id 확정</span></li></ol>
+    <div class="paar">
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>한글 이름은 리플렉션(차용어), 흥아(로마자), 에스티아이(약어 읽기)가 섞여 표기 규칙 하나로 맞추기 어렵습니다. 한글 행은 학습 데이터의 약 9.7%지만 점수의 70%입니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표준 로마자 표기만 쓰면 소리 분류 키 대비 한글 오류가 24건에서 63건으로 늘어 제외했습니다.</li><li>한글을 자음·모음 소리 키로 바꿔 비교하는 방식을 채택하고, 차용어 규칙(묵음 R, 어두 H, 모음 Y)을 더하자 한글 오류가 23건에서 14건으로 줄었습니다(5개 시드 평균).</li><li>규칙만으로는 처음 보는 표기에 약해, LLM이 라틴 표기를 생성하는 채널을 검색 단계의 보조로 추가했습니다.</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>한글 소리 키와 톤수 창(±25%)으로 후보를 모으고, Kanana 1.5 2.1B가 만든 라틴 표기로도 후보를 모아 합쳤습니다.</li><li>LLM은 후보만 늘리고 최종 판단은 항상 랭커가 하도록 했습니다. 한글 행에는 상위 10개를 LLM 우도로 보정하는 재순위를 더했습니다.</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-ops">운영 기록</span></h5><p>규칙 기반 v2는 공개 리더보드 0.8805였고, LLM 후보 채널을 넣은 제출은 0.9163(한글 479/532, 비한글 1701/1784)이었습니다. 표기 증강을 넣은 LLM 변형은 0.9036으로 낮아 되돌렸습니다. 공개 리더보드는 테스트의 50% 기준이며 최종 순위는 대회 종료 후 정해집니다.</p></section>
+    </div>
+    
+  </article></div>
+        <h3 class="part">추가 근거</h3>
+        <div class="evidence">
+    <div class="ev-block"><h4 class="sub">사용한 기술</h4><ul class="chips"><li>Python</li><li>Llama 3.1 8B</li><li>Transformers</li><li>TRL</li><li>PEFT(LoRA)</li><li>bitsandbytes</li><li>pandas</li><li>numpy</li><li>PyMuPDF</li><li>python-docx</li><li>rhwp-python</li><li>Open WebUI</li><li>Ollama</li><li>ChromaDB</li><li>LightGBM</li><li>RapidFuzz</li><li>scikit-learn</li><li>PyTorch</li></ul></div>
+    <div class="ev-block"><h4 class="sub">팀 프로젝트에서 제가 맡은 범위</h4><div class="scope">
+        <div class="scope-mine"><h5>Emori · 제가 맡은 일</h5><ul><li>뇌파·VR 결과 TXT를 JSON으로 통합하고 값·라벨 정리</li><li>규칙 기반 데이터 증강 50세트</li><li>정답 문장 4가지 문체 작성 (70세트 x 4문체 = 280개)</li><li>Llama 3.1 8B LoRA 파인튜닝과 서술형 요약 생성</li></ul></div>
+        <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>상담 인터뷰 텍스트의 감정 키워드 추출(형태소 분석과 BERT 결합), 키워드와 감정의 연관 분석, 통합 대시보드는 팀원이 맡았습니다. 이 자료에서는 제 성과로 주장하지 않습니다.</p></div>
+      </div><div class="scope">
+        <div class="scope-mine"><h5>Witches-Chat-Core · 제가 맡은 일</h5><ul><li>HWP·DOCX·PDF 규정을 Markdown으로 변환하는 형식별 변환기</li><li>편·장·절·조·항·호·목을 Markdown 기호로 표시</li><li>제어문자·서식 노이즈 제거, 표와 양식을 본문에서 분리</li><li>DOCX·PDF 변환 속도 개선, 변환 전후 글자 수 점검 로그</li><li>오피스·이미지·음성 변환 추가, 청킹용 블록 정보(chunk:block 주석) 전달</li></ul></div>
+        <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>청킹, 임베딩, 소속별 검색, 입력 가드레일, 출력 개인정보 마스킹, Open WebUI 연동과 서버·인프라는 팀원이 맡았습니다. 청킹용 블록 정보 형식은 팀원과 함께 정했습니다.</p></div>
       </div></div>
-    <p class="chart-caption">같은 검증 틀(886거래일, 비용 차감)에서 비교한 대표 모델.</p>
-  </figure></div>
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">15:30 종가를 15:20 판단에 섞지 않기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>백테스트에서 장 마감 후 확정되는 종가나 피처가 15:20 판단에 섞이면 수익률이 비현실적으로 좋아집니다. 이 프로젝트는 판단 시각(15:20)과 종가 확정 시각(15:30)이 10분 차이라 실수하기 쉬웠습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>15:20 관찰 가격(결정_종가)과 15:30 확정 종가를 서로 다른 컬럼으로 분리해 저장</li><li>과거 1분봉에서 15:20 시점의 상태를 복원하는 패널 빌더를 만들고, 피처마다 사용 가능 시각(available_by) 검증기 적용</li><li>판단은 15:20 정보로만, 체결은 종가 매수 → 다음 날 09:00 시초가 전량 청산으로 고정하고 사후 갭 필터는 금지</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>문서 기준 미래 정보 참조율 0.00%. 수익률이 올라가는 사후 필터를 쓰지 않는 대신 결과가 보수적으로 나옵니다.</p></div>
-    </div></details><details class="decision"><summary class="d-head"><span class="d-num">02</span><span class="d-title">선형 모델은 비용을 못 넘고, 트리 모델은 넘는다</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>호가 불균형·수급·예상체결 괴리 같은 변수는 서로 상호작용하는데, 어떤 모델과 손실 함수가 이를 비용 차감 후에도 살려내는지 몰랐습니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>ElasticNet·Huber(선형)와 ExtraTrees·LightGBM(트리)을 같은 검증 틀에서 비교</li><li>이상치에 둔감한 L1 손실, 하방 손실 가중 손실 등 목적 함수를 바꿔 가며 비교</li><li>운영 모델은 5개 시드 LightGBM 앙상블로 구성</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>선형 모델은 -12.27 / -8.81bp로 비용을 넘지 못했고 트리 계열은 +17.98bp 이상이었습니다. 호가·수급 변수의 비선형 상호작용이 핵심이라는 판단 근거가 됩니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>118개 전략을 탐색한 뒤 고른 결과라 선택 편향이 남아 있습니다. CPCV와 엠바고로 줄였지만 없애지는 못했습니다.</li><li>표본이 약 3년 8개월의 한 시장입니다. 다른 국면에서의 재현은 확인하지 못했습니다.</li><li>호가 비용이 6틱까지 커지면 손실로 바뀝니다. 체결 품질이 전략 성패를 좌우합니다.</li><li>실계좌 수익 실적은 없고, 이 자료의 모든 수익률은 백테스트입니다.</li></ul><h5>배운 점</h5><p>수익률을 올리는 작업보다 &quot;어디서 숫자가 부풀려질 수 있는지&quot;를 하나씩 막는 작업이 결과를 믿게 만든다는 점을 배웠습니다.</p></div>
-  </article><article class="project" id="ai-llm-witches-chat-core">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 03</span><span class="kind kind-team">팀 프로젝트</span></div>
-      <h3>Witches-Chat-Core</h3>
-      <p class="tagline">대학 학사 규정을 검색 가능한 형태로 정리해 안전한 질의응답으로 연결하는 RAG 팀 프로젝트</p>
-    </header>
-    <dl class="meta"><div><dt>역할</dt><dd>팀 프로젝트 · 담당: RAG 청킹을 위한 학사 규정 데이터 전처리, 문서 파싱·구조화</dd></div><div><dt>기간</dt><dd>2026</dd></div><div><dt>기술</dt><dd>Python · 문서 파싱(HWP·DOCX·PDF) · 데이터 전처리</dd></div><div><dt>GitHub</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
-    <div class="scope">
-    <div class="scope-mine"><h5>제가 맡은 범위</h5><ul><li>HWP·DOCX·PDF 등 학사 규정 문서에서 불필요한 서식·양식·노이즈를 제거하고 본문 구조 정리</li><li>편·장·절·조·항·호·목 7단계 계층 구조와 예외 조건이 유지되도록 청킹 전 구조화</li><li>표와 양식 문서가 검색 결과를 오염시키지 않도록 실제 규정 본문과 분리</li><li>정제한 데이터를 후속 청킹·임베딩·검색 단계에서 바로 쓸 수 있는 형태로 전달</li></ul></div>
-    <div class="scope-others"><h5>팀 프로젝트 전체에서 제 기여가 아닌 부분</h5><p>청킹, 임베딩·검색, 접근 제어, 가드레일, LLM 응답 생성 등 RAG 서비스의 나머지 구성은 팀원이 구현했으며 이 자료의 성과로 주장하지 않습니다.</p></div>
+    <div class="ev-block"><h4 class="sub">개발 과정에서의 AI 활용</h4><p class="ai-text">AI 코딩 도구를 주로 코드를 쓰는 데 사용했고, 아이디어를 다듬거나 처음 접하는 분야를 공부할 때도 썼습니다. 수치와 동작은 직접 확인했고, 확인하지 못한 것은 성과로 쓰지 않았습니다.</p>
+      <table class="ai-table"><thead><tr><th>AI에 맡긴 일</th><th>직접 한 일</th></tr></thead><tbody><tr><td>코드 작성</td><td>결과 수치와 동작을 직접 확인</td></tr><tr><td>아이디어 정리와 도메인 학습 보조</td><td>확인하지 못한 내용은 성과로 쓰지 않기</td></tr></tbody></table></div>
+    <div class="ev-block"><h4 class="sub">프로젝트별 한계</h4><ul class="lim"><li><strong>Emori</strong> 파인튜닝 결과의 정량 평가(정확도, 손실 곡선 비교 등)를 하지 않았고, 품질은 생성 문장을 직접 읽어 확인한 수준입니다.</li><li><strong>Witches-Chat-Core</strong> 전처리 구간에는 자동 테스트가 없어, 변환 결과는 글자 수 대조 로그(85% 미만이면 경고만 남김)와 눈으로 확인했습니다.</li><li><strong>Port Entity Matching</strong> 로컬 점수 0.9910은 LLM 채널을 넣기 전 번들의 값이고, LLM 채널을 포함한 현재 코드의 교차검증 점수는 아직 측정하지 않았습니다. 대회 진행 중이라 최종 순위도 없습니다.</li></ul></div>
   </div>
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>학사 규정 RAG 팀 프로젝트, 청킹 이전의 문서 전처리·구조화 담당.</strong> 7단계 규정 계층과 예외 조건을 보존해 청킹 가능한 데이터로 만드는 일을 했습니다.</p></div>
-    <div class="background"><p>학사 규정은 계층 구조가 깊고 예외 조건이 많아, 단순히 글자 수로 잘라서는 검색 가능한 지식이 되기 어렵습니다. 이 팀 프로젝트는 규정을 검색 가능한 지식으로 구성하고 안전한 LLM 응답으로 연결하는 RAG 시스템입니다. 저는 그중 <strong>청킹 이전의 데이터 전처리와 문서 구조화</strong>를 맡았습니다.</p>
-</div>
-    
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">보존한 규정 계층</div>
-      <div class="m-value">7단계</div>
-      <div class="m-note">편·장·절·조·항·호·목</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li><li class="metric">
-      <div class="m-label">처리한 문서 형식</div>
-      <div class="m-value">HWP · DOCX · PDF</div>
-      <div class="m-note">학사 규정 문서</div>
-      <span class="basis basis-doc">README 기재</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">규정의 계층과 예외 조건을 잃지 않고 청킹 가능한 데이터로 만들기</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>규정은 조·항·호로 이어지는 계층 안에서 의미가 정해지고, &quot;다만&quot; 같은 예외 조건이 바로 뒤 문장에 붙습니다. 서식과 표를 함부로 정리하거나 문장 단위로 자르면 예외가 사라지거나 다른 조항과 섞입니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>문서 형식별 파서로 원문을 추출한 뒤, 서식·머리글·양식 등 규정 내용이 아닌 요소를 제거</li><li>편·장·절·조·항·호·목의 7단계 계층을 인식해 각 문장이 속한 위치와 예외 조건이 함께 유지되도록 구조화</li><li>표와 양식은 본문과 분리해, 검색 결과에 노이즈로 섞이지 않게 함</li><li>파서는 DOCX의 XML을 직접 순회하고 제어문자를 걸러내 속도를 확보하고, 서식 표는 따로 격리(저장소 문서의 수집·파싱 단계 설명 기준)</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>원문을 유지한 구조화 데이터가 팀의 청킹·임베딩 단계로 전달됩니다. 검색 정확도 같은 팀 시스템 지표는 개인 성과로 쓰지 않습니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>제가 맡은 범위는 전처리·구조화이고, 그 결과가 최종 검색·답변 품질에 준 영향을 분리해 측정하지는 않았습니다.</li><li>저장소가 비공개라 이 자료에서는 코드 링크를 제공하지 않습니다. 팀 전체 지표(가드레일 방어율, 지연시간 등)는 제 기여가 아니므로 인용하지 않았습니다.</li></ul><h5>배운 점</h5><p>RAG 품질은 모델 이전에 문서를 어떤 단위로 자르고 무엇을 남기느냐에서 갈린다는 점을 배웠습니다.</p></div>
-  </article><article class="project compact" id="ai-llm-port-entity-matching">
-    <header class="p-head">
-      <div class="kicker"><span>PROJECT 04</span><span class="kind kind-personal">개인 프로젝트</span></div>
-      <h3>Port Entity Matching</h3>
-      <p class="tagline">오타와 누락이 섞인 입출항 기록을 7만 8천 척의 표준 선박 카탈로그에 연결하는 매칭 모델 (DACON 항만 AI 대회)</p>
-    </header>
-    <dl class="meta"><div><dt>역할</dt><dd>정규화, 후보 검색, 학습 랭커, 평가 도구, LLM 음역 채널까지 대회 개인 참가로 단독 설계·구현</dd></div><div><dt>기간</dt><dd>2026.1</dd></div><div><dt>기술</dt><dd>Python · LightGBM(lambdarank) · LLM(Kanana·Qwen · 고정 가중치) · pytest · uv</dd></div><div><dt>GitHub</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
-    
-    <div class="lens"><span class="lens-tag">이 직무 관점</span><p><strong>학습 랭커와 LLM을 후보 생성기로 쓴 매칭 대회 프로젝트 (개인, 대회 진행 중).</strong> 교차검증과 리더보드의 격차를 가설로 나눠 검증하고, LLM이 정답을 정하지 않고 후보만 만들게 설계했습니다.</p></div>
-    
-    
-    <ul class="metrics"><li class="metric">
-      <div class="m-label">로컬 교차검증 점수</div>
-      <div class="m-value">0.9875</div>
-      <div class="m-note">선박 단위로 분리한 5-fold · 한글명 0.9824 · 비한글명 0.9995 · 가중 0.7/0.3</div>
-      <span class="basis basis-backtest">백테스트</span>
-    </li><li class="metric">
-      <div class="m-label">공개 리더보드 점수</div>
-      <div class="m-value">0.8805 → 0.9163</div>
-      <div class="m-note">LLM 음역 채널 적용 전후 · 공개 리더보드(테스트의 50%) · 대회 진행 중</div>
-      <span class="basis basis-ops">운영 기록</span>
-    </li></ul>
-    
-    <div class="decisions"><h4 class="sub">핵심 판단과 해결</h4><details class="decision" open><summary class="d-head"><span class="d-num">01</span><span class="d-title">교차검증 0.9875인데 리더보드는 0.8805였을 때</span></summary>
-    <div class="d-grid">
-      <div class="d-col"><h5>문제</h5><p>로컬 검증과 리더보드의 격차가 컸습니다. 원인을 추측으로 고치면 대회 제출 횟수(하루 5회)만 낭비합니다.</p></div>
-      <div class="d-col"><h5>한 일</h5><ul><li>영문명 기록만 제출해 리더보드에서 버킷별 점수를 역산(영문 약 0.913, 한글 약 0.867)해 문제를 한글명으로 좁힘</li><li>서빙 경로 불일치, 학습에 없던 선박, 톤수 잡음, 영문 오타의 네 가설을 각각 합성 데이터와 저장·로드 비교로 검증해 모두 기각</li></ul></div>
-      <div class="d-col d-result"><h5>결과</h5><p>가설 4개를 기각해 병목을 학습 데이터에 없는 한글 표기 일반화로 좁혔습니다. 이 진단이 다음 단계의 방향이 되었습니다.</p></div>
-    </div></details></div>
-    <div class="limits"><h5>한계</h5><ul><li>대회가 2026-11-02까지 진행 중이라 최종 순위와 비공개 리더보드 점수는 아직 없습니다.</li><li>교차검증(0.9875)과 리더보드(0.9163)의 격차는 아직 남아 있습니다. 한글 규칙을 학습 데이터 이름을 본 뒤에 작성해 로컬 점수가 낙관적일 수 있음을 문서에도 적었습니다.</li><li>서버 시간 예산은 L4 서버 실측이 아니라 로컬 GPU 기반 추정치이며, 대회 규칙상 데이터와 코드는 외부에 공유할 수 없어 저장소는 비공개입니다.</li></ul></div>
-  </article>
       </div>
     </section>
 <section class="others-sec" id="projects-others"><div class="wrap">
-  <h2>그 밖의 프로젝트와 링크</h2>
-  <ul class="others"><li><a href="https://github.com/KTHYEONG/k-stock-engine"><strong>K-Stock Engine</strong></a><span>국내주식 실행 코어와 KIS·KRX·DART 연동을 분리한 모듈형 엔진. 과거 연구 코드는 legacy/로 격리했습니다.</span></li><li><a href="https://github.com/KTHYEONG/oibc-2026"><strong>OIBC 2026</strong></a><span>태양광 발전량 예측과 포트폴리오 최적화 챌린지 프로젝트. 진행 중이라 검증된 성과는 싣지 않았습니다.</span></li><li><a href="https://github.com/KTHYEONG/ETF-Manager"><strong>ETF-Manager</strong></a><span>월 적립식 ETF 자산배분 연구(S&amp;T / 퀀트 자료에 요약 수록).</span></li></ul>
-  <p class="contact">연락 <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · GitHub <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a> · <a href="https://sparkly-quince-4ff.notion.site/Portfolio-3c996e29c4cf80c38b09ea1cca9a1cb4">금융·퀀트 Notion</a><a href="https://sparkly-quince-4ff.notion.site/AI-Portfolio-3e396e29c4cf810aaa44df3204963b41">AI Notion</a></p>
+  <h2>그 밖의 프로젝트</h2>
+  <ul class="others"><li><a href="https://github.com/KTHYEONG/auto-mobility"><strong>auto-mobility</strong></a><span>실내 공간을 3D 모델로 복원하고 센서 데이터로 검증하는 온라인 현장실습 팀 프로젝트(3명). 저는 Visual SLAM 비교와 평가를 주로 맡았습니다.</span></li><li><a href="https://github.com/KTHYEONG/k-stock-engine"><strong>K-Stock Engine</strong></a><span>국내주식 다중 팩터 전략을 연구하고 가상 장부로 기록합니다. 아직 불완전한 단계라 성과는 싣지 않았습니다.</span></li><li><a href="https://github.com/KTHYEONG/oibc-2026"><strong>OIBC 2026</strong></a><span>태양광 발전량 예측과 가상발전소(VPP) 배정 대회 프로젝트. 제출 전이라 점수는 싣지 않았습니다.</span></li></ul>
+  <p class="contact">연락 <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></p>
 </div></section>
 </main>
-<footer class="site-foot"><div class="wrap">김태형 · 모든 수치는 각 저장소 문서 기준이며 측정 방식을 함께 표기했습니다.</div></footer>
+<footer class="site-foot"><div class="wrap">김태형 · 모든 수치에는 측정 방식을 함께 표기했습니다. 자세한 근거는 각 저장소 README에 있습니다.</div></footer>
 <script src="app.js"></script>
 </body>
 </html>
