@@ -4,51 +4,55 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>K-Closing Alpha · 김태형 포트폴리오</title>
-<meta name="description" content="장마감 동시호가 정보로 종목을 골라 종가에 사고 시초가에 파는 퀀트 시스템">
+<meta name="description" content="동시호가 정보로 종가 매수·시초가 청산하는 퀀트">
 <meta name="robots" content="noindex">
-<meta property="og:title" content="K-Closing Alpha · 김태형 포트폴리오"><meta property="og:description" content="장마감 동시호가 정보로 종목을 골라 종가에 사고 시초가에 파는 퀀트 시스템"><meta property="og:type" content="website">
+<meta property="og:title" content="K-Closing Alpha · 김태형 포트폴리오"><meta property="og:description" content="동시호가 정보로 종가 매수·시초가 청산하는 퀀트"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
   <a class="brand" href="../">김태형</a>
-  <nav aria-label="페이지 이동"><a href="../#tracks">← 분야별 보기</a><a class="gh" href="https://github.com/KTHYEONG/k-closing-alpha">GitHub</a></nav>
+  <nav aria-label="페이지 이동"><a href="../#tracks">← 목록</a><a class="gh" href="https://github.com/KTHYEONG/k-closing-alpha">GitHub</a></nav>
 </div></header>
 <main class="wrap proj">
   <header class="pj-head">
     <p class="crumb"><a href="../">포트폴리오</a> / 프로젝트</p>
     <div class="pj-kicker"><span class="kind kind-personal">개인</span><a class="field" href="../#finance-data">데이터 · 금융 IT</a><a class="field" href="../#quant">퀀트</a></div>
     <h1>K-Closing Alpha</h1>
-    <p class="pj-tag">장마감 동시호가 정보로 종목을 골라 종가에 사고 시초가에 파는 퀀트 시스템</p>
+    <p class="pj-tag">동시호가 정보로 종가 매수·시초가 청산하는 퀀트</p>
   </header>
   <section class="pj-sec">
     <h2 class="part">개요</h2>
-    <p class="pj-summary">국내 주식의 장마감 동시호가(15:20~15:30) 구간에서, 15:20에 볼 수 있는 정보만으로 종목 점수를 매기고 상위 3종목을 종가에 사서 다음 날 시초가에 파는 전략을 연구하고 자동 실행하는 프로젝트입니다. 수익률을 올리는 것보다 &quot;어디서 숫자가 부풀려질 수 있는지&quot;를 먼저 막는 데 집중했습니다. 미래 정보 차단, 거래 비용 반영, 검증 방식, 중복 주문 방지를 각각 코드로 고정했습니다.</p>
-    <dl class="meta"><div><dt>기간</dt><dd>2026</dd></div><div><dt>역할</dt><dd>데이터 수집·피처·모델·검증·주문 실행 로직을 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>LightGBM</li><li>pandas</li><li>PyArrow(Parquet)</li><li>aiohttp</li><li>pydantic</li><li>pytest</li><li>systemd</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/k-closing-alpha">github.com/KTHYEONG/k-closing-alpha</a></dd></div></dl>
+    <p class="pj-summary">15:20에 볼 수 있는 정보만으로 종목 점수를 매기고, 상위 3종목을 종가에 사서 다음 날 시초가에 파는 전략을 연구·자동 실행합니다. 수익률보다 숫자가 부풀려질 곳을 먼저 막았습니다. 미래 정보 차단, 비용 반영, 검증, 중복 주문 방지를 코드로 고정했습니다.</p>
+    <dl class="meta"><div><dt>기간</dt><dd>2026</dd></div><div><dt>역할</dt><dd>수집·모델·검증·주문 실행 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>LightGBM</li><li>pandas</li><li>PyArrow(Parquet)</li><li>aiohttp</li><li>pydantic</li><li>pytest</li><li>systemd</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/k-closing-alpha">github.com/KTHYEONG/k-closing-alpha</a></dd></div></dl>
     
-    <ul class="metrics"><li class="metric"><div class="m-label">일평균 순수익</div><div class="m-value">+34.58bp</div><div class="m-note">886거래일(2023-01~2026-09), 거래세·왕복 2틱 호가 비용·수수료 차감 후 (1bp=0.01%)</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">Sharpe</div><div class="m-value">2.73</div><div class="m-note">t값 5.12, 승률 56.3%, 최대낙폭 28.98%</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">비용 민감도</div><div class="m-value">4틱까지 양(+)</div><div class="m-note">왕복 호가 비용을 1~6틱으로 올린 시험, 6틱에서 음수</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">검증한 전략 수</div><div class="m-value">118개</div><div class="m-note">연구 문서의 백테스트 표 기준</div><span class="basis basis-backtest">백테스트</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">일평균 순수익</div><div class="m-value">+34.58bp</div><div class="m-note">886거래일(2023-01~2026-09), 세금·호가 비용·수수료 차감 후 (1bp=0.01%)</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">Sharpe</div><div class="m-value">2.73</div><div class="m-note">t값 5.12, 승률 56.3%, 최대낙폭 28.98%</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">비용 민감도</div><div class="m-value">4틱까지 양(+)</div><div class="m-note">왕복 호가 비용 1~6틱 시험, 6틱에서 음수</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">검증한 전략 수</div><div class="m-value">118개</div><div class="m-note">연구 문서의 백테스트 표 기준</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>
+  <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
+    <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>수집</h4><div class="arch-node"><strong>증권사 5곳 API</strong><span>시세·호가·수급</span></div><div class="arch-node hl"><strong>15:20 패널</strong><span>시점 정보만</span></div></div><div class="arch-stage"><h4>선정</h4><div class="arch-node hl"><strong>유니버스 필터</strong><span>1틱 12bp 이하</span></div><div class="arch-node"><strong>LightGBM 랭커</strong><span>상위 3종목</span></div></div><div class="arch-stage"><h4>주문</h4><div class="arch-node hl"><strong>주문 저널</strong><span>선기록</span></div><div class="arch-node"><strong>종가 매수</strong><span>모의 또는 실주문</span></div></div><div class="arch-stage"><h4>확정·청산</h4><div class="arch-node"><strong>종가 확정</strong><span>3중 조건 확인</span></div><div class="arch-node"><strong>시초가 청산</strong><span>다음 날 09:00</span></div></div><div class="arch-stage"><h4>야간</h4><div class="arch-node"><strong>백필·감사·백업</strong><span>주간 재학습</span></div></div></div>
+    <figcaption>15:20 수집부터 다음 날 시초가 청산까지</figcaption>
+  </figure></section>
   <section class="pj-sec">
-    <h2 class="part">핵심 설계 판단 <span class="part-hint">문제 → 분석 → 실행 → 결과</span></h2>
+    <h2 class="part">사례</h2>
     <div class="cases"><article class="case" id="pit">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>15:20 판단 시점과 15:30 확정 종가를 컬럼부터 분리해 미래 정보 누출을 막았다</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>판단 시점·확정 종가 컬럼 분리, 미래 정보 차단</h3></header>
     <ol class="flow" style="--n:5"><li class="hl"><strong>15:20 수집</strong><span>결정_종가 저장</span></li><li><strong>점수 산정</strong><span>15:20 정보만 사용</span></li><li><strong>15:30 확정</strong><span>종가는 별도 컬럼</span></li><li><strong>종가 매수</strong><span>상위 3종목</span></li><li><strong>시초가 청산</strong><span>다음 날 09:00</span></li></ol>
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>15:30에 확정되는 종가가 15:20 판단에 섞이면 백테스트가 실제로는 불가능한 수익을 보여 줍니다. 판단 시각과 종가 확정 시각이 10분 차이라 실수하기 쉬운 구조였습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>전체 기간 데이터를 한꺼번에 쓰는 방식은 단순하지만, 누출을 코드로 막지 못해 제외했습니다.</li><li>데이터를 처음부터 시점별로 따로 저장하는 쪽이 누출 여부를 검증하기 쉬워 선택했습니다.</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>수집 시점 가격(결정_종가)과 확정 종가(종가)를 서로 다른 컬럼으로 저장했습니다.</li><li>과거 구간은 1분봉에서 15:20 상태를 복원해 같은 형태의 패널로 만들었습니다.</li><li>작업 규칙에 &#39;관측 불가능한 가격으로 체결 가정 금지&#39;를 명시했습니다.</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>연구 문서 기준으로 모든 백테스트가 15:20 시점 정보만으로 판단하고, 15:30 종가 매수와 다음 날 09:00 시초가 청산 규칙을 따릅니다.</p></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>15:30 확정 종가가 15:20 판단에 섞이면 불가능한 수익이 나옵니다. 두 시각이 10분 차이라 실수하기 쉽습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>전체 기간 일괄 사용: 누출을 코드로 못 막아 제외</li><li>시점별 별도 저장: 누출 검증이 쉬워 선택</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>수집 시점 가격(결정_종가)과 확정 종가(종가) 컬럼 분리</li><li>과거 구간은 1분봉에서 15:20 상태 복원</li><li>작업 규칙에 &#39;관측 불가능한 가격 체결 가정 금지&#39; 명시</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>모든 백테스트가 15:20 정보만 사용, 15:30 종가 매수·다음 날 09:00 시초가 청산(연구 문서 기준).</p></section>
     </div>
     
   </article><article class="case" id="cost">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>1틱 비용이 12bp를 넘는 종목을 순위 매기기 전에 제외해 비용에 지는 매매를 걸러냈다</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>1틱 비용 12bp 초과 종목, 순위 전에 제외</h3></header>
     
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>점수 상위 종목을 그대로 사면 호가 간격이 큰 저가주가 많이 들어옵니다. 1틱이 가격의 20~50bp인 종목은 세금과 슬리피지를 빼면 손실이 납니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>상한을 6, 9, 12, 15bp와 상한 없음으로 바꿔 비교했습니다.</li><li>15bp는 Sharpe가 2.88로 더 높지만 매매가 이뤄진 날이 83.3%로 12bp의 99.7%보다 적어 제외했습니다.</li><li>12bp는 후보 종목 수를 7.5bp 대비 2.6배로 늘리면서 Sharpe도 높아 선택했습니다.</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>가격대별 호가 단위 표를 코드에 넣고 <code>1틱 / 현재가</code>를 계산해 12bp 초과 종목을 제외했습니다.</li><li>거래세는 날짜별 세율표로, 수수료는 적용받는 증권사 우대율(왕복 약 0.73bp)로 반영했습니다.</li><li>상한가 근처 종목 처리도 같은 전략 계약 안에 두었습니다.</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-backtest">백테스트</span></h5><p>5,000원 미만 종목만 사면 일평균 -12.53bp, 5,000~20,000원 구간은 +24.02bp였습니다(백테스트, 연구 문서 4절).</p></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>상위 종목에 호가 간격 큰 저가주가 몰립니다. 1틱이 20~50bp인 종목은 세금·슬리피지 후 손실입니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>상한 6·9·12·15bp, 상한 없음 비교</li><li>15bp: Sharpe 2.88로 높지만 매매일 83.3%(12bp는 99.7%)라 제외</li><li>12bp 선택: 후보 종목 7.5bp 대비 2.6배, Sharpe도 높음</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>가격대별 호가 단위 표로 <code>1틱 / 현재가</code> 계산, 12bp 초과 제외</li><li>거래세 날짜별 세율표, 수수료 증권사 우대율(왕복 약 0.73bp)</li><li>상한가 근처 종목 처리도 같은 전략 계약에 포함</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-backtest">백테스트</span></h5><p>5,000원 미만만 매수 -12.53bp/일, 5,000~20,000원 +24.02bp/일(백테스트, 연구 문서 4절).</p></section>
     </div>
     <figure class="chart">
     <figcaption class="chart-title">가격대별 일평균 순수익 <span class="chart-unit">bp/일</span> <span class="basis basis-backtest">백테스트</span></figcaption>
@@ -64,28 +68,28 @@
     <p class="chart-caption">886거래일 백테스트, 비용 차감 후, 해당 가격대 종목만 매수했을 때</p>
   </figure>
   </article><article class="case" id="cv">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>겹치는 라벨을 제거한 CPCV와 교체 게이트로, 우연히 좋은 모델이 운영에 들어가는 길을 막았다</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>겹침 제거 CPCV와 교체 게이트, 우연한 모델 차단</h3></header>
     <ol class="flow" style="--n:5"><li class="hl"><strong>8구간 분할</strong><span>2구간을 시험용</span></li><li><strong>앞뒤 제외</strong><span>시험 구간 인접 1구간</span></li><li><strong>28개 분할</strong><span>독립 경로 7개</span></li><li><strong>주간 재학습</strong><span>신규 모델 생성</span></li><li class="hl"><strong>교체 게이트</strong><span>순위 일치도 0.95 이상</span></li></ol>
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>라벨 기간이 겹치는 데이터를 무작위로 나누면 학습과 평가가 섞입니다. 118개 전략을 비교하면 우연히 좋은 전략을 고를 위험도 있습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단순 시간 분할은 평가 경로가 한 개뿐이라 한 번의 운에 좌우되어 제외했습니다.</li><li>데이터를 8구간으로 나눠 2구간을 시험용으로 뽑는 조합 방식(CPCV)은 평가 경로를 여러 개 만들어 선택했습니다.</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>CPCV(8, 2)로 28개 분할(독립 경로 7개)을 만들고, 시험 구간 앞뒤 1구간씩을 학습에서 뺐습니다.</li><li>매주 재학습한 모델은 최근 20거래일 예측 순위 일치도 0.95 이상 등의 기준을 통과해야 운영 모델이 되도록 게이트를 만들었습니다.</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>기준 미달 모델은 운영에 올라가지 못하는 구조를 갖췄습니다. 다만 118개 중 고른 결과라 선택 편향은 남아 있고, 보정 결과는 제시하지 않았습니다.</p></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>라벨 기간이 겹치는 데이터를 무작위로 나누면 학습과 평가가 섞입니다. 118개 전략 비교 시 우연히 좋은 전략을 고를 위험도 있습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단순 시간 분할: 평가 경로 1개라 운에 좌우, 제외</li><li>8구간 중 2구간 시험(CPCV): 평가 경로 다수, 선택</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>CPCV(8, 2): 28개 분할, 독립 경로 7개</li><li>시험 구간 앞뒤 1구간씩 학습에서 제외</li><li>주간 재학습 모델은 최근 20거래일 순위 일치도 0.95 이상 등 통과해야 운영</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>기준 미달 모델은 운영에 못 올라갑니다. 118개 중 고른 결과라 선택 편향은 남고 보정 결과는 없습니다.</p></section>
     </div>
     
   </article><article class="case" id="journal">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>주문을 보내기 전에 먼저 기록하고, 응답이 불확실하면 증권사 원장으로 확인해 중복 주문을 막았다</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">K-Closing Alpha</span><span class="kind kind-personal">개인</span></div><h3>주문 선기록과 원장 확인, 중복 주문 차단</h3></header>
     <ol class="flow" style="--n:5"><li class="hl"><strong>의도 기록</strong><span>INTENT 디스크 저장</span></li><li><strong>주문 전송</strong><span>SEND 기록</span></li><li><strong>응답 불확실</strong><span>UNKNOWN 상태</span></li><li class="hl"><strong>원장 조회</strong><span>같은 주문 탐색</span></li><li><strong>채택/종결</strong><span>ADOPT 또는 종결</span></li></ol>
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>주문 응답이 타임아웃되면 접수 여부를 알 수 없습니다. 그대로 재전송하면 이중 매수가 됩니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>재시도 횟수를 제한하는 방법은 이미 접수된 주문을 막지 못해 제외했습니다.</li><li>보내기 전에 기록을 남기고, 결과가 불확실하면 증권사 원장을 조회해 맞추는 방식을 선택했습니다.</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>주문 의도(INTENT)와 전송(SEND)을 디스크에 먼저 쓰고 전송했습니다.</li><li>응답이 불확실하면 UNKNOWN 상태로 두고, 원장에서 같은 주문을 찾으면 채택(ADOPT), 없을 때만 종결하도록 했습니다.</li><li>종가는 시각, 장운영 구분코드, 현재가와 호가 조회 가격 일치의 3조건을 모두 만족할 때만 확정합니다.</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>상태 전이와 채택 로직, 종가 확정 조건 함수를 구현했고 단위 테스트가 있습니다. 실거래 운영 기록은 없습니다.</p></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>주문 응답이 타임아웃되면 접수 여부를 모릅니다. 재전송하면 이중 매수가 됩니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>재시도 횟수 제한: 접수된 주문을 못 막아 제외</li><li>전송 전 기록 + 불확실 시 원장 조회: 선택</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>주문 의도(INTENT)·전송(SEND)을 디스크에 먼저 기록</li><li>응답 불확실 시 UNKNOWN, 원장에 같은 주문 있으면 채택(ADOPT), 없을 때만 종결</li><li>종가 확정: 시각·장운영 구분코드·현재가와 호가 가격 일치 3조건</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>상태 전이·채택 로직·종가 확정 함수 구현, 단위 테스트 있음. 실거래 운영 기록은 없음.</p></section>
     </div>
     
   </article></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>모든 수익 수치는 과거 데이터 백테스트이며, 실계좌나 모의투자의 누적 손익 기록은 없습니다. 118개 전략 중 좋은 결과를 골랐기 때문에 실제 성과는 이보다 낮을 수 있습니다.</li><li>원시 데이터는 저장소에 없어 백테스트를 그대로 재현할 수 없고, 비용 모델은 제 계좌의 수수료 조건 기준입니다.</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/k-closing-alpha#readme">저장소 README</a>에 있습니다.</p></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>수익 수치는 모두 백테스트, 실계좌·모의투자 손익 기록 없음</li><li>118개 중 고른 결과라 실제 성과는 더 낮을 수 있음</li><li>원시 데이터 미포함으로 재현 불가, 비용은 내 계좌 수수료 기준</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/k-closing-alpha#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="port-entity-matching.html"><span>이전 프로젝트</span><strong>Port Entity Matching</strong></a>
     <a class="pn next" href="savetax.html"><span>다음 프로젝트</span><strong>SaveTax</strong></a>

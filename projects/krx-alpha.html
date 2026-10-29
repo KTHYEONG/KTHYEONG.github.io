@@ -4,76 +4,80 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KRX-Alpha · 김태형 포트폴리오</title>
-<meta name="description" content="국내주식 호가·체결 틱을 모으고 검증하는 데이터 파이프라인">
+<meta name="description" content="호가·체결 틱 수집·검증 데이터 파이프라인">
 <meta name="robots" content="noindex">
-<meta property="og:title" content="KRX-Alpha · 김태형 포트폴리오"><meta property="og:description" content="국내주식 호가·체결 틱을 모으고 검증하는 데이터 파이프라인"><meta property="og:type" content="website">
+<meta property="og:title" content="KRX-Alpha · 김태형 포트폴리오"><meta property="og:description" content="호가·체결 틱 수집·검증 데이터 파이프라인"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
   <a class="brand" href="../">김태형</a>
-  <nav aria-label="페이지 이동"><a href="../#tracks">← 분야별 보기</a><a class="gh" href="https://github.com/KTHYEONG/krx-alpha">GitHub</a></nav>
+  <nav aria-label="페이지 이동"><a href="../#tracks">← 목록</a><a class="gh" href="https://github.com/KTHYEONG/krx-alpha">GitHub</a></nav>
 </div></header>
 <main class="wrap proj">
   <header class="pj-head">
     <p class="crumb"><a href="../">포트폴리오</a> / 프로젝트</p>
     <div class="pj-kicker"><span class="kind kind-personal">개인</span><span class="status">진행 중</span><a class="field" href="../#finance-data">데이터 · 금융 IT</a></div>
     <h1>KRX-Alpha</h1>
-    <p class="pj-tag">국내주식 호가·체결 틱을 모으고 검증하는 데이터 파이프라인</p>
+    <p class="pj-tag">호가·체결 틱 수집·검증 데이터 파이프라인</p>
   </header>
   <section class="pj-sec">
     <h2 class="part">개요</h2>
-    <p class="pj-summary">단기투자 전략 백테스트는 데이터에 구멍이 있으면 쉽게 틀어지는데, 증권사 실시간 API는 연결이 끊긴 구간의 체결을 다시 보내 주지 않습니다. 그래서 전략(알파) 연구에 앞서 호가·체결 틱을 빠짐없이 모으고, 빈 곳을 찾아 메우고, 모의 주문을 검증하는 인프라를 먼저 만들었습니다. 알파 연구 단계는 아직 시작 전이며, 이 프로젝트는 수집·검증·모의 집행까지가 범위입니다.</p>
-    <dl class="meta"><div><dt>기간</dt><dd>2026.09 ~ 진행 중</dd></div><div><dt>역할</dt><dd>수집·정규화·검증·백업·모의 주문 집행(OMS)까지 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>asyncio/WebSocket</li><li>Polars</li><li>PyArrow(Parquet)</li><li>SQLite</li><li>zstandard</li><li>Docker Compose</li><li>pytest</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/krx-alpha">github.com/KTHYEONG/krx-alpha</a></dd></div></dl>
+    <p class="pj-summary">증권사 실시간 API는 끊긴 구간의 체결을 다시 보내 주지 않습니다. 알파 연구 전에 틱 수집, 누락 보충, 모의 주문 검증 인프라를 먼저 만들었습니다. 알파 연구는 시작 전입니다.</p>
+    <dl class="meta"><div><dt>기간</dt><dd>2026.09 ~ 진행 중</dd></div><div><dt>역할</dt><dd>수집·정규화·검증·백업·모의 OMS 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>asyncio/WebSocket</li><li>Polars</li><li>PyArrow(Parquet)</li><li>SQLite</li><li>zstandard</li><li>Docker Compose</li><li>pytest</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/krx-alpha">github.com/KTHYEONG/krx-alpha</a></dd></div></dl>
     
     <ul class="metrics"><li class="metric"><div class="m-label">코드 규모</div><div class="m-value">약 3만 줄</div><div class="m-note">src 134개 파일 · 저장소 파일 집계</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">테스트</div><div class="m-value">약 2,860개</div><div class="m-note">def test_ 개수 · 파라미터 확장 전</div><span class="basis basis-code">코드로 확인</span></li><li class="metric"><div class="m-label">개발 기간</div><div class="m-value">커밋 315개</div><div class="m-note">2026-09-08부터 · git 이력</div><span class="basis basis-code">코드로 확인</span></li></ul>
   </section>
+  <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
+    <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>선별</h4><div class="arch-node"><strong>종목 선별</strong><span>전일 종가 기준</span></div></div><div class="arch-stage"><h4>수집</h4><div class="arch-node hl"><strong>웹소켓 수신</strong><span>원본 즉시 기록</span></div><div class="arch-node"><strong>주문 집행 OMS</strong><span>리스크 게이트</span></div></div><div class="arch-stage"><h4>검증</h4><div class="arch-node"><strong>누락 감사</strong><span>순번 빈틈 계산</span></div><div class="arch-node"><strong>타사 보충</strong><span>키움·KIS 체결</span></div></div><div class="arch-stage"><h4>정규화</h4><div class="arch-node"><strong>L0 to L1</strong><span>Parquet 변환</span></div><div class="arch-node"><strong>품질 검사</strong><span>중복 제거</span></div></div><div class="arch-stage"><h4>백업</h4><div class="arch-node"><strong>Drive 백업</strong><span>크기 일치 확인</span></div><div class="arch-node"><strong>로컬 삭제</strong><span>확인된 파일만</span></div></div></div>
+    <figcaption>일 단위 데몬이 수집부터 백업까지 순차 실행</figcaption>
+  </figure></section>
   <section class="pj-sec">
-    <h2 class="part">핵심 설계 판단 <span class="part-hint">문제 → 분석 → 실행 → 결과</span></h2>
+    <h2 class="part">사례</h2>
     <div class="cases"><article class="case" id="rawfirst">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>개장 직후 메시지 폭주에도 놓치지 않도록, 장중에는 파싱하지 않고 원본만 기록했다</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>장중에는 원본만 기록, 파싱은 장 마감 후</h3></header>
     <ol class="flow" style="--n:5"><li><strong>수신</strong><span>WebSocket 메시지</span></li><li class="hl"><strong>원본 기록</strong><span>recv_ts만 붙임</span></li><li><strong>L0 보관</strong><span>jsonl.zst 이어쓰기</span></li><li><strong>장마감 후</strong><span>파싱·중복 제거</span></li><li><strong>L1 변환</strong><span>Parquet + 품질 검사</span></li></ol>
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>개장 직후에는 초당 메시지가 몰립니다. 수신 중에 파싱·검증까지 하면 처리가 밀려 메시지를 놓칠 수 있습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>수신하며 바로 정제하는 방식은 구현이 단순하지만, 파싱 오류가 곧 데이터 손실이 되어 제외했습니다.</li><li>원본을 먼저 남기는 방식은 나중에 규칙을 고쳐도 다시 계산할 수 있어 선택했습니다.</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>수신 경로는 받은 메시지에 수신 시각(recv_ts)만 붙여 압축 파일(.jsonl.zst)에 이어 쓰기만 하도록 했습니다.</li><li>파싱·중복 제거·품질 검사는 장마감 후 정규화 단계(L0 원본 → L1 Parquet)로 분리했습니다.</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>수신 경로와 해석 단계가 코드상 분리되어 있습니다. 실제 손실률은 측정해 기록하지 않았습니다.</p></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>개장 직후 메시지가 몰립니다. 수신 중 파싱하면 처리가 밀려 놓칠 수 있습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>수신 즉시 정제: 단순하나 파싱 오류가 곧 손실이라 제외</li><li>원본 먼저 기록: 규칙을 고쳐도 재계산 가능해 선택</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>수신 경로: recv_ts만 붙여 .jsonl.zst에 이어쓰기</li><li>파싱·중복 제거·품질 검사: 장마감 후 L0→L1 Parquet으로 분리</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>수신 경로와 해석 단계를 코드상 분리. 실제 손실률은 측정하지 않음.</p></section>
     </div>
     
   </article><article class="case" id="gapfill">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>연결이 끊긴 구간의 체결을 순번으로 찾아 다른 증권사 API로 보충했다</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>끊긴 구간, 체결 순번으로 찾아 타사 API로 보충</h3></header>
     <ol class="flow" style="--n:5"><li class="hl"><strong>순번 감사</strong><span>종목별 빈틈 계산</span></li><li><strong>구간 확정</strong><span>시간대·종목 특정</span></li><li class="hl"><strong>타사 보충</strong><span>키움·KIS 체결 이력</span></li><li><strong>병합</strong><span>SQLite 외부 정렬</span></li><li><strong>출처 표시</strong><span>별도 파일로 저장</span></li></ol>
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>수신 지연이 커지다 연결이 끊기면 그 구간의 체결은 증권사가 다시 보내 주지 않아 영구히 빠집니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>같은 증권사에 다시 요청해도 이미 지나간 체결은 받을 수 없어 제외했습니다.</li><li>다른 증권사의 체결 이력 API로 채우되, 어느 시간대·종목이 비었는지 먼저 정확히 알아야 한다고 판단했습니다.</li><li>원본을 고치지 않도록, 보충분은 출처(vendor, provenance)를 붙인 별도 파일로만 쌓았습니다.</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>틱마다 붙은 체결 순번의 빈틈을 종목별로 계산하는 감사 단계를 만들었습니다.</li><li>키움증권 체결 이력과 한국투자증권 API로 빈 구간을 채우는 보충 단계를 만들었습니다.</li><li>원본과 보충분을 SQLite 외부 정렬로 합치며 중복을 제거하는 병합 단계를 만들었습니다.</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>감사 → 보충 → 병합이 각각 독립된 CLI 단계로 나뉘어 있고, L0 원본은 건드리지 않습니다. 증권사가 당일 체결만 제공하는 등 복구할 수 없는 구간은 남을 수 있습니다.</p></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>연결이 끊긴 구간의 체결은 증권사가 다시 보내 주지 않아 영구히 빠집니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>같은 증권사 재요청: 지나간 체결 수신 불가로 제외</li><li>타사 체결 이력 API 사용, 빈 시간대·종목 특정이 선행 조건</li><li>원본 보호: 보충분은 출처(vendor, provenance) 붙여 별도 저장</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>감사: 체결 순번 빈틈을 종목별로 계산</li><li>보충: 키움 체결 이력·한국투자증권 API로 빈 구간 채움</li><li>병합: SQLite 외부 정렬로 합치며 중복 제거</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>감사, 보충, 병합이 독립 CLI 단계. L0 원본 미변경. 당일 체결만 제공하는 등 복구 불가 구간은 남을 수 있음.</p></section>
     </div>
     
   </article><article class="case" id="disk">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>작은 디스크에서 백업이 확인된 파일만 지우도록 했다</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>백업 확인된 파일만 삭제, 작은 디스크 대응</h3></header>
     
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>틱 원본은 하루에도 크게 쌓이는데 VPS 디스크는 작습니다. 보존 기간만 보고 지우면 업로드가 덜 된 파일까지 지울 수 있습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>보존 기간만으로 삭제하는 방식은 업로드 실패 시 영구 손실이 생겨 제외했습니다.</li><li>원격 전체 목록을 매번 훑는 방식은 느려 제외하고, 날짜별 접두사로 파일 크기를 하나씩 조회하는 방식을 선택했습니다.</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>원격(Google Drive)에 같은 크기의 파일이 있고 정규화가 끝난 파티션만 로컬에서 삭제하도록 했습니다.</li><li>여유 공간이 3 GB 아래로 내려가면 수집을 멈추는 장치(min_free_disk_gb)를 두었습니다.</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>업로드 확인이 안 된 파티션은 보존 기간이 지나도 삭제 대상에서 제외됩니다. 대사 시간 단축 폭은 측정하지 않았습니다.</p></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>VPS 디스크는 작은데 틱 원본은 크게 쌓입니다. 보존 기간만 보고 지우면 미업로드 파일도 지웁니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>보존 기간만으로 삭제: 업로드 실패 시 영구 손실이라 제외</li><li>원격 전체 목록 조회: 느려 제외, 날짜 접두사별 파일 크기 조회 선택</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>원격(Google Drive)에 같은 크기 파일 존재 + 정규화 완료 파티션만 삭제</li><li>여유 공간 3 GB 미만이면 수집 중단(min_free_disk_gb)</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>업로드 미확인 파티션은 보존 기간이 지나도 삭제 제외. 대사 시간 단축 폭은 미측정.</p></section>
     </div>
     
   </article><article class="case" id="paper">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>모의 주문이 호가 잔량을 반영하고, 실계좌로는 실수로 나가지 않게 막았다</h3></header>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">KRX-Alpha</span><span class="kind kind-personal">개인</span></div><h3>호가 잔량 반영 모의 체결, 실계좌 오발주 차단</h3></header>
     
     <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>모의 매매에서 &#39;현재가에 전량 체결&#39;로 가정하면 호가 잔량 부족과 슬리피지(체결가 차이)를 확인할 수 없습니다. 반대로 같은 코드가 실계좌 주문까지 낼 수 있으면 사고 위험이 있습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>현재가 즉시 체결은 단순하지만 낙관적이어서 제외했습니다.</li><li>10단계 호가를 위에서부터 소진하는 방식이 더 현실에 가까워 선택했습니다.</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>10호가를 소진하며 체결가와 수량을 계산하고, 지정가는 한도를 넘으면 멈추도록 했습니다.</li><li>모든 주문이 하나의 OMS와 사전 리스크 게이트(주문 금액·분당 주문 수·일 손실 한도·종목 화이트리스트)를 거치게 했습니다.</li><li>실계좌 모드는 KRX_ALPHA_EXEC_LIVE_ARMED=true가 없으면 설정 단계에서 오류가 나게 하고, 기본값은 모의로 두었습니다.</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>모의·모의투자·실계좌 세 모드가 같은 OMS를 쓰고 실계좌만 명시적 허용이 필요합니다. 실계좌 운용은 하지 않았고, 모의 체결이 실제와 얼마나 맞는지는 아직 검증하지 않았습니다.</p></section>
+      <section class="p-p"><h5><b>P</b> 문제</h5><p>현재가 전량 체결 가정은 잔량 부족·슬리피지를 못 봅니다. 같은 코드가 실계좌로 나가면 사고 위험도 있습니다.</p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>현재가 즉시 체결: 낙관적이라 제외</li><li>10단계 호가를 위에서부터 소진: 현실에 가까워 선택</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>10호가 소진으로 체결가·수량 계산, 지정가는 한도 초과 시 중단</li><li>모든 주문이 단일 OMS와 리스크 게이트(주문 금액·분당 주문 수·일 손실 한도·종목 화이트리스트) 통과</li><li>실계좌: KRX_ALPHA_EXEC_LIVE_ARMED=true 없으면 설정 단계 오류, 기본값은 모의</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과 <span class="basis basis-code">코드로 확인</span></h5><p>모의·모의투자·실계좌가 같은 OMS를 쓰고 실계좌만 명시 허용 필요. 실계좌 운용과 모의 체결의 실제 일치 여부는 미검증.</p></section>
     </div>
     
   </article></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>전략(알파) 단계가 없습니다. 신호 생성과 백테스트 엔진은 이 저장소에 없고, 수익 성과 수치도 없습니다.</li><li>틱 손실이 0은 아닙니다. 보충 API로 복구할 수 없는 구간이 있을 수 있고, 모의 체결 현실성도 실제 체결과 비교하지 않았습니다.</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/krx-alpha#readme">저장소 README</a>에 있습니다.</p></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>전략(알파) 단계 없음: 신호 생성·백테스트 엔진·수익 수치 없음</li><li>틱 손실 0 아님: 복구 불가 구간 가능, 모의 체결 현실성 미검증</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/krx-alpha#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <span></span>
     <a class="pn next" href="port-entity-matching.html"><span>다음 프로젝트</span><strong>Port Entity Matching</strong></a>
