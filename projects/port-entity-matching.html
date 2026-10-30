@@ -25,15 +25,15 @@
   <section class="pj-sec">
     <h2 class="part">개요</h2>
     <div class="pj-ov"><div class="pj-ov-main">
-    <p class="pj-summary">DACON 항만 문제 해결 AI 대회 과제입니다. 오타·한글 표기·빈 제원이 섞인 입출항 기록 한 줄을 약 7만 8천 척의 표준 선박 중 하나로 연결합니다. 한글 선박명이 점수의 70%라 한글 매칭에 집중했고, 이름을 인위적으로 바꿔 보는 시험으로 약점을 찾아 고쳤습니다.</p>
+    <p class="pj-summary">DACON 항만 문제 해결 AI 대회 과제입니다. 오타·한글 표기·빈 제원이 섞인 입출항 기록 한 줄을 약 7만 8천 척의 표준 선박 중 하나로 연결합니다. 한글 선박명이 점수의 70%라 한글 매칭에 집중했습니다. 발음 코드와 LLM 후보로 시작해, 선박 카탈로그의 영문명을 한글로 바꿔 대조하는 역방향 채널까지 넣었습니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026.10 ~ 진행 중</dd></div><div><dt>역할</dt><dd>대회 개인 참가, 후보 검색·순위 모델·평가 도구 단독 구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>LightGBM</li><li>RapidFuzz</li><li>scikit-learn</li><li>PyTorch</li><li>Kanana 1.5 2.1B</li><li>pytest</li><li>uv</li></ul></dd></div><div><dt>저장소</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
     </div></div>
     
-    <ul class="metrics"><li class="metric"><div class="m-label">내부 검증 점수</div><div class="m-value">0.9910</div><div class="m-note">선박 단위 5분할 검증, LLM 후보 추가 전 모델</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">이름 변형 시험 점수</div><div class="m-value">0.8162 → 0.9477</div><div class="m-note">단어 순서 바꾸기·빼기 등 20가지 변형, 내 컴퓨터 모의 기준</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">공개 리더보드 점수</div><div class="m-value">0.8805 → 0.9163</div><div class="m-note">규칙 기반 방식 대비 LLM 후보 추가 (테스트 50%, 진행 중)</div><span class="basis basis-ops">운영 기록</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">내부 검증 점수</div><div class="m-value">0.9910</div><div class="m-note">선박 단위 5분할 검증, LLM 후보 추가 전 모델</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">이름 변형 시험 점수</div><div class="m-value">0.8162 → 0.9477</div><div class="m-note">단어 순서 바꾸기·빼기 등 20가지 변형, 내 컴퓨터 모의 기준</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">공개 리더보드 점수</div><div class="m-value">0.8805 → 0.9558</div><div class="m-note">규칙 기반 방식 대비 현재 최고점, 진행 중 110위 (본인 확인)</div><span class="basis basis-ops">운영 기록</span></li></ul>
   </section>
   
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
-    <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>정규화</h4><div class="arch-node"><strong>이름 정리</strong><span>표기 통일</span></div><div class="arch-node"><strong>발음 코드</strong><span>한글을 발음 기호로 바꿔 비교</span></div></div><div class="arch-stage"><h4>후보 검색</h4><div class="arch-node"><strong>발음 코드 검색</strong><span>톤수 ±25% 범위</span></div><div class="arch-node hl"><strong>LLM 영문 표기</strong><span>한글 이름을 영문으로 변환</span></div><div class="arch-node"><strong>영문 유사도</strong><span>단어별 색인 검색</span></div></div><div class="arch-stage"><h4>랭킹</h4><div class="arch-node"><strong>비교 특징</strong><span>이름·톤수·선종·국적</span></div><div class="arch-node hl"><strong>순위 학습 모델</strong><span>5회 학습 결과 합산</span></div></div><div class="arch-stage"><h4>보정</h4><div class="arch-node"><strong>LLM 재정렬</strong><span>한글 상위 10개</span></div><div class="arch-node"><strong>호출부호 기억</strong><span>학습에 있던 선박은 확정</span></div></div><div class="arch-stage"><h4>출력</h4><div class="arch-node"><strong>표준 선박</strong><span>1척 확정</span></div></div></div>
+    <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>정규화</h4><div class="arch-node"><strong>이름 정리</strong><span>표기 통일</span></div><div class="arch-node"><strong>발음 코드</strong><span>한글을 발음 기호로 바꿔 비교</span></div></div><div class="arch-stage"><h4>후보 검색</h4><div class="arch-node"><strong>발음 코드 검색</strong><span>톤수 ±25% 범위</span></div><div class="arch-node hl"><strong>LLM 영문 표기</strong><span>한글 이름을 영문으로 변환</span></div><div class="arch-node"><strong>영문 유사도</strong><span>단어별 색인 검색</span></div><div class="arch-node hl"><strong>역방향 채널</strong><span>카탈로그 영문명을 한글로 바꿔 자모 대조</span></div></div><div class="arch-stage"><h4>랭킹</h4><div class="arch-node"><strong>비교 특징</strong><span>이름·톤수·선종·국적</span></div><div class="arch-node hl"><strong>순위 학습 모델</strong><span>5회 학습 결과 합산</span></div><div class="arch-node"><strong>학습 보강</strong><span>변형 6종 + 합성 영문 행 15</span></div></div><div class="arch-stage"><h4>보정</h4><div class="arch-node"><strong>LLM 재정렬</strong><span>한글 상위 10개</span></div><div class="arch-node"><strong>호출부호 기억</strong><span>학습에 있던 선박은 확정</span></div></div><div class="arch-stage"><h4>출력</h4><div class="arch-node"><strong>표준 선박</strong><span>1척 확정</span></div></div></div>
     <figcaption>후보를 모은 뒤 랭커가 한 척을 고르는 구조</figcaption>
   </figure></section>
   <section class="pj-sec">
@@ -70,31 +70,47 @@
     <p class="chart-caption">선박 단위 5분할 검증, 이름 변형 20가지 (내 컴퓨터)</p>
   </figure>
   </article><article class="case" id="korean-match">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div><h3>한글 선박명, 발음 코드와 LLM 후보로 분담</h3></header>
-    <ol class="flow" style="--n:6"><li><strong>정규화</strong><span>이름 정리</span></li><li><strong>후보 검색</strong><span>발음 코드 + 톤수 범위</span></li><li><strong>LLM 표기</strong><span>영문 후보 추가</span></li><li class="hl"><strong>순위 모델</strong><span>후보별 순위 학습</span></li><li><strong>재정렬</strong><span>한글 상위 10개</span></li><li><strong>선박 1척</strong><span>표준 선박 확정</span></li></ol>
+    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div><h3>한글 선박명, 발음 코드·LLM 후보·역방향 채널로 분담</h3></header>
+    <ol class="flow" style="--n:7"><li><strong>정규화</strong><span>이름 정리</span></li><li><strong>후보 검색</strong><span>발음 코드 + 톤수 범위</span></li><li><strong>LLM 표기</strong><span>영문 후보 추가</span></li><li><strong>역방향 채널</strong><span>영문명→한글 변환 대조</span></li><li class="hl"><strong>순위 모델</strong><span>후보별 순위 학습</span></li><li><strong>재정렬</strong><span>한글 상위 10개</span></li><li><strong>선박 1척</strong><span>표준 선박 확정</span></li></ol>
     <div class="paar">
       <section class="p-p"><h5><b>P</b> 문제</h5><p>한글 이름은 영어 외래어, 한국어 로마자, 약어 읽기가 섞여 규칙 하나로 못 맞춥니다. 한글 행은 데이터의 약 9.7%, 점수의 70%입니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표준 영문 변환만 사용: 한글 오류 24건에서 63건, 제외</li><li>발음 코드 채택: 한글을 자음·모음 소리 기호로 바꿔 비교 + 외래어 보정(발음 안 나는 R, 첫 글자 H, 모음 Y)</li><li>한글 오류 23건에서 14건 (5회 학습 평균)</li><li>처음 보는 표기에 약해 LLM 영문 표기 후보 추가</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>발음 코드 + 톤수 ±25% 후보에 LLM 후보 합산</li><li>LLM은 후보만 늘리고, 최종 판단은 순위 모델</li><li>한글 상위 10개를 LLM 가능성 점수로 재정렬</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>리더보드 규칙 기반 방식 0.8805, LLM 후보 추가 0.9163(한글 479/532, 비한글 1701/1784). 표기 증강 LLM 방식은 0.9036이라 되돌렸습니다. <span class="basis basis-ops">운영 기록</span></p></section>
+      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표준 영문 변환만 사용: 한글 오류 24건에서 63건, 제외</li><li>발음 코드 채택: 한글을 자음·모음 소리 기호로 바꿔 비교 + 외래어 보정(발음 안 나는 R, 첫 글자 H, 모음 Y)</li><li>한글 오류 23건에서 14건 (5회 학습 평균)</li><li>처음 보는 표기에 약해 LLM 영문 표기 후보 추가</li><li>역방향 채널: 카탈로그 영문명을 LLM이 한글로 바꿔 자모로 대조, 당시 최고 모델의 한글 오류 41건 중 17건 해소 가능 확인</li><li>제외: 세 번째 한글 표기 생성(한글 정답 504), 합성 한글 행(501), 재순위 가중치 상향(500~502)</li></ul></section>
+      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>발음 코드 + 톤수 ±25% 후보에 LLM 후보 합산</li><li>LLM은 후보만 늘리고, 최종 판단은 순위 모델</li><li>한글 상위 10개를 LLM 가능성 점수로 재정렬</li><li>카탈로그 영문명을 두 LLM(Midm, Kanana)으로 한글 변환해 두고, 한글 행은 자모 상위 20척을 후보에 합산, 특징 3개 추가</li><li>학습에만 쓰는 변형 6종(이름 잘림, 표기 변형, 톤수 오류, 한글 자모 잡음 등)과 카탈로그 기반 합성 영문 행 15,000개</li></ul></section>
+      <section class="p-r"><h5><b>R</b> 결과</h5><p>리더보드 0.8805(규칙 기반) → 0.9163(LLM 후보) → 0.9525(역방향 채널·합성 행, 한글 505/532, 비한글 1713/1784) → 현재 최고 0.9558. 재학습 오차가 한글 ±2행, 비한글 ±4행이라 한글 3행 이상 개선만 인정했습니다. <span class="basis basis-ops">운영 기록</span></p></section>
     </div>
     <div class="ex"><div class="ex-title">한글 선박명 유형 (한글 → 정답 표기)</div><ul><li><span class="ex-in">리플렉션</span><span class="ex-arrow">→</span><span class="ex-out">Reflection</span><span class="ex-note">영어 외래어</span></li><li><span class="ex-in">흥아</span><span class="ex-arrow">→</span><span class="ex-out">Heung-A</span><span class="ex-note">한국어 로마자</span></li><li><span class="ex-in">에스티아이</span><span class="ex-arrow">→</span><span class="ex-out">STI</span><span class="ex-note">약어 읽기</span></li></ul></div>
     <figure class="chart">
     <figcaption class="chart-title">공개 리더보드 점수 <span class="chart-unit">점수</span> <span class="basis basis-ops">운영 기록</span></figcaption>
-    <div class="chart-body" style="--zero:-1282.05%"><div class="chart-row">
-        <div class="chart-label">규칙 기반 방식</div>
-        <div class="chart-track"><span class="cbar" style="left:0.00%;width:46.00%"></span></div>
+    <div class="chart-body" style="--zero:-803.40%"><div class="chart-row">
+        <div class="chart-label">규칙 기반</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:28.83%"></span></div>
         <div class="chart-val">0.8805</div>
       </div><div class="chart-row">
-        <div class="chart-label">표기 증강 LLM 방식</div>
-        <div class="chart-track"><span class="cbar" style="left:0.00%;width:80.84%"></span></div>
-        <div class="chart-val">0.9036</div>
-      </div><div class="chart-row">
         <div class="chart-label">LLM 후보 추가</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:62.67%"></span></div>
+        <div class="chart-val">0.9163</div>
+      </div><div class="chart-row">
+        <div class="chart-label">역방향 채널 전 최고</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:79.40%"></span></div>
+        <div class="chart-val">0.9340</div>
+      </div><div class="chart-row">
+        <div class="chart-label">+ 역방향 채널(Midm)</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:89.32%"></span></div>
+        <div class="chart-val">0.9445</div>
+      </div><div class="chart-row">
+        <div class="chart-label">+ Kanana 한글 변환</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:93.10%"></span></div>
+        <div class="chart-val">0.9485</div>
+      </div><div class="chart-row">
+        <div class="chart-label">+ 합성 영문 행</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:96.88%"></span></div>
+        <div class="chart-val">0.9525</div>
+      </div><div class="chart-row">
+        <div class="chart-label">현재 최고</div>
         <div class="chart-track"><span class="cbar hl" style="left:0.00%;width:100.00%"></span></div>
-        <div class="chart-val hl">0.9163</div>
+        <div class="chart-val hl">0.9558</div>
       </div></div>
-    <p class="chart-caption">같은 제출 방식의 리더보드 점수. 표기 증강 방식은 되돌림 (막대 시작값 0.85)</p>
+    <p class="chart-caption">점수는 한글 0.7, 비한글 0.3 가중. 단계별 값은 정답 행 수에서 환산, 마지막은 제출 화면 값 (막대 시작값 0.85)</p>
   </figure>
   </article><article class="case" id="ranker">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div><h3>수식 대신 학습형 순위 모델 선택, 차이는 불확실로 기록</h3></header>
@@ -120,7 +136,7 @@
     
   </article></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>0.9910은 LLM 후보 추가 전 값, 현재 코드의 내부 검증은 미측정</li><li>대회 진행 중이라 최종 순위 없음</li><li>단어 하나 빠진 이름은 약함(영문 약 0.69, 한글 약 0.65, 모의 기준)</li><li>이름·톤수가 같은 자매선은 외부 DB 없이 구분 어려움</li></ul></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>0.9910은 LLM 후보 추가 전 값, 현재 코드의 내부 검증은 미측정</li><li>대회 진행 중, 순위는 변동(110위는 본인 확인 시점)</li><li>0.9558로 오른 변경은 저장소 문서에 아직 정리 전, 단계별 값은 0.9525까지</li><li>단어 하나 빠진 이름은 약함(영문 약 0.69, 한글 약 0.65, 모의 기준)</li><li>이름·톤수가 같은 자매선은 외부 DB 없이 구분 어려움</li></ul></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="krx-alpha.html"><span>이전 프로젝트</span><strong>KRX-Alpha</strong></a>
     <a class="pn next" href="k-closing-alpha.html"><span>다음 프로젝트</span><strong>K-Closing Alpha</strong></a>
