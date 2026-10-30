@@ -559,3 +559,12 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .fcol-list a:hover { color: var(--c); text-decoration: underline; }
 .fcol-list .minor a { color: var(--muted); }
 @media screen and (max-width: 860px) { .field-cols { grid-template-columns: 1fr; } }
+
+/* 카드 핵심 요약 */
+.pc-brief { margin-top: 12px; padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.65; color: #1d2730; }
+.pc-brief strong { font-weight: 800; color: var(--accent); }
+.pc-brief .basis { margin-left: 4px; vertical-align: 1px; }
+.print .cv-row { grid-template-columns: 22px minmax(0, 1fr) 170px; }
+.print .cv-brief { font-size: 8.8pt; color: var(--muted); margin-top: 3px; }
+.print .cv-brief strong { color: var(--ink); }
+.print .cv-res:empty { display: none; }
