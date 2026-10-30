@@ -24,8 +24,10 @@
   </header>
   <section class="pj-sec">
     <h2 class="part">개요</h2>
+    <div class="pj-ov"><div class="pj-ov-main">
     <p class="pj-summary">일반계좌·연금저축·ISA는 세금, 납입 한도, 인출 조건이 달라 최선의 구성이 다릅니다. 계좌별로 후보를 비교해 세후·실질 원화 기준으로 안정적으로 나은 구성을 골랐습니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026</dd></div><div><dt>역할</dt><dd>단독 설계·구현 (데이터 계층, 세후 계산 장부, 검증)</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Polars</li><li>Parquet</li><li>Pydantic</li><li>pytest</li><li>mypy</li><li>uv</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/ETF-Manager">github.com/KTHYEONG/ETF-Manager</a></dd></div></dl>
+    </div></div>
     
     <ul class="metrics"><li class="metric"><div class="m-label">일반계좌 실질 연수익률</div><div class="m-value">24.7%</div><div class="m-note">QQQ 90%+SOXX 10%, QQQ 100%는 23.3%. 세후·실질 원화</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">연금저축 채택안(세 구간 상대값)</div><div class="m-value">1.039 / 1.057 / 1.024</div><div class="m-note">QQQ 90%+SCHD 10%. 100년·현대·실제 ETF 구간, 기준 조합=1.000</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">ISA 연금 이전 방식 상대값</div><div class="m-value">0.970~0.990</div><div class="m-note">3개 예산 모두 계속 보유가 1위. 기준 조합=1.000</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>

@@ -24,8 +24,10 @@
   </header>
   <section class="pj-sec">
     <h2 class="part">개요</h2>
+    <div class="pj-ov"><div class="pj-ov-main">
     <p class="pj-summary">머니투데이 ETF 투자왕 대회(8주, 모의투자)용 퀀트 프로젝트입니다. 상위권에 상금이 몰려 &quot;8주 안에 큰 수익이 날 확률&quot;을 백테스트로 재고, 일일 매매 카드를 만듭니다. 대회가 2026-11-13에 끝나므로 최종 결과는 적지 않았습니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026.08 ~ 진행 중</dd></div><div><dt>역할</dt><dd>한국거래소 시세 수집부터 백테스트, 전략, 순위 분석, 매매 카드까지 단독 구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Polars</li><li>Parquet</li><li>Pydantic</li><li>httpx</li><li>pytest</li><li>systemd</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/mt-etf-king-2026">github.com/KTHYEONG/mt-etf-king-2026</a></dd></div></dl>
+    </div></div>
     
     <ul class="metrics"><li class="metric"><div class="m-label">8주 +30% 이상 비율</div><div class="m-value">7.77%</div><div class="m-note">반등 앵커 전략. 기본형 6.78%, 단순 보유 2.54%</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">최악 5% 구간의 평균 손실</div><div class="m-value">-21.56%</div><div class="m-note">반등 앵커 전략. 기본형 -23.16%, 단순 보유 -15.09%</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">검증한 8주 구간 수</div><div class="m-value">2,097개</div><div class="m-note">36거래일 단위로 밀어가며, 2018-01 ~ 2026-09, 비용 반영</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>

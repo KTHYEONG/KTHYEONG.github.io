@@ -24,8 +24,10 @@
   </header>
   <section class="pj-sec">
     <h2 class="part">개요</h2>
+    <div class="pj-ov"><div class="pj-ov-main">
     <p class="pj-summary">바이낸스 무기한 선물의 백테스트부터 24시간 자동 매매까지 한 저장소에서 다룹니다. 미래 정보 사용, 체결 비용, 강제청산, 반복 시험으로 생기는 착시를 줄였습니다. 자동 매매는 모의 모드이며 모든 수익률은 과거 데이터 재현 시뮬레이션입니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026</dd></div><div><dt>역할</dt><dd>검증 시뮬레이터, 24시간 수집·모의 매매 프로그램, 배포 운영 단독 구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>pandas</li><li>PyArrow</li><li>asyncio</li><li>ccxt</li><li>Pydantic</li><li>Docker Compose</li><li>pytest</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/crypto-pilot">github.com/KTHYEONG/crypto-pilot</a></dd></div></dl>
+    </div></div>
     
     <ul class="metrics"><li class="metric"><div class="m-label">$1,000 계좌 시뮬레이션 연평균 수익률(복리)</div><div class="m-value">+212.7%</div><div class="m-note">과거 데이터 재현 시뮬레이션, 2021-04 ~ 2026-10(확인용 구간 포함), 지정가, 수수료·펀딩비·증거금 반영</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">최대 낙폭(고점 대비 최대 하락)</div><div class="m-value">-51.2%</div><div class="m-note">같은 시뮬레이션, 3분 단위 가격 흐름 기준 (일별 종가 기준 -46.3%)</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">강제청산</div><div class="m-value">0회</div><div class="m-note">같은 시뮬레이션, 심볼별 유지증거금 규칙 반영</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">전략 승격 기준</div><div class="m-value">보정 샤프지수 0.95 이상</div><div class="m-note">시험 기록 52줄을 반영한 샤프지수 보정값(DSR), 통과 판정을 기록 파일에 남김</div></li></ul>
   </section>

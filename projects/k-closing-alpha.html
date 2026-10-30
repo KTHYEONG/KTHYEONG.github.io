@@ -24,8 +24,10 @@
   </header>
   <section class="pj-sec">
     <h2 class="part">개요</h2>
+    <div class="pj-ov"><div class="pj-ov-main">
     <p class="pj-summary">15:20에 볼 수 있는 정보만으로 종목 점수를 매기고, 상위 3종목을 종가에 사서 다음 날 시초가에 파는 전략을 연구·자동 실행합니다. 수익률보다 숫자가 부풀려질 곳을 먼저 막았습니다. 미래 정보 차단, 비용 반영, 검증, 중복 주문 방지를 프로그램 규칙으로 고정했습니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026</dd></div><div><dt>역할</dt><dd>데이터 수집, 예측 모델, 검증, 주문 실행 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>LightGBM</li><li>pandas</li><li>PyArrow(Parquet)</li><li>aiohttp</li><li>pydantic</li><li>pytest</li><li>systemd</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/k-closing-alpha">github.com/KTHYEONG/k-closing-alpha</a></dd></div></dl>
+    </div></div>
     
     <ul class="metrics"><li class="metric"><div class="m-label">일평균 순수익</div><div class="m-value">+34.58bp</div><div class="m-note">886거래일(2023-01~2026-09), 세금·호가 비용·수수료 차감 후 (1bp=0.01%)</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">샤프지수(수익 대비 변동 크기)</div><div class="m-value">2.73</div><div class="m-note">승률 56.3%, 최대낙폭(고점 대비 최대 하락) 28.98%</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">비용 민감도</div><div class="m-value">4칸까지 이익</div><div class="m-note">사고팔 때 호가 간격 비용을 1~6칸으로 바꿔 시험, 6칸에서 손실</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">검증한 전략 수</div><div class="m-value">118개</div><div class="m-note">연구 문서의 백테스트 표 기준</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>
