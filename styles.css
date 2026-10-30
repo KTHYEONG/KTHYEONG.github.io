@@ -519,3 +519,10 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 
 .ai-sec { margin-bottom: 28px; }
 .ai-sec .sub { font-size: 16px; margin-bottom: 8px; }
+
+/* PDF 기술·기타 구역 구분 */
+.print .closing .ev-block, .print .closing .cl-block { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); }
+.print .closing .evidence > .ev-block:first-child { margin-top: 6px; }
+.print .closing .sub { margin: 0 0 8px; font-size: 11pt; color: var(--accent); }
+.print .closing .others { gap: 8px; }
+.print .closing .contact { margin: 0; }
