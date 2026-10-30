@@ -568,3 +568,10 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .cv-brief { font-size: 8.8pt; color: var(--muted); margin-top: 3px; }
 .print .cv-brief strong { color: var(--ink); }
 .print .cv-res:empty { display: none; }
+
+/* 카드 핵심 수치 */
+.pc-keys { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.pc-keys li { display: flex; flex-direction: column; gap: 3px; align-items: flex-start; min-width: 0; }
+.pc-keys strong { font-size: 21px; font-weight: 800; letter-spacing: -.01em; line-height: 1.2; color: var(--accent); }
+.pc-keys span { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.print .cv-row { grid-template-columns: 22px minmax(0, 1fr) 200px; }
