@@ -594,3 +594,7 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .case .flow + .paar { break-before: avoid; }
 .print .case .paar section:first-child { break-before: avoid; }
 .print .case .paar section:last-child { break-before: avoid; }
+/* PDF: 프로젝트 사이 구분선 */
+.print .pjp + .pjp, .print .pj-subs { border-top: 2px solid var(--ink); padding-top: 6mm; margin-top: 9mm; }
+.print .pj-subs .pjp-sub { border-top: 1px dashed #aab3bd; padding-top: 5mm; margin-top: 7mm; }
+.print .pj-subs .part + .pjp-sub { border-top: 0; padding-top: 0; margin-top: 0; }
