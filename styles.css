@@ -516,3 +516,6 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .m-note { line-height: 1.4; }
 .print .pjp .lim { columns: 2; column-gap: 18px; }
 .print .pjp .lim li { break-inside: avoid; }
+
+.ai-sec { margin-bottom: 28px; }
+.ai-sec .sub { font-size: 16px; margin-bottom: 8px; }
