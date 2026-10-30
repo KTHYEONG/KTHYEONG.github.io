@@ -29,6 +29,7 @@
     
     <ul class="metrics"><li class="metric"><div class="m-label">코드 규모</div><div class="m-value">약 3만 줄</div><div class="m-note">src 134개 파일 · 저장소 파일 집계</div></li><li class="metric"><div class="m-label">테스트</div><div class="m-value">약 2,860개</div><div class="m-note">def test_ 개수 · 파라미터 확장 전</div></li><li class="metric"><div class="m-label">개발 기간</div><div class="m-value">커밋 315개</div><div class="m-note">2026-09-08부터 · git 이력</div></li></ul>
   </section>
+  
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
     <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>선별</h4><div class="arch-node"><strong>종목 선별</strong><span>전일 종가 기준</span></div></div><div class="arch-stage"><h4>수집</h4><div class="arch-node hl"><strong>웹소켓 수신</strong><span>원본 즉시 기록</span></div><div class="arch-node"><strong>주문 처리</strong><span>위험 한도 검사 후 집행</span></div></div><div class="arch-stage"><h4>검증</h4><div class="arch-node"><strong>누락 감사</strong><span>순번 빈틈 계산</span></div><div class="arch-node"><strong>타사 보충</strong><span>키움·한국투자증권 체결</span></div></div><div class="arch-stage"><h4>정규화</h4><div class="arch-node"><strong>원본을 정리본으로</strong><span>열 단위 파일로 변환</span></div><div class="arch-node"><strong>품질 검사</strong><span>중복 제거·이상값 확인</span></div></div><div class="arch-stage"><h4>백업</h4><div class="arch-node"><strong>구글 드라이브 백업</strong><span>파일 크기 일치 확인</span></div><div class="arch-node"><strong>서버 파일 삭제</strong><span>백업 확인된 것만</span></div></div></div>
     <figcaption>일 단위 데몬이 수집부터 백업까지 순차 실행</figcaption>
