@@ -575,3 +575,22 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .pc-keys strong { font-size: 21px; font-weight: 800; letter-spacing: -.01em; line-height: 1.2; color: var(--accent); }
 .pc-keys span { font-size: 12.5px; color: var(--muted); font-weight: 600; }
 .print .cv-row { grid-template-columns: 22px minmax(0, 1fr) 200px; }
+
+/* PDF: 쪽 채움 개선(프로젝트별 새 쪽 강제 해제, 묶음 단위로만 나눔) */
+.print .pjp { break-before: auto; margin-top: 8mm; }
+.print .cover + .pjp { margin-top: 0; }
+.print .pjp-top { break-inside: avoid; }
+.print .pj-subs { break-before: auto; margin-top: 8mm; }
+.print .closing { break-before: auto; margin-top: 8mm; }
+.print .pjp-ov.has-aw { display: grid; grid-template-columns: minmax(0, 1fr) 30mm; gap: 8mm; align-items: start; }
+.print .award { margin: 0; }
+.print .award img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 3px; }
+/* PDF: 사례는 쪽을 넘나들 수 있게, 행 단위로만 나눔 */
+.print .case { break-inside: auto; }
+.print .case .c-head, .print .case .c-kicker, .print .case h3 { break-after: avoid; }
+.print .case .flow { break-inside: avoid; break-after: avoid; }
+.print .paar section { break-inside: avoid; }
+.print .case .chart, .print .case .ex { break-inside: avoid; }
+.print .case .flow + .paar { break-before: avoid; }
+.print .case .paar section:first-child { break-before: avoid; }
+.print .case .paar section:last-child { break-before: avoid; }
