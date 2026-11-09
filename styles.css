@@ -685,3 +685,4 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 
 .ex2-mono p { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'D2Coding', monospace; font-size: 12.5px; font-weight: 500; line-height: 1.7; }
 .ex2-col p.ex2-flow { white-space: pre-line; }
+.ex2-col.ex2-mono p { white-space: pre-wrap; }

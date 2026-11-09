@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Witches-Chat-Core · 김태형 포트폴리오"><meta property="og:description" content="근거 조항과 함께 답하는 온프레미스 규정 RAG 챗봇"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=33f8c62b">
+<link rel="stylesheet" href="../styles.css?v=c29e4bef">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -35,15 +35,15 @@
     <ul class="metrics"><li class="metric"><div class="m-label">팀 악성 질문 차단율</div><div class="m-value">98.46%</div><div class="m-note">악성 입력 130개 중 128개 차단(평가 입력 210개 중, 논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
   </section>
   
-  <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="pc-ex pj-ex"><div class="ex2-col"><h4>원본 (DOCX 문단, 텍스트만 이어짐)</h4><p>제3조의2(부총장) ① 총장의 직무를 보좌하기 위하여 교학부총장, 연구부총장, 대외협력부총장 각 1인을 두며, 교학부총장은 대학원장을 겸임한다.
+  <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="pc-ex pj-ex"><div class="ex2-col"><h4>원본 (DOCX 문단)</h4><p>제3조의2(부총장) ① 총장의 직무를 보좌하기 위하여 교학부총장, 연구부총장, 대외협력부총장 각 1인을 두며, 교학부총장은 대학원장을 겸임한다.
 ② 부총장은 아래 각호의 업무에 관하여 총장을 보좌한다.
 1. 교학부총장 : 교무·학사, 학생, 입학, 정보화 등에 관한 업무
 2. 연구부총장 : 기획, 연구진흥, 산학협력, 국제교류 업무
-3. 대외협력부총장 : 대외협력 및 홍보 업무</p></div><span class="ex2-arrow" aria-hidden="true">→</span><div class="ex2-col ex2-after ex2-mono"><h4>변환 결과 (Markdown, 조·항·호 표시)</h4><p>- **제 3 조의 2( 부총장 )** ① 총장의 직무를 보좌하기 위하여 교학부총장 , 연구부총장 , 대외협력부총장 각 1 인 을 두며 , 교학부총장은 대학원장을 겸임한다 .
-- ② 부총장은 아래 각호의 업무에 관하여 총장을 보좌한다 .
-1. 교학부총장 : 교무·학사 , 학생 , 입학 , 정보화 등에 관한 업무
-2. 연구부총장 : 기획 , 연구진흥 , 산학협력 , 국제교류 업무
-3. 대외협력부총장 : 대외협력 및 홍보 업무</p></div></div><p class="ex2-cap">경북대 학칙 제3조의2 변환 결과(수정 이력 표기 &lt;개정 …&gt;는 생략, 띄어쓰기는 변환 결과 그대로). 조 제목은 굵게, 항은 목록으로, 호는 번호 목록으로 남아 문서 쪼개기 단계가 조·항 경계를 읽을 수 있습니다.</p></section>
+3. 대외협력부총장 : 대외협력 및 홍보 업무</p></div><span class="ex2-arrow" aria-hidden="true">→</span><div class="ex2-col ex2-after ex2-mono"><h4>변환기 규칙 적용 결과 (Markdown)</h4><p>##### 제3조의2(부총장) ① 총장의 직무를 보좌하기 위하여 교학부총장, 연구부총장, 대외협력부총장 각 1인을 두며, 교학부총장은 대학원장을 겸임한다.
+* ② 부총장은 아래 각호의 업무에 관하여 총장을 보좌한다.
+  - 1 교학부총장 : 교무·학사, 학생, 입학, 정보화 등에 관한 업무
+  - 2 연구부총장 : 기획, 연구진흥, 산학협력, 국제교류 업무
+  - 3 대외협력부총장 : 대외협력 및 홍보 업무</p></div></div><p class="ex2-cap">경북대 학칙 제3조의2에 DOCX 변환기의 단락 규칙(조는 제목, 항은 목록, 호는 들여쓴 목록)을 그대로 적용해 재현한 결과이며 수정 이력 표기(&lt;개정 …&gt;)는 생략했습니다. PDF 변환기는 같은 구조를 굵은 조 제목 등 다른 표기로 냅니다.</p></section>
   
   
   <section class="pj-sec">
@@ -54,14 +54,14 @@
       <h3>세 형식을 Markdown 하나로 통일</h3>
       <p class="c-brief">원본 29개 파일에서 Markdown 28개(규정 24종)를 만들어 문서 쪼개기 단계에 전달했습니다.</p>
     </summary>
-    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>규정이 세 가지 파일 형식으로 섞여 있고, 조·항·호 계층이 의미를 정합니다. 형식별로 다루면 문서 쪼개기와 검색도 형식마다 따로 만들어야 합니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>형식별 문서 쪼개기는 팀원이 형식마다 따로 처리해야 해 제외</li><li>Markdown은 문서 쪼개기의 표준 입력이고 제목·목록·표를 표현할 수 있어 팀원 모두 같은 입력으로 사용 가능</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>형식별 변환기를 두되 결과 구조는 동일하게, 처음에는 HWP를 DOCX로 수동 변환하고 이후 직접 변환 추가</li><li>큰 규정집은 DOCX·PDF 라이브러리 처리가 느려 XML·블록을 직접 읽는 방식으로 바꿈</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>원본 29개 파일에서 Markdown 28개(규정 24종)를 만들어 문서 쪼개기 단계에 전달했습니다. PDF 변환 시간은 커밋 기록 기준 약 70초에서 15초로 줄었습니다. </p></section></div></div>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>규정이 세 가지 파일 형식으로 섞여 있고, 조·항·호 계층이 의미를 정합니다. 형식별로 다루면 문서 쪼개기와 검색도 형식마다 따로 만들어야 합니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>형식별 문서 쪼개기는 팀원이 형식마다 따로 처리해야 해 제외</li><li>Markdown은 문서 쪼개기의 표준 입력이고 제목·목록·표를 표현할 수 있어 팀원 모두 같은 입력으로 사용 가능</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>형식별 변환기를 두되 모두 Markdown(제목·목록·표)으로 내보내고, 구조 표시 방식은 변환기별로 다름(DOCX는 제목 5단계, PDF는 굵은 조 제목). 처음에는 HWP를 DOCX로 수동 변환하고 이후 직접 변환 추가</li><li>큰 규정집은 DOCX·PDF 라이브러리 처리가 느려 XML·블록을 직접 읽는 방식으로 바꿈</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>원본 29개 파일에서 Markdown 28개(규정 24종)를 만들어 문서 쪼개기 단계에 전달했습니다. </p></section></div></div>
   </details><details class="case" id="hierarchy">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
       <h3>원문은 두고 계층 표시만 추가</h3>
-      <p class="c-brief">학칙 변환 결과에서 장·절 제목, 조 소제목, 항·호 목록으로 계층이 남아 문서 쪼개기 단계가 구조를 읽을 수 있습니다.</p>
+      <p class="c-brief">학칙 변환 결과에서 장·절·조는 제목으로, 항·호·목은 들여쓴 목록으로 남아 문서 쪼개기 단계가 구조를 읽을 수 있습니다.</p>
     </summary>
-    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>조·항·호·목이 구분 없는 줄글이면 문서를 쪼갤 때 조항 중간이 잘려 의미가 끊길 수 있습니다. 문장을 다듬거나 요약하면 조항 의미가 달라질 수 있어, 원문은 그대로 두고 표시만 붙였습니다.</p></section></div><div class="ex"><div class="ex-title">규정 계층 → Markdown 표시</div><ul><li><span class="ex-in">장 · 절</span><span class="ex-arrow">→</span><span class="ex-out">## 제 N 장, ## 제 N 절</span><span class="ex-note">제목으로 표시</span></li><li><span class="ex-in">조</span><span class="ex-arrow">→</span><span class="ex-out">- **제 N 조 ( … )**</span><span class="ex-note">굵은 소제목 + 목록</span></li><li><span class="ex-in">항 · 호</span><span class="ex-arrow">→</span><span class="ex-out">① ② / 1.</span><span class="ex-note">원래 기호 그대로 목록으로</span></li></ul></div><div class="paar"><section class="p-r"><h5><b>R</b> 결과</h5><p>학칙 변환 결과에서 장·절 제목, 조 소제목, 항·호 목록으로 계층이 남아 문서 쪼개기 단계가 구조를 읽을 수 있습니다. </p></section></div></div>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>조·항·호·목이 구분 없는 줄글이면 문서를 쪼갤 때 조항 중간이 잘려 의미가 끊길 수 있습니다. 문장을 다듬거나 요약하면 조항 의미가 달라질 수 있어, 원문은 그대로 두고 표시만 붙였습니다.</p></section></div><div class="ex"><div class="ex-title">규정 계층 → Markdown 표시</div><ul><li><span class="ex-in">편 · 장 · 절 · 관</span><span class="ex-arrow">→</span><span class="ex-out"># · ## · ### · ####</span><span class="ex-note">단계별 제목</span></li><li><span class="ex-in">조 · 부칙 · 별표</span><span class="ex-arrow">→</span><span class="ex-out">##### 제N조(…)</span><span class="ex-note">다섯 번째 단계 제목</span></li><li><span class="ex-in">항 · 호 · 목</span><span class="ex-arrow">→</span><span class="ex-out">* ① / 들여쓴 - 1 / 더 들여쓴 + 가</span><span class="ex-note">들여쓰기로 단계 표현</span></li></ul></div><div class="paar"><section class="p-r"><h5><b>R</b> 결과</h5><p>학칙 변환 결과에서 장·절·조는 제목으로, 항·호·목은 들여쓴 목록으로 남아 문서 쪼개기 단계가 구조를 읽을 수 있습니다. </p></section></div></div>
   </details><details class="case" id="form-split">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
@@ -71,16 +71,25 @@
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>신청서 서식과 빈 칸 많은 표가 본문에 섞이면 검색 결과에 불필요한 내용이 끼고 문서 쪼개기도 어렵습니다.</p></section></div><div class="cmp"><div class="ex-title">표 처리 방식 비교</div><table>
     <thead><tr><th></th><th>모든 표를 같은 방식으로</th><th class="sel">표 모양·양식 표현으로 판별 <em>선택</em></th></tr></thead>
     <tbody><tr><th>내용 표와 양식</th><td data-c="모든 표를 같은 방식으로">구분할 수 없음</td><td class="sel" data-c="표 모양·양식 표현으로 판별">구분해 양식만 따로 변환</td></tr><tr><th>검색 결과</th><td data-c="모든 표를 같은 방식으로">신청서 서식이 본문에 섞임</td><td class="sel" data-c="표 모양·양식 표현으로 판별">규정 본문과 분리</td></tr><tr><th>판별 근거</th><td data-c="모든 표를 같은 방식으로">없음</td><td class="sel" data-c="표 모양·양식 표현으로 판별">빈 칸이 있는 여러 열 표, 양식 표현(예·아니오 등), 정해 둔 글자 패턴</td></tr></tbody></table></div><div class="paar"><section class="p-r"><h5><b>R</b> 결과</h5><p>양식 표가 본문과 분리되어 문서 쪼개기 단계로 전달됩니다. </p></section></div></div>
-  </details><details class="case" id="interface">
+  </details><details class="case" id="validate">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
+      <h3>변환이 조용히 빠지지 않게 확인</h3>
+      <p class="c-brief">변환 중 내용이 크게 빠지면 경고 로그로 알 수 있고, 변환 실패는 파일마다 오류로 표시됩니다.</p>
+    </summary>
+    <div class="c-body"><ol class="flow" style="--n:5"><li><strong>원본 글자 수</strong><span>XML·텍스트 직접 추출</span></li><li><strong>Markdown 변환</strong><span>형식별 변환기</span></li><li><strong>변환 후 글자 수</strong><span>공백·기호 제외</span></li><li class="hl"><strong>비율 비교</strong><span>85% 미만이면 경고</span></li><li><strong>로그 기록</strong><span>정상은 일치율 기록</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>규정 변환에서 내용이 빠져도 겉으로는 알기 어렵고, 빠진 채로 검색에 쓰이면 답변의 근거가 사라집니다.</p></section></div><div class="cmp"><div class="ex-title">점검 방식 비교</div><table>
+    <thead><tr><th></th><th>눈으로 확인</th><th class="sel">글자 수 대조 <em>선택</em></th></tr></thead>
+    <tbody><tr><th>누락 발견</th><td data-c="눈으로 확인">긴 규정(학칙은 공백·기호 제외 약 12만 자)에서는 놓치기 쉬움</td><td class="sel" data-c="글자 수 대조">변환마다 자동으로 비율 계산</td></tr><tr><th>비용</th><td data-c="눈으로 확인">사람이 원본과 직접 비교</td><td class="sel" data-c="글자 수 대조">변환 중 한 번 계산</td></tr><tr><th>알 수 있는 것</th><td data-c="눈으로 확인">보이는 부분만</td><td class="sel" data-c="글자 수 대조">빠진 양(위치는 모름)</td></tr></tbody></table></div><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>원본과 변환 결과의 글자 수를 공백·마크다운 기호를 뺀 뒤 비교하고, 85% 미만이면 경고 로그</li><li>DOCX·PDF·HWP·표·PPT·이미지·음성 변환기 9곳이 같은 검사를 쓰고, 변환이 실패하면 파일마다 오류로 안내</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>변환 중 내용이 크게 빠지면 경고 로그로 알 수 있고, 변환 실패는 파일마다 오류로 표시됩니다. </p></section></div></div>
+  </details><details class="case" id="interface">
+    <summary class="c-sum">
+      <div class="c-kicker"><span class="c-num">CASE 05</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
       <h3>변환기와 쪼개기 사이의 블록 정보 주석</h3>
       <p class="c-brief">여러 형식이 같은 주석 형식으로 문서 쪼개기 단계에 전달됩니다.</p>
     </summary>
     <div class="c-body"><ol class="flow" style="--n:4"><li><strong>블록 종류 판별</strong><span>변환기</span></li><li class="hl"><strong>블록 정보 주석</strong><span>본문 앞에 JSON 주석</span></li><li><strong>주석 읽기</strong><span>문서 쪼개기 단계</span></li><li><strong>블록 단위 분할</strong><span>구간 정보 활용</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>문서 쪼개기 단계는 각 조각이 제목인지 목록인지 표인지 알아야 하는데, Markdown 본문만으로는 구분이 어렵습니다.</p></section></div><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>변환기가 각 블록에 <code>chunk:block</code> JSON 주석을 붙여 넘기고, 문서 쪼개기 쪽이 같은 주석을 읽어 분할(형식은 팀원과 함께 정함)</li><li>텍스트·엑셀·파워포인트·이미지·음성 변환도 같은 경로로 연결</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>여러 형식이 같은 주석 형식으로 문서 쪼개기 단계에 전달됩니다. </p></section></div></div>
   </details></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">전처리 구간의 자동 테스트 없음</strong><span class="lim-d">변환 결과는 글자 수 대조 로그(85% 미만이면 경고, 중단은 안 함)와 눈으로 확인했습니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">구조 표시·판별 정확도</strong><span class="lim-d">구조 표시와 표·양식 판별의 정확도를 정답과 대조해 측정하지 않았습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">팀 차단율은 직접 만든 입력 기준</strong><span class="lim-d">악성 130개를 포함한 직접 만든 입력 210개 기준이라 실제 질의 평가가 아니며, 챗봇 전체의 답변 정확도 수치는 없습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">소량 문서와 속도 수치</strong><span class="lim-d">24종 규정 소량으로 확인해 속도 개선의 체감 근거가 약하고 속도 수치는 환경 기록 없는 커밋 메시지 기준이며, 이미지 변환은 OCR 설치 후 검증이 필요합니다.</span></div></li></ul></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">점검은 경고 수준</strong><span class="lim-d">전처리에는 자동 테스트가 없고, 글자 수 대조는 빠진 양만 경고합니다(중단하지 않고 변환율을 기록하지 않으며 85% 기준의 근거 기록이 없음).</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">구조 표시·판별 정확도</strong><span class="lim-d">정답과 대조해 측정하지 않았고, 조 제목과 제1항이 같은 줄이면 줄 전체가 제목이 되며 호 번호의 마침표가 빠집니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">팀 차단율은 직접 만든 입력 기준</strong><span class="lim-d">악성 130개를 포함한 직접 만든 입력 210개 기준이라 실제 질의 평가가 아니며, 챗봇 전체의 답변 정확도 수치는 없습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">소량 문서와 속도 수치</strong><span class="lim-d">24종 규정 소량으로 확인해 속도 개선의 체감 근거가 약하고(PDF 약 70초→15초는 환경 기록 없는 커밋 메시지 기준), 이미지 변환은 OCR 설치 후 검증이 필요합니다.</span></div></li></ul></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="emori.html"><span>이전 프로젝트</span><strong>Emori</strong></a>
     <span></span>
