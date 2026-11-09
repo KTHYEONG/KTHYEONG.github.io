@@ -565,9 +565,6 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .case .flow { break-inside: avoid; break-after: avoid; }
 .print .paar section { break-inside: avoid; }
 .print .case .chart, .print .case .ex { break-inside: avoid; }
-.print .case .flow + .paar { break-before: avoid; }
-.print .case .paar section:first-child { break-before: avoid; }
-.print .case .paar section:last-child { break-before: avoid; }
 /* PDF: 프로젝트 사이 구분선 */
 .print .pjp + .pjp, .print .pj-subs { border-top: 2px solid var(--ink); padding-top: 6mm; margin-top: 9mm; }
 .print .pj-subs .pjp-sub { border-top: 1px dashed #aab3bd; padding-top: 5mm; margin-top: 7mm; }
@@ -701,3 +698,18 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .cmp, .print .case .c-stats, .print .case .tl, .print .case .ex2, .print .cmp tr, .print .tl li { break-inside: avoid; }
 .print .cmp .ex-title { break-after: avoid; }
 .print .case .tl { break-inside: auto; }
+
+/* PDF: 큰 블록은 쪽을 넘나들 수 있게 하고, 작은 사례 카드는 통째로 둔다 */
+.print .pjp-top { break-inside: auto; }
+.print .pjp-head, .print .pjp-meta, .print .metrics { break-inside: avoid; }
+.print .case.keep { break-inside: avoid; }
+.print .paar-tail { break-inside: avoid; }
+.print .paar-tail { border-top: 1px solid var(--line); }
+.print .chunk1 { break-inside: avoid; }
+.print .pjp .lim { break-inside: avoid; }
+.print .paar.keep { break-inside: avoid; }
+.print .pjp-head { break-after: avoid; }
+.print .pjp-ov { break-inside: avoid; }
+.print .cl-note { margin: 8px 0 0; font-size: 9pt; color: var(--muted); }
+.print .cases { display: block; }
+.print .cases > .case + .case { margin-top: 12px; }
