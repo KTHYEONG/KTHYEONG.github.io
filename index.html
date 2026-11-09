@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="김태형 · 개발자 포트폴리오"><meta property="og:description" content="데이터를 믿을 수 있게 만들고, 안정적으로 돌아가는 시스템까지 만드는 신입 개발자. 경북대학교 컴퓨터학부 2027.02 졸업 예정."><meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=bb0c8656">
+<link rel="stylesheet" href="styles.css?v=c75bac06">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body class="web">
@@ -61,11 +61,7 @@
       <p class="pc-meta">2026.09 ~ 진행 중 · 단독 설계·구현 (수집, 누락 감사·보충, 정규화, 백업·보존, 모의 주문 처리, 구조 검사 테스트)</p>
       <ul class="pc-keys"><li><strong>원본 먼저 저장</strong><span>장중 파싱 없이 수신 시각만 붙여 기록</span></li><li><strong>끊김 자동 보충</strong><span>체결 번호로 빠진 구간을 찾아 채움</span></li><li><strong>수집 → 정규화 → 백업</strong><span>장 마감 후 처리 단계</span></li></ul>
     </div>
-    <div class="pc-cases">
-      <h4>사례</h4>
-      <ol><li><a href="projects/krx-alpha.html#rawfirst">원본 먼저 저장, 해석은 장 마감 후</a></li><li><a href="projects/krx-alpha.html#gapfill">끊긴 구간을 체결 번호로 찾아 보충</a></li></ol>
-      <a class="pc-go" href="projects/krx-alpha.html">자세히 →</a>
-    </div>
+    <div class="pc-cases"><h4>대표 사례</h4><ul><li><a href="projects/krx-alpha.html#rawfirst"><strong>원본 먼저 저장, 해석은 장 마감 후</strong><span>수신과 해석을 분리했고, 수신 손실은 장 마감 후 세션 감사가 측정합니다(11.5 0.42%, 11.6 0.04%).</span></a></li><li><a href="projects/krx-alpha.html#gapfill"><strong>끊긴 구간을 체결 번호로 찾아 보충</strong><span>감사·보충·병합을 따로 실행하고 원본은 바꾸지 않습니다.</span></a></li></ul></div>
   </li><li class="pcard">
     <div class="pc-main">
       <div class="pc-head"><h3><a href="projects/k-closing-alpha.html">K-Closing Alpha</a></h3><span class="kind kind-personal">개인</span><span class="status">진행 중</span></div>
@@ -73,11 +69,7 @@
       <p class="pc-meta">2025.12 ~ 진행 중 · 기획부터 주문 실행까지 단독 설계·구현</p>
       <ul class="pc-keys"><li><strong>주문 전 기록</strong><span>재시도에도 중복 주문 방지</span></li><li><strong>체결 내역 대조</strong><span>응답이 불확실할 때 확인</span></li><li><strong>종가 3조건 확정</strong><span>시각·장 운영 구분·가격이 모두 일치할 때</span></li></ul>
     </div>
-    <div class="pc-cases">
-      <h4>사례</h4>
-      <ol><li><a href="projects/k-closing-alpha.html#journal">주문 전 기록으로 중복 주문 차단</a></li></ol>
-      <a class="pc-go" href="projects/k-closing-alpha.html">자세히 →</a>
-    </div>
+    <div class="pc-cases"><h4>대표 사례</h4><ul><li><a href="projects/k-closing-alpha.html#journal"><strong>주문 전 기록으로 중복 주문 차단</strong><span>주문 상태 변화, 기존 주문 인정, 종가 확정 판단을 구현해 단위 테스트를 작성했고, 모의투자 리허설에서 나온 결함을 고쳤습니다.</span></a></li></ul></div>
   </li></ol>
         <details class="subs"><summary>보조 프로젝트 3개</summary><ul><li><a class="sub-name" href="projects/port-entity-matching.html">Port Entity Matching</a><span class="kind kind-personal">개인</span><span class="status">완료</span><span class="sub-pitch">교차검증과 대회 점수의 차이를 원인별로 확인한 선박 기록 매칭</span></li><li><a class="sub-name" href="projects/savetax.html">SaveTax</a><span class="kind kind-personal">개인</span><span class="status">완료</span><span class="sub-pitch">반려 사유를 분석해 이의 41건으로 대응한 공공 조달 분석(해커톤)</span></li><li><a class="sub-name" href="projects/oibc-2026.html">OIBC 2026</a><span class="kind kind-personal">개인</span><span class="status">진행 중</span><span class="sub-pitch">마감 시각 이후 정보를 데이터 단계에서 막은 태양광 발전량 예측 대회 파이프라인(제출 중)</span></li></ul></details>
         <h3 class="part">기술</h3>
@@ -104,11 +96,7 @@
       <p class="pc-meta">2025.12 ~ 진행 중 · 기획부터 주문 실행까지 단독 설계·구현</p>
       <ul class="pc-keys"><li><strong>+31.27bp</strong><span>하루 평균 순수익 (운영 전략, 비용 차감 후)</span><span class="basis basis-backtest">백테스트</span></li><li><strong>2.57</strong><span>샤프지수 (수익 대비 변동)</span><span class="basis basis-backtest">백테스트</span></li><li><strong>118개</strong><span>비교한 전략 수</span><span class="basis basis-backtest">백테스트</span></li></ul>
     </div>
-    <div class="pc-cases">
-      <h4>사례</h4>
-      <ol><li><a href="projects/k-closing-alpha.html#cost">호가 비용 큰 종목의 사전 제외</a></li><li><a href="projects/k-closing-alpha.html#cv">겹침 없는 검증과 모델 교체 심사</a></li></ol>
-      <a class="pc-go" href="projects/k-closing-alpha.html">자세히 →</a>
-    </div>
+    <div class="pc-cases"><h4>대표 사례</h4><ul><li><a href="projects/k-closing-alpha.html#cost"><strong>호가 비용 큰 종목의 사전 제외</strong><span>왕복 비용이 1칸에서 6칸으로 늘면 일평균 순수익이 +41.92bp에서 -5.88bp로 줄어, 4칸까지 이익이고 6칸에서 손실입니다.</span></a></li><li><a href="projects/k-closing-alpha.html#cv"><strong>겹침 없는 검증과 모델 교체 심사</strong><span>교체 심사 기준(0.95·20일)에 못 미치는 모델은 운영에 올라가지 못합니다.</span></a></li></ul></div>
   </li><li class="pcard">
     <div class="pc-main">
       <div class="pc-head"><h3><a href="projects/crypto-pilot.html">Crypto Pilot</a></h3><span class="kind kind-personal">개인</span><span class="status">진행 중</span></div>
@@ -116,11 +104,7 @@
       <p class="pc-meta">2026 · 단독 설계·구현 (검증 엔진, 수집·집행 데몬, 배포 운영)</p>
       <ul class="pc-keys"><li><strong>+212.7%</strong><span>연평균 수익률 (복리, 수수료·펀딩비 반영, 2026-10-10 실행)</span><span class="basis basis-replay">재현 시뮬레이션</span></li><li><strong>-51.2%</strong><span>최대 낙폭 (고점 대비 최대 하락)</span><span class="basis basis-replay">재현 시뮬레이션</span></li><li><strong>0회</strong><span>강제청산 (5년 6개월 시뮬레이션)</span><span class="basis basis-replay">재현 시뮬레이션</span></li></ul>
     </div>
-    <div class="pc-cases">
-      <h4>사례</h4>
-      <ol><li><a href="projects/crypto-pilot.html#sizing">청산 규칙을 반영한 레버리지 결정</a></li><li><a href="projects/crypto-pilot.html#execution">3분 단위 지정가 체결 재현</a></li></ol>
-      <a class="pc-go" href="projects/crypto-pilot.html">자세히 →</a>
-    </div>
+    <div class="pc-cases"><h4>대표 사례</h4><ul><li><a href="projects/crypto-pilot.html#sizing"><strong>청산 규칙을 반영한 레버리지 결정</strong><span>성장 정책은 연평균 수익률이 +139%로 고정 배율(+253~277%)보다 낮지만 최대 낙폭이 -35.0%로 가장 작고 증거금 한도 위반이 없었습니다.</span></a></li><li><a href="projects/crypto-pilot.html#execution"><strong>3분 단위 지정가 체결 재현</strong><span>지정가를 계좌 시뮬레이션의 기본 체결 모델로 채택했고(수수료 6bp→2bp), 구간 분할 처리가 전체 처리와 같은 결과임을 합성 데이터 테스트로 확인했습니다.</span></a></li></ul></div>
   </li></ol>
         <details class="subs"><summary>보조 프로젝트 2개</summary><ul><li><a class="sub-name" href="projects/mt-etf-king.html">MT ETF King 2026</a><span class="kind kind-personal">개인</span><span class="status">진행 중</span><span class="sub-pitch">목표 도달 확률로 평가한 대회 전략 연구, 채택 기준 미통과로 연구용 분류</span></li><li><a class="sub-name" href="projects/etf-manager.html">ETF-Manager</a><span class="kind kind-personal">개인</span><span class="sub-pitch">세금 반영 장기 적립식 자산배분 연구</span></li></ul></details>
         <h3 class="part">기술</h3>
@@ -147,23 +131,15 @@
       <p class="pc-meta">2025.09 ~ 2025.12 · 뇌파 전처리, 학습 데이터(증강·정답 문장), 모델 파인튜닝 담당. 인터뷰 키워드 분석과 연관 분석 대시보드는 팀원 담당.</p>
       <ul class="pc-keys"><li><strong>70세트</strong><span>학습 입력 (실제 45 + 증강 25, 증강은 기록 1개에서 파생)</span></li><li><strong>210개</strong><span>정답 문장 (280개 중 사용)</span></li><li><strong>168 / 42</strong><span>학습 / 검증 (레코드 단위 분할)</span></li></ul>
     </div>
-    <div class="pc-cases">
-      <h4>사례</h4>
-      <ol><li><a href="projects/emori.html#finetune">규칙·범용 LLM 대신 추가학습 선택</a></li><li><a href="projects/emori.html#augment">규칙 증강으로 학습 세트 확장</a></li></ol>
-      <a class="pc-go" href="projects/emori.html">자세히 →</a>
-    </div>
+    <div class="pc-cases"><h4>대표 사례</h4><ul><li><a href="projects/emori.html#finetune"><strong>규칙·범용 LLM 대신 추가학습 선택</strong><span>체험 시작·중간·마지막 3단계를 각각 한 문장으로 서술하는 모델을 만들었습니다.</span></a></li><li><a href="projects/emori.html#augment"><strong>규칙 증강으로 학습 세트 확장</strong><span>증강 50세트 중 정답 문장이 있는 25세트가 학습 입력 70세트의 일부가 됐고, 모두 실제 기록 1개에서 파생됩니다.</span></a></li></ul></div>
   </li><li class="pcard">
     <div class="pc-main">
       <div class="pc-head"><h3><a href="projects/witches-chat-core.html">Witches-Chat-Core</a></h3><span class="kind kind-team">팀</span><span class="status">완료</span></div>
       <p class="pc-pitch">학사 규정을 검색용 Markdown으로 구조화한 RAG 전처리</p>
-      <p class="pc-meta">2026.03 ~ 2026.06 · 담당: 문서 변환, 구조 표시, 표·양식 분리, 변환 점검. 문서 쪼개기(검색용 조각으로 나누는 단계)·검색·입력 검열·서버 구성은 팀원 담당(변환기 `processors.py` 952줄 중 543줄이 제 코드, `git blame` 기준).</p>
+      <p class="pc-meta">2026.03 ~ 2026.06 · 담당: 문서 변환, 구조 표시, 표·양식 분리, 변환 점검. 문서 쪼개기(검색용 조각으로 나누는 단계)·검색·입력 검열·서버 구성은 팀원 담당(변환기 <code>processors.py</code> 952줄 중 543줄이 제 코드, <code>git blame</code> 기준).</p>
       <ul class="pc-keys"><li><strong>3형식 → Markdown</strong><span>HWP·DOCX·PDF 규정을 하나로 통일</span></li><li><strong>조·항·호 구조 표시</strong><span>계층을 기호로 남겨 문서 쪼개기에 전달</span></li><li><strong>표·양식 분리</strong><span>본문과 구분해서 전달</span></li><li><strong>98.46%</strong><span>악성 질문 차단 (팀 전체, 130개 중 128개)</span><span class="basis basis-team">팀 측정</span></li></ul>
     </div>
-    <div class="pc-cases">
-      <h4>사례</h4>
-      <ol><li><a href="projects/witches-chat-core.html#md-unify">세 형식을 Markdown 하나로 통일</a></li><li><a href="projects/witches-chat-core.html#form-split">표와 신청서 양식 분리</a></li></ol>
-      <a class="pc-go" href="projects/witches-chat-core.html">자세히 →</a>
-    </div>
+    <div class="pc-cases"><h4>대표 사례</h4><ul><li><a href="projects/witches-chat-core.html#md-unify"><strong>세 형식을 Markdown 하나로 통일</strong><span>원본 29개 파일에서 Markdown 28개(규정 24종)를 만들어 문서 쪼개기 단계에 전달했습니다.</span></a></li><li><a href="projects/witches-chat-core.html#form-split"><strong>표와 신청서 양식 분리</strong><span>양식 표가 본문과 분리되어 문서 쪼개기 단계로 전달됩니다.</span></a></li></ul></div>
   </li><li class="pcard">
     <div class="pc-main">
       <div class="pc-head"><h3><a href="projects/port-entity-matching.html">Port Entity Matching</a></h3><span class="kind kind-personal">개인</span><span class="status">완료</span></div>
@@ -171,11 +147,7 @@
       <p class="pc-meta">2026.10 ~ 2026.11 · 정규화, 후보 검색, 특징, 랭커(후보 순위 모델), 평가 도구, 제출 코드를 단독 설계·구현했습니다.</p>
       <ul class="pc-keys"><li><strong>0.91989 · 106위</strong><span>비공개 리더보드 최종 (468명 중)</span><span class="basis basis-ops">운영 기록</span></li><li><strong>0.8805 → 0.9595</strong><span>공개 리더보드 점수</span><span class="basis basis-ops">운영 기록</span></li><li><strong>17 / 41건</strong><span>역방향 채널로 해소 확인한 한글 오류</span><span class="basis basis-ops">운영 기록</span></li></ul>
     </div>
-    <div class="pc-cases">
-      <h4>사례</h4>
-      <ol><li><a href="projects/port-entity-matching.html#korean-match">한글 선박명, 세 채널로 후보 검색</a></li><li><a href="projects/port-entity-matching.html#plateau">정체 구간의 중단 판단과 남은 오류 분석</a></li></ol>
-      <a class="pc-go" href="projects/port-entity-matching.html">자세히 →</a>
-    </div>
+    <div class="pc-cases"><h4>대표 사례</h4><ul><li><a href="projects/port-entity-matching.html#korean-match"><strong>한글 선박명, 세 채널로 후보 검색</strong><span>공개 점수가 0.8805에서 0.9595로 올랐습니다.</span></a></li><li><a href="projects/port-entity-matching.html#plateau"><strong>정체 구간의 중단 판단과 남은 오류 분석</strong><span>한글 정답이 505에서 507로, 점수가 0.9525에서 0.9595로 올랐습니다(후보 폭 확대 0.9563, 학습 선박 제외 0.9581).</span></a></li></ul></div>
   </li></ol>
         
         <h3 class="part">기술</h3>
@@ -189,8 +161,8 @@
     </section>
 </div>
 <section class="others-sec" id="projects-others"><div class="wrap">
-  <div class="ai-sec"><div class="ev-block"><h4 class="sub">AI 활용</h4><p class="ai-text">AI 코딩 도구를 주로 코드 작성에 썼고, 아이디어 정리와 처음 접하는 분야 학습에도 썼습니다. 설계 방향과 비교 기준은 직접 정했고, AI가 쓴 코드는 타입 검사·테스트·실행 결과로 확인했습니다.</p>
-      <table class="ai-table"><thead><tr><th>AI에 맡긴 일</th><th>직접 한 일</th></tr></thead><tbody><tr><td>코드 작성</td><td>설계 방향과 비교 기준 결정</td></tr><tr><td>아이디어 정리와 도메인 학습 보조</td><td>근거를 확인한 내용만 성과로 기재</td></tr><tr><td>에이전트 작업 전반</td><td>SaveTax는 mypy strict</td></tr></tbody></table></div></div>
+  <div class="ai-sec"><div class="ev-block"><h4 class="sub">AI 활용 방식</h4><p class="ai-text">AI 코딩 도구를 코드 작성과 처음 접하는 분야 학습에 활용했습니다. 설계와 검증은 직접 맡고, 구현을 AI와 나눴습니다.</p>
+    <ol class="ai-steps"><li><span class="ai-k">설계</span><span class="ai-who">직접</span><span class="ai-v">문제 정의와 비교 기준, 구조를 먼저 정합니다.</span></li><li><span class="ai-k">구현</span><span class="ai-who is-ai">AI 도구</span><span class="ai-v">정한 설계대로 코드를 작성하고, 저는 변경 내용을 검토합니다.</span></li><li><span class="ai-k">검증</span><span class="ai-who">직접</span><span class="ai-v">테스트와 정적 검사를 통과시키고, 결과 수치는 직접 확인한 것만 씁니다.</span></li></ol></div></div>
   <h2>그 밖의 프로젝트</h2>
   <ul class="others"><li><a href="https://github.com/KTHYEONG/auto-mobility"><strong>auto-mobility</strong></a><span>실내 공간을 3D 모델로 복원하고 센서 데이터로 검증하는 온라인 현장실습 팀 프로젝트(3명). 저는 Visual SLAM 비교와 평가를 주로 맡았습니다.</span></li><li><a href="https://github.com/KTHYEONG/k-stock-engine"><strong>K-Stock Engine</strong></a><span>국내주식 다중 팩터 전략을 연구하고 가상 장부로 기록합니다. 아직 불완전한 단계라 성과는 싣지 않았습니다.</span></li></ul>
   <p class="contact" id="contact">연락 <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></p>
