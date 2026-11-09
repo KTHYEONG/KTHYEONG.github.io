@@ -633,3 +633,7 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .ai-steps li { padding: 8px 10px; }
 .print .ai-v { font-size: 9pt; }
 .print .pc-cases a { padding: 6px 9px; }
+
+.cases-toggle { margin-left: 12px; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--accent); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; cursor: pointer; vertical-align: middle; }
+.cases-toggle:hover { border-color: var(--accent); background: var(--accent-soft); }
+.print .cases-toggle { display: none; }

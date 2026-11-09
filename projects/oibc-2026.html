@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="OIBC 2026 · 김태형 포트폴리오"><meta property="og:description" content="태양광 발전량 예측과 VPP 배정을 규칙 위반 없이 비교하는 파이프라인"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=c75bac06">
+<link rel="stylesheet" href="../styles.css?v=091cbcc3">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -38,14 +38,22 @@
     <figcaption>마감 시각 게이트를 거친 데이터로 예측하고, 채택 규칙으로 판정한 뒤 검증해서 제출(실제 CLI 단계 기준)</figcaption>
   </figure></section>
   <section class="pj-sec">
-    <h2 class="part">사례</h2>
-    <div class="cases"><article class="case" id="gate">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">OIBC 2026</span><span class="kind kind-personal">개인</span></div><h3>예측 마감 이후 정보 차단</h3></header>
-    <ol class="flow" style="--n:5"><li><strong>원천 예보</strong><span>발행 시각 포함</span></li><li class="hl"><strong>발행 시각 확인</strong><span>대상 운영일 마감과 비교</span></li><li class="hl"><strong>마감 이후면 중단</strong><span>오류로 멈춤</span></li><li><strong>파생 테이블</strong><span>마감 이전 정보만</span></li><li><strong>특성 패널</strong><span>모델 입력</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>전날 17:00 이후의 정보를 쓰면 대회 규칙 위반인데, 시계열 데이터는 실수로 미래 정보가 섞이기 쉽습니다.</p></section></div><ul class="c-stats"><li><strong>전날 17:00</strong><span>예측 마감, 이후 발행된 예보를 쓰면 오류로 중단</span></li><li><strong>KST 오른쪽 닫힘</strong><span>모든 시각 통일, 01:00은 00~01시</span></li><li><strong>테스트 14개</strong><span>게이트 모듈 단위 테스트</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>모델 쪽에서 조심하는 방식은 특성이 늘수록 빈틈이 생겨 제외하고, 데이터를 파생하는 단계에서 막는 방식을 채택</li><li>시각 표기가 섞이면 한 시간 어긋나 미래 정보가 들어갈 수 있어 시각 규칙부터 통일</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>예보 발행 시각이 대상 운영일의 마감보다 늦으면 기본값으로 대체하지 않고 오류로 중단</li><li>마감 이후 예보를 망가뜨려도 이전 날의 특성이 바뀌지 않는지 테스트</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>마감 게이트·시간축·정산 규칙을 단위 테스트로 고정했습니다. </p></section></div>
-  </article><article class="case" id="adopt">
-    <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">OIBC 2026</span><span class="kind kind-personal">개인</span></div><h3>사전 채택 규칙으로 실험 판정</h3></header>
-    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>같은 검증 데이터로 실험을 반복하면 우연히 좋아 보이는 설정을 고르게 됩니다. 리더보드 점수에 맞춰 고치는 것도 같은 문제입니다.</p></section></div><ul class="c-stats"><li><strong>신뢰구간 0 제외</strong><span>7일 단위 재표본(부트스트랩)</span></li><li><strong>시드 잡음의 2배 초과</strong><span>시드를 바꿔 흔들리는 폭보다 큰 개선만</span></li><li><strong>최소 1% 개선</strong><span>정산 벌점 기준</span></li><li><strong>분기 70% 이상</strong><span>분기별로 개선된 비율</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>시드를 바꾸면 결과가 흔들려, 그 흔들림보다 큰 개선인지 따져야 함</li><li>코드 버전이나 입력이 다른 실행끼리의 비교는 의미 없음</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>시간순 폴드 2개와 시드 3개, 폴드 사이 1일 간격으로 검증</li><li>실험마다 가설·설정·시드·패널 해시를 기록하고 채택·기각·판정 불가 중 하나로 남김</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>판정 규칙과 기록 구조를 코드로 구현했습니다. </p></section></div>
-  </article></div>
+    <h2 class="part">사례 <button type="button" class="cases-toggle" id="cases-toggle">모두 펼치기</button></h2>
+    <div class="cases"><details class="case" id="gate" open>
+    <summary class="c-sum">
+      <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">OIBC 2026</span><span class="kind kind-personal">개인</span></div>
+      <h3>예측 마감 이후 정보 차단</h3>
+      <p class="c-brief">마감 게이트·시간축·정산 규칙을 단위 테스트로 고정했습니다.</p>
+    </summary>
+    <div class="c-body"><ol class="flow" style="--n:5"><li><strong>원천 예보</strong><span>발행 시각 포함</span></li><li class="hl"><strong>발행 시각 확인</strong><span>대상 운영일 마감과 비교</span></li><li class="hl"><strong>마감 이후면 중단</strong><span>오류로 멈춤</span></li><li><strong>파생 테이블</strong><span>마감 이전 정보만</span></li><li><strong>특성 패널</strong><span>모델 입력</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>전날 17:00 이후의 정보를 쓰면 대회 규칙 위반인데, 시계열 데이터는 실수로 미래 정보가 섞이기 쉽습니다.</p></section></div><ul class="c-stats"><li><strong>전날 17:00</strong><span>예측 마감, 이후 발행된 예보를 쓰면 오류로 중단</span></li><li><strong>KST 오른쪽 닫힘</strong><span>모든 시각 통일, 01:00은 00~01시</span></li><li><strong>테스트 14개</strong><span>게이트 모듈 단위 테스트</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>모델 쪽에서 조심하는 방식은 특성이 늘수록 빈틈이 생겨 제외하고, 데이터를 파생하는 단계에서 막는 방식을 채택</li><li>시각 표기가 섞이면 한 시간 어긋나 미래 정보가 들어갈 수 있어 시각 규칙부터 통일</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>예보 발행 시각이 대상 운영일의 마감보다 늦으면 기본값으로 대체하지 않고 오류로 중단</li><li>마감 이후 예보를 망가뜨려도 이전 날의 특성이 바뀌지 않는지 테스트</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>마감 게이트·시간축·정산 규칙을 단위 테스트로 고정했습니다. </p></section></div></div>
+  </details><details class="case" id="adopt">
+    <summary class="c-sum">
+      <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">OIBC 2026</span><span class="kind kind-personal">개인</span></div>
+      <h3>사전 채택 규칙으로 실험 판정</h3>
+      <p class="c-brief">판정 규칙과 기록 구조를 코드로 구현했습니다.</p>
+    </summary>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>같은 검증 데이터로 실험을 반복하면 우연히 좋아 보이는 설정을 고르게 됩니다. 리더보드 점수에 맞춰 고치는 것도 같은 문제입니다.</p></section></div><ul class="c-stats"><li><strong>신뢰구간 0 제외</strong><span>7일 단위 재표본(부트스트랩)</span></li><li><strong>시드 잡음의 2배 초과</strong><span>시드를 바꿔 흔들리는 폭보다 큰 개선만</span></li><li><strong>최소 1% 개선</strong><span>정산 벌점 기준</span></li><li><strong>분기 70% 이상</strong><span>분기별로 개선된 비율</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>시드를 바꾸면 결과가 흔들려, 그 흔들림보다 큰 개선인지 따져야 함</li><li>코드 버전이나 입력이 다른 실행끼리의 비교는 의미 없음</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>시간순 폴드 2개와 시드 3개, 폴드 사이 1일 간격으로 검증</li><li>실험마다 가설·설정·시드·패널 해시를 기록하고 채택·기각·판정 불가 중 하나로 남김</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>판정 규칙과 기록 구조를 코드로 구현했습니다. </p></section></div></div>
+  </details></div>
   </section>
   <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>제출 기간(2026-11-02 ~ 11-13) 중이라 최종 순위와 검증 개선 폭은 정해지지 않았고, 실제 판정 결과는 제출이 끝난 뒤 정리함</li><li>지리 반클러스터링이 벌점을 줄이는지는 검증 결과로 확인해야 하는 가정</li><li>검증용 마지막 12개월은 이미 모델 비교에 쓰여 완전한 검증 데이터가 아님</li><li>리더보드를 본 뒤 정한 배율 제출은 운영팀 답변 후 스스로 무효로 보고 유효 최고점을 따로 관리함</li><li>대회 원본 데이터를 공개할 수 없어 학습·평가 재현 불가</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/oibc-2026#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
@@ -54,5 +62,21 @@
   </nav>
 </main>
 <footer class="site-foot"><div class="wrap">김태형 · <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></div></footer>
+<script>
+(function () {
+  var all = Array.prototype.slice.call(document.querySelectorAll('details.case'));
+  var btn = document.getElementById('cases-toggle');
+  function openHash() {
+    var id = decodeURIComponent(location.hash.replace('#', ''));
+    var el = id && document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView({ block: 'start' }); }
+  }
+  function sync() { if (btn) btn.textContent = all.every(function (d) { return d.open; }) ? '모두 접기' : '모두 펼치기'; }
+  if (btn) btn.addEventListener('click', function () { var open = !all.every(function (d) { return d.open; }); all.forEach(function (d) { d.open = open; }); sync(); });
+  all.forEach(function (d) { d.addEventListener('toggle', sync); });
+  window.addEventListener('hashchange', openHash);
+  openHash(); sync();
+})();
+</script>
 </body>
 </html>
