@@ -25,11 +25,11 @@
   <section class="pj-sec">
     <h2 class="part">개요</h2>
     <div class="pj-ov"><div class="pj-ov-main">
-    <p class="pj-summary">공공조달 공개 자료에서 시중가보다 비싸게 집행된 금액을 찾는 해커톤 참가작입니다. 중복 정리, 4종 비교 근거 수집, 사람 승인 후 제출 순서로 풀었습니다.</p>
+    <p class="pj-summary">공공조달 공개 자료에서 시중가보다 비싸게 집행된 금액을 찾는 해커톤 참가작입니다. 중복 정리, 4종 비교 근거 수집, 사람 승인 후 제출 순서로 풀었고, 최종 결과는 참가자 1,169명 중 45위(확정 5.93억 원)입니다.</p>
     <dl class="meta"><div><dt>기간</dt><dd>2026.10</dd></div><div><dt>역할</dt><dd>나라장터 해커톤 참가작, 단독 설계·구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>DuckDB</li><li>Parquet</li><li>Decimal</li><li>pytest</li><li>mypy</li><li>ruff</li></ul></dd></div><div><dt>저장소</dt><dd><span class="repo none">비공개 저장소</span></dd></div></dl>
     </div></div>
     
-    <ul class="metrics"><li class="metric"><div class="m-label">중복 주문 보정</div><div class="m-value">약 24%</div><div class="m-note">중복을 그대로 합산하면 부풀려지는 비율, 대회 안내 기준</div></li><li class="metric"><div class="m-label">비교 가격 근거</div><div class="m-value">4종</div><div class="m-note">타 계약·쇼핑몰·타 기관·부품 합산, 종류별 기준 배율 설정</div></li><li class="metric"><div class="m-label">제출 건수</div><div class="m-value">117건</div><div class="m-note">접수 139건 중 철회 22건 제외, 모두 심사 대기(확정 전)</div><span class="basis basis-ops">운영 기록</span></li><li class="metric"><div class="m-label">접수 금액 합계</div><div class="m-value">약 13.7억 원</div><div class="m-note">제출 117건의 접수 시 금액 합, 인정액 아님(확정 전)</div><span class="basis basis-ops">운영 기록</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">중복 주문 보정</div><div class="m-value">약 24%</div><div class="m-note">중복을 그대로 합산하면 부풀려지는 비율, 대회 안내 기준</div></li><li class="metric"><div class="m-label">비교 가격 근거</div><div class="m-value">4종</div><div class="m-note">타 계약·쇼핑몰·타 기관·부품 합산, 종류별 기준 배율 설정</div></li><li class="metric"><div class="m-label">제출 건수</div><div class="m-value">117건</div><div class="m-note">접수 139건 중 철회 22건 제외, 내 제출 기록 기준</div><span class="basis basis-ops">운영 기록</span></li><li class="metric"><div class="m-label">접수 금액 합계</div><div class="m-value">약 13.7억 원</div><div class="m-note">제출 117건의 접수 시 금액 합, 심사 인정액 아님</div><span class="basis basis-ops">운영 기록</span></li><li class="metric"><div class="m-label">확정 인정 금액</div><div class="m-value">5.93억 원</div><div class="m-note">근거 확인과 이의 처리를 마친 최종 확정액, 접수 금액의 약 43% (공식 결과 2026.11.9)</div><span class="basis basis-ops">운영 기록</span></li><li class="metric"><div class="m-label">최종 순위</div><div class="m-value">45위 / 1,169명</div><div class="m-note">확정 금액이 있는 참가자 115명 중 45위, 상위 약 3.8% (공식 결과 2026.11.9)</div><span class="basis basis-ops">운영 기록</span></li></ul>
   </section>
   
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
@@ -84,7 +84,7 @@
     
   </article></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>원본 데이터와 참가자 인증 정보가 저장소에 없어 전체 실행 재현 불가, 테스트는 합성 데이터.</li><li>과다 집행 판정은 시중가 비교 추정, 심사에서 근거 부족일 수 있음.</li><li>제출 건수·금액은 내 제출 기록 파일 기준(저장소 미포함), 심사 인정액과 다를 수 있음.</li><li>대회 결과는 확정 전이라 싣지 않음.</li></ul></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>원본 데이터와 참가자 인증 정보가 저장소에 없어 전체 실행 재현 불가, 테스트는 합성 데이터.</li><li>과다 집행 판정은 시중가 비교 추정, 심사에서 근거 부족일 수 있음.</li><li>제출 건수·접수 금액은 내 제출 기록 파일 기준(저장소 미포함)이고, 확정 금액·순위는 대회 공식 결과 페이지 기준.</li><li>접수 금액 약 13.7억 원 대비 확정 금액은 5.93억 원이었음.</li><li>이 대회는 다른 참가자가 먼저 제보하기 전에 가격 차이가 큰 물품을 찾는 속도가 중요했고, 개발과 분석을 더 일찍 시작해야 했다는 점을 배움.</li></ul></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="oibc-2026.html"><span>이전 프로젝트</span><strong>OIBC 2026</strong></a>
     <a class="pn next" href="crypto-pilot.html"><span>다음 프로젝트</span><strong>Crypto Pilot</strong></a>
