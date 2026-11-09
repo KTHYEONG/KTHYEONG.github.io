@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Crypto Pilot · 김태형 포트폴리오"><meta property="og:description" content="바이낸스 선물 전략 검증과 모의 자동 매매"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=c99fa138">
+<link rel="stylesheet" href="../styles.css?v=df957d60">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -31,6 +31,7 @@
     
     <ul class="metrics"><li class="metric"><div class="m-label">$1,000 계좌 시뮬레이션 연평균 수익률(복리)</div><div class="m-value">+212.7%</div><div class="m-note">과거 데이터 재현, 2021-04 ~ 2026-10(확인용 구간 포함), 2026-10-10 실행(기본 전략, ML 보정 이전), 지정가, 수수료·펀딩비·증거금 반영</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">최대 낙폭(고점 대비 최대 하락)</div><div class="m-value">-51.2%</div><div class="m-note">같은 2026-10-10 실행, 3분 단위 가격 흐름 기준</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">강제청산</div><div class="m-value">0회</div><div class="m-note">같은 시뮬레이션, 심볼별 유지증거금 규칙 반영</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">승격 판정 보정 샤프지수(DSR)</div><div class="m-value">0.9988</div><div class="m-note">시도 128회를 반영해 기준 0.95 이상 통과, 2026-10-10 판정</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>
+  
   
   
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
@@ -78,7 +79,7 @@
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>수집·감시·통신을 24시간 돌리면 백테스트에서는 안 보이던 결함이 나옵니다. 조용히 틀린 기록이 남는 결함이 가장 위험했습니다.</p></section></div><ol class="tl"><li><time>10.16</time><span>IP 차단(418) 응답 때 차단 해제 시각을 읽어 재시도가 그 시각까지 기다리도록 수정</span></li><li><time>10.16</time><span>설정 요청의 성공 응답을 오류로 처리하던 문제 수정</span></li><li class="hl"><time>10.27</time><span>대형 일자(785만 행)를 통째로 파싱해 메모리가 2.7GB까지 늘고 3GB 한도 컨테이너가 종료되던 문제를 블록 단위 처리로 0.4GB 이하로 제한</span></li><li class="hl"><time>10.30</time><span>체결 패리티(내 기록과 거래소 체결의 일치) 감시가 거래 자료 없는 날을 정상(0건)으로 기록하던 문제 수정, 빈 날은 건너뛰고 최근 3일을 다시 점검</span></li></ol><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>새 수집 슬롯(실행 한 벌)이 준비된 뒤에 옛 슬롯을 내리는 교체 방식, 배포는 데몬이 쉬는 시간에만 진행하는 게이트</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>각 결함의 원인을 커밋에 남기고 수정했으며, 대형 일자 처리의 메모리는 2.7GB에서 0.4GB 이하로 줄었습니다. <span class="basis basis-ops">운영 기록</span></p></section></div></div>
   </details></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>모든 수익률은 재현 시뮬레이션, 실제 운용 결과 아님. 자동 매매는 모의 모드.</li><li>설계 구간 평균 배율 약 3.8배, 최대 낙폭 -51%로 실제 운용에서 버티기 어려움.</li><li>확인용 구간은 92일이고 조회가 6건 기록됨. 평가 기준을 바꾼 날 설계 구간 수익률 시험값이 22.5%~226.8%로 크게 흔들려 표본 안 조정 가능성을 배제하지 못함. 시도 횟수는 128회.</li><li>자본이 커질수록 수익이 줄어듦(11-08 ML 보정 적용 재실행, 연평균 수익률/최대 낙폭): 1천 달러 +239.6%/-45.8%, 10만 달러 +127.3%/-33.4%, 100만 달러 +68.3%/-23.6%, 1천만 달러 +22.0%/-15.3%.</li><li>펀딩 손익의 약 88~93%가 상위 5개 종목에 집중(11-08 재실행 기준).</li><li>ML 보정의 홀드아웃 통과는 119일 표본이라 검정력이 낮고, 같은 홀드아웃을 사전 등록 시험에 한 번 썼으며 후보 탐색이 약 84개 구성에서 이뤄져 다중 시험 편향이 남음. 구체적인 값과 연구 수치는 비공개 저장소에 보관해 이 페이지에 싣지 않음.</li><li>운영 결함 사례의 메모리 수치는 커밋 기록 기준이며 재측정하지 않았고, 수집 슬롯 교체 중 끊김 시간의 실측치는 없음.</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/crypto-pilot#readme">저장소 README</a>에 있습니다.</p></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">모든 수익률은 재현 시뮬레이션</strong><span class="lim-d">실제 운용 결과가 아니며 자동 매매는 모의 모드이고, 설계 구간 평균 배율 약 3.8배·낙폭 -51%는 버티기 어렵습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">표본 안 조정 가능성</strong><span class="lim-d">확인용 구간은 92일에 조회 6건이고, 평가 기준을 바꾼 날 시험값이 22.5%~226.8%로 흔들렸으며 시도는 128회입니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">자본 증가와 종목 집중</strong><span class="lim-d">자본이 커지면 수익이 줄고(1천 달러 +239.6% → 1천만 달러 +22.0%, ML 보정 재실행) 펀딩 손익 88~93%가 상위 5개 종목에 몰립니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">ML 보정의 낮은 검정력</strong><span class="lim-d">119일 홀드아웃을 사전 등록 시험에 한 번 쓴 통과라 검정력이 낮고 약 84개 시험의 편향이 남으며, 결함 메모리 수치는 커밋 기록 기준입니다.</span></div></li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/crypto-pilot#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="oibc-2026.html"><span>이전 프로젝트</span><strong>OIBC 2026</strong></a>
     <a class="pn next" href="mt-etf-king.html"><span>다음 프로젝트</span><strong>MT ETF King 2026</strong></a>

@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="K-Closing Alpha · 김태형 포트폴리오"><meta property="og:description" content="장 마감 직전 정보로 종가에 사서 다음 날 시초가에 파는 퀀트"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=c99fa138">
+<link rel="stylesheet" href="../styles.css?v=df957d60">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -31,6 +31,7 @@
     
     <ul class="metrics"><li class="metric"><div class="m-label">일평균 순수익</div><div class="m-value">+31.27bp</div><div class="m-note">운영 전략(LGBM 상위 3종목 균등 가중), 886거래일(2023-01~2026-09), 연구 문서 §7 기준 (1bp=0.01%)</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">샤프지수(수익 대비 변동 크기)</div><div class="m-value">2.57</div><div class="m-note">같은 전략의 최대낙폭(고점 대비 최대 하락) 25.03%</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">비용 민감도</div><div class="m-value">4칸까지 이익</div><div class="m-note">왕복 호가 비용을 1·2·3·4·6칸으로 바꿔 시험, 6칸에서 손실(-5.88bp)</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>
+  
   
   
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
@@ -93,7 +94,7 @@
     <div class="c-body"><ol class="flow" style="--n:5"><li class="hl"><strong>의도 기록</strong><span>주문 내용을 디스크에 저장</span></li><li><strong>주문 전송</strong><span>전송 사실 기록</span></li><li><strong>응답 불확실</strong><span>미확인 상태로 표시</span></li><li class="hl"><strong>체결 내역 조회</strong><span>같은 주문 탐색</span></li><li><strong>인정/종결</strong><span>있으면 인정</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>주문 후 증권사 응답이 오지 않으면 주문이 접수됐는지 알 수 없습니다. 다시 보내면 같은 종목을 두 번 사게 됩니다.</p></section></div><ol class="tl"><li><time>09.21</time><span>하루 두 번 도는 진입 단계에서 두 번째 실행이 줄어든 현금으로 다시 사이징해, 체결된 주문을 더 작은 주문으로 덮어씀(예: 301주→50주). 당일 진입 기록이 있으면 건너뛰도록 수정</span></li><li class="hl"><time>10.12</time><span>임대 서버(VPS)의 주문 경로를 모의투자로 전환해 리허설 시작. 모의 장중 조회가 1.3~4.6초 걸려 5초 제한에 가깝고, 취소된 주문 행이 기존 주문 후보로 오인될 수 있어 보정</span></li><li><time>10.15</time><span>전일 미확인 주문의 이월 복구와 운영자 수동 해소 경로 추가</span></li><li><time>11.07</time><span>실거래 주문 한도를 환경변수로 명시하지 않으면 실거래 연결을 거부</span></li></ol><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>주문 의도와 전송 사실을 먼저 기록하고, 응답이 불확실하면 체결 내역에 같은 주문이 있을 때만 인정, 종가 확정은 시각·장 운영 상태·가격 일치 3조건으로 판단</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>주문 상태 변화, 기존 주문 인정, 종가 확정 판단을 구현해 단위 테스트를 작성했고, 모의투자 리허설에서 나온 결함을 고쳤습니다. <span class="basis basis-ops">운영 기록</span></p></section></div></div>
   </details></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>수익 수치는 모두 백테스트이고, 실계좌·모의투자 손익 기록은 없음(모의투자는 운영 경로 리허설 단계)</li><li>118개 중 고른 결과라 실제 성과는 더 낮을 수 있고 선택 편향 보정 결과는 제시하지 않음. 대표 수치(+31.27bp)는 운영 전략 기준이고, 연구 문서의 +34.58bp는 12bp 상한에 역틱 가중을 더한 연구용 변형이라 운영 경로에는 해당 가중이 없음</li><li>연구 문서 안에 불일치가 있음: 2틱 조건의 두 표가 +34.58bp와 +32.36bp를 모두 샤프 2.73으로 적고, 비용 상한 비교의 조건이 섞여 있음. 룩어헤드 수정 전후의 수치 차이는 기록이 없음</li><li>연구 문서가 저장소 밖에 있고 원본 데이터가 없어 재검증과 재현이 어렵고, 비용은 내 계좌 수수료 기준</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/k-closing-alpha#readme">저장소 README</a>에 있습니다.</p></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">수익은 모두 백테스트</strong><span class="lim-d">실계좌·모의투자 손익 기록이 없고 모의투자는 운영 경로 리허설 단계이며, 비용은 내 계좌 수수료 기준입니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">118개 중 고른 선택 편향</strong><span class="lim-d">대표 수치(+31.27bp)는 운영 전략 기준이고 편향 보정 결과는 없으며, 연구용 변형 +34.58bp에는 운영 경로에 없는 역틱 가중이 들어 있습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">연구 문서의 불일치</strong><span class="lim-d">2틱 조건의 두 표가 +34.58bp와 +32.36bp를 모두 샤프 2.73으로 적고 비용 상한 비교의 조건이 섞여 있으며, 룩어헤드 수정 전후 차이는 기록이 없습니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">근거 문서가 저장소 밖</strong><span class="lim-d">연구 문서가 저장소 밖에 있고 원본 데이터가 없어 재검증이 어렵습니다.</span></div></li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/k-closing-alpha#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="krx-alpha.html"><span>이전 프로젝트</span><strong>KRX-Alpha</strong></a>
     <a class="pn next" href="port-entity-matching.html"><span>다음 프로젝트</span><strong>Port Entity Matching</strong></a>

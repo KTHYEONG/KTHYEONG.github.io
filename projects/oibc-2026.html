@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="OIBC 2026 · 김태형 포트폴리오"><meta property="og:description" content="태양광 발전량 예측과 VPP 배정을 규칙 위반 없이 비교하는 파이프라인"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=c99fa138">
+<link rel="stylesheet" href="../styles.css?v=df957d60">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -33,6 +33,7 @@
   </section>
   
   
+  
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
     <div class="arch-grid" style="--n:5"><div class="arch-stage"><h4>입력</h4><div class="arch-node"><strong>대회 원본</strong><span>발전량·전력 도매가(SMP)·기상 예보</span></div><div class="arch-node hl"><strong>외부 예보</strong><span>공개 시각 감사 후 사용</span></div></div><div class="arch-stage"><h4>정제·파생</h4><div class="arch-node"><strong>정제·품질 검사</strong><span>시각을 KST로 통일</span></div><div class="arch-node hl"><strong>마감 시각 게이트</strong><span>전날 17시 이후 정보 차단</span></div><div class="arch-node"><strong>예보 특성 패널</strong><span>주간 패널</span></div></div><div class="arch-stage"><h4>학습·구성</h4><div class="arch-node"><strong>혼합 모델</strong><span>발전소·지역 LightGBM + CatBoost·MLP</span></div><div class="arch-node hl"><strong>입력 단절 탐지</strong><span>원천 예보가 끊기면 오류로 중단</span></div><div class="arch-node"><strong>지리 반클러스터링</strong><span>253곳을 두 VPP로 배정(병렬 단계)</span></div></div><div class="arch-stage"><h4>평가</h4><div class="arch-node"><strong>정산 기준 비교</strong><span>시간순 폴드·시드로 정산 벌점 평가</span></div><div class="arch-node hl"><strong>채택 규칙 판정</strong><span>신뢰구간·시드 잡음 기준</span></div><div class="arch-node"><strong>실험 기록</strong><span>설정·시드·커밋을 추가 전용 파일에 남김</span></div></div><div class="arch-stage"><h4>제출</h4><div class="arch-node"><strong>재학습·예측</strong><span>전체 학습 구간으로 재학습</span></div><div class="arch-node hl"><strong>제출 파일 검증</strong><span>배정·용량·시간 개수 확인</span></div></div></div>
     <figcaption>마감 시각 게이트를 거친 데이터로 예측하고, 채택 규칙으로 판정한 뒤 검증해서 제출(실제 CLI 단계 기준)</figcaption>
@@ -55,7 +56,7 @@
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>같은 검증 데이터로 실험을 반복하면 우연히 좋아 보이는 설정을 고르게 됩니다. 리더보드 점수에 맞춰 고치는 것도 같은 문제입니다.</p></section></div><ul class="c-stats"><li><strong>신뢰구간 0 제외</strong><span>7일 단위 재표본(부트스트랩)</span></li><li><strong>시드 잡음의 2배 초과</strong><span>시드를 바꿔 흔들리는 폭보다 큰 개선만</span></li><li><strong>최소 1% 개선</strong><span>정산 벌점 기준</span></li><li><strong>분기 70% 이상</strong><span>분기별로 개선된 비율</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>시드를 바꾸면 결과가 흔들려, 그 흔들림보다 큰 개선인지 따져야 함</li><li>코드 버전이나 입력이 다른 실행끼리의 비교는 의미 없음</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>시간순 폴드 2개와 시드 3개, 폴드 사이 1일 간격으로 검증</li><li>실험마다 가설·설정·시드·패널 해시를 기록하고 채택·기각·판정 불가 중 하나로 남김</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>판정 규칙과 기록 구조를 코드로 구현했습니다. </p></section></div></div>
   </details></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>제출 기간(2026-11-02 ~ 11-13) 중이라 최종 순위와 검증 개선 폭은 정해지지 않았고, 실제 판정 결과는 제출이 끝난 뒤 정리함</li><li>지리 반클러스터링이 벌점을 줄이는지는 검증 결과로 확인해야 하는 가정</li><li>검증용 마지막 12개월은 이미 모델 비교에 쓰여 완전한 검증 데이터가 아님</li><li>리더보드를 본 뒤 정한 배율 제출은 운영팀 답변 후 스스로 무효로 보고 유효 최고점을 따로 관리함</li><li>대회 원본 데이터를 공개할 수 없어 학습·평가 재현 불가</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/oibc-2026#readme">저장소 README</a>에 있습니다.</p></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">제출 중이라 결과 미정</strong><span class="lim-d">제출 기간(2026-11-02 ~ 11-13) 중이라 최종 순위와 검증 개선 폭은 정해지지 않았습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">완전한 검증 데이터가 아님</strong><span class="lim-d">검증용 마지막 12개월은 이미 모델 비교에 쓰였습니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">지리 반클러스터링의 효과</strong><span class="lim-d">벌점을 줄이는지는 검증 결과로 확인해야 하는 가정입니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">리더보드 의존 제출은 무효 처리</strong><span class="lim-d">리더보드를 본 뒤 정한 배율 제출은 운영팀 답변 후 스스로 무효로 보고 유효 최고점을 따로 관리합니다.</span></div></li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/oibc-2026#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="savetax.html"><span>이전 프로젝트</span><strong>SaveTax</strong></a>
     <a class="pn next" href="crypto-pilot.html"><span>다음 프로젝트</span><strong>Crypto Pilot</strong></a>

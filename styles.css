@@ -648,3 +648,37 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .pc-proof .pc-keys { border-top: 0; margin-top: 6px; padding-top: 0; }
 .pc-go { align-self: flex-end; font-size: 13.5px; font-weight: 700; color: var(--accent); text-decoration: none; }
 .pc-go:hover { text-decoration: underline; }
+
+/* 한계: 종류 칩 + 요지 + 근거 */
+.lim-rich { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lim-rich li { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 14px; align-items: start; padding: 10px 14px; margin: 0; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.lim-rich li::before { content: none; }
+.lim-k { justify-self: start; font-size: 11.5px; font-weight: 800; border-radius: 6px; padding: 3px 8px; white-space: nowrap; }
+.k-warn { background: #fff3dc; color: #8a5a00; }
+.k-unk { background: #eaf0f8; color: #2a4a7a; }
+.k-learn { background: #e5f4ea; color: #1d6a3a; }
+.lim-rich > li > div { display: grid; gap: 3px; min-width: 0; }
+.lim-t { font-size: 14.5px; font-weight: 800; margin: 0; color: var(--ink); }
+.lim-d { font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+@media screen and (max-width: 560px) { .lim-rich li { grid-template-columns: 1fr; gap: 6px; } }
+.print .lim-rich { gap: 4px; }
+.print .lim-rich li { padding: 5px 8px; grid-template-columns: 56px minmax(0, 1fr); gap: 8px; break-inside: avoid; }
+.print .lim-t { font-size: 9pt; }
+.print .lim-d { font-size: 8.4pt; }
+.print .lim-k { font-size: 7.6pt; padding: 2px 5px; }
+.print .pjp .lim-rich { columns: 1; }
+
+/* 결과: 전 → 후 예시 */
+.pc-ex { display: grid; grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1.25fr); gap: 10px; align-items: stretch; margin-top: 8px; }
+.ex2-col { border: 1px solid var(--line); border-radius: 10px; background: #fbfcfe; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ex2-col h4 { font-size: 11.5px; font-weight: 800; letter-spacing: .04em; color: var(--faint); }
+.ex2-col p { font-size: 13.5px; line-height: 1.65; color: #2b3640; white-space: pre-line; word-break: keep-all; overflow-wrap: anywhere; }
+.ex2-after { background: var(--accent-soft); border-color: #b9cbe6; }
+.ex2-after p { font-weight: 700; color: var(--ink); }
+.ex2-arrow { align-self: center; justify-self: center; color: #9aa3ab; font-weight: 800; }
+.ex2-note { grid-column: 1 / -1; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.pj-ex { margin-top: 0; }
+.ex2-cap { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+@media screen and (max-width: 560px) { .pc-ex { grid-template-columns: 1fr; } .ex2-arrow { transform: rotate(90deg); } }
+.print .pc-ex .ex2-col { padding: 6px 8px; }
+.print .ex2-col p { font-size: 8.8pt; }

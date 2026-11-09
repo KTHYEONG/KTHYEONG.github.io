@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Witches-Chat-Core · 김태형 포트폴리오"><meta property="og:description" content="근거 조항과 함께 답하는 온프레미스 규정 RAG 챗봇"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=c99fa138">
+<link rel="stylesheet" href="../styles.css?v=df957d60">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -32,14 +32,13 @@
         <div class="scope-mine"><h5>제가 맡은 일</h5><ul><li>HWP·DOCX·PDF 규정을 Markdown으로 변환하는 형식별 변환기</li><li>편·장·절·조·항·호·목을 Markdown 기호로 표시</li><li>제어문자·서식 노이즈 제거, 표와 양식을 본문에서 분리</li><li>DOCX·PDF 변환 속도 개선, 변환 전후 글자 수 점검 로그</li><li>오피스·이미지·음성 변환 추가, 문서 쪼개기에 쓸 구간 정보를 본문에 표시해 전달</li></ul></div>
         <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>문서 쪼개기, 벡터 변환, 소속별 검색, 악성 질문 차단, 답변 속 개인정보 가리기, 채팅 화면 연동, 서버 구성은 팀원 담당. 구간 정보 형식은 팀원과 함께 정함.</p></div>
       </div>
-    <ul class="metrics"><li class="metric"><div class="m-label">정리된 규정 문서</div><div class="m-value">Markdown 28개</div><div class="m-note">서로 다른 규정 24종, 원본 29개 파일(HWP 20·DOCX 5·PDF 4)에서 변환, 같은 규정이 여러 형식이면 각각 변환</div></li><li class="metric"><div class="m-label">팀 악성 질문 차단율</div><div class="m-value">98.46%</div><div class="m-note">악성 입력 130개 중 128개 차단(평가 입력 210개 중, 논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">팀 악성 질문 차단율</div><div class="m-value">98.46%</div><div class="m-note">악성 입력 130개 중 128개 차단(평가 입력 210개 중, 논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
   </section>
   
+  <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="pc-ex pj-ex"><div class="ex2-col"><h4>변환 전 (구조 표시 없음)</h4><p>제3조(총장) ① 총장은 이 대학교의 교무를 통할하고, 대외적으로 이 대학교를 대표한다. ② 총장후보자는 총장임용추천위원회에서 선정하되, …</p></div><span class="ex2-arrow" aria-hidden="true">→</span><div class="ex2-col ex2-after"><h4>변환 후 (Markdown)</h4><p>- **제 3 조 ( 총장 )** ① 총장은 …대표한다.
+- ② 총장후보자는 …</p></div></div><p class="ex2-cap">경북대 학칙 제3조 변환 결과 발췌(띄어쓰기는 변환 결과 그대로). 문서 쪼개기 단계가 조·항 경계를 읽을 수 있게 됩니다.</p></section>
   
-  <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
-    <div class="arch-grid" style="--n:4"><div class="arch-stage"><h4>문서 준비</h4><div class="arch-node mine"><strong>규정 원본</strong><span>HWP·DOCX·PDF</span></div><div class="arch-node hl mine"><strong>Markdown 변환</strong><span>구조 표시·정리</span></div><div class="arch-node hl mine"><strong>블록 정보 주석</strong><span>변환기가 쓰고 쪼개기가 읽음</span></div></div><div class="arch-stage"><h4>저장</h4><div class="arch-node"><strong>문서 쪼개기</strong><span>블록 정보를 읽어 구간 단위로 분할</span></div><div class="arch-node"><strong>벡터 저장소</strong><span>ChromaDB</span></div></div><div class="arch-stage"><h4>질문</h4><div class="arch-node"><strong>악성 질문 차단</strong><span>규칙→의미 유사도→BERT 분류</span></div><div class="arch-node"><strong>검색</strong><span>소속별 열람 권한 적용</span></div></div><div class="arch-stage"><h4>답변</h4><div class="arch-node"><strong>로컬 LLM</strong><span>답변 생성</span></div><div class="arch-node"><strong>개인정보 가리기</strong><span>답변 출력 단계</span></div></div></div>
-    <figcaption>파란 구간이 제가 맡은 문서 전처리, 블록 정보 형식은 팀원과 함께 정함 <span class="mine-key">내 담당</span></figcaption>
-  </figure></section>
+  
   <section class="pj-sec">
     <h2 class="part">사례 <button type="button" class="cases-toggle" id="cases-toggle">모두 펼치기</button></h2>
     <div class="cases"><details class="case" id="md-unify" open>
@@ -74,7 +73,7 @@
     <div class="c-body"><ol class="flow" style="--n:4"><li><strong>블록 종류 판별</strong><span>변환기</span></li><li class="hl"><strong>블록 정보 주석</strong><span>본문 앞에 JSON 주석</span></li><li><strong>주석 읽기</strong><span>문서 쪼개기 단계</span></li><li><strong>블록 단위 분할</strong><span>구간 정보 활용</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>문서 쪼개기 단계는 각 조각이 제목인지 목록인지 표인지 알아야 하는데, Markdown 본문만으로는 구분이 어렵습니다.</p></section></div><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>변환기가 각 블록에 <code>chunk:block</code> JSON 주석을 붙여 넘기고, 문서 쪼개기 쪽이 같은 주석을 읽어 분할(형식은 팀원과 함께 정함)</li><li>텍스트·엑셀·파워포인트·이미지·음성 변환도 같은 경로로 연결</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>여러 형식이 같은 주석 형식으로 문서 쪼개기 단계에 전달됩니다. </p></section></div></div>
   </details></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>전처리 구간에는 자동 테스트가 없고, 변환 결과는 글자 수 대조 로그(85% 미만이면 경고, 중단은 안 함)와 눈으로 확인</li><li>구조 표시와 표·양식 판별의 정확도를 정답과 대조해 측정하지 않았음</li><li>팀 악성 질문 차단 결과는 직접 만든 입력 210개(악성 130개 포함) 기준이고 실제 질의 평가가 아님. 챗봇 전체의 답변 정확도·근거 일치 수치는 없음</li><li>변환·점검은 24종 규정, 소량 문서로 확인해 속도 개선의 체감 근거가 약하고, 속도 수치는 측정 환경 기록 없는 커밋 메시지 기준임. 이미지 변환은 OCR 설치 후 검증 필요</li></ul></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">전처리 구간의 자동 테스트 없음</strong><span class="lim-d">변환 결과는 글자 수 대조 로그(85% 미만이면 경고, 중단은 안 함)와 눈으로 확인했습니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">구조 표시·판별 정확도</strong><span class="lim-d">구조 표시와 표·양식 판별의 정확도를 정답과 대조해 측정하지 않았습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">팀 차단율은 직접 만든 입력 기준</strong><span class="lim-d">악성 130개를 포함한 직접 만든 입력 210개 기준이라 실제 질의 평가가 아니며, 챗봇 전체의 답변 정확도 수치는 없습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">소량 문서와 속도 수치</strong><span class="lim-d">24종 규정 소량으로 확인해 속도 개선의 체감 근거가 약하고 속도 수치는 환경 기록 없는 커밋 메시지 기준이며, 이미지 변환은 OCR 설치 후 검증이 필요합니다.</span></div></li></ul></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="emori.html"><span>이전 프로젝트</span><strong>Emori</strong></a>
     <span></span>

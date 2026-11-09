@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="ETF-Manager · 김태형 포트폴리오"><meta property="og:description" content="세 계좌 ETF 적립 구성, 세법·과거 데이터로 비교"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=c99fa138">
+<link rel="stylesheet" href="../styles.css?v=df957d60">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -31,6 +31,7 @@
     
     <ul class="metrics"><li class="metric"><div class="m-label">일반계좌 실질 연수익률</div><div class="m-value">24.7%</div><div class="m-note">QQQ 90%+SOXX 10%, QQQ 100%는 23.3%. 세후·실질 원화</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">연금저축 채택안(세 구간 상대값)</div><div class="m-value">1.039 / 1.057 / 1.024</div><div class="m-note">QQQ 90%+SCHD 10%. 100년·현대·실제 ETF 구간, 기준 조합=1.000</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">ISA 연금 이전 방식 상대값</div><div class="m-value">0.970~0.990</div><div class="m-note">3개 예산 모두 계속 보유가 1위. 기준 조합=1.000</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>
+  
   
   
   <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
@@ -73,7 +74,7 @@
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>물가 지표는 월 종료 6~8주 뒤 발표됩니다. 발표 전인데 해당 월 값을 쓰면 결과가 현실보다 좋게 나옵니다.</p></section></div><div class="ex"><div class="ex-title">모든 데이터에 붙이는 공개 시각 규칙 3종 → 적용 대상</div><ul><li><span class="ex-in">SESSION_CLOSE</span><span class="ex-arrow">→</span><span class="ex-out">장 마감 시각에 가용</span><span class="ex-note">미국 ETF 종가·환율·VIX</span></li><li><span class="ex-in">RELEASE_COLUMN</span><span class="ex-arrow">→</span><span class="ex-out">제공처가 기록한 실제 발표 시각</span><span class="ex-note">FRED 지표, SEC ETF 분기 보고서</span></li><li><span class="ex-in">FIXED_LAG</span><span class="ex-arrow">→</span><span class="ex-out">기간 종료 후 6~8주 고정 시차</span><span class="ex-note">한국은행 소비자물가</span></li></ul></div><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>조회 시점 이후에 공개된 값을 읽으면 오류로 중단, 체결은 다음 거래일 종가</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 실행이 멈춥니다. 다음 거래일 체결에 따른 1일 지연은 비용으로 수용했습니다. </p></section></div></div>
   </details></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>세 결정이 같은 과거 데이터를 공유해 독립된 발견이 아니고, 누적 시험 39~55회에 따른 사후 선택 편향이 있습니다.</li><li>일반계좌 결과는 run id·시드·데이터 매니페스트를 기록하지 않은 legacy 실행 기록에 근거하고, 연금저축의 실제 ETF 구간은 10년 기간이 5개뿐이라 참고용입니다.</li><li>월 단위·환율 중립 근사이고, 한국 물가지수 제공 기간(2012-08~)이 실질 비교 구간을 제한합니다.</li><li>ISA 3년 미만 해지와 2027년 세제개편안은 반영하지 않았고 현행법을 전제로 합니다.</li><li>계층 의존 방향(데이터 → 피처 → 정책 → 시뮬레이션 → 검증 → CLI)을 자동 테스트로 강제하지 않습니다.</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/ETF-Manager#readme">저장소 README</a>에 있습니다.</p></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">같은 데이터를 공유한 결정</strong><span class="lim-d">세 결정이 같은 과거 데이터를 공유하고 누적 시험 39~55회에 따른 사후 선택 편향이 있습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">일반계좌와 실제 ETF 구간의 근거</strong><span class="lim-d">일반계좌는 run id·시드를 기록하지 않은 legacy 실행 기록에 근거하고, 연금저축의 실제 ETF 10년 구간은 5개뿐이라 참고용입니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">월 단위·환율 중립 근사</strong><span class="lim-d">한국 물가지수 제공 기간(2012-08~)이 실질 비교 구간을 제한합니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">세제 변경과 구조 검사</strong><span class="lim-d">ISA 3년 미만 해지와 2027년 세제개편안은 현행법 전제로 반영하지 않았고, 계층 의존 방향은 자동 테스트로 강제하지 않습니다.</span></div></li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/ETF-Manager#readme">저장소 README</a>에 있습니다.</p></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="mt-etf-king.html"><span>이전 프로젝트</span><strong>MT ETF King 2026</strong></a>
     <a class="pn next" href="emori.html"><span>다음 프로젝트</span><strong>Emori</strong></a>
