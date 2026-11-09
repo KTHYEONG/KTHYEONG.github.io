@@ -46,7 +46,7 @@
     <div class="cases"><details class="case" id="finetune" open>
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div>
-      <h3>규칙·범용 LLM 대신 추가학습 선택</h3>
+      <h3>규칙·범용 LLM 대신 추가학습으로 서술 리포트 생성</h3>
       <p class="c-brief">체험 시작·중간·마지막 3단계를 각각 한 문장으로 서술하는 모델을 만들었습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>뇌파 지표는 숫자라 상담자가 바로 읽기 어렵습니다. 협력 기업과 정해진 형식의 서술형 문장으로 풀어 주기로 합의했습니다.</p></section></div><div class="cmp"><div class="ex-title">서술형 문장을 만드는 방법 비교</div><table>
@@ -55,14 +55,14 @@
   </details><details class="case" id="augment">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div>
-      <h3>규칙 증강으로 학습 세트 확장</h3>
+      <h3>규칙 기반 가상 기록으로 부족한 학습 데이터 확장</h3>
       <p class="c-brief">증강 50세트 중 정답 문장이 있는 25세트가 학습 입력 70세트의 일부가 됐고, 모두 실제 기록 1개에서 파생됩니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>학생 기록이 적어 그대로는 학습이 어려워, 규칙에 따라 가상 기록을 만들어 늘렸습니다.</p></section></div><ul class="c-stats"><li><strong>50세트</strong><span>규칙으로 생성한 증강 세트</span></li><li><strong>25세트</strong><span>정답 문장이 있어 학습에 쓴 증강 세트</span></li><li><strong>45세트</strong><span>학습에 쓴 실제 기록 세트(70세트 중 약 64%)</span></li><li><strong>1개</strong><span>증강의 원본이 된 실제 기록</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>무작위 생성은 스트레스·이완이 함께 오르는 비현실 조합이 나와 제외</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>처음 9세트는 원본 값의 ±20%, 나머지는 이완 기준값을 0.1~0.9에서 뽑고 스트레스를 그 반대로 맞춤(집중·흥미·관여는 공통 기준값에 ±20%)</li><li>감정 색·채움 정도는 정해진 단어표에서 선택, 무작위 값 고정, 값 이름 표기를 원본 기준으로 통일</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>증강 50세트 중 정답 문장이 있는 25세트가 학습 입력 70세트의 일부가 됐고, 모두 실제 기록 1개에서 파생됩니다. </p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/Emori/blob/main/src/Emotion_EEG/DataAugmentation/DataAugmentation.py">DataAugmentation.py</a></p></div>
   </details><details class="case" id="labels">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div>
-      <h3>4가지 말투의 정답 문장 작성</h3>
+      <h3>4가지 말투의 정답 문장을 직접 작성해 학습 데이터 다양화</h3>
       <p class="c-brief">학습용 168개, 검증용 42개를 만들었습니다(검증 방식의 한계는 한계 항목 참고).</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>정답 문장이 한 가지 말투뿐이면 리포트가 단조롭고 학습 데이터도 적었습니다. 같은 입력에 여러 관점의 정답이 필요했습니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>같은 입력에 여러 관점의 정답을 달면 표현이 다양해지고 데이터도 늘어남</li><li>4번째 말투(단순 나열)는 읽어 보니 지나치게 형식적이라 제외(정량 비교 아님)</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>말투 기준 4개(상반된 지표 설명, 긍정 결과 강조, 흐름·전문 어휘, 단순 나열)로 70세트에 작성</li><li>단순 나열을 빼 280개에서 210개, 학습 80 : 검증 20으로 분할</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>학습용 168개, 검증용 42개를 만들었습니다(검증 방식의 한계는 한계 항목 참고). </p></section></div><figure class="chart">
@@ -89,7 +89,7 @@
   </details><details class="case" id="report-history">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">Emori</span><span class="kind kind-team">팀</span></div>
-      <h3>생성 문장 변화의 커밋 기록</h3>
+      <h3>생성 문장 변화를 커밋 기록으로 남겨 정성 평가</h3>
       <p class="c-brief">생성 문장이 단일 문단에서 3단계 서술, 정해진 틀의 문장으로 바뀐 과정이 커밋으로 남아 있습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>정량 평가 대신, 데이터와 학습 설정을 바꿀 때마다 같은 입력의 생성 문장이 어떻게 달라졌는지 기록해 확인했습니다.</p></section></div><ol class="tl"><li><time>10.14</time><span>첫 결과: 주요 감정·감정 강도·이완 정도를 한 문단으로 요약</span></li><li><time>11.22</time><span>경험한 감정과 이완·집중을 서술하지만 단계 구분이 없음</span></li><li class="hl"><time>11.23</time><span>검증 분할과 학습 7바퀴 적용, 라벨 갱신 뒤 시작·중간·마지막 3단계 흐름으로 서술</span></li><li class="hl"><time>12.1</time><span>단순 나열 말투 제외, 문장 시작 표현을 고정해 단계마다 한 문장으로 정리</span></li></ol><div class="paar"><section class="p-r"><h5><b>R</b> 결과</h5><p>생성 문장이 단일 문단에서 3단계 서술, 정해진 틀의 문장으로 바뀐 과정이 커밋으로 남아 있습니다. 같은 입력 하나로 비교한 기록입니다. </p></section></div></div>

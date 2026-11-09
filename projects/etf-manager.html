@@ -43,7 +43,7 @@
     <div class="cases"><details class="case" id="pension" open>
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div>
-      <h3>세 구간 모두 통과한 조합만 채택</h3>
+      <h3>세 구간을 모두 통과한 조합만 채택해 착시 제거</h3>
       <p class="c-brief">QQQ 90% + 배당 10%가 세 구간 모두 기준 이상이라 채택했습니다(후보 15개 중 대표 3개 표시, 수치는 개요 결과 참고).</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>장기 지수(1927~)에서 높게 나온 조합이 실제 ETF 구간에서는 기준보다 나빴습니다. 한 구간만 보면 착시가 생깁니다.</p></section></div><div class="cmp"><div class="ex-title">연금저축 후보별 상대값 (기준 QQQ 80% + S&amp;P500 20% = 1.000)</div><table>
@@ -52,7 +52,7 @@
   </details><details class="case" id="isa">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div>
-      <h3>ISA 연금 이전 통념의 재비교</h3>
+      <h3>해지세와 복리 중단을 넣어 ISA 연금 이전 통념 재비교</h3>
       <p class="c-brief">세 예산 모두 계속 보유가 1위였고 ISA 미사용이 가장 나빴습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>ISA 만기마다 연금으로 넘기면 이득이라는 통념이 있습니다. 해지세와 복리 중단은 빠져 있습니다.</p></section></div><div class="cmp"><div class="ex-title">ISA 운용 방식별 점수 (계속 보유 = 1.000, 가구 전체 세후 자산)</div><table>
@@ -61,14 +61,14 @@
   </details><details class="case" id="general">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div>
-      <h3>일반계좌의 작은 효과와 기각한 대안</h3>
+      <h3>일반계좌 리밸런싱의 세금 효과 측정과 대안 기각</h3>
       <p class="c-brief">매수 전용 적립에 연말 공제 활용 이익실현을 더하는 것으로 결정했습니다(효과는 작음).</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>일반계좌는 매도마다 양도세와 비용이 발생해, 비중을 맞추려는 매도가 오히려 손해가 될 수 있습니다.</p></section></div><ul class="c-stats"><li><strong>24.7%</strong><span>QQQ 90% + SOXX 10% 실질 연수익률 (QQQ 100%는 23.3%)</span></li><li><strong>1.022</strong><span>4개 기간 중 최악 기간의 기준 대비 값, 4개 기간 전부 우세</span></li><li><strong>+0.4~1.4%</strong><span>연말 공제 활용 이익실현의 세후 청산 자산 효과 (설계 문서 기준)</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>위험 회피 매도와 자산 순환은 시험한 모든 구간에서 세후 중위 자산이 줄어 기각, QQQ 85% + SOXX 15%는 반도체 쏠림으로 기각</li><li>연말 공제 한도(250만 원) 안에서 이익을 실현하고 같은 날 재매수하는 방식은 효과가 작지만 법정 상수뿐이라 과적합 위험이 없다고 판단</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>매수 전용 적립에 연말 공제 활용 이익실현을 더하는 것으로 결정했습니다(효과는 작음). <span class="basis basis-backtest">백테스트</span></p></section></div></div>
   </details><details class="case" id="pit">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div>
-      <h3>미공개 데이터 사용 시 실행 중단</h3>
+      <h3>미공표 물가 데이터를 쓰면 실행 중단</h3>
       <p class="c-brief">미래 데이터가 섞이면 실행이 멈춥니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>물가 지표는 월 종료 6~8주 뒤 발표됩니다. 발표 전인데 해당 월 값을 쓰면 결과가 현실보다 좋게 나옵니다.</p></section></div><div class="ex"><div class="ex-title">모든 데이터에 붙이는 공개 시각 규칙 3종 → 적용 대상</div><ul><li><span class="ex-in">SESSION_CLOSE</span><span class="ex-arrow">→</span><span class="ex-out">장 마감 시각에 가용</span><span class="ex-note">미국 ETF 종가·환율·VIX</span></li><li><span class="ex-in">RELEASE_COLUMN</span><span class="ex-arrow">→</span><span class="ex-out">제공처가 기록한 실제 발표 시각</span><span class="ex-note">FRED 지표, SEC ETF 분기 보고서</span></li><li><span class="ex-in">FIXED_LAG</span><span class="ex-arrow">→</span><span class="ex-out">기간 종료 후 6~8주 고정 시차</span><span class="ex-note">한국은행 소비자물가</span></li></ul></div><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>조회 시점 이후에 공개된 값을 읽으면 오류로 중단, 체결은 다음 거래일 종가</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 실행이 멈춥니다. 다음 거래일 체결에 따른 1일 지연은 비용으로 수용했습니다. </p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/ETF-Manager/blob/main/src/data/pit.py">pit.py</a><a href="https://github.com/KTHYEONG/ETF-Manager/blob/main/src/sim/allocation.py">allocation.py</a></p></div>

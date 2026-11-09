@@ -43,14 +43,14 @@
     <div class="cases"><details class="case" id="appeal" open>
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div>
-      <h3>반려 사유 분류와 이의 41건 대응</h3>
+      <h3>반려 사유를 분류해 이의 41건으로 대응</h3>
       <p class="c-brief">이의 41건이 모두 접수됐고, 인정액은 잠정에서 최종 확정액으로 올랐습니다(결과 카드 참고).</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>마감 뒤 잠정 판정에서 결과가 공개된 74건 중 52건이 반려됐고, 52건 모두 사유에 &#39;근거 링크가 판매 페이지가 아님&#39;이 있었습니다. 이의 기간은 11.6까지였습니다.</p></section></div><ol class="tl"><li class="hl"><time>10.30</time><span>잠정 판정 공개: 74건 중 인정 12, 부분 인정 6, 판단 유보 4, 반려 52</span></li><li><time>10.30</time><span>반려 사유를 랙·데스크톱·패치패널 유형으로 나눠 이의문을 쓰고 33건 접수</span></li><li><time>11.5</time><span>남은 반려 건 8건을 추가 접수</span></li><li><time>11.6</time><span>이의 기간 마감</span></li><li class="hl"><time>11.9</time><span>최종 결과 발표, 인정액 확정</span></li></ol><div class="ex"><div class="ex-title">반려 유형 → 이의 논지</div><ul><li><span class="ex-in">랙: 공임 페이지를 판매 근거로 오인</span><span class="ex-arrow">→</span><span class="ex-out">판매가와 가산액을 분리</span><span class="ex-note">가산액은 주최 측 표준품셈 페이지 값임을 설명하고, 같은 구조로 인정된 제출을 인용</span></li><li><span class="ex-in">데스크톱: 판매 페이지 아님</span><span class="ex-arrow">→</span><span class="ex-out">화면에 보이는 판매가 제시</span><span class="ex-note">JS로 그려져 원본 HTML만 읽으면 비어 보임, 일부 건은 금액을 낮춰 조정</span></li><li><span class="ex-in">패치패널: 판단 유보 4건</span><span class="ex-arrow">→</span><span class="ex-out">근거 페이지를 이의 시점에 재확인</span><span class="ex-note">숨은 칸의 가격과 화면 가격이 엇갈리는 점을 설명</span></li></ul></div><div class="paar"><section class="p-r"><h5><b>R</b> 결과</h5><p>이의 41건이 모두 접수됐고, 인정액은 잠정에서 최종 확정액으로 올랐습니다(결과 카드 참고). 건별 이의 결과는 비공개라 개별 효과는 분리하지 못했습니다(한계 참고). <span class="basis basis-ops">운영 기록</span></p></section></div></div>
   </details><details class="case" id="ledger">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div>
-      <h3>재실행해도 이중 제출되지 않는 구조</h3>
+      <h3>제출 장부로 재실행해도 이중 제출되지 않게 방지</h3>
       <p class="c-brief">다시 실행해도 같은 건을 다시 보내지 않는 구조입니다.</p>
     </summary>
     <div class="c-body"><ol class="flow" style="--n:5"><li><strong>사람 승인</strong><span>내용 해시에 묶음</span></li><li><strong>가격 재확인</strong><span>제출 직전</span></li><li class="hl"><strong>제출 기록</strong><span>전송 전에 먼저</span></li><li><strong>전송</strong><span>고유 번호 포함</span></li><li class="hl"><strong>재실행 확인</strong><span>결과 미확인 건 서버 조회</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>제보 횟수에 한도가 있어, 프로그램을 다시 실행하면 같은 건이 두 번 제출되고 횟수가 이중으로 차감될 수 있습니다. 인증 정보 유출도 막아야 합니다.</p></section></div><div class="cmp"><div class="ex-title">기록 시점 비교</div><table>
@@ -59,14 +59,14 @@
   </details><details class="case" id="dedupe">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div>
-      <h3>중복 주문 합계 보정과 불일치 시 중단</h3>
+      <h3>중복 주문 합계를 보정하고 불일치 시 중단</h3>
       <p class="c-brief">중복 제거 전후 합계 차이가 23.9%로, 대회 안내의 &#39;약 24%&#39;를 공식 데이터로 직접 재현했습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>같은 주문이 여러 물품 행에 반복돼 단순 합계가 부풀려집니다. 집계가 틀리면 이후 비싼 집행 판정이 모두 어긋납니다.</p></section></div><ul class="c-stats"><li><strong>1,052,815</strong><span>물품 등재 행, 이 중 29.3%만 주문이 있고 나머지는 빈 값</span></li><li><strong>300,431</strong><span>주문(납품 키), 5,975개는 여러 등재가 공유(최대 18곳)</span></li><li><strong>21.76조 → 17.57조</strong><span>중복 제거 전후 납품요구 금액 합계, 제거 전이 23.9% 큼</span></li><li><strong>0건</strong><span>금액·물품이 어긋난 주문(공식 데이터 r5 기준)</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>합계 전 주문 단위로 중복을 제거하고, 계약번호·금액이 다르면 같은 주문으로 합치지 않음</li><li>주문 없는 물품은 0이 아닌 빈 값, 0 채움은 평균 왜곡으로 제외</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>DuckDB로 원본 데이터 파일을 바로 조회, 주문별로 내용 일치 검사</li><li>주문당 1건으로 정리한 조회 화면 생성, 불일치 시 불러오는 시점에 오류로 중단</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>중복 제거 전후 합계 차이가 23.9%로, 대회 안내의 &#39;약 24%&#39;를 공식 데이터로 직접 재현했습니다. 이 데이터 버전(r5)에서는 어긋난 주문이 없어 중단이 발동하지 않았지만, 데이터가 바뀌어도 틀린 합계가 조용히 나오지 않게 하는 안전장치입니다. <span class="basis basis-ops">운영 기록</span></p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/SaveTax/blob/main/src/savetax/dataset.py">dataset.py</a></p></div>
   </details><details class="case" id="recipe">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">SaveTax</span><span class="kind kind-personal">개인</span></div>
-      <h3>부품 가격 합산 비교와 근거 종류 확인</h3>
+      <h3>부품 가격 합산 비교로 전용 모델 납품 물품 검토</h3>
       <p class="c-brief">랙은 잠정 판정에서 인정이 나왔고(품목 표 참고), 데스크톱은 반려가 많아 이의로 대응했습니다.</p>
     </summary>
     <div class="c-body"><ol class="flow" style="--n:5"><li><strong>사양 정리</strong><span>CPU·메모리·SSD</span></li><li class="hl"><strong>부품 가격</strong><span>쇼핑몰 2곳 근거</span></li><li><strong>공임 가산</strong><span>표준품셈 적용</span></li><li class="hl"><strong>합산 원가</strong><span>기준가 산출</span></li><li><strong>제보 본문</strong><span>출처·합산식 기재</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>PC, 패치패널, 서버랙은 납품용 전용 모델이라 쇼핑몰에 같은 제품이 없습니다. 시중가 비교로는 후보에서 빠집니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>동급 사양 부품의 가격 합계로 대신 비교, 근거가 약해 보일 수 있어 쇼핑몰·페이지 출처를 제보에 적음</li><li>근거 종류별 신뢰도가 달라 종류를 나누고 기준 배율도 분리</li><li>같은 물품의 다른 계약 단가는 시중가로 인정되지 않음(물탱크 44건 중 38건 접수 중 반려), 이후 쇼핑몰 기반으로 전환</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>사양 정리 후 시판 부품 가격 합산, 설치 품목은 표준품셈 공임 가산</li><li>부품별 쇼핑몰 2곳 근거, 1.2~1.3배 구간은 두 번째 가격으로 재확인</li><li>기준 배율(쇼핑몰 비교 1.10, 나머지 3종 1.20)을 설정 한곳에 모음</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>랙은 잠정 판정에서 인정이 나왔고(품목 표 참고), 데스크톱은 반려가 많아 이의로 대응했습니다. 부품 구성 정의 32개와 쇼핑몰 검색 규칙 18곳으로 제보 본문에 출처와 합산식을 넣었습니다. <span class="basis basis-ops">운영 기록</span></p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/SaveTax/blob/main/src/savetax/recipe.py">recipe.py</a><a href="https://github.com/KTHYEONG/SaveTax/blob/main/src/savetax/desktoprecipe.py">desktoprecipe.py</a><a href="https://github.com/KTHYEONG/SaveTax/blob/main/src/savetax/fixturerecipe.py">fixturerecipe.py</a><a href="https://github.com/KTHYEONG/SaveTax/blob/main/src/savetax/config.py">config.py</a></p></div>

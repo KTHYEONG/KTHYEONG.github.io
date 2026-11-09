@@ -51,21 +51,21 @@
     <div class="cases"><details class="case" id="md-unify" open>
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
-      <h3>세 형식을 Markdown 하나로 통일</h3>
+      <h3>세 가지 문서 형식을 Markdown 하나로 통일</h3>
       <p class="c-brief">원본 29개 파일에서 Markdown 28개(규정 24종)를 만들어 문서 쪼개기 단계에 전달했습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>규정이 세 가지 파일 형식으로 섞여 있고, 조·항·호 계층이 의미를 정합니다. 형식별로 다루면 문서 쪼개기와 검색도 형식마다 따로 만들어야 합니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>형식별 문서 쪼개기는 팀원이 형식마다 따로 처리해야 해 제외</li><li>Markdown은 문서 쪼개기의 표준 입력이고 제목·목록·표를 표현할 수 있어 팀원 모두 같은 입력으로 사용 가능</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>형식별 변환기를 두되 모두 Markdown(제목·목록·표)으로 내보내고, 구조 표시 방식은 변환기별로 다름(DOCX는 제목 5단계, PDF는 굵은 조 제목). 처음에는 HWP를 DOCX로 수동 변환하고 이후 직접 변환 추가</li><li>큰 규정집은 DOCX·PDF 라이브러리 처리가 느려 XML·블록을 직접 읽는 방식으로 바꿈</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>원본 29개 파일에서 Markdown 28개(규정 24종)를 만들어 문서 쪼개기 단계에 전달했습니다. </p></section></div></div>
   </details><details class="case" id="hierarchy">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
-      <h3>원문은 두고 계층 표시만 추가</h3>
+      <h3>원문은 두고 조·항·호 계층 표시만 추가</h3>
       <p class="c-brief">학칙 변환 결과에서 장·절·조는 제목으로, 항·호·목은 들여쓴 목록으로 남아 문서 쪼개기 단계가 구조를 읽을 수 있습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>조·항·호·목이 구분 없는 줄글이면 문서를 쪼갤 때 조항 중간이 잘려 의미가 끊길 수 있습니다. 문장을 다듬거나 요약하면 조항 의미가 달라질 수 있어, 원문은 그대로 두고 표시만 붙였습니다.</p></section></div><div class="ex"><div class="ex-title">규정 계층 → Markdown 표시</div><ul><li><span class="ex-in">편 · 장 · 절 · 관</span><span class="ex-arrow">→</span><span class="ex-out"># · ## · ### · ####</span><span class="ex-note">단계별 제목</span></li><li><span class="ex-in">조 · 부칙 · 별표</span><span class="ex-arrow">→</span><span class="ex-out">##### 제N조(…)</span><span class="ex-note">다섯 번째 단계 제목</span></li><li><span class="ex-in">항 · 호 · 목</span><span class="ex-arrow">→</span><span class="ex-out">* ① / 들여쓴 - 1 / 더 들여쓴 + 가</span><span class="ex-note">들여쓰기로 단계 표현</span></li></ul></div><div class="paar"><section class="p-r"><h5><b>R</b> 결과</h5><p>학칙 변환 결과에서 장·절·조는 제목으로, 항·호·목은 들여쓴 목록으로 남아 문서 쪼개기 단계가 구조를 읽을 수 있습니다. </p></section></div></div>
   </details><details class="case" id="form-split">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
-      <h3>표와 신청서 양식 분리</h3>
+      <h3>표와 신청서 양식을 본문에서 분리</h3>
       <p class="c-brief">양식 표가 본문과 분리되어 문서 쪼개기 단계로 전달됩니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>신청서 서식과 빈 칸 많은 표가 본문에 섞이면 검색 결과에 불필요한 내용이 끼고 문서 쪼개기도 어렵습니다.</p></section></div><div class="cmp"><div class="ex-title">표 처리 방식 비교</div><table>
@@ -74,7 +74,7 @@
   </details><details class="case" id="validate">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
-      <h3>변환이 조용히 빠지지 않게 확인</h3>
+      <h3>변환 중 내용이 조용히 빠지지 않도록 점검</h3>
       <p class="c-brief">변환 중 내용이 크게 빠지면 경고 로그로 알 수 있고, 변환 실패는 파일마다 오류로 표시됩니다.</p>
     </summary>
     <div class="c-body"><ol class="flow" style="--n:5"><li><strong>원본 글자 수</strong><span>XML·텍스트 직접 추출</span></li><li><strong>Markdown 변환</strong><span>형식별 변환기</span></li><li><strong>변환 후 글자 수</strong><span>공백·기호 제외</span></li><li class="hl"><strong>비율 비교</strong><span>85% 미만이면 경고</span></li><li><strong>로그 기록</strong><span>정상은 일치율 기록</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>규정 변환에서 내용이 빠져도 겉으로는 알기 어렵고, 빠진 채로 검색에 쓰이면 답변의 근거가 사라집니다.</p></section></div><div class="cmp"><div class="ex-title">점검 방식 비교</div><table>
@@ -83,7 +83,7 @@
   </details><details class="case" id="interface">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 05</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div>
-      <h3>변환기와 쪼개기 사이의 블록 정보 주석</h3>
+      <h3>블록 종류 주석으로 변환기와 쪼개기 단계 연결</h3>
       <p class="c-brief">여러 형식이 같은 주석 형식으로 문서 쪼개기 단계에 전달됩니다.</p>
     </summary>
     <div class="c-body"><ol class="flow" style="--n:4"><li><strong>블록 종류 판별</strong><span>변환기</span></li><li class="hl"><strong>블록 정보 주석</strong><span>본문 앞에 JSON 주석</span></li><li><strong>주석 읽기</strong><span>문서 쪼개기 단계</span></li><li><strong>블록 단위 분할</strong><span>구간 정보 활용</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>문서 쪼개기 단계는 각 조각이 제목인지 목록인지 표인지 알아야 하는데, Markdown 본문만으로는 구분이 어렵습니다.</p></section></div><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>변환기가 각 블록에 <code>chunk:block</code> JSON 주석을 붙여 넘기고, 문서 쪼개기 쪽이 같은 주석을 읽어 분할(형식은 팀원과 함께 정함)</li><li>텍스트·엑셀·파워포인트·이미지·음성 변환도 같은 경로로 연결</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>여러 형식이 같은 주석 형식으로 문서 쪼개기 단계에 전달됩니다. </p></section></div></div>

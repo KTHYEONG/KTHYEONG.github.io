@@ -43,7 +43,7 @@
     <div class="cases"><details class="case" id="audit" open>
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
-      <h3>설계 오류의 사후 분석과 격리 재설계</h3>
+      <h3>목표 설정 오류를 사후 분석하고 격리해 재설계</h3>
       <p class="c-brief">대회가 끝나기 전에 설계 오류를 스스로 확인하고 기존 코드를 동결한 채 새 구조를 분리했습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>목표 수익률을 +30%로 두고 확률을 쟀지만, 그 선은 과거 우승선(+54%, +47.8%)보다 낮았고 2026년 상위 3위선은 약 2.3배(11.3 기준)였습니다. 대회 중 목표를 2.0~2.4배로 올리고 순위표를 따라가는 장치까지 만들었습니다.</p></section></div><ol class="tl"><li><time>09.11</time><span>챔피언 전략을 급락 반등 앵커 전략으로 전환</span></li><li><time>09.21</time><span>대회 시작</span></li><li class="hl"><time>10.07~19</time><span>일간 반전 규칙이 하락 추세에서 장중 방향을 10세션 연속 틀림</span></li><li class="hl"><time>11.04</time><span>새 구조 방향 승인, 기존 코드는 동결하고 import 경계로 분리</span></li><li><time>11.05~06</time><span>arena 구현(약 5,000줄, 테스트 279개), 거래 한도 결함 등 수정</span></li></ol><div class="cmp"><div class="ex-title">기존 구조 → arena</div><table>
@@ -52,7 +52,7 @@
   </details><details class="case" id="anchor">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
-      <h3>급락 직후 반등을 잡는 앵커 전략</h3>
+      <h3>급락 직후 반등을 잡는 앵커 전략 설계</h3>
       <p class="c-brief">8주 +30% 도달 비율과 하위 5% 평균 손실이 모두 기본형보다 나아졌습니다(연구 결과, 수치는 개요 결과 참고).</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>최근 60일 수익률이 마이너스면 현금으로 빠지는 전략은 폭락 직후 첫 반등을 놓칩니다. 8주짜리 대회에서는 이 손해가 큽니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>반등마다 따라 사기: 하락장 손실이 커져 제외</li><li>60일 수익률은 마이너스인데 20일 수익률이 플러스로 돌아선 날만 매수, 고점 대비 15% 하락하면 손절</li><li>같은 지수를 따르는 1배·2배·인버스(하락 베팅) 상품은 한 묶음으로 보고 한 종목만</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>급락 직후 반등 시점에만 사는 &#39;반등 앵커&#39; 전략 추가, 같은 지수 상품 중복 편입 차단</li><li>같은 구간·비용 조건에서 전략 4종 비교</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>8주 +30% 도달 비율과 하위 5% 평균 손실이 모두 기본형보다 나아졌습니다(연구 결과, 수치는 개요 결과 참고). <span class="basis basis-backtest">백테스트</span></p></section></div><ul class="c-stats"><li><strong>연구용</strong><span>운용 채택 기준 미통과(승격 판정 RESEARCH_ONLY)</span></li><li><strong>약 58개</strong><span>겹치는 2,097개 구간의 실효 표본</span></li><li><strong>43.8% vs 49.5%</strong><span>구간 수익률 95분위, 반등 앵커가 기본형보다 낮음</span></li></ul><figure class="chart">
@@ -79,14 +79,14 @@
   </details><details class="case" id="krx-clean">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
-      <h3>수집 단계의 빈 값·휴장일 정리</h3>
+      <h3>수집 단계에서 빈 값과 휴장일 데이터 정리</h3>
       <p class="c-brief">정리 규칙과 운영 중 수정 2건을 코드와 커밋 기록으로 확인할 수 있습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>가격이 빈 값이 숫자 변환에서 0이 되면 수익률이 틀어지고, 휴장일에도 가격이 빈 데이터가 들어옵니다.</p></section></div><ol class="tl"><li><time>09.11</time><span>수정: 한국거래소 API가 0건을 돌려준 날을 원본 캐시에 영구 저장하지 않도록 변경</span></li><li><time>09.11</time><span>수정: 휴장일 같은 가짜 세션의 결측이 롤링 계산으로 번지던 문제 수정</span></li></ol><div class="ex"><div class="ex-title">입력 → 처리</div><ul><li><span class="ex-in">가격이 빈 문자열</span><span class="ex-arrow">→</span><span class="ex-out">'값 없음'으로 변환</span><span class="ex-note">0으로 바뀌는 것 방지</span></li><li><span class="ex-in">유효 가격 50% 미만인 날</span><span class="ex-arrow">→</span><span class="ex-out">휴장일로 분류</span><span class="ex-note">분류 기준값 0.5</span></li><li><span class="ex-in">거래소 달력에 있는데 빠진 날</span><span class="ex-arrow">→</span><span class="ex-out">빠진 거래일로 표시</span><span class="ex-note">어긋난 종목도 표시</span></li></ul></div><div class="paar"><section class="p-r"><h5><b>R</b> 결과</h5><p>정리 규칙과 운영 중 수정 2건을 코드와 커밋 기록으로 확인할 수 있습니다. </p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/mt-etf-king-2026/blob/main/src/data/validation.py">validation.py</a></p></div>
   </details><details class="case" id="pit">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
-      <h3>미래 정보 유입 시 실행 중단</h3>
+      <h3>미래 정보가 섞이면 실행 중단</h3>
       <p class="c-brief">미래 데이터가 섞이면 조용히 넘어가지 않고 실행이 멈춥니다.</p>
     </summary>
     <div class="c-body"><ol class="flow" style="--n:5"><li class="hl"><strong>신호</strong><span>결정일까지의 데이터</span></li><li class="hl"><strong>미래 데이터 검사</strong><span>있으면 오류로 중단</span></li><li><strong>주문 생성</strong><span>다음 거래일 예약</span></li><li class="hl"><strong>시가 체결</strong><span>비용·유동성 반영</span></li><li><strong>거래 기록</strong><span>보유 내역 갱신</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>오늘 종가를 보고 종목을 골라 같은 종가에 샀다고 계산하면 현실에서 불가능한 수익이 나옵니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>개발자 주의에 맡기면 실수 한 번에 결과 전체가 오염돼 제외, 결정일 이후 데이터가 보이면 멈추는 강제 장치를 선택</li><li>신호와 체결을 한 단계에 두면 같은 날 가격을 쓰게 돼 분리, 신호 다음 거래일 시가에만 체결</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 조용히 넘어가지 않고 실행이 멈춥니다. </p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/mt-etf-king-2026/blob/main/src/features/pit.py">pit.py</a></p></div>
