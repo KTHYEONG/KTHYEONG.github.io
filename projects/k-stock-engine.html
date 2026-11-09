@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-Stock Engine · 김태형 포트폴리오</title>
+<meta name="description" content="국내주식 다중 팩터 전략 연구와 장전 목표 가상 기록">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="K-Stock Engine · 김태형 포트폴리오"><meta property="og:description" content="국내주식 다중 팩터 전략 연구와 장전 목표 가상 기록"><meta property="og:type" content="website">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css?v=cfc63776">
+</head>
+<body class="web proj-page">
+<header class="site-head"><div class="wrap bar">
+  <a class="brand" href="../">김태형</a>
+  <nav aria-label="페이지 이동"><a href="../#tracks">← 목록</a><a class="gh" href="https://github.com/KTHYEONG/k-stock-engine">GitHub</a></nav>
+</div></header>
+<main class="wrap proj">
+  <header class="pj-head">
+    <p class="crumb"><a href="../">포트폴리오</a> / 프로젝트</p>
+    <div class="pj-kicker"><span class="kind kind-personal">개인</span><span class="status">진행 중</span><a class="field" href="../#finance-data">데이터 · 금융 IT</a><a class="field" href="../#quant">퀀트</a></div>
+    <h1>K-Stock Engine</h1>
+    <p class="pj-tag">국내주식 다중 팩터 전략 연구와 장전 목표 가상 기록</p>
+  </header>
+  <section class="pj-sec">
+    <h2 class="part">개요</h2>
+    <div class="pj-ov"><div class="pj-ov-main">
+    <p class="pj-summary">백테스트가 미래 정보와 반복 조정으로 부풀려지지 않도록, 공시 시각 기준 데이터와 사전에 선언한 평가 규칙으로 전략을 검증합니다. 2026-10-11부터 서버에서 매일 장전에 목표 포트폴리오를 확정해 가상 장부에만 기록하고, 실주문은 코드에서 막혀 있습니다.</p>
+    <dl class="meta"><div><dt>기간</dt><dd>2026.01 ~ 진행 중</dd></div><div><dt>역할</dt><dd>데이터 수집, 연구·평가, 가상 장부, 서버 운영 단독 설계·구현</dd></div><div><dt>규모</dt><dd>src 약 5.5만 줄 · 테스트 약 3,590개 · 커밋 879개 (2026-11-09 기준)</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Polars</li><li>PyArrow(Parquet)</li><li>SQLite</li><li>LightGBM</li><li>Docker</li><li>systemd</li><li>GitHub Actions</li><li>rclone</li><li>pytest</li><li>mypy</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/k-stock-engine">github.com/KTHYEONG/k-stock-engine</a></dd></div></dl>
+    </div></div>
+    
+    <ul class="metrics"><li class="metric"><div class="m-label">서버 가상 운영 시작</div><div class="m-value">2026-10-11 ~</div><div class="m-note">systemd 타이머 7개가 수집, 장전 확정, 가상 장부 기록, 백업, 일일 감사를 실행. 실주문은 내지 않음</div><span class="basis basis-ops">운영 기록</span></li><li class="metric"><div class="m-label">실주문 안전 게이트</div><div class="m-value">증거 4가지</div><div class="m-note">증권사 대사, 주문 상태 전이, 모의투자 통과, 중복 주문 방지가 모두 없으면 실주문 요청이 예외로 중단</div></li></ul>
+  </section>
+  
+  
+  
+  <section class="pj-sec"><h2 class="part">구조</h2><figure class="arch">
+    <div class="arch-grid" style="--n:4"><div class="arch-stage"><h4>수집·보관</h4><div class="arch-node"><strong>외부 데이터</strong><span>KRX·KIND 공시</span></div><div class="arch-node hl"><strong>원본 영수증</strong><span>받은 시각과 함께 저장</span></div><div class="arch-node hl"><strong>공개 시각 부여</strong><span>접수 다음 거래일 장 시작부터 사용</span></div></div><div class="arch-stage"><h4>연구·평가</h4><div class="arch-node"><strong>팩터와 점수</strong><span>LightGBM</span></div><div class="arch-node hl"><strong>부트스트랩 리포트 카드</strong><span>승격 규칙 사전 선언</span></div></div><div class="arch-stage"><h4>장전 운영</h4><div class="arch-node"><strong>목표 봉인</strong><span>해시 체인</span></div><div class="arch-node hl"><strong>가상 장부</strong><span>정수 원 단위</span></div><div class="arch-node"><strong>일일 감사</strong><span>작업 기록과 산출물 대조</span></div></div><div class="arch-stage"><h4>별도 경로</h4><div class="arch-node"><strong>주문 집행</strong><span>모의 기본</span></div></div></div>
+    <figcaption>아래 계층이 위 계층을 가져다 쓰지 않는 방향으로 나눴고(자동 검사), 장전 목표는 해시 체인에 봉인한 뒤 가상 장부에만 기록</figcaption>
+  </figure></section>
+  <section class="pj-sec">
+    <h2 class="part">사례 <button type="button" class="cases-toggle" id="cases-toggle">모두 펼치기</button></h2>
+    <div class="cases"><details class="case" id="pit" open>
+    <summary class="c-sum">
+      <div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">K-Stock Engine</span><span class="kind kind-personal">개인</span></div>
+      <h3>공시된 시각부터 데이터를 쓴다</h3>
+      <p class="c-brief">모든 데이터에 사용 가능 시각이 붙고, 이 규칙은 단위 테스트로 검증합니다.</p>
+    </summary>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>분기 재무제표는 분기말 값이지만 실제 공시는 최대 45일 뒤입니다. 분기말 날짜로 합치면 백테스트가 그 시점에는 몰랐던 정보를 씁니다.</p></section></div><div class="cmp"><div class="ex-title">재무 데이터를 합치는 기준</div><table>
+    <thead><tr><th></th><th>분기말 날짜 기준</th><th class="sel">접수 시각 기준(현재) <em>선택</em></th></tr></thead>
+    <tbody><tr><th>사용 가능 시점</th><td data-c="분기말 날짜 기준">분기말 직후</td><td class="sel" data-c="접수 시각 기준(현재)">접수 다음 거래일 장 시작</td></tr><tr><th>종목별 공시 시점 차이</th><td data-c="분기말 날짜 기준">지연 일수를 일률로 가정</td><td class="sel" data-c="접수 시각 기준(현재)">실제 접수 시각 사용, 가정 불필요</td></tr><tr><th>미래 정보 혼입</th><td data-c="분기말 날짜 기준">가능</td><td class="sel" data-c="접수 시각 기준(현재)">연구·평가가 공개 시각 이전 데이터만 조회</td></tr></tbody></table></div><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>분기말에 며칠 지연을 두는 방식은 간단하지만 종목마다 공시 시점이 달라 일률 값을 정할 수 없어 제외</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>수집물마다 받은 시각을 영수증으로 남기고, 정규화 단계에서 접수 시각 다음 거래일 장 시작을 사용 가능 시각으로 계산</li><li>모든 데이터가 &#39;언제부터 알 수 있었는지&#39;를 갖는 데이터 계약을 코어 계층에 두고 연구·평가가 이를 따르게 함</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>모든 데이터에 사용 가능 시각이 붙고, 이 규칙은 단위 테스트로 검증합니다. </p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/src/data/normalization.py">normalization.py</a><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/src/core/pit.py">pit.py</a></p></div>
+  </details><details class="case" id="limiter">
+    <summary class="c-sum">
+      <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">K-Stock Engine</span><span class="kind kind-personal">개인</span></div>
+      <h3>한 증권사 계정을 서버 전체가 나눠 쓴다</h3>
+      <p class="c-brief">한도와 토큰 처리 규칙을 테스트로 검증합니다.</p>
+    </summary>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>한 서버의 여러 프로젝트가 같은 증권사 계정을 씁니다. 프로세스 안에서만 속도를 제한하면 서로의 호출량을 몰라 한도를 넘고, 토큰 발급도 동시에 겹칩니다.</p></section></div><ul class="c-stats"><li><strong>초당 18건</strong><span>서버 전체 호출 상한, 공유 디렉터리의 파일 락에 다음 호출 가능 시각을 기록</span></li><li><strong>3단계</strong><span>중요도별 대기 허용: 긴급은 즉시, 일반은 최대 1.0초, 대량 수집은 최대 0.25초까지만 앞당겨 예약</span></li><li><strong>1회 발급</strong><span>토큰은 키 해시별 락으로 한 번만 발급, 기다리는 프로세스는 받은 토큰 재사용</span></li></ul><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>프로세스 안 제한기는 구현이 쉽지만 다른 프로세스를 보지 못해 제외, 별도 중앙 서버는 운영 부담이 커 제외</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>파일 락 기반 제한기를 만들어 호출 슬롯을 예약하고 우선순위로 중요한 호출을 보호</li><li>공유 디렉터리 표식이 없으면 실행을 거부해 제한이 공유되지 않은 채 도는 상황을 차단</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>한도와 토큰 처리 규칙을 테스트로 검증합니다. 같은 서버에서 도는 다른 수집 프로젝트와 계정을 공유하는 문제가 이 제한기의 출발점입니다. </p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/src/integrations/kis/admission.py">admission.py</a></p></div>
+  </details><details class="case" id="report-card">
+    <summary class="c-sum">
+      <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">K-Stock Engine</span><span class="kind kind-personal">개인</span></div>
+      <h3>전략은 사전에 정한 통계 기준으로만 승격</h3>
+      <p class="c-brief">전략 변경이 &#39;더 좋아 보인다&#39;가 아니라 설정 파일에 선언된 기준으로 승격됩니다.</p>
+    </summary>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>전략을 계속 바꿔 보면 과거 데이터에만 맞는 결과를 고르게 됩니다. 점수 하나로는 과적합과 우연을 구분하기 어렵고, 기준을 결과를 보고 고치면 의미가 사라집니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단일 샤프지수는 시험 횟수를 반영하지 못해 제외, 매매 요일에 따라 성과가 달라지는 주 1회 리밸런싱은 자금을 5개 슬리브로 나눠 매매일 분산</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>같은 구간의 짝지은 부트스트랩 비교와 다중 검정 보정(본페로니)을 통과해야 새 전략이 기준 전략을 대체</li><li>슬리피지 비용 격자(0~1.5틱), 파산 확률 가드, 지연·플라시보 시나리오를 함께 보고</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>전략 변경이 &#39;더 좋아 보인다&#39;가 아니라 설정 파일에 선언된 기준으로 승격됩니다. 선언 날짜와 근거는 설정 파일 주석에 남깁니다. </p></section></div><ul class="c-stats"><li><strong>63일 × 4,000회</strong><span>63거래일 블록 부트스트랩으로 5년 경로를 4,000개 만들어 평가</span></li><li><strong>하위 10%</strong><span>평균이 아니라 나쁜 경우(하위 10%)의 성장률을 목적 값으로 사용</span></li><li><strong>연 3%p</strong><span>사전 선언한 허용 한계: 통계적으로 꼬리 위험 감소를 보인 대신 감수할 최대 성장 손실, 결과를 본 뒤 조정하지 않음</span></li><li><strong>시드 3개</strong><span>점수 모델은 시드 11·12·13 평균과 비교해 시드 운을 제거</span></li></ul><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/config/research/protocol.toml">protocol.toml</a><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/src/research/champion.py">champion.py</a></p></div>
+  </details><details class="case" id="ops-outcome">
+    <summary class="c-sum">
+      <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">K-Stock Engine</span><span class="kind kind-personal">개인</span></div>
+      <h3>성공 기록도 믿지 않는 무인 운영</h3>
+      <p class="c-brief">서버는 2026-10-11부터 장전 목표 확정과 가상 장부 기록을 반복하고, 점검표는 2026-11-02 실제 서버에서 검증했습니다.</p>
+    </summary>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>자동 작업이 성공이라고 기록해도 데이터가 비었거나 일부만 쓰인 경우가 있습니다. 예외가 없으면 성공으로 보는 방식은 부분 실패를 놓칩니다.</p></section></div><ul class="c-stats"><li><strong>4상태</strong><span>모든 작업이 OK · DEGRADED · NO_DECISION · SKIPPED 중 하나로 기록, SKIPPED는 사유 필수</span></li><li><strong>09:00 전</strong><span>장전 목표 봉인 기한: 늦게 확정하면 OK가 아니라 DEGRADED로 기록</span></li><li><strong>4가지 사건만</strong><span>장전 결정 미봉인, 기록 판독 불가, 백업 2일 이상 중단, 같은 작업 3거래일 연속 실패만 메일 발송</span></li></ul><div class="paar"><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>일일 감사가 작업 기록과 실제 산출물(봉인 체인, 장부 상태)을 대조하고, 서버 점검표(or-vps 런북)가 같은 서버의 다른 프로젝트와 한 체계로 매일 판정</li><li>아침 봉인이 실패하면 늦은 봉인을 자동 실행, 같은 사건은 하루 한 번만 알리고 해결되면 한 줄로 알림</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>서버는 2026-10-11부터 장전 목표 확정과 가상 장부 기록을 반복하고, 점검표는 2026-11-02 실제 서버에서 검증했습니다. 실주문 경로는 증거 4가지가 없으면 예외로 막힙니다. <span class="basis basis-ops">운영 기록</span></p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/src/ops/run_outcome.py">run_outcome.py</a><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/src/execution/application/readiness.py">readiness.py</a></p></div>
+  </details></div>
+  </section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">성과 수치는 싣지 않음</strong><span class="lim-d">백테스트 결과 파일이 저장소에 없어 외부에서 재현할 수 없는 수치라 이 페이지에 쓰지 않았습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">과적합 가능성</strong><span class="lim-d">8년 넘는 구간에서 점수 모델을 여러 번 조정했기 때문에 부트스트랩 기준을 써도 완전히 사라지지 않습니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">실주문과 체결 현실성</strong><span class="lim-d">실계좌 기록이 없고, 슬리피지·시장 충격 가정과 실제 체결의 차이는 검증하지 못했습니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">단일 서버</strong><span class="lim-d">단일 개발자, 단일 서버 운영이며 이중화는 없습니다.</span></div></li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/k-stock-engine#readme">저장소 README</a>에 있습니다.</p></section>
+  <nav class="pj-nav" aria-label="다른 프로젝트">
+    <a class="pn prev" href="port-entity-matching.html"><span>이전 프로젝트</span><strong>Port Entity Matching</strong></a>
+    <a class="pn next" href="savetax.html"><span>다음 프로젝트</span><strong>SaveTax</strong></a>
+  </nav>
+</main>
+<footer class="site-foot"><div class="wrap">김태형 · <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></div></footer>
+<script>
+(function () {
+  var all = Array.prototype.slice.call(document.querySelectorAll('details.case'));
+  var btn = document.getElementById('cases-toggle');
+  function openHash() {
+    var id = decodeURIComponent(location.hash.replace('#', ''));
+    var el = id && document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView({ block: 'start' }); }
+  }
+  function sync() { if (btn) btn.textContent = all.every(function (d) { return d.open; }) ? '모두 접기' : '모두 펼치기'; }
+  if (btn) btn.addEventListener('click', function () { var open = !all.every(function (d) { return d.open; }); all.forEach(function (d) { d.open = open; }); sync(); });
+  all.forEach(function (d) { d.addEventListener('toggle', sync); });
+  window.addEventListener('hashchange', openHash);
+  openHash(); sync();
+})();
+</script>
+</body>
+</html>
