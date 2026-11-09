@@ -637,3 +637,14 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .cases-toggle { margin-left: 12px; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--accent); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; cursor: pointer; vertical-align: middle; }
 .cases-toggle:hover { border-color: var(--accent); background: var(--accent-soft); }
 .print .cases-toggle { display: none; }
+
+/* 대표 프로젝트 카드(결과 중심) */
+.pc-period { margin-left: auto; font-size: 12.5px; color: var(--muted); }
+.pc-pitch { max-width: none; font-size: 15.5px; line-height: 1.7; }
+.pc-role { margin-top: 2px; font-size: 13.5px; color: var(--muted); }
+.pc-role b { color: var(--ink); margin-right: 6px; }
+.pc-proof { border-top: 1px solid var(--line); padding-top: 12px; }
+.pc-proof h4 { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--faint); }
+.pc-proof .pc-keys { border-top: 0; margin-top: 6px; padding-top: 0; }
+.pc-go { align-self: flex-end; font-size: 13.5px; font-weight: 700; color: var(--accent); text-decoration: none; }
+.pc-go:hover { text-decoration: underline; }
