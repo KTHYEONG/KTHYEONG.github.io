@@ -682,3 +682,6 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 @media screen and (max-width: 560px) { .pc-ex { grid-template-columns: 1fr; } .ex2-arrow { transform: rotate(90deg); } }
 .print .pc-ex .ex2-col { padding: 6px 8px; }
 .print .ex2-col p { font-size: 8.8pt; }
+
+.ex2-mono p { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'D2Coding', monospace; font-size: 12.5px; font-weight: 500; line-height: 1.7; }
+.ex2-col p.ex2-flow { white-space: pre-line; }

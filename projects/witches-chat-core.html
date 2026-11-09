@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Witches-Chat-Core · 김태형 포트폴리오"><meta property="og:description" content="근거 조항과 함께 답하는 온프레미스 규정 RAG 챗봇"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=df957d60">
+<link rel="stylesheet" href="../styles.css?v=33f8c62b">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -35,8 +35,15 @@
     <ul class="metrics"><li class="metric"><div class="m-label">팀 악성 질문 차단율</div><div class="m-value">98.46%</div><div class="m-note">악성 입력 130개 중 128개 차단(평가 입력 210개 중, 논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
   </section>
   
-  <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="pc-ex pj-ex"><div class="ex2-col"><h4>변환 전 (구조 표시 없음)</h4><p>제3조(총장) ① 총장은 이 대학교의 교무를 통할하고, 대외적으로 이 대학교를 대표한다. ② 총장후보자는 총장임용추천위원회에서 선정하되, …</p></div><span class="ex2-arrow" aria-hidden="true">→</span><div class="ex2-col ex2-after"><h4>변환 후 (Markdown)</h4><p>- **제 3 조 ( 총장 )** ① 총장은 …대표한다.
-- ② 총장후보자는 …</p></div></div><p class="ex2-cap">경북대 학칙 제3조 변환 결과 발췌(띄어쓰기는 변환 결과 그대로). 문서 쪼개기 단계가 조·항 경계를 읽을 수 있게 됩니다.</p></section>
+  <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="pc-ex pj-ex"><div class="ex2-col"><h4>원본 (DOCX 문단, 텍스트만 이어짐)</h4><p>제3조의2(부총장) ① 총장의 직무를 보좌하기 위하여 교학부총장, 연구부총장, 대외협력부총장 각 1인을 두며, 교학부총장은 대학원장을 겸임한다.
+② 부총장은 아래 각호의 업무에 관하여 총장을 보좌한다.
+1. 교학부총장 : 교무·학사, 학생, 입학, 정보화 등에 관한 업무
+2. 연구부총장 : 기획, 연구진흥, 산학협력, 국제교류 업무
+3. 대외협력부총장 : 대외협력 및 홍보 업무</p></div><span class="ex2-arrow" aria-hidden="true">→</span><div class="ex2-col ex2-after ex2-mono"><h4>변환 결과 (Markdown, 조·항·호 표시)</h4><p>- **제 3 조의 2( 부총장 )** ① 총장의 직무를 보좌하기 위하여 교학부총장 , 연구부총장 , 대외협력부총장 각 1 인 을 두며 , 교학부총장은 대학원장을 겸임한다 .
+- ② 부총장은 아래 각호의 업무에 관하여 총장을 보좌한다 .
+1. 교학부총장 : 교무·학사 , 학생 , 입학 , 정보화 등에 관한 업무
+2. 연구부총장 : 기획 , 연구진흥 , 산학협력 , 국제교류 업무
+3. 대외협력부총장 : 대외협력 및 홍보 업무</p></div></div><p class="ex2-cap">경북대 학칙 제3조의2 변환 결과(수정 이력 표기 &lt;개정 …&gt;는 생략, 띄어쓰기는 변환 결과 그대로). 조 제목은 굵게, 항은 목록으로, 호는 번호 목록으로 남아 문서 쪼개기 단계가 조·항 경계를 읽을 수 있습니다.</p></section>
   
   
   <section class="pj-sec">
