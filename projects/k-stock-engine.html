@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="K-Stock Engine · 김태형 포트폴리오"><meta property="og:description" content="국내주식 다중 팩터 전략 연구와 장전 목표 가상 기록"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=9c4edc6e">
+<link rel="stylesheet" href="../styles.css?v=8aa452c1">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -69,7 +69,7 @@
       <h3>사전 선언한 통계 기준으로만 전략 승격</h3>
       <p class="c-brief">전략 변경이 &#39;더 좋아 보인다&#39;가 아니라 설정 파일에 선언된 기준으로 승격됩니다.</p>
     </summary>
-    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>전략을 계속 바꿔 보면 과거 데이터에만 맞는 결과를 고르게 됩니다. 점수 하나로는 과적합과 우연을 구분하기 어렵고, 기준을 결과를 보고 고치면 의미가 사라집니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단일 샤프지수는 시험 횟수를 반영하지 못해 제외, 매매 요일에 따라 성과가 달라지는 주 1회 리밸런싱은 자금을 5개 슬리브로 나눠 매매일 분산</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>같은 구간의 짝지은 부트스트랩 비교와 다중 검정 보정(본페로니)을 통과해야 새 전략이 기준 전략을 대체</li><li>슬리피지 비용 격자(0~1.5틱), 파산 확률 가드, 지연·플라시보 시나리오를 함께 보고</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>전략 변경이 &#39;더 좋아 보인다&#39;가 아니라 설정 파일에 선언된 기준으로 승격됩니다. 선언 날짜와 근거는 설정 파일 주석에 남깁니다. </p></section></div><ul class="c-stats"><li><strong>63일 × 4,000회</strong><span>63거래일 블록 부트스트랩으로 5년 경로를 4,000개 만들어 평가</span></li><li><strong>하위 10%</strong><span>평균이 아니라 나쁜 경우(하위 10%)의 성장률을 목적 값으로 사용</span></li><li><strong>연 3%p</strong><span>사전 선언한 허용 한계: 통계적으로 꼬리 위험 감소를 보인 대신 감수할 최대 성장 손실, 결과를 본 뒤 조정하지 않음</span></li><li><strong>시드 3개</strong><span>점수 모델은 시드 11·12·13 평균과 비교해 시드 운을 제거</span></li></ul><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/config/research/protocol.toml">protocol.toml</a><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/src/research/champion.py">champion.py</a></p></div>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>전략을 계속 바꿔 보면 과거 데이터에만 맞는 결과를 고르게 됩니다. 점수 하나로는 과적합과 우연을 구분하기 어렵고, 기준을 결과를 보고 고치면 의미가 사라집니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단일 샤프지수는 시험 횟수를 반영하지 못해 제외, 매매 요일에 따라 성과가 달라지는 주 1회 리밸런싱은 자금을 5개 슬리브로 나눠 매매일 분산</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>같은 구간의 짝지은 부트스트랩 비교와 다중 검정 보정(본페로니)을 통과해야 새 전략이 기준 전략을 대체</li><li>슬리피지 비용 격자(0~1.5틱), 파산 확률 가드, 지연·플라시보 시나리오를 함께 보고</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>전략 변경이 &#39;더 좋아 보인다&#39;가 아니라 설정 파일에 선언된 기준으로 승격됩니다. </p></section></div><ul class="c-stats"><li><strong>63일 × 4,000회</strong><span>63거래일 블록 부트스트랩으로 5년 경로를 4,000개 만들어 평가</span></li><li><strong>하위 10%</strong><span>평균이 아니라 나쁜 경우(하위 10%)의 성장률을 목적 값으로 사용</span></li><li><strong>연 3%p</strong><span>사전 선언한 허용 한계: 통계적으로 꼬리 위험 감소를 보인 대신 감수할 최대 성장 손실, 결과를 본 뒤 조정하지 않음</span></li><li><strong>시드 3개</strong><span>점수 모델은 시드 11·12·13 평균과 비교해 시드 운을 제거</span></li></ul><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/config/research/protocol.toml">protocol.toml</a><a href="https://github.com/KTHYEONG/k-stock-engine/blob/main/src/research/champion.py">champion.py</a></p></div>
   </details><details class="case" id="ops-outcome">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 05</span><span class="c-proj">K-Stock Engine</span><span class="kind kind-personal">개인</span></div>

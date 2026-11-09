@@ -696,3 +696,8 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .live-list em { font-style: normal; font-size: 13px; font-weight: 700; color: var(--muted); }
 .live-text { font-size: 14px; color: var(--muted); line-height: 1.55; }
 @media screen and (max-width: 860px) { .live-list { grid-template-columns: 1fr; } }
+
+/* PDF: 표·수치 카드·타임라인은 쪽 중간에서 끊지 않음 */
+.print .cmp, .print .case .c-stats, .print .case .tl, .print .case .ex2, .print .cmp tr, .print .tl li { break-inside: avoid; }
+.print .cmp .ex-title { break-after: avoid; }
+.print .case .tl { break-inside: auto; }
