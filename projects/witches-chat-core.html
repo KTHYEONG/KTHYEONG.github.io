@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Witches-Chat-Core · 김태형 포트폴리오"><meta property="og:description" content="근거 조항과 함께 답하는 온프레미스 규정 RAG 챗봇"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=2b10f78d">
+<link rel="stylesheet" href="../styles.css?v=59d1e3c6">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -44,15 +44,7 @@
     <h2 class="part">사례</h2>
     <div class="cases"><article class="case" id="md-unify">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div><h3>HWP·DOCX·PDF를 Markdown 하나로 통일</h3></header>
-    <ol class="flow" style="--n:5"><li><strong>규정 원본</strong><span>HWP·DOCX·PDF</span></li><li class="hl"><strong>형식별 변환</strong><span>형식마다 변환기</span></li><li class="hl"><strong>구조 표시</strong><span>조·항·호 기호</span></li><li><strong>잡음 정리</strong><span>깨진 문자 제거·표 분리</span></li><li><strong>쪼개기 전달</strong><span>구간 정보 포함</span></li></ol>
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>규정이 세 가지 파일 형식으로 섞여 있고, 조·항·호 계층이 의미를 정합니다. 형식별로 다루면 문서 쪼개기와 검색도 형식마다 따로 만들어야 합니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>형식별 문서 쪼개기: 팀원이 형식마다 따로 처리해야 해 제외</li><li>Markdown: 문서 쪼개기의 표준 입력, 제목·목록·표 표현 가능</li><li>팀원 모두 같은 입력 형식 사용 가능</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>형식별 변환기를 두되 결과 구조는 동일하게</li><li>초기에는 HWP를 DOCX로 수동 변환</li><li>이후 HWP 직접 변환 추가</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>원본 HWP 20·DOCX 5·PDF 4개를 Markdown 28개로 정리해 문서 쪼개기 단계에 전달. </p></section>
-    </div>
-    
-    <figure class="chart">
+    <ol class="flow" style="--n:5"><li><strong>규정 원본</strong><span>HWP·DOCX·PDF</span></li><li class="hl"><strong>형식별 변환</strong><span>형식마다 변환기</span></li><li class="hl"><strong>구조 표시</strong><span>조·항·호 기호</span></li><li><strong>잡음 정리</strong><span>깨진 문자 제거·표 분리</span></li><li><strong>쪼개기 전달</strong><span>구간 정보 포함</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>규정이 세 가지 파일 형식으로 섞여 있고, 조·항·호 계층이 의미를 정합니다. 형식별로 다루면 문서 쪼개기와 검색도 형식마다 따로 만들어야 합니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>형식별 문서 쪼개기: 팀원이 형식마다 따로 처리해야 해 제외</li><li>Markdown: 문서 쪼개기의 표준 입력, 제목·목록·표 표현 가능</li><li>팀원 모두 같은 입력 형식 사용 가능</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>형식별 변환기를 두되 결과 구조는 동일하게</li><li>초기에는 HWP를 DOCX로 수동 변환</li><li>이후 HWP 직접 변환 추가</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>원본 HWP 20·DOCX 5·PDF 4개를 Markdown 28개로 정리해 문서 쪼개기 단계에 전달. </p></section></div><figure class="chart">
     <figcaption class="chart-title">원본 형식과 변환 결과 <span class="chart-unit">개</span> </figcaption>
     <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
         <div class="chart-label">HWP</div>
@@ -75,37 +67,13 @@
   </figure>
   </article><article class="case" id="hierarchy">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div><h3>원문은 두고 조·항·호 계층 표시만 추가</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>조·항·호·목이 구분 없는 줄글이면 문서를 쪼갤 때 조항 중간이 잘려 의미가 끊길 수 있습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>문장 다듬기·요약: 조항 의미가 달라질 수 있어 제외</li><li>원문 유지, 표시만 추가</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>줄 앞머리(제1장, 제1조, ①, 1., 가. 등) 인식</li><li>제목·굵은 소제목·목록으로 표시</li><li>학칙 변환 결과에서 장·절 제목, 조 소제목, 항·호 목록 확인</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>계층이 Markdown 기호로 남아 문서 쪼개기 단계가 구조를 읽을 수 있음. 단서 문장 등 예외 조항은 원문 순서 유지. </p></section>
-    </div>
-    
-    
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>조·항·호·목이 구분 없는 줄글이면 문서를 쪼갤 때 조항 중간이 잘려 의미가 끊길 수 있습니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>문장 다듬기·요약: 조항 의미가 달라질 수 있어 제외</li><li>원문 유지, 표시만 추가</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>줄 앞머리(제1장, 제1조, ①, 1., 가. 등) 인식</li><li>제목·굵은 소제목·목록으로 표시</li><li>학칙 변환 결과에서 장·절 제목, 조 소제목, 항·호 목록 확인</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>계층이 Markdown 기호로 남아 문서 쪼개기 단계가 구조를 읽을 수 있음. 단서 문장 등 예외 조항은 원문 순서 유지. </p></section></div>
   </article><article class="case" id="form-split">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div><h3>표와 신청서 양식을 구분해 본문에서 분리</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>신청서 서식과 빈 칸 많은 표가 본문에 섞이면 검색 결과에 불필요한 내용이 끼고 문서 쪼개기도 어렵습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표 일괄 처리: 내용 표와 양식 구분 불가, 제외</li><li>빈 칸 비율 등 표 모양과 양식 표현으로 판별</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>빈 칸 많은 여러 열 표, 양식 표현(예/아니오), 정해 둔 글자 패턴이면 양식으로 판별</li><li>양식은 본문과 따로 변환</li><li>표를 따로 벡터로 변환해 저장 가능</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>양식 표가 본문과 분리되어 문서 쪼개기 단계로 전달. 판별 정확도는 미측정. </p></section>
-    </div>
-    
-    
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>신청서 서식과 빈 칸 많은 표가 본문에 섞이면 검색 결과에 불필요한 내용이 끼고 문서 쪼개기도 어렵습니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표 일괄 처리: 내용 표와 양식 구분 불가, 제외</li><li>빈 칸 비율 등 표 모양과 양식 표현으로 판별</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>빈 칸 많은 여러 열 표, 양식 표현(예/아니오), 정해 둔 글자 패턴이면 양식으로 판별</li><li>양식은 본문과 따로 변환</li><li>표를 따로 벡터로 변환해 저장 가능</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>양식 표가 본문과 분리되어 문서 쪼개기 단계로 전달. 판별 정확도는 미측정. </p></section></div>
   </article><article class="case" id="speed">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">Witches-Chat-Core</span><span class="kind kind-team">팀</span></div><h3>DOCX·PDF 변환, 범용 도구 대신 직접 읽기</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>큰 규정집은 DOCX·PDF 변환이 오래 걸려, 규정을 고칠 때마다 다시 변환하기 부담스러웠습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>병목: 워드 변환 도구가 문서를 통째로 객체화하는 과정, PDF 변환 도구의 글꼴·정렬·표 처리</li><li>설정 조정보다 필요한 부분만 직접 읽는 방식 선택</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>DOCX: 파일 내부 XML에서 본문·표·텍스트 상자를 직접 읽기</li><li>깨진 제어 문자를 한 번에 제거</li><li>PDF: 표 영역과 본문 덩어리를 나눠 읽기</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>커밋 메시지 기준 PDF 변환 약 70초에서 15초. 측정 파일·환경 기록 없는 참고 수치. <span class="basis basis-ops">운영 기록</span></p></section>
-    </div>
-    
-    
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>큰 규정집은 DOCX·PDF 변환이 오래 걸려, 규정을 고칠 때마다 다시 변환하기 부담스러웠습니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>병목: 워드 변환 도구가 문서를 통째로 객체화하는 과정, PDF 변환 도구의 글꼴·정렬·표 처리</li><li>설정 조정보다 필요한 부분만 직접 읽는 방식 선택</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>DOCX: 파일 내부 XML에서 본문·표·텍스트 상자를 직접 읽기</li><li>깨진 제어 문자를 한 번에 제거</li><li>PDF: 표 영역과 본문 덩어리를 나눠 읽기</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>커밋 메시지 기준 PDF 변환 약 70초에서 15초. 측정 파일·환경 기록 없는 참고 수치. <span class="basis basis-ops">운영 기록</span></p></section></div>
   </article></div>
   </section>
   <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>전처리 구간 자동 테스트 없음, 변환 전후 글자 수 비교 로그(85% 미만이면 경고)와 눈으로 확인</li><li>팀 악성 질문 차단 결과는 직접 만든 입력 210개 기준, 실제 질의 평가 아님</li><li>이미지 변환은 글자 인식(OCR) 도구 설치 후 검증 필요</li></ul></section>

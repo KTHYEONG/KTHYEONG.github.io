@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Port Entity Matching · 김태형 포트폴리오"><meta property="og:description" content="입출항 기록을 표준 선박 한 척으로 잇는 매칭 파이프라인"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=2b10f78d">
+<link rel="stylesheet" href="../styles.css?v=59d1e3c6">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -41,15 +41,7 @@
     <h2 class="part">사례</h2>
     <div class="cases"><article class="case" id="cv-lb-gap">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div><h3>내부 검증 0.9875 vs 대회 점수 0.8805, 원인 분리</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>내 컴퓨터 검증 점수와 대회 리더보드 점수 차이가 컸습니다. 원인을 모른 채 모델을 고치면 제출만 낭비합니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>학습 때와 제출 때 처리 방식 불일치: 예측 차이 0건, 제외</li><li>처음 보는 선박 0.998, 영문 톤수 오차 0.9965, 영문 오타 0.957: 제외</li><li>단어 순서를 바꾸거나 단어가 빠지면 정확도 0.4~0.5로 하락</li><li>학습 데이터는 한 선박이 늘 같은 철자, 내부 검증으로 확인 불가</li><li>학습 모델의 한계: 철자·순서가 달라진 이름에 약함, 한글은 LLM 후보로 보완(사례 2)</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>깨끗한 내부 검증 + 이름 변형 20가지 시험 병행</li><li>표기 증강 학습 추가</li><li>단어 순서와 무관한 검색, 순서가 바뀌어도 같은 값인 특징 7종 추가</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>이름 변형 시험 점수 0.8162에서 0.9477, 단어 순서를 바꾼 영문 이름 정확도 0.486에서 0.999. 모의 변형 기준이라 실제 테스트에서 변형이 얼마나 있는지는 알 수 없습니다. 최종 제출물도 공개 0.9595가 비공개 0.91989로 낮아졌고, 이 차이는 분석하지 못했습니다. <span class="basis basis-backtest">백테스트</span></p></section>
-    </div>
-    <div class="ex"><div class="ex-title">변형 시험 예시 (형식)</div><ul><li><span class="ex-in">A B C</span><span class="ex-arrow">→</span><span class="ex-out">C A B</span><span class="ex-note">단어 순서 바꿈</span></li><li><span class="ex-in">A B C</span><span class="ex-arrow">→</span><span class="ex-out">A C</span><span class="ex-note">단어 하나 빠짐</span></li><li><span class="ex-in">A B C</span><span class="ex-arrow">→</span><span class="ex-out">A B-C</span><span class="ex-note">철자·기호 표기 변화</span></li></ul></div>
-    <figure class="chart">
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>내 컴퓨터 검증 점수와 대회 리더보드 점수 차이가 컸습니다. 원인을 모른 채 모델을 고치면 제출만 낭비합니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>학습 때와 제출 때 처리 방식 불일치: 예측 차이 0건, 제외</li><li>처음 보는 선박 0.998, 영문 톤수 오차 0.9965, 영문 오타 0.957: 제외</li><li>단어 순서를 바꾸거나 단어가 빠지면 정확도 0.4~0.5로 하락</li><li>학습 데이터는 한 선박이 늘 같은 철자, 내부 검증으로 확인 불가</li><li>학습 모델의 한계: 철자·순서가 달라진 이름에 약함, 한글은 LLM 후보로 보완(사례 2)</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>깨끗한 내부 검증 + 이름 변형 20가지 시험 병행</li><li>표기 증강 학습 추가</li><li>단어 순서와 무관한 검색, 순서가 바뀌어도 같은 값인 특징 7종 추가</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>이름 변형 시험 점수 0.8162에서 0.9477, 단어 순서를 바꾼 영문 이름 정확도 0.486에서 0.999. 모의 변형 기준이라 실제 테스트에서 변형이 얼마나 있는지는 알 수 없습니다. 최종 제출물도 공개 0.9595가 비공개 0.91989로 낮아졌고, 이 차이는 분석하지 못했습니다. <span class="basis basis-backtest">백테스트</span></p></section></div><div class="ex"><div class="ex-title">변형 시험 예시 (형식)</div><ul><li><span class="ex-in">A B C</span><span class="ex-arrow">→</span><span class="ex-out">C A B</span><span class="ex-note">단어 순서 바꿈</span></li><li><span class="ex-in">A B C</span><span class="ex-arrow">→</span><span class="ex-out">A C</span><span class="ex-note">단어 하나 빠짐</span></li><li><span class="ex-in">A B C</span><span class="ex-arrow">→</span><span class="ex-out">A B-C</span><span class="ex-note">철자·기호 표기 변화</span></li></ul></div><figure class="chart">
     <figcaption class="chart-title">이름 변형 시험 점수 변화 <span class="chart-unit">점수</span> <span class="basis basis-backtest">백테스트</span></figcaption>
     <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
         <div class="chart-label">시작 모델</div>
@@ -72,15 +64,7 @@
   </figure>
   </article><article class="case" id="korean-match">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div><h3>한글 선박명, 발음 코드·LLM 후보·역방향 채널로 분담</h3></header>
-    <ol class="flow" style="--n:7"><li><strong>정규화</strong><span>이름 정리</span></li><li><strong>후보 검색</strong><span>발음 코드 + 톤수 범위</span></li><li><strong>LLM 표기</strong><span>영문 후보 추가</span></li><li><strong>역방향 채널</strong><span>영문명→한글 변환 대조</span></li><li class="hl"><strong>순위 모델</strong><span>후보별 순위 학습</span></li><li><strong>재정렬</strong><span>한글 상위 10개</span></li><li><strong>선박 1척</strong><span>표준 선박 확정</span></li></ol>
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>한글 이름은 영어 외래어, 한국어 로마자, 약어 읽기가 섞여 규칙 하나로 못 맞춥니다. 한글 행은 데이터의 약 9.7%, 점수의 70%입니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표준 영문 변환만 사용: 한글 오류 24건에서 63건, 제외</li><li>발음 코드 채택: 한글을 자음·모음 소리 기호로 바꿔 비교 + 외래어 보정(발음 안 나는 R, 첫 글자 H, 모음 Y)</li><li>한글 오류 23건에서 14건 (5회 학습 평균)</li><li>처음 보는 표기에 약해 LLM 영문 표기 후보 추가</li><li>역방향 채널: 카탈로그 영문명을 LLM이 한글로 바꿔 자모로 대조, 당시 최고 모델의 한글 오류 41건 중 17건 해소 가능 확인</li><li>제외: 세 번째 한글 표기 생성(한글 정답 504), 합성 한글 행(501), 재순위 가중치 상향(500~502)</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>발음 코드 + 톤수 ±25% 후보에 LLM 후보 합산</li><li>LLM은 후보만 늘리고, 최종 판단은 순위 모델</li><li>한글 상위 10개를 LLM 가능성 점수로 재정렬</li><li>카탈로그 영문명을 두 LLM(Midm, Kanana)으로 한글 변환해 두고, 한글 행은 자모 상위 20척을 후보에 합산, 특징 3개 추가</li><li>학습에만 쓰는 변형 6종(이름 잘림, 표기 변형, 톤수 오류, 한글 자모 잡음 등)과 카탈로그 기반 합성 영문 행 15,000개</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>공개 리더보드 0.8805(규칙 기반) → 0.9163(LLM 후보) → 0.9525(역방향 채널·합성 행, 한글 505/532, 비한글 1713/1784) → 0.9595(최종 제출물, 한글 507/532). 비공개 최종은 0.91989였습니다. 재학습 오차가 한글 ±2행, 비한글 ±4행이라 한글 3행 이상 개선만 인정했습니다. <span class="basis basis-ops">운영 기록</span></p></section>
-    </div>
-    <div class="ex"><div class="ex-title">한글 선박명 유형 (한글 → 정답 표기)</div><ul><li><span class="ex-in">리플렉션</span><span class="ex-arrow">→</span><span class="ex-out">Reflection</span><span class="ex-note">영어 외래어</span></li><li><span class="ex-in">흥아</span><span class="ex-arrow">→</span><span class="ex-out">Heung-A</span><span class="ex-note">한국어 로마자</span></li><li><span class="ex-in">에스티아이</span><span class="ex-arrow">→</span><span class="ex-out">STI</span><span class="ex-note">약어 읽기</span></li></ul></div>
-    <figure class="chart">
+    <ol class="flow" style="--n:7"><li><strong>정규화</strong><span>이름 정리</span></li><li><strong>후보 검색</strong><span>발음 코드 + 톤수 범위</span></li><li><strong>LLM 표기</strong><span>영문 후보 추가</span></li><li><strong>역방향 채널</strong><span>영문명→한글 변환 대조</span></li><li class="hl"><strong>순위 모델</strong><span>후보별 순위 학습</span></li><li><strong>재정렬</strong><span>한글 상위 10개</span></li><li><strong>선박 1척</strong><span>표준 선박 확정</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>한글 이름은 영어 외래어, 한국어 로마자, 약어 읽기가 섞여 규칙 하나로 못 맞춥니다. 한글 행은 데이터의 약 9.7%, 점수의 70%입니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>표준 영문 변환만 사용: 한글 오류 24건에서 63건, 제외</li><li>발음 코드 채택: 한글을 자음·모음 소리 기호로 바꿔 비교 + 외래어 보정(발음 안 나는 R, 첫 글자 H, 모음 Y)</li><li>한글 오류 23건에서 14건 (5회 학습 평균)</li><li>처음 보는 표기에 약해 LLM 영문 표기 후보 추가</li><li>역방향 채널: 카탈로그 영문명을 LLM이 한글로 바꿔 자모로 대조, 당시 최고 모델의 한글 오류 41건 중 17건 해소 가능 확인</li><li>제외: 세 번째 한글 표기 생성(한글 정답 504), 합성 한글 행(501), 재순위 가중치 상향(500~502)</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>발음 코드 + 톤수 ±25% 후보에 LLM 후보 합산</li><li>LLM은 후보만 늘리고, 최종 판단은 순위 모델</li><li>한글 상위 10개를 LLM 가능성 점수로 재정렬</li><li>카탈로그 영문명을 두 LLM(Midm, Kanana)으로 한글 변환해 두고, 한글 행은 자모 상위 20척을 후보에 합산, 특징 3개 추가</li><li>학습에만 쓰는 변형 6종(이름 잘림, 표기 변형, 톤수 오류, 한글 자모 잡음 등)과 카탈로그 기반 합성 영문 행 15,000개</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>공개 리더보드 0.8805(규칙 기반) → 0.9163(LLM 후보) → 0.9525(역방향 채널·합성 행, 한글 505/532, 비한글 1713/1784) → 0.9595(최종 제출물, 한글 507/532). 비공개 최종은 0.91989였습니다. 재학습 오차가 한글 ±2행, 비한글 ±4행이라 한글 3행 이상 개선만 인정했습니다. <span class="basis basis-ops">운영 기록</span></p></section></div><div class="ex"><div class="ex-title">한글 선박명 유형 (한글 → 정답 표기)</div><ul><li><span class="ex-in">리플렉션</span><span class="ex-arrow">→</span><span class="ex-out">Reflection</span><span class="ex-note">영어 외래어</span></li><li><span class="ex-in">흥아</span><span class="ex-arrow">→</span><span class="ex-out">Heung-A</span><span class="ex-note">한국어 로마자</span></li><li><span class="ex-in">에스티아이</span><span class="ex-arrow">→</span><span class="ex-out">STI</span><span class="ex-note">약어 읽기</span></li></ul></div><figure class="chart">
     <figcaption class="chart-title">리더보드 점수 변화 <span class="chart-unit">점수</span> <span class="basis basis-ops">운영 기록</span></figcaption>
     <div class="chart-body" style="--zero:-776.26%"><div class="chart-row">
         <div class="chart-label">규칙 기반</div>
@@ -123,37 +107,13 @@
   </figure>
   </article><article class="case" id="plateau">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div><h3>오르지 않는 지점에서 멈추고, 남은 한글 오류 25건의 원인 구분</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>역방향 채널 뒤에도 한글 오류 25건이 남았습니다. 표기를 더 정확히 만들거나 모델을 키우면 줄어드는지 모른 채 시도만 늘리면 제출 횟수만 쓰게 됩니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>더 큰 LLM(Kanana-8B, A.X)으로 카탈로그 표기를 다시 생성: 표기 정확도는 62%에서 77%까지 올랐지만 점수는 그대로</li><li>다른 랭커, 선박 사전확률, 검색·재순위 범위 확대: 모두 효과 없음 또는 하락 (아래 표)</li><li>남은 오류는 이름이 거의 같은 자매선 중 어느 배인지 한 행만으로 정할 수 없는 경우가 대부분</li><li>같은 호출부호의 다른 기록을 모아 투표하면 학습 데이터에서 오류가 100개에서 6개로 줄지만, 다른 행을 쓰는 방식이라 대회 규칙상 제외</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>표기·모델·랭커 확대 시도는 중단하고 미채택으로 기록</li><li>학습 선박만 답하는 제출을 만들어 정답이 0임을 확인, 테스트 선박은 학습 선박과 겹치지 않는다고 판단</li><li>호출부호 일치 없이 1위가 학습 선박이면 다음 학습 밖 후보로 교체, 대회 분할 구조를 이용한 규칙임을 문서에 명시</li><li>비한글 행의 후보 폭 확대와 학습 데이터의 단어 대응표·약어 읽기로 만든 표기 추가</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>한글 정답 505에서 507, 점수 0.9525에서 0.9595(후보 폭 확대 0.9563, 학습 선박 제외 0.9581). 이후 시도는 모두 효과가 없었고, 비공개 최종은 0.91989였습니다. <span class="basis basis-ops">운영 기록</span></p></section>
-    </div>
-    <div class="ex"><div class="ex-title">리더보드로 확인한 시도 (한글 정답 수 변화)</div><ul><li><span class="ex-in">더 큰 LLM 표기</span><span class="ex-arrow">→</span><span class="ex-out">0 ~ −1</span><span class="ex-note">표기 정확도 62→77%</span></li><li><span class="ex-in">CatBoost 랭커</span><span class="ex-arrow">→</span><span class="ex-out">−3</span><span class="ex-note">랭커 종류는 병목 아님</span></li><li><span class="ex-in">선박 사전확률</span><span class="ex-arrow">→</span><span class="ex-out">−4</span><span class="ex-note">비한글도 13행 하락</span></li><li><span class="ex-in">검색·재순위 확대</span><span class="ex-arrow">→</span><span class="ex-out">0</span><span class="ex-note">후보 범위는 병목 아님</span></li></ul></div>
-    
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>역방향 채널 뒤에도 한글 오류 25건이 남았습니다. 표기를 더 정확히 만들거나 모델을 키우면 줄어드는지 모른 채 시도만 늘리면 제출 횟수만 쓰게 됩니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>더 큰 LLM(Kanana-8B, A.X)으로 카탈로그 표기를 다시 생성: 표기 정확도는 62%에서 77%까지 올랐지만 점수는 그대로</li><li>다른 랭커, 선박 사전확률, 검색·재순위 범위 확대: 모두 효과 없음 또는 하락 (아래 표)</li><li>남은 오류는 이름이 거의 같은 자매선 중 어느 배인지 한 행만으로 정할 수 없는 경우가 대부분</li><li>같은 호출부호의 다른 기록을 모아 투표하면 학습 데이터에서 오류가 100개에서 6개로 줄지만, 다른 행을 쓰는 방식이라 대회 규칙상 제외</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>표기·모델·랭커 확대 시도는 중단하고 미채택으로 기록</li><li>학습 선박만 답하는 제출을 만들어 정답이 0임을 확인, 테스트 선박은 학습 선박과 겹치지 않는다고 판단</li><li>호출부호 일치 없이 1위가 학습 선박이면 다음 학습 밖 후보로 교체, 대회 분할 구조를 이용한 규칙임을 문서에 명시</li><li>비한글 행의 후보 폭 확대와 학습 데이터의 단어 대응표·약어 읽기로 만든 표기 추가</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>한글 정답 505에서 507, 점수 0.9525에서 0.9595(후보 폭 확대 0.9563, 학습 선박 제외 0.9581). 이후 시도는 모두 효과가 없었고, 비공개 최종은 0.91989였습니다. <span class="basis basis-ops">운영 기록</span></p></section></div><div class="ex"><div class="ex-title">리더보드로 확인한 시도 (한글 정답 수 변화)</div><ul><li><span class="ex-in">더 큰 LLM 표기</span><span class="ex-arrow">→</span><span class="ex-out">0 ~ −1</span><span class="ex-note">표기 정확도 62→77%</span></li><li><span class="ex-in">CatBoost 랭커</span><span class="ex-arrow">→</span><span class="ex-out">−3</span><span class="ex-note">랭커 종류는 병목 아님</span></li><li><span class="ex-in">선박 사전확률</span><span class="ex-arrow">→</span><span class="ex-out">−4</span><span class="ex-note">비한글도 13행 하락</span></li><li><span class="ex-in">검색·재순위 확대</span><span class="ex-arrow">→</span><span class="ex-out">0</span><span class="ex-note">후보 범위는 병목 아님</span></li></ul></div>
   </article><article class="case" id="ranker">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div><h3>수식 대신 학습형 순위 모델 선택, 차이는 불확실로 기록</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>비교 단서가 많고 일부는 비어 있어, 직접 정한 가중치로는 빈 값을 다루기 어렵습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>직접 정한 가중치 수식 0.9814, 단순 회귀 모델 0.9809: 빈 값 처리 한계, 제외</li><li>정답 여부 분류 방식 0.9852 vs 순위 학습 방식 0.9857, 같은 후보·같은 분할로 비교</li><li>후보 순위를 직접 학습하는 순위 학습 방식 선택</li><li>다른 모델 추가 결합: 개선 없음, 미채택</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>순위 학습 모델을 5회 달리 학습해 결과 합산</li><li>빈 값을 채우지 않고 모델이 그대로 처리</li><li>차이의 신뢰구간이 0을 포함함을 문서에 명시</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>5분할 검증에서 순위 학습 방식 0.9857로 최고지만 차이는 통계적으로 불확실. 선택 이유는 성능 우위가 아닌 빈 값 처리 편의입니다. <span class="basis basis-backtest">백테스트</span></p></section>
-    </div>
-    
-    
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>비교 단서가 많고 일부는 비어 있어, 직접 정한 가중치로는 빈 값을 다루기 어렵습니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>직접 정한 가중치 수식 0.9814, 단순 회귀 모델 0.9809: 빈 값 처리 한계, 제외</li><li>정답 여부 분류 방식 0.9852 vs 순위 학습 방식 0.9857, 같은 후보·같은 분할로 비교</li><li>후보 순위를 직접 학습하는 순위 학습 방식 선택</li><li>다른 모델 추가 결합: 개선 없음, 미채택</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>순위 학습 모델을 5회 달리 학습해 결과 합산</li><li>빈 값을 채우지 않고 모델이 그대로 처리</li><li>차이의 신뢰구간이 0을 포함함을 문서에 명시</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>5분할 검증에서 순위 학습 방식 0.9857로 최고지만 차이는 통계적으로 불확실. 선택 이유는 성능 우위가 아닌 빈 값 처리 편의입니다. <span class="basis basis-backtest">백테스트</span></p></section></div>
   </article><article class="case" id="eval-method">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 05</span><span class="c-proj">Port Entity Matching</span><span class="kind kind-personal">개인</span></div><h3>한글 선박 382척, 흔들리는 점수를 통계로 판단</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>한글 선박 1척이 한글 정확도 약 0.25%p를 움직이고, 학습 무작위값만 바꿔도 한글 오류가 16~19건 달라집니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>한 번 실행한 결과 비교: 무작위 흔들림과 구분 불가, 제외</li><li>선박 단위 반복 재표본으로 95% 신뢰구간 계산 채택</li><li>5회 학습 평균, 같은 분할끼리 짝지어 비교 채택</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>두 실험을 통계로 비교하는 도구 구현</li><li>오류 4건 미만 차이는 해석 금지 기준 문서화</li><li>기록 한 줄의 예측이 다른 줄과 무관함(단독·일부·순서 뒤섞기 동일 예측)을 테스트로 강제</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>모델 크기 확대, 단어 정렬 특징, 모델 결합 등 효과가 불확실한 실험은 미채택. </p></section>
-    </div>
-    
-    
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>한글 선박 1척이 한글 정확도 약 0.25%p를 움직이고, 학습 무작위값만 바꿔도 한글 오류가 16~19건 달라집니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>한 번 실행한 결과 비교: 무작위 흔들림과 구분 불가, 제외</li><li>선박 단위 반복 재표본으로 95% 신뢰구간 계산 채택</li><li>5회 학습 평균, 같은 분할끼리 짝지어 비교 채택</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>두 실험을 통계로 비교하는 도구 구현</li><li>오류 4건 미만 차이는 해석 금지 기준 문서화</li><li>기록 한 줄의 예측이 다른 줄과 무관함(단독·일부·순서 뒤섞기 동일 예측)을 테스트로 강제</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>모델 크기 확대, 단어 정렬 특징, 모델 결합 등 효과가 불확실한 실험은 미채택. </p></section></div>
   </article></div>
   </section>
   <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>공개 0.9595가 비공개 0.91989로 약 0.04 낮아졌고, 원인은 분석하지 못함</li><li>내부 검증과 리더보드의 차이를 끝까지 설명하지 못함, 내 컴퓨터의 모의 오류로는 리더보드의 한글 오류가 재현되지 않음</li><li>0.9910은 LLM 후보 추가 전 값, 현재 코드의 내부 검증은 미측정</li><li>역방향 채널(카탈로그 이름을 미리 한글로 변환)은 규칙 허용 여부를 운영진에게 직접 확인받지 못함, 공식 답변은 학습 데이터 기반 LLM 증강까지이며 생성 코드·프롬프트는 검증 요청에 대비해 보관</li><li>학습 선박 제외는 대회 분할 구조를 이용한 규칙, 현장에서는 호출부호 기억이 그 역할</li><li>단어 하나 빠진 이름은 약함(영문 약 0.69, 한글 약 0.65, 모의 기준), 이름·톤수가 같은 자매선은 한 행만으로 구분 어려움</li><li>대회 데이터 재배포 금지로 저장소만으로는 학습·평가 재현 불가</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/port-entity-matching#readme">저장소 README</a>에 있습니다.</p></section>

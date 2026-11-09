@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="ETF-Manager · 김태형 포트폴리오"><meta property="og:description" content="세 계좌 ETF 적립 구성, 세법·과거 데이터로 비교"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=2b10f78d">
+<link rel="stylesheet" href="../styles.css?v=59d1e3c6">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -41,26 +41,10 @@
     <h2 class="part">사례</h2>
     <div class="cases"><article class="case" id="pit">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div><h3>미래에 공개될 데이터를 쓰면 실행 중단</h3></header>
-    <ol class="flow" style="--n:5"><li class="hl"><strong>수집</strong><span>공개 시각 태깅</span></li><li class="hl"><strong>조회</strong><span>미래 행이면 중단</span></li><li><strong>신호</strong><span>시점 안전 피처</span></li><li><strong>체결</strong><span>다음 거래일 종가</span></li><li><strong>평가</strong><span>실질 원화</span></li></ol>
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>물가 지표는 월 종료 6~8주 뒤 발표됩니다. 발표 전인데 해당 월 값을 쓰면 결과가 현실보다 좋게 나옵니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>관측일 정렬: 미래 누출 못 막아 제외</li><li>모든 데이터에 공개 시각을 붙이는 방식 선택</li><li>같은 종가 체결은 비현실적, 다음 거래일 체결</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>조회 시점 이후에 공개된 값을 읽으면 오류로 중단</li><li>다음 거래일 종가, 정수 주수 체결</li><li>한국 소비자물가 반영한 실질 원화로 평가</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 실행 중단. 다음 거래일 체결의 1일 지연은 비용으로 수용. </p></section>
-    </div>
-    
-    
+    <ol class="flow" style="--n:5"><li class="hl"><strong>수집</strong><span>공개 시각 태깅</span></li><li class="hl"><strong>조회</strong><span>미래 행이면 중단</span></li><li><strong>신호</strong><span>시점 안전 피처</span></li><li><strong>체결</strong><span>다음 거래일 종가</span></li><li><strong>평가</strong><span>실질 원화</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>물가 지표는 월 종료 6~8주 뒤 발표됩니다. 발표 전인데 해당 월 값을 쓰면 결과가 현실보다 좋게 나옵니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>관측일 정렬: 미래 누출 못 막아 제외</li><li>모든 데이터에 공개 시각을 붙이는 방식 선택</li><li>같은 종가 체결은 비현실적, 다음 거래일 체결</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>조회 시점 이후에 공개된 값을 읽으면 오류로 중단</li><li>다음 거래일 종가, 정수 주수 체결</li><li>한국 소비자물가 반영한 실질 원화로 평가</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 실행 중단. 다음 거래일 체결의 1일 지연은 비용으로 수용. </p></section></div>
   </article><article class="case" id="pension">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div><h3>세 구간 모두 통과한 조합만 채택</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>장기 지수(1927~)에서 높게 나온 조합이 실제 ETF 구간에서는 기준보다 나빴습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>장기 지수 한 구간만 비교: 착시로 제외</li><li>장기 지수(1927~)·현대(1999~)·실제 ETF 구간 분리</li><li>후보 점수는 세 구간 중 최저값</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>기준 대비 0.995 미만 칸 또는 실제 ETF 구간 실패 시 탈락</li><li>재표본 비교 2,000회에서 승률 0.6 이상, 전체 세후 계산 순위 일치 확인</li><li>통과 결정은 동결 기록으로 보존</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>QQQ 90%+SCHD 10%: 100년 1.039, 현대 1.057, 실제 ETF 1.024로 통과(기준 QQQ 80%+SPY 20%=1.000). QQQ 80%+SCHD 20%는 실제 ETF 0.992, QQQ 100%는 100년 0.995로 탈락. <span class="basis basis-backtest">백테스트</span></p></section>
-    </div>
-    
-    <figure class="chart">
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>장기 지수(1927~)에서 높게 나온 조합이 실제 ETF 구간에서는 기준보다 나빴습니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>장기 지수 한 구간만 비교: 착시로 제외</li><li>장기 지수(1927~)·현대(1999~)·실제 ETF 구간 분리</li><li>후보 점수는 세 구간 중 최저값</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>기준 대비 0.995 미만 칸 또는 실제 ETF 구간 실패 시 탈락</li><li>재표본 비교 2,000회에서 승률 0.6 이상, 전체 세후 계산 순위 일치 확인</li><li>통과 결정은 동결 기록으로 보존</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>QQQ 90%+SCHD 10%: 100년 1.039, 현대 1.057, 실제 ETF 1.024로 통과(기준 QQQ 80%+SPY 20%=1.000). QQQ 80%+SCHD 20%는 실제 ETF 0.992, QQQ 100%는 100년 0.995로 탈락. <span class="basis basis-backtest">백테스트</span></p></section></div><figure class="chart">
     <figcaption class="chart-title">연금저축 후보별 실제 ETF 구간 상대값 <span class="chart-unit">기준 조합=1.000</span> <span class="basis basis-backtest">백테스트</span></figcaption>
     <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
         <div class="chart-label">QQQ80+SCHD20</div>
@@ -79,15 +63,7 @@
   </figure>
   </article><article class="case" id="isa">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">ETF-Manager</span><span class="kind kind-personal">개인</span></div><h3>ISA 연금 이전, 가구 전체 자산 기준으로 재비교</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>ISA 만기마다 연금으로 넘기면 이득이라는 통념이 있습니다. 해지세와 복리 중단은 빠져 있습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>ISA 안만 비교: 판단 어긋나 제외</li><li>가구 전체 세후 자산, 외부 납입 총액 동일 조건 비교</li><li>세율은 법령 원문 확인 값만 반영, 현행법 외 한도 확대 제외</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>운용 방식 6종 × 예산 3종 × 소득 변화 4종 시뮬레이션</li><li>세법 값은 설정 파일 3종으로 분리, 항목이 맞지 않으면 중단</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>예산 600만·1,200만·2,000만 원 모두 계속 보유 1위. 3년마다 전액 이전은 0.970·0.977·0.990. 추가 세액공제가 해지세 9.9%를 못 넘음. <span class="basis basis-backtest">백테스트</span></p></section>
-    </div>
-    
-    
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>ISA 만기마다 연금으로 넘기면 이득이라는 통념이 있습니다. 해지세와 복리 중단은 빠져 있습니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>ISA 안만 비교: 판단 어긋나 제외</li><li>가구 전체 세후 자산, 외부 납입 총액 동일 조건 비교</li><li>세율은 법령 원문 확인 값만 반영, 현행법 외 한도 확대 제외</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>운용 방식 6종 × 예산 3종 × 소득 변화 4종 시뮬레이션</li><li>세법 값은 설정 파일 3종으로 분리, 항목이 맞지 않으면 중단</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>예산 600만·1,200만·2,000만 원 모두 계속 보유 1위. 3년마다 전액 이전은 0.970·0.977·0.990. 추가 세액공제가 해지세 9.9%를 못 넘음. <span class="basis basis-backtest">백테스트</span></p></section></div>
   </article></div>
   </section>
   <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>세 결정이 같은 데이터를 공유, 사후 선택 편향 존재</li><li>한국 물가지수 제공 기간(2012-08~)이 실질 비교 구간을 제한</li><li>ISA 3년 미만 해지, 2027년 세제개편안 미반영. 현행법 전제</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/ETF-Manager#readme">저장소 README</a>에 있습니다.</p></section>

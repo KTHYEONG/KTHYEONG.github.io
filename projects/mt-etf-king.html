@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="MT ETF King 2026 · 김태형 포트폴리오"><meta property="og:description" content="ETF 모의투자 대회용 백테스트·순위 분석 시스템"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=2b10f78d">
+<link rel="stylesheet" href="../styles.css?v=59d1e3c6">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -41,37 +41,13 @@
     <h2 class="part">사례</h2>
     <div class="cases"><article class="case" id="pit">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 01</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>미래 정보가 섞이면 실행이 멈추도록 차단</h3></header>
-    <ol class="flow" style="--n:5"><li class="hl"><strong>신호</strong><span>결정일까지의 데이터</span></li><li class="hl"><strong>미래 데이터 검사</strong><span>있으면 오류로 중단</span></li><li><strong>주문 생성</strong><span>다음 거래일 예약</span></li><li class="hl"><strong>시가 체결</strong><span>비용·유동성 반영</span></li><li><strong>거래 기록</strong><span>보유 내역 갱신</span></li></ol>
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>오늘 종가를 보고 종목을 골라 같은 종가에 샀다고 계산하면 현실에서 불가능한 수익이 나옵니다. 백테스트를 믿을 수 있는지가 달린 문제입니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>개발자가 조심해서 쓰는 방식: 실수 한 번에 전체 결과가 오염돼 제외</li><li>결정일 이후 데이터가 있으면 오류를 내고 멈추는 강제 장치 선택</li><li>신호와 체결을 한 단계에서 처리하면 같은 날 가격을 쓰게 되어 분리</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>결정 시점 이후 데이터가 보이는지 검사하고, 보이면 실행 중단</li><li>체결 담당 부분을 분리: 신호가 난 다음 거래일 시가에만 체결</li><li>거래 없는 날의 가격 처리와 보유 내역 기록을 테스트로 확인</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 조용히 넘어가지 않고 실행이 멈춥니다. 유출 0건 같은 정량 지표는 측정하지 않았습니다. </p></section>
-    </div>
-    
-    
+    <ol class="flow" style="--n:5"><li class="hl"><strong>신호</strong><span>결정일까지의 데이터</span></li><li class="hl"><strong>미래 데이터 검사</strong><span>있으면 오류로 중단</span></li><li><strong>주문 생성</strong><span>다음 거래일 예약</span></li><li class="hl"><strong>시가 체결</strong><span>비용·유동성 반영</span></li><li><strong>거래 기록</strong><span>보유 내역 갱신</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>오늘 종가를 보고 종목을 골라 같은 종가에 샀다고 계산하면 현실에서 불가능한 수익이 나옵니다. 백테스트를 믿을 수 있는지가 달린 문제입니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>개발자가 조심해서 쓰는 방식: 실수 한 번에 전체 결과가 오염돼 제외</li><li>결정일 이후 데이터가 있으면 오류를 내고 멈추는 강제 장치 선택</li><li>신호와 체결을 한 단계에서 처리하면 같은 날 가격을 쓰게 되어 분리</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>결정 시점 이후 데이터가 보이는지 검사하고, 보이면 실행 중단</li><li>체결 담당 부분을 분리: 신호가 난 다음 거래일 시가에만 체결</li><li>거래 없는 날의 가격 처리와 보유 내역 기록을 테스트로 확인</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 조용히 넘어가지 않고 실행이 멈춥니다. 유출 0건 같은 정량 지표는 측정하지 않았습니다. </p></section></div>
   </article><article class="case" id="krx-clean">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>빈 값과 가짜 휴장일을 데이터 입력 단계에서 정리</h3></header>
-    <ol class="flow" style="--n:5"><li><strong>수집</strong><span>한국거래소 Open API 일별 시세</span></li><li class="hl"><strong>입력 정리</strong><span>빈 값을 '값 없음'으로</span></li><li class="hl"><strong>휴장 판정</strong><span>유효 가격 50% 미만</span></li><li><strong>달력 대조</strong><span>빠진 거래일 탐지</span></li><li><strong>Parquet 저장</strong><span>통째로 교체해 깨짐 방지</span></li></ol>
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>가격이 비어 있는 값이 숫자 변환에서 0으로 처리되면 수익률이 틀어집니다. 휴장일에도 가격이 빈 데이터가 들어옵니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>모든 항목을 느슨하게 받으면 이상한 값이 지표로 흘러가 제외</li><li>너무 엄격하면 하루치 데이터 오류에 수집 전체가 중단</li><li>입력 단계에서 빈 값을 &#39;값 없음&#39;으로, 휴장일은 별도 규칙으로 분류</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>입력 단계에서 빈 문자열을 &#39;값 없음&#39;으로 변환</li><li>유효 가격 비율 50% 미만이면 휴장일로 분류</li><li>거래소 달력과 대조해 빠진 거래일을 찾고, 어긋난 종목을 표시</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>휴장일 판정, 빠진 거래일 탐지, 괴리 종목 표시를 단위 테스트로 확인했습니다. </p></section>
-    </div>
-    
-    
+    <ol class="flow" style="--n:5"><li><strong>수집</strong><span>한국거래소 Open API 일별 시세</span></li><li class="hl"><strong>입력 정리</strong><span>빈 값을 '값 없음'으로</span></li><li class="hl"><strong>휴장 판정</strong><span>유효 가격 50% 미만</span></li><li><strong>달력 대조</strong><span>빠진 거래일 탐지</span></li><li><strong>Parquet 저장</strong><span>통째로 교체해 깨짐 방지</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>가격이 비어 있는 값이 숫자 변환에서 0으로 처리되면 수익률이 틀어집니다. 휴장일에도 가격이 빈 데이터가 들어옵니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>모든 항목을 느슨하게 받으면 이상한 값이 지표로 흘러가 제외</li><li>너무 엄격하면 하루치 데이터 오류에 수집 전체가 중단</li><li>입력 단계에서 빈 값을 &#39;값 없음&#39;으로, 휴장일은 별도 규칙으로 분류</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>입력 단계에서 빈 문자열을 &#39;값 없음&#39;으로 변환</li><li>유효 가격 비율 50% 미만이면 휴장일로 분류</li><li>거래소 달력과 대조해 빠진 거래일을 찾고, 어긋난 종목을 표시</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>휴장일 판정, 빠진 거래일 탐지, 괴리 종목 표시를 단위 테스트로 확인했습니다. </p></section></div>
   </article><article class="case" id="anchor">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>급락 직후 반등을 놓치는 문제, 반등 앵커 규칙으로 보완</h3></header>
-    
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>최근 60일 수익률이 마이너스면 현금으로 빠지는 전략은 폭락 직후 첫 반등을 놓칩니다. 8주짜리 대회에서는 이 손해가 큽니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>반등마다 따라 사기: 하락장 손실이 커져 제외</li><li>60일 수익률은 마이너스인데 20일 수익률이 플러스로 돌아선 날만 매수, 고점 대비 15% 하락하면 손절</li><li>같은 지수를 따르는 1배·2배·인버스(하락 베팅) 상품은 한 묶음으로 보고 한 종목만</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>급락 직후 반등 시점에만 사는 &#39;반등 앵커&#39; 전략 추가</li><li>같은 지수 상품을 분류해 중복 편입 차단</li><li>같은 구간·비용 조건에서 전략 4종 비교</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>2,097개 구간에서 8주 +30% 비율 6.78%에서 7.77%, 하위 5% 평균 손실 -23.16%에서 -21.56%. 상위 5% 구간 수익률은 기본형보다 낮고, 운용 전략 채택 기준은 통과하지 못해 연구용으로만 분류했습니다. <span class="basis basis-backtest">백테스트</span></p></section>
-    </div>
-    
-    <figure class="chart">
+    <div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>최근 60일 수익률이 마이너스면 현금으로 빠지는 전략은 폭락 직후 첫 반등을 놓칩니다. 8주짜리 대회에서는 이 손해가 큽니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>반등마다 따라 사기: 하락장 손실이 커져 제외</li><li>60일 수익률은 마이너스인데 20일 수익률이 플러스로 돌아선 날만 매수, 고점 대비 15% 하락하면 손절</li><li>같은 지수를 따르는 1배·2배·인버스(하락 베팅) 상품은 한 묶음으로 보고 한 종목만</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>급락 직후 반등 시점에만 사는 &#39;반등 앵커&#39; 전략 추가</li><li>같은 지수 상품을 분류해 중복 편입 차단</li><li>같은 구간·비용 조건에서 전략 4종 비교</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>2,097개 구간에서 8주 +30% 비율 6.78%에서 7.77%, 하위 5% 평균 손실 -23.16%에서 -21.56%. 상위 5% 구간 수익률은 기본형보다 낮고, 운용 전략 채택 기준은 통과하지 못해 연구용으로만 분류했습니다. <span class="basis basis-backtest">백테스트</span></p></section></div><figure class="chart">
     <figcaption class="chart-title">8주 안에 +30% 이상 수익이 난 구간의 비율 <span class="chart-unit">%</span> <span class="basis basis-backtest">백테스트</span></figcaption>
     <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
         <div class="chart-label">단순 보유</div>
@@ -94,15 +70,7 @@
   </figure>
   </article><article class="case" id="leaderboard">
     <header class="c-head"><div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div><h3>평균 수익 대신 1위 할 확률로 종목 교체 판단</h3></header>
-    <ol class="flow" style="--n:5"><li><strong>순위표 보관</strong><span>날짜별 덧붙이기</span></li><li class="hl"><strong>분포 가정</strong><span>참가자 1</span></li><li class="hl"><strong>시나리오</strong><span>8</span></li><li><strong>1위 확률</strong><span>후보별 비교</span></li><li class="hl"><strong>교체 판단</strong><span>5%p 이상일 때만</span></li></ol>
-    <div class="paar">
-      <section class="p-p"><h5><b>P</b> 문제</h5><p>대회 순위표가 매일 16:00에 덮어써져 과거 이력이 남지 않습니다. 상금은 상위권에만 있어 평균 수익으로는 판단하기 어렵습니다.</p></section>
-      <section class="p-a"><h5><b>A</b> 분석</h5><ul><li>다른 참가자가 많이 산 종목 따라 사기: 순위를 뒤집지 못해 제외</li><li>매일 교체하면 비용만 증가, 충분히 개선될 때만 교체</li><li>참가자 분포를 가정한 시뮬레이션으로 후보별 1위 확률 비교</li></ul></section>
-      <section class="p-x"><h5><b>A</b> 실행</h5><ul><li>순위표를 날짜별로 이어 붙여 저장</li><li>참가자 1,268명 분포를 가정하고, 4개 기간 × 2개 참가자 유형마다 8,000개 시나리오 생성</li><li>1위 확률이 5%p 이상 오를 때만 종목을 바꾸는 규칙 구현</li></ul></section>
-      <section class="p-r"><h5><b>R</b> 결과</h5><p>종목 교체 판단 도구로 구현하고 테스트까지 마쳤습니다. 참가자 분포는 가정값이라 확률 자체는 검증하지 못했습니다. </p></section>
-    </div>
-    
-    
+    <ol class="flow" style="--n:5"><li><strong>순위표 보관</strong><span>날짜별 덧붙이기</span></li><li class="hl"><strong>분포 가정</strong><span>참가자 1</span></li><li class="hl"><strong>시나리오</strong><span>8</span></li><li><strong>1위 확률</strong><span>후보별 비교</span></li><li class="hl"><strong>교체 판단</strong><span>5%p 이상일 때만</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>대회 순위표가 매일 16:00에 덮어써져 과거 이력이 남지 않습니다. 상금은 상위권에만 있어 평균 수익으로는 판단하기 어렵습니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>다른 참가자가 많이 산 종목 따라 사기: 순위를 뒤집지 못해 제외</li><li>매일 교체하면 비용만 증가, 충분히 개선될 때만 교체</li><li>참가자 분포를 가정한 시뮬레이션으로 후보별 1위 확률 비교</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>순위표를 날짜별로 이어 붙여 저장</li><li>참가자 1,268명 분포를 가정하고, 4개 기간 × 2개 참가자 유형마다 8,000개 시나리오 생성</li><li>1위 확률이 5%p 이상 오를 때만 종목을 바꾸는 규칙 구현</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>종목 교체 판단 도구로 구현하고 테스트까지 마쳤습니다. 참가자 분포는 가정값이라 확률 자체는 검증하지 못했습니다. </p></section></div>
   </article></div>
   </section>
   <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim"><li>운용 전략 채택 기준 미통과로 연구용으로만 분류. 반등 앵커 개선은 실험 결과일 뿐 운용 전략 확정이 아닙니다.</li><li>모든 수치는 과거 백테스트이며 실제 대회 성적이 아닙니다. 겹치는 구간이라 독립 표본이 아닙니다.</li><li>참가자 분포는 가정이고, 일부 레버리지·인버스는 배수 합성이라 실제 추적오차와 다를 수 있습니다.</li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/mt-etf-king-2026#readme">저장소 README</a>에 있습니다.</p></section>
