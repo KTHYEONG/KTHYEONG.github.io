@@ -32,7 +32,7 @@
         <div class="scope-mine"><h5>제가 맡은 일</h5><ul><li>뇌파·VR 결과 텍스트 파일을 하나의 JSON으로 통합, 값과 이름 정리</li><li>규칙 기반 데이터 증강(50세트 생성, 정답 문장이 있는 25세트를 학습에 사용)</li><li>정답 문장 4가지 말투 작성 (70세트 x 4말투 = 280개)</li><li>Llama 3.1 8B 경량 추가학습과 서술형 요약 생성</li></ul></div>
         <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>상담 인터뷰 텍스트의 감정 키워드 추출(단어 분석과 문맥 이해 언어모델 결합), 키워드와 감정의 연관 분석, 통합 화면은 팀원이 맡았습니다. 제 성과로 주장하지 않습니다.</p></div>
       </div>
-    <ul class="metrics"><li class="metric"><div class="m-label">학습 입력 세트</div><div class="m-value">70세트</div><div class="m-note">실제 기록 45 + 규칙 증강 25(증강은 50세트를 만들고 정답 문장이 있는 25세트만 사용), 증강은 실제 기록 1개에서 파생</div></li><li class="metric"><div class="m-label">정답 문장</div><div class="m-value">280개 중 210개 사용</div><div class="m-note">70세트 x 4말투, 단순 나열 제외</div></li><li class="metric"><div class="m-label">학습 / 검증 분할</div><div class="m-value">168 / 42</div><div class="m-note">80 : 20, 학습 한 바퀴마다 검증, 레코드 단위 무작위 분할</div></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">학습 입력 세트</div><div class="m-value">70세트</div><div class="m-note">실제 기록 45 + 규칙 증강 25(증강은 50세트를 만들고 정답 문장이 있는 25세트만 사용), 증강은 실제 기록 1개에서 파생</div></li></ul>
   </section>
   <section class="pj-sec"><h2 class="part">결과 예시</h2><figure class="shot"><img src="../assets/emori/result-card.png" alt="뇌파 6지표 입력 값과 모델이 생성한 요약 문장 예시" loading="lazy"><figcaption>뇌파 6지표를 입력하면 모델이 요약 문장을 생성. 생성 문장은 일부 발췌(Llama 3.1 8B LoRA, 저장소 Generated_Report.txt). 이 입력은 학습 데이터에도 포함되어 있음(한계 참고)</figcaption></figure></section>
   
