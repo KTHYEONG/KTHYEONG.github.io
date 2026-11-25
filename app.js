@@ -1,4 +1,4 @@
-// 직무 탭: 해시(#quant 등)로 해당 직무 섹션만 보여 준다. JS가 없으면 모든 섹션이 순서대로 보인다.
+// 직무 탭: 해시(#data-eng 등)로 해당 직무 섹션만 보여 준다. JS가 없으면 모든 섹션이 순서대로 보인다.
 (function () {
   var tracks = Array.prototype.slice.call(document.querySelectorAll('section.track'));
   var links = Array.prototype.slice.call(document.querySelectorAll('[data-track]')).filter(function (a) { return a.tagName === 'A'; });

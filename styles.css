@@ -125,11 +125,11 @@ details.how p { font-size: 14px; color: var(--muted); margin: 6px 0 10px; }
 .sw { flex: none; padding: 9px 16px; border-radius: 99px; border: 1.5px solid var(--line); background: #fff; color: var(--muted); font-size: 14.5px; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .sw:hover { color: var(--ink); border-color: #b8bec5; }
 .sw.on { color: #fff; border-color: var(--sw); background: var(--sw); }
-.sw[data-track="finance-data"] { --sw: #1d4f91; }
-.sw[data-track="quant"] { --sw: #0f766e; }
+.sw[data-track="finance-trading"] { --sw: #1d4f91; }
+.sw[data-track="data-eng"] { --sw: #0f766e; }
 .sw[data-track="ai-llm"] { --sw: #6d3fb2; }
-.track[data-track="finance-data"] { --accent: #1d4f91; --accent-soft: #e8eef7; }
-.track[data-track="quant"] { --accent: #0f766e; --accent-soft: #e4f3f1; }
+.track[data-track="finance-trading"] { --accent: #1d4f91; --accent-soft: #e8eef7; }
+.track[data-track="data-eng"] { --accent: #0f766e; --accent-soft: #e4f3f1; }
 .track[data-track="ai-llm"] { --accent: #6d3fb2; --accent-soft: #f0eafa; }
 .web .track { border-top: 4px solid var(--accent); }
 .js .track.active { animation: trackin .25s ease-out; }
