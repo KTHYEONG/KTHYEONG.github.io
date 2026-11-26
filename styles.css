@@ -856,3 +856,11 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .closing .sub { margin: 4px 0 6px; }
 .print .closing .ai-guards li { padding: 2.5px 4px; }
 .print .closing .ai-flow { margin-top: 6px; }
+
+/* 팀 프로젝트 카드의 내 담당 묶음 */
+.pc-mine { margin: 8px 0 10px; padding: 10px 14px 8px; border-left: 3px solid var(--accent); background: #f7f8fa; border-radius: 0 8px 8px 0; }
+.pc-mine h4 { margin: 0; font-size: 13.5px; color: var(--ink); }
+.pc-mine .pc-points { margin: 6px 0; }
+.pc-mine .pc-points li { grid-template-columns: 44px minmax(0, 1fr); }
+.pc-mine .pc-lead { margin: 4px 0 0; font-size: 13.5px; line-height: 1.6; color: #2b3640; }
+.x-body .pc-mine { margin: 0; }
