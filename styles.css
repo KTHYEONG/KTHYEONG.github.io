@@ -601,16 +601,6 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .pc-cases span { font-size: 13px; line-height: 1.55; color: var(--muted); }
 
 /* AI 활용 */
-.ai-steps { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; counter-reset: s; }
-.ai-steps li { display: grid; grid-template-rows: auto auto 1fr; gap: 6px; border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 12px 14px; }
-.ai-k { font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--faint); }
-.ai-who { font-size: 16px; font-weight: 800; color: var(--ink); }
-.ai-who.is-ai { color: var(--accent); }
-.ai-v { font-size: 13.5px; line-height: 1.6; color: #2b3640; }
-@media screen and (max-width: 560px) { .ai-steps { grid-template-columns: 1fr; } }
-.print .ai-steps { gap: 6px; }
-.print .ai-steps li { padding: 8px 10px; }
-.print .ai-v { font-size: 9pt; }
 .print .pc-cases a { padding: 6px 9px; }
 
 .cases-toggle { margin-left: 12px; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--accent); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; cursor: pointer; vertical-align: middle; }
@@ -811,3 +801,58 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .hero-contacts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .hero-contacts a { display: inline-flex; align-items: center; gap: 7px; padding: 6px 13px; border: 1px solid var(--line); border-radius: 99px; background: var(--card); font-size: 13.5px; font-weight: 600; color: var(--ink); text-decoration: none; }
 .hero-contacts a:hover { border-color: #1d4f91; color: #1d4f91; }
+
+/* AI와 일하는 방식: 계기 → 흐름 → 차단 장치 → 실수 사례 */
+.ai-sec { margin: 26px 0 0; scroll-margin-top: 72px; }
+.ai-lead { font-size: 17px; font-weight: 800; line-height: 1.5; color: var(--ink); }
+.ai-origin { display: flex; gap: 10px; align-items: baseline; margin-top: 8px; padding: 10px 14px; background: #fff; border: 1px solid var(--line); border-left: 4px solid #b45309; border-radius: 8px; font-size: 14px; line-height: 1.6; color: #2b3640; }
+.ai-origin b { flex: none; font-size: 12px; color: #b45309; }
+.ai-flow { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.ai-flow li { display: flex; flex-direction: column; gap: 3px; padding: 9px 12px; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--ink); border-radius: 8px; }
+.ai-flow li.is-ai { border-top-color: #1d4f91; }
+.ai-k { font-size: 13.5px; font-weight: 800; color: var(--ink); }
+.ai-who { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.ai-guard-head, .ai-guards li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) 110px; gap: 4px 18px; align-items: baseline; }
+.ai-guard-head { margin-top: 18px; padding: 0 4px 6px; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: var(--faint); border-bottom: 1px solid var(--line); }
+.ai-guards { list-style: none; margin: 0; padding: 0; }
+.ai-guards li { padding: 8px 4px; border-bottom: 1px solid var(--line); }
+.ai-risk { font-size: 13.5px; color: var(--muted); }
+.ai-guards strong { font-size: 14px; color: var(--ink); line-height: 1.5; }
+.ai-scope { font-size: 12.5px; color: var(--faint); font-weight: 600; }
+.ai-miss { margin-top: 14px; padding: 12px 16px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+.ai-miss h5 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+.ai-miss p { font-size: 13.5px; line-height: 1.6; color: #2b3640; }
+.ai-fix { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; margin-top: 4px; }
+.ai-fix a { font-weight: 700; }
+.hero-ai { margin-left: auto; font-weight: 700; }
+.hero-ops a.hero-ai { color: #1d4f91; }
+@media screen and (max-width: 760px) {
+  .ai-flow { grid-template-columns: 1fr; }
+  .ai-guard-head { display: none; }
+  .ai-guards li { grid-template-columns: 1fr; padding: 10px 0; }
+  .hero-ai { margin-left: 0; width: 100%; }
+}
+.print .ai-lead { font-size: 11pt; }
+.print .ai-origin { margin-top: 5px; padding: 6px 10px; font-size: 8.8pt; }
+.print .ai-flow { margin-top: 8px; gap: 5px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.print .ai-flow li { padding: 5px 7px; }
+.print .ai-k { font-size: 8.8pt; }
+.print .ai-who { font-size: 7.8pt; }
+.print .ai-guard-head { margin-top: 9px; font-size: 7.6pt; }
+.print .ai-guard-head, .print .ai-guards li { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 70px; gap: 2px 10px; }
+.print .ai-guards li { padding: 3.5px 4px; break-inside: avoid; }
+.print .ai-risk, .print .ai-guards strong { font-size: 8.4pt; }
+.print .ai-scope { font-size: 7.6pt; }
+.print .ai-miss { margin-top: 8px; padding: 7px 10px; break-inside: avoid; }
+.print .ai-miss h5, .print .ai-miss p { font-size: 8.6pt; }
+.print .ai-block { break-inside: avoid; }
+/* 웹: AI 섹션을 "그 밖의 프로젝트"와 같은 급의 구획으로 분리 */
+.web .ai-sec { margin-top: 56px; padding-top: 32px; border-top: 2px solid var(--ink); }
+.web .ai-sec .ev-block > .sub { margin: 0 0 10px; font-size: 24px; font-weight: 800; letter-spacing: -.01em; color: var(--ink); }
+.web .ai-sec .ai-lead { font-size: 17px; color: #1d4f91; }
+/* PDF 마무리 쪽: AI 섹션이 늘어도 다음 쪽으로 넘치지 않도록 여백 축소 */
+.print .closing .ev-block, .print .closing .cl-block { margin-top: 10px; padding-top: 8px; }
+.print .closing .evidence > .ev-block:first-child { margin-top: 2px; }
+.print .closing .sub { margin: 4px 0 6px; }
+.print .closing .ai-guards li { padding: 2.5px 4px; }
+.print .closing .ai-flow { margin-top: 6px; }

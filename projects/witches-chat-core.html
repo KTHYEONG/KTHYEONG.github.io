@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Witches-Chat-Core · 김태형 포트폴리오"><meta property="og:description" content="근거 조항과 함께 답하는 온프레미스 규정 RAG 챗봇"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=254f2bff">
+<link rel="stylesheet" href="../styles.css?v=466b0d38">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -32,7 +32,7 @@
         <div class="scope-mine"><h5>제가 맡은 일</h5><ul><li>HWP·DOCX·PDF 규정을 Markdown으로 변환하는 형식별 변환기</li><li>편·장·절·조·항·호·목을 Markdown 기호로 표시</li><li>제어문자·서식 노이즈 제거, 표와 양식을 본문에서 분리</li><li>DOCX·PDF 변환 속도 개선, 변환 전후 글자 수 점검 로그</li><li>오피스·이미지·음성 변환 추가, 문서 쪼개기에 쓸 구간 정보를 본문에 표시해 전달</li></ul></div>
         <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>문서 쪼개기, 벡터 변환, 소속별 검색, 악성 질문 차단, 답변 속 개인정보 가리기, 채팅 화면 연동, 서버 구성은 팀원 담당. 구간 정보 형식은 팀원과 함께 정함.</p></div>
       </div>
-    <ul class="metrics"><li class="metric"><div class="m-label">공격 차단율(Attack Recall)</div><div class="m-value">17.7% → 98.5%</div><div class="m-note">LLM 가드레일(Llama Guard) 단독 대비 정규식+의미 유사도(SAPR) 가드레일, 생성 입력 210개, 팀 평가(최종 보고서·논문)</div><span class="basis basis-team">팀 측정</span></li><li class="metric"><div class="m-label">평균 응답 지연</div><div class="m-value">5,361 → 2,054ms</div><div class="m-note">같은 입력셋 -61%, Llama Guard를 쓰는 Rule+Llama Guard 구성은 Rule only 대비 약 2.8초 증가, 팀 평가</div><span class="basis basis-team">팀 측정</span></li><li class="metric"><div class="m-label">팀 악성 질문 차단율</div><div class="m-value">98.46%</div><div class="m-note">악성 입력 130개 중 128개 차단(평가 입력 210개 중, 논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">공격 차단율(Attack Recall)</div><div class="m-value">57.7% → 98.5%</div><div class="m-note">정규식+Llama Guard → 정규식+의미 유사도 검색(SAPR). 참고: 정규식만 53.9%, Llama Guard만 17.7%. 대가: 정상 학사 질의 오탐 0% → 2%, 양성 질의 오탐 2.5% → 5%, 정밀도 97.4% → 97.0%. 생성 입력 210개, 팀 평가(논문)</div><span class="basis basis-team">팀 측정</span></li><li class="metric"><div class="m-label">평균 응답 지연</div><div class="m-value">4,323 → 2,054ms</div><div class="m-note">정규식+Llama Guard → 정규식+SAPR. 참고: 정규식만은 1,543ms로 SAPR 구성보다 빠르고, Llama Guard만은 5,361ms. 팀 평가</div><span class="basis basis-team">팀 측정</span></li><li class="metric"><div class="m-label">팀 악성 질문 차단율</div><div class="m-value">98.46%</div><div class="m-note">악성 입력 130개 중 128개 차단(평가 입력 210개 중, 논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
   </section>
   
   <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="pc-ex pj-ex"><div class="ex2-col"><h4>원본 (DOCX 구조)</h4><p>제12조(공적결석자 등에 대한 출석인정) ① … 다음 각 호의 어느 하나에 해당하여 …
