@@ -14,6 +14,15 @@
     if (ids.indexOf(h) >= 0) show(h, true);
     else if (!document.querySelector('section.track.active')) show(ids[0], false);
   }
+  // 위의 분야 카드가 보이는 동안에는 같은 선택지를 가진 고정 탭을 숨긴다.
+  var bar = document.querySelector('.track-switch');
+  var cards = document.querySelector('.tcards');
+  if (bar && cards) {
+    var sync = function () { bar.classList.toggle('stuck', cards.getBoundingClientRect().bottom < 56); };
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  }
   window.addEventListener('hashchange', fromHash);
   fromHash();
 })();

@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Witches-Chat-Core · 김태형 포트폴리오"><meta property="og:description" content="근거 조항과 함께 답하는 온프레미스 규정 RAG 챗봇"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=cb3c22c3">
+<link rel="stylesheet" href="../styles.css?v=254f2bff">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -32,18 +32,31 @@
         <div class="scope-mine"><h5>제가 맡은 일</h5><ul><li>HWP·DOCX·PDF 규정을 Markdown으로 변환하는 형식별 변환기</li><li>편·장·절·조·항·호·목을 Markdown 기호로 표시</li><li>제어문자·서식 노이즈 제거, 표와 양식을 본문에서 분리</li><li>DOCX·PDF 변환 속도 개선, 변환 전후 글자 수 점검 로그</li><li>오피스·이미지·음성 변환 추가, 문서 쪼개기에 쓸 구간 정보를 본문에 표시해 전달</li></ul></div>
         <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>문서 쪼개기, 벡터 변환, 소속별 검색, 악성 질문 차단, 답변 속 개인정보 가리기, 채팅 화면 연동, 서버 구성은 팀원 담당. 구간 정보 형식은 팀원과 함께 정함.</p></div>
       </div>
-    <ul class="metrics"><li class="metric"><div class="m-label">팀 악성 질문 차단율</div><div class="m-value">98.46%</div><div class="m-note">악성 입력 130개 중 128개 차단(평가 입력 210개 중, 논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">공격 차단율(Attack Recall)</div><div class="m-value">17.7% → 98.5%</div><div class="m-note">LLM 가드레일(Llama Guard) 단독 대비 정규식+의미 유사도(SAPR) 가드레일, 생성 입력 210개, 팀 평가(최종 보고서·논문)</div><span class="basis basis-team">팀 측정</span></li><li class="metric"><div class="m-label">평균 응답 지연</div><div class="m-value">5,361 → 2,054ms</div><div class="m-note">같은 입력셋 -61%, Llama Guard를 쓰는 Rule+Llama Guard 구성은 Rule only 대비 약 2.8초 증가, 팀 평가</div><span class="basis basis-team">팀 측정</span></li><li class="metric"><div class="m-label">팀 악성 질문 차단율</div><div class="m-value">98.46%</div><div class="m-note">악성 입력 130개 중 128개 차단(평가 입력 210개 중, 논문 기준), 팀 전체 결과</div><span class="basis basis-team">팀 측정</span></li></ul>
   </section>
   
-  <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="pc-ex pj-ex"><div class="ex2-col"><h4>원본 (DOCX 문단)</h4><p>제3조의2(부총장) ① 총장의 직무를 보좌하기 위하여 교학부총장, 연구부총장, 대외협력부총장 각 1인을 두며, 교학부총장은 대학원장을 겸임한다.
-② 부총장은 아래 각호의 업무에 관하여 총장을 보좌한다.
-1. 교학부총장 : 교무·학사, 학생, 입학, 정보화 등에 관한 업무
-2. 연구부총장 : 기획, 연구진흥, 산학협력, 국제교류 업무
-3. 대외협력부총장 : 대외협력 및 홍보 업무</p></div><span class="ex2-arrow" aria-hidden="true">→</span><div class="ex2-col ex2-after ex2-mono"><h4>변환기 규칙 적용 결과 (Markdown)</h4><p>##### 제3조의2(부총장) ① 총장의 직무를 보좌하기 위하여 교학부총장, 연구부총장, 대외협력부총장 각 1인을 두며, 교학부총장은 대학원장을 겸임한다.
-* ② 부총장은 아래 각호의 업무에 관하여 총장을 보좌한다.
-  - 1 교학부총장 : 교무·학사, 학생, 입학, 정보화 등에 관한 업무
-  - 2 연구부총장 : 기획, 연구진흥, 산학협력, 국제교류 업무
-  - 3 대외협력부총장 : 대외협력 및 홍보 업무</p></div></div><p class="ex2-cap">경북대 학칙 제3조의2에 DOCX 변환기의 단락 규칙(조는 제목, 항은 목록, 호는 들여쓴 목록)을 그대로 적용해 재현한 결과이며 수정 이력 표기(&lt;개정 …&gt;)는 생략했습니다. PDF 변환기는 같은 구조를 굵은 조 제목 등 다른 표기로 냅니다.</p></section>
+  <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="pc-ex pj-ex"><div class="ex2-col"><h4>원본 (DOCX 구조)</h4><p>제12조(공적결석자 등에 대한 출석인정) ① … 다음 각 호의 어느 하나에 해당하여 …
+7. 의사 진단에 따라 격리가 필요한 법정전염병 감염자: 해당기간
+8. 경조사 등에 의한 사유로서 아래 기준에 해당한 때
+[3열 표] 구분 | 대상 | 일수
+         결혼 | 본인 | 5
+         출산 | 배우자 | 10
+         사망 | 배우자, 본인 및 배우자의 부모 | 5  … (헤더 포함 총 10행)
+※ 경조사 기간 중의 토요일·공휴일은 그 일수에 산입하지 아니함
+9. 취업한 자 등 기타 총장이 별도로 인정하는 경우</p></div><span class="ex2-arrow" aria-hidden="true">→</span><div class="ex2-col ex2-after ex2-mono"><h4>변환 결과 (Markdown, 실제 산출물 발췌)</h4><p>##### 제12조(공적결석자 등에 대한 출석인정) ① … 다음 각 호의 어느 하나에 해당하여 …
+  - 7 의사 진단에 따라 격리가 필요한 법정전염병 감염자: 해당기간
+  - 8 경조사 등에 의한 사유로서 아래 기준에 해당한 때
+
+&lt;table border='1'&gt;
+  &lt;tr&gt;&lt;td&gt;구분&lt;/td&gt;&lt;td&gt;대상&lt;/td&gt;&lt;td&gt;일수&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;결혼&lt;/td&gt;&lt;td&gt;본인&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;출산&lt;/td&gt;&lt;td&gt;배우자&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;사망&lt;/td&gt;&lt;td&gt;배우자, 본인 및 배우자의 부모&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;
+  …
+&lt;/table&gt;
+
+※ 경조사 기간 중의 토요일·공휴일은 그 일수에 산입하지 아니함
+  - 9 취업한 자 등 기타 총장이 별도로 인정하는 경우</p></div></div></section>
   
   
   <section class="pj-sec">
