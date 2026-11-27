@@ -902,6 +902,18 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .c-points dt { font-weight: 800; }
 .c-points dd { margin: 0; }
 
+/* 원본·교란 비교 */
+.split { margin: 0; }
+.split table { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 4px; }
+.split thead td, .split tbody th { width: 92px; }
+.case.free .day { margin-bottom: 14px; }
+.split th { font-size: 12.5px; color: var(--muted); font-weight: 800; text-align: center; padding: 2px 4px; }
+.split tbody th { text-align: left; color: var(--ink); font-size: 13.5px; }
+.split td.keep, .split td.chg { text-align: center; font-size: 14px; font-weight: 700; border: 1.5px solid; border-radius: 8px; padding: 10px 6px; }
+.split td.keep { background: #eef4fc; border-color: #b9cbe4; }
+.split td.chg { background: #fdf1ef; border-color: #d98b7c; border-style: dashed; color: #8c2f1d; }
+.split figcaption { margin-top: 4px; border: 1.5px solid #3d8b5f; background: #edf7f0; border-radius: 8px; padding: 10px 14px; font-size: 14px; line-height: 1.6; text-align: center; }
+
 /* 시퀀스 다이어그램 */
 .seq { margin: 0; }
 .seq-actors, .seq-msgs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
@@ -929,6 +941,8 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .gt td { border-bottom: 1px solid var(--line); padding: 9px 10px; line-height: 1.6; vertical-align: top; }
 .gt tr td:first-child { font-weight: 600; }
 .gt td:first-child:nth-last-child(3) { width: 18%; font-weight: 800; }
+.gt.log td:first-child:nth-last-child(3) { width: 9%; }
+.gt.log td { padding-top: 7px; padding-bottom: 7px; }
 
 /* 한계: 검증 단계와 주의 사항 */
 .ladder { list-style: none; margin: 0 0 12px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
@@ -954,6 +968,14 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
   .tri > div:first-child { border-top: 0; }
   .seq-msgs span, .seq-actors li { font-size: 12px; }
   .seq-out li { grid-template-columns: 1fr; gap: 2px; }
+  .split thead td, .split tbody th { width: 64px; }
+  .case.free .day-steps li { grid-template-columns: 84px minmax(0, 1fr); }
+  .gt.log tr { display: grid; grid-template-columns: 46px minmax(0, 1fr); column-gap: 8px; }
+  .gt.log td:first-child { grid-row: span 2; }
+  .gt.log td:not(:first-child)::before { content: none; }
+  .gt.log td:last-child { color: var(--muted); }
+  .gt.log td:last-child strong { color: var(--ink); }
+  .split td.keep, .split td.chg { font-size: 13px; }
   .gt thead { display: none; }
   .gt tr { display: block; border-bottom: 1px solid #b9c4cf; padding: 8px 0; }
   .gt td { display: block; width: auto !important; border: 0; padding: 2px 0; }
@@ -969,7 +991,8 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .tri p, .print .gt, .print .caution, .print .c-lead, .print .c-note, .print .seq-out li, .print .ladder span { font-size: 9pt; }
 .print .seq-msgs span, .print .seq-actors li { font-size: 8.5pt; }
 .print .c-points dl > div { font-size: 9pt; padding: 5px 10px; }
-.print .day, .print .c-points, .print .tri, .print .seq, .print .gt tr, .print .ladder, .print .caution { break-inside: avoid; }
+.print .split td.keep, .print .split td.chg, .print .split figcaption, .print .split th { font-size: 9pt; padding: 5px 8px; }
+.print .day, .print .split, .print .c-points, .print .tri, .print .seq, .print .gt tr, .print .ladder, .print .caution { break-inside: avoid; }
 
 /* 자유 형식 사례는 짧으므로 제목과 그림이 갈라지지 않게 통째로 둔다. */
 .print .case.free { break-inside: avoid; }
