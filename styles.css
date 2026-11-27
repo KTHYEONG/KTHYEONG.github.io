@@ -957,10 +957,19 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .coin table { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 4px; }
 .coin thead td, .coin tbody th { width: 96px; }
 .coin th { font-size: 12.5px; color: var(--muted); font-weight: 800; text-align: center; }
-.coin tbody th { text-align: left; color: var(--ink); font-size: 13.5px; }
+.coin tbody th { word-break: keep-all; text-align: left; color: var(--ink); font-size: 13.5px; }
 .coin td span { display: block; text-align: center; font-size: 14px; font-weight: 800; border: 1.5px solid; border-radius: 8px; padding: 8px 0; }
 .coin .up { background: #edf7f0; border-color: #9cc9ad; color: #2f6f4b; }
 .coin .down { background: #fdf1ef; border-color: #e0a79b; color: #8c2f1d; }
+.verdict { margin-top: 14px; padding: 2px 0 2px 12px; border-left: 3px solid #1d4f91; word-break: keep-all; }
+.verdict p { margin: 0; }
+.verdict .vd-head { font-size: 15px; font-weight: 800; }
+.verdict .vd-head em { font-style: normal; font-size: 12.5px; color: #1d4f91; margin-right: 8px; }
+.verdict .vd-d { margin-top: 3px; font-size: 13.5px; color: var(--muted); }
+.print .verdict { break-inside: avoid; }
+.print .verdict .vd-head, .print .verdict .vd-d { font-size: 9pt; }
+.coin th.sel { color: #1d4f91; }
+.coin td.sel span { box-shadow: 0 0 0 2.5px #1d4f91; }
 .coin figcaption { margin-top: 4px; font-size: 12.5px; color: var(--muted); }
 
 /* 비율 합성 */
@@ -1035,6 +1044,10 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .caution caption { text-align: left; font-size: 12px; font-weight: 800; color: var(--muted); padding: 4px 10px 6px; border-bottom: 1.5px solid var(--ink); }
 .caution th, .caution td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); padding: 9px 10px; line-height: 1.55; }
 .caution th { width: 32%; font-weight: 700; }
+.caution.scoped th { width: 108px; color: #1d4f91; font-size: 13px; }
+.caution.scoped td strong { display: block; word-break: keep-all; }
+.caution.scoped td span { display: block; margin-top: 2px; font-size: 13.5px; color: var(--muted); word-break: keep-all; }
+.print .caution.scoped td span { font-size: 9pt; }
 
 @media screen and (max-width: 640px) {
   .day-steps { grid-template-columns: 1fr; gap: 16px; }
