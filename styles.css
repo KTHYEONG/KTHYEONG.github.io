@@ -968,6 +968,29 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .verdict .vd-d { margin-top: 3px; font-size: 13.5px; color: var(--muted); }
 .print .verdict { break-inside: avoid; }
 .print .verdict .vd-head, .print .verdict .vd-d { font-size: 9pt; }
+.need { margin: 0; }
+.need p { margin: 0; word-break: keep-all; }
+.need .need-lead { margin-bottom: 10px; }
+.need ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.need li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; }
+.need li > div { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.need-pain span { display: block; margin-top: 2px; font-size: 13.5px; color: var(--muted); word-break: keep-all; }
+.need-solve { position: relative; }
+.need-solve::before { content: '→'; position: absolute; left: -20px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+.need-solve em { display: inline-block; font-style: normal; font-size: 12px; font-weight: 800; color: var(--muted); margin-bottom: 2px; }
+.need li.mine .need-solve { background: #edf4fd; border-color: #1d4f91; }
+.need li.mine .need-solve em { color: #1d4f91; }
+.need .need-merge { margin-top: 10px; padding: 10px 14px; border: 1.5px dashed #1d4f91; border-radius: 10px; text-align: center; font-size: 14px; }
+.heat { margin: 0 0 12px; }
+.heat table { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 4px; }
+.heat thead td, .heat tbody th { width: 56px; }
+.heat th { font-size: 12.5px; color: var(--muted); font-weight: 800; text-align: center; word-break: keep-all; }
+.heat tbody th { text-align: left; color: var(--ink); }
+.heat td span { display: block; text-align: center; font-size: 13.5px; font-weight: 700; color: #111820; border: 1px solid var(--line); border-radius: 8px; padding: 8px 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.heat figcaption { margin-top: 4px; font-size: 12.5px; color: var(--muted); }
+.print .need p, .print .need-pain span, .print .heat th, .print .heat td span { font-size: 9pt; }
+.print .need li, .print .need-merge, .print .heat { break-inside: avoid; }
+@media (max-width: 640px) { .need li { grid-template-columns: 1fr; gap: 18px; } .need li + li { margin-top: 8px; } .need-solve::before { content: '↓'; left: 50%; top: -11px; } .heat table { border-spacing: 2px; } .heat thead td, .heat tbody th { width: 38px; } .heat th { font-size: 11px; } .heat td span { font-size: 11.5px; } }
 .coin th.sel { color: #1d4f91; }
 .coin td.sel span { box-shadow: 0 0 0 2.5px #1d4f91; }
 .coin figcaption { margin-top: 4px; font-size: 12.5px; color: var(--muted); }
