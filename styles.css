@@ -864,3 +864,112 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .pc-mine .pc-points li { grid-template-columns: 44px minmax(0, 1fr); }
 .pc-mine .pc-lead { margin: 4px 0 0; font-size: 13.5px; line-height: 1.6; color: #2b3640; }
 .x-body .pc-mine { margin: 0; }
+.pc-gh.repo-pill { margin-left: 0; }
+.proj-page main.proj { padding-bottom: 48px; }
+.meta > div:has(.repo-pill) { align-items: center; }
+
+/* 상세 페이지 공통: 동작 흐름 */
+.day { margin: 0; }
+.day-note { margin: 0 0 10px; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+.day-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 18px; }
+.day-steps li { position: relative; display: flex; flex-direction: column; gap: 3px; background: var(--card); border: 1px solid var(--line); border-top: 3px solid #9fb2c8; border-radius: 10px; padding: 10px 12px 12px; }
+.day-steps li.hl { border-top-color: var(--accent); background: #eef4fc; }
+.day-steps li + li::before { content: '→'; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); color: var(--faint); font-size: 13px; }
+.day-steps time { font-size: 12.5px; font-weight: 800; color: var(--accent); }
+.day-steps strong { font-size: 14.5px; line-height: 1.4; }
+.day-steps span { font-size: 13px; line-height: 1.5; color: #4d5964; }
+.day-foot { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+
+/* 자유 형식 사례 */
+.case.free .c-sum h3 { margin: 0; }
+.c-key { margin: 6px 0 0; font-size: 14px; font-weight: 800; color: var(--accent); }
+.c-lead, .c-note { margin: 0 0 12px; font-size: 14.5px; line-height: 1.7; }
+.c-note { margin: 12px 0 0; }
+.tri { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+.tri > div { padding: 11px 14px; border-left: 1px solid var(--line); }
+.tri > div:first-child { border-left: 0; }
+.tri > div:last-child { background: #f3f7fd; }
+.tri h5 { margin: 0 0 3px; font-size: 12px; color: var(--muted); }
+.tri p { margin: 0; font-size: 14px; line-height: 1.65; }
+.c-proc { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 10px; }
+.c-proc > summary { cursor: pointer; font-size: 13.5px; font-weight: 700; color: var(--accent); }
+
+/* 말머리 목록 */
+.c-points { margin-top: 14px; }
+.c-points h4 { margin: 0; font-size: 12.5px; font-weight: 800; color: var(--muted); padding: 0 10px 6px; border-bottom: 1.5px solid var(--ink); }
+.c-points dl { margin: 0; }
+.c-points dl > div { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; padding: 9px 10px; border-bottom: 1px solid var(--line); font-size: 14px; line-height: 1.6; }
+.c-points dt { font-weight: 800; }
+.c-points dd { margin: 0; }
+
+/* 시퀀스 다이어그램 */
+.seq { margin: 0; }
+.seq-actors, .seq-msgs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+.seq-actors li { margin: 0 6px; text-align: center; font-size: 13.5px; font-weight: 800; background: #eef4fc; border: 1px solid #b9cbe4; border-radius: 8px; padding: 7px 4px; }
+.seq-msgs { row-gap: 4px; padding: 10px 0 6px; background-image: linear-gradient(to right, transparent calc(50% - .5px), #d3dbe4 calc(50% - .5px), #d3dbe4 calc(50% + .5px), transparent calc(50% + .5px)); background-size: calc(100% / var(--n)) 100%; }
+.seq-msgs li { padding: 0 var(--inset); text-align: center; }
+.seq-msgs span { display: inline-block; font-size: 13px; font-weight: 600; line-height: 1.45; color: #2b3640; background: var(--card); padding: 0 6px; }
+.seq-msgs i { display: block; position: relative; border-top: 1.5px solid #5b6773; margin: 2px 0 4px; height: 6px; }
+.seq-msgs li.dash i { border-top-style: dashed; }
+.seq-msgs li i::after { content: ''; position: absolute; top: -5.5px; border: 5px solid transparent; }
+.seq-msgs li.fwd i::after { right: -1px; border-left: 8px solid #5b6773; border-right: 0; }
+.seq-msgs li.back i::after { left: -1px; border-right: 8px solid #5b6773; border-left: 0; }
+.seq-out { border: 1px solid #b9c4cf; border-radius: 10px; padding: 10px 12px; }
+.seq-out h6 { margin: 0 0 8px; font-size: 12.5px; color: var(--accent); }
+.seq-out ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.seq-out li { display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 12px; align-items: baseline; border: 1px solid; border-radius: 8px; padding: 8px 12px; font-size: 13.5px; line-height: 1.55; }
+.seq-out .o-ok { background: #edf7f0; border-color: #9cc9ad; }
+.seq-out .o-hold { background: #fdf6e6; border-color: #e3c27a; }
+.seq-out .o-stop { background: #fdf1ef; border-color: #e0a79b; }
+.seq figcaption { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+/* 비교 표 */
+.gt { width: 100%; border-collapse: collapse; font-size: 14px; }
+.gt th { text-align: left; font-size: 12px; color: var(--muted); border-bottom: 1.5px solid var(--ink); padding: 6px 10px; }
+.gt td { border-bottom: 1px solid var(--line); padding: 9px 10px; line-height: 1.6; vertical-align: top; }
+.gt tr td:first-child { font-weight: 600; }
+.gt td:first-child:nth-last-child(3) { width: 18%; font-weight: 800; }
+
+/* 한계: 검증 단계와 주의 사항 */
+.ladder { list-style: none; margin: 0 0 12px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ladder li { display: flex; flex-direction: column; gap: 3px; border: 1.5px solid; border-radius: 12px; padding: 12px 14px; }
+.ladder i { font-style: normal; font-size: 12px; font-weight: 800; }
+.ladder strong { font-size: 15px; }
+.ladder span { font-size: 13.5px; line-height: 1.55; color: #2b3640; }
+.ladder .st-done { border-color: #3d8b5f; background: #edf7f0; } .ladder .st-done i { color: #2f6f4b; }
+.ladder .st-now { border-color: #c58a12; background: #fdf6e6; } .ladder .st-now i { color: #8a5a00; }
+.ladder .st-todo { border-color: #9aa5b1; border-style: dashed; } .ladder .st-todo i { color: var(--muted); }
+.caution { width: 100%; border-collapse: collapse; font-size: 14px; }
+.caution caption { text-align: left; font-size: 12px; font-weight: 800; color: var(--muted); padding: 4px 10px 6px; border-bottom: 1.5px solid var(--ink); }
+.caution th, .caution td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); padding: 9px 10px; line-height: 1.55; }
+.caution th { width: 32%; font-weight: 700; }
+
+@media screen and (max-width: 640px) {
+  .day-steps { grid-template-columns: 1fr; gap: 16px; }
+  .day-steps li { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 10px; }
+  .day-steps time { grid-row: span 2; }
+  .day-steps li + li::before { content: '↓'; left: 50%; top: -14px; transform: none; }
+  .tri, .ladder { grid-template-columns: 1fr; }
+  .tri > div { border-left: 0; border-top: 1px solid var(--line); }
+  .tri > div:first-child { border-top: 0; }
+  .seq-msgs span, .seq-actors li { font-size: 12px; }
+  .seq-out li { grid-template-columns: 1fr; gap: 2px; }
+  .gt thead { display: none; }
+  .gt tr { display: block; border-bottom: 1px solid #b9c4cf; padding: 8px 0; }
+  .gt td { display: block; width: auto !important; border: 0; padding: 2px 0; }
+  .gt td:not(:first-child)::before { content: attr(data-l); display: block; font-size: 11.5px; font-weight: 800; color: var(--muted); }
+  .caution th, .caution td { display: block; width: auto; }
+  .caution th { border-bottom: 0; padding-bottom: 0; }
+}
+.print .day-steps { gap: 12px; }
+.print .day-steps li { padding: 6px 8px; }
+.print .day-steps li + li::before { left: -10px; }
+.print .day-steps strong { font-size: 9.5pt; }
+.print .day-steps span, .print .day-steps time, .print .day-foot { font-size: 8.5pt; }
+.print .tri p, .print .gt, .print .caution, .print .c-lead, .print .c-note, .print .seq-out li, .print .ladder span { font-size: 9pt; }
+.print .seq-msgs span, .print .seq-actors li { font-size: 8.5pt; }
+.print .c-points dl > div { font-size: 9pt; padding: 5px 10px; }
+.print .day, .print .c-points, .print .tri, .print .seq, .print .gt tr, .print .ladder, .print .caution { break-inside: avoid; }
+
+/* 자유 형식 사례는 짧으므로 제목과 그림이 갈라지지 않게 통째로 둔다. */
+.print .case.free { break-inside: avoid; }

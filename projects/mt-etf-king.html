@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="MT ETF King 2026 · 김태형 포트폴리오"><meta property="og:description" content="ETF 모의투자 대회용 백테스트·전략 연구 시스템"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=9c8ff1ff">
+<link rel="stylesheet" href="../styles.css?v=bafe03dc">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -26,11 +26,12 @@
     <h2 class="part">개요</h2>
     <div class="pj-ov"><div class="pj-ov-main">
     <p class="pj-summary">상금이 상위권에 몰린 대회라 &quot;8주 안에 큰 수익이 날 확률&quot;로 전략을 비교했지만, 대회 결과는 -70.9%(3위선 +132.0%)였습니다. 목표선 설정, 일봉 수준 데이터의 한계, 신규 상장 단일종목 레버리지를 연구 범위에 늦게 넣은 점이 원인이었고, 대회 중 사후 분석으로 확인해 기존 코드를 동결하고 새 구조(arena)로 재설계했습니다.</p>
-    <dl class="meta"><div><dt>기간</dt><dd>2026.08 ~ 2026.11</dd></div><div><dt>역할</dt><dd>한국거래소 시세 수집부터 백테스트, 전략, 매매 카드까지 단독 구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Polars</li><li>Parquet</li><li>Pydantic</li><li>httpx</li><li>pytest</li><li>systemd</li></ul></dd></div><div><dt>저장소</dt><dd><a class="repo" href="https://github.com/KTHYEONG/mt-etf-king-2026">github.com/KTHYEONG/mt-etf-king-2026</a></dd></div></dl>
+    <dl class="meta"><div><dt>기간</dt><dd>2026.08 ~ 2026.11</dd></div><div><dt>역할</dt><dd>한국거래소 시세 수집부터 백테스트, 전략, 매매 카드까지 단독 구현</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>Polars</li><li>Parquet</li><li>Pydantic</li><li>httpx</li><li>pytest</li><li>systemd</li></ul></dd></div><div><dt>저장소</dt><dd><a class="pc-gh repo-pill" href="https://github.com/KTHYEONG/mt-etf-king-2026" aria-label="MT ETF King 2026 GitHub 저장소"><svg class="gh-ic" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a></dd></div></dl>
     </div></div>
     
-    <ul class="metrics"><li class="metric"><div class="m-label">대회 누적 수익률</div><div class="m-value">-70.9%</div><div class="m-note">2026.9.21~11.13 모의투자, 일일 구간 카드 규칙대로 매매한 원장 계산값. 같은 날 1위 +243.1%, 3위선 +132.0%</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">8주 +30% 이상 비율</div><div class="m-value">7.77%</div><div class="m-note">반등 앵커 전략(백테스트). 기본형 6.78%, 단순 보유 2.54%. 운용 채택 기준 미통과로 연구용</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">최악 5% 구간의 평균 손실</div><div class="m-value">-21.56%</div><div class="m-note">반등 앵커 전략. 기본형 -23.16%, 단순 보유 -15.09%</div><span class="basis basis-backtest">백테스트</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">대회 누적 수익률</div><div class="m-value">-70.9%</div><div class="m-note">2026.9.21~11.13 모의투자, 일일 구간 카드 규칙대로 매매한 원장 계산값. 같은 날 1위 +243.1%, 3위선 +132.0%</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">2025 대회 구간 재현, 시작일 +5거래일</div><div class="m-value">+53.37% → +22.65%</div><div class="m-note">대회 전 챔피언 전략을 2025.9.22~11.14에 재현한 값과 시작일을 5거래일 늦춘 값. +10일은 +13.32%, 앞당기면 -5일 +61.55%·-10일 +84.31%. 이 구간은 개발 중 반복해 참고해 처음 보는 데이터의 성과가 아님 (2026.9.7 감사 보고서)</div><span class="basis basis-replay">재현 시뮬레이션</span></li><li class="metric"><div class="m-label">8주 +30% 이상 비율</div><div class="m-value">7.77%</div><div class="m-note">반등 앵커 전략(백테스트). 기본형 6.78%, 단순 보유 2.54%. 운용 채택 기준 미통과로 연구용</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">최악 5% 구간의 평균 손실</div><div class="m-value">-21.56%</div><div class="m-note">반등 앵커 전략. 기본형 -23.16%, 단순 보유 -15.09%</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>
+  
   
   
   
@@ -49,9 +50,40 @@
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>대회가 끝난 결과는 -70.9%였고 3위선은 +132.0%였습니다. 돌아보니 원인은 세 가지였습니다. 목표를 과거 우승선(+54%, +47.8%)보다 낮은 +30%로 두고 대회 중에 올렸고, 일봉 수준 데이터로는 8주 안에 큰 수익을 내는 타이밍을 찾지 못했으며, 백테스트와 데이터 정리에 치중해 최근 상장한 단일종목 레버리지(하이닉스 2배 등)를 연구 범위에 넣지 못하고 대회 중에야 다뤘습니다.</p></section></div><ul class="c-stats"><li><strong>-70.9%</strong><span>대회 누적 수익률(원장 기준). 3위선 +132.0%, 1위 +243.1%</span></li><li><strong>0 / 14</strong><span>대회 후보 전략 중 타이밍 우위가 확인된 수 (무작위 방향 쌍둥이와 비교, 시험 횟수 보정)</span></li><li><strong>0.995~0.999</strong><span>상장 전 가상 이력과 실제 상장 상품의 종가 상관(보정용)</span></li></ul><ol class="tl"><li><time>09.21</time><span>대회 시작</span></li><li class="hl"><time>10.07~19</time><span>일간 반전 규칙이 하락 추세에서 장중 방향을 10세션 연속 틀림 (원장 0.88 → 0.38)</span></li><li class="hl"><time>11.03</time><span>사후 분석: 목표선·위험 크기·변동성 구간 문제 확인, 기존 코드는 동결해 import 경계로 분리</span></li><li><time>11.04~06</time><span>arena 구현(약 5,000줄, 테스트 279개), 단일종목 2배 상장 전 가상 이력 추가</span></li><li class="hl"><time>11.13</time><span>대회 종료, 원장 기준 -70.9%</span></li></ol><div class="cmp"><div class="ex-title">대회 전 구조 → 사후 분석 뒤 arena</div><table>
     <thead><tr><th></th><th>대회 전 구조</th><th class="sel">arena <em>선택</em></th></tr></thead>
     <tbody><tr><th>목표</th><td data-c="대회 전 구조">+30%, 대회 중 상향</td><td class="sel" data-c="arena">수상선 구간을 등록 전에 고정, 순위표로 갱신 안 함</td></tr><tr><th>연구 범위</th><td data-c="대회 전 구조">상장 이력이 긴 ETF 중심, 단일종목 2배는 후순위</td><td class="sel" data-c="arena">대회 규칙에서 거래 가능 종목을 먼저 정하고, 이력이 짧은 상품은 상장 전 가상 이력으로 보강</td></tr><tr><th>표본·검정</th><td data-c="대회 전 구조">겹치는 약 2,090개 구간, 다중검정 보정 없음</td><td class="sel" data-c="arena">무작위 방향 쌍둥이와 비교, 시험 횟수 보정</td></tr><tr><th>순위표 장치</th><td data-c="대회 전 구조">참가자 분포 가정, 1위 확률로 종목 교체</td><td class="sel" data-c="arena">검증할 수 없어 제외</td></tr><tr><th>채택 기준</th><td data-c="대회 전 구조">미통과 전략을 그대로 운용</td><td class="sel" data-c="arena">결과 전에 선언, 미통과는 UNVALIDATED 표시</td></tr></tbody></table></div><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>단기간에 높은 수익을 내려면 일봉 가격만으로는 부족하다고 판단했습니다. 투자자별 수급, 선물 베이시스, 종가 구간 신호, 뉴스, 머신러닝 후보를 탐색했지만 단순 하이닉스 규칙을 이긴 후보는 없었습니다.</li><li>백테스트의 엄밀함에 힘을 쏟는 동안 연구 범위(무엇을 살 수 있는가)를 먼저 점검하지 못했습니다. 8주 안에 2배 넘는 수익이 가능한 상품은 단일종목 2배뿐이었습니다.</li></ul></section><section class="p-x"><h5><b>A</b> 실행</h5><ul><li>기존 코드를 동결하고 새 구조 arena에 대회 규칙·거래 가능 종목·사전 선언 채택 기준을 분리</li><li>상장 전 가상 이력(KRX 주식 일별 시세 기반)과 승리선 도달 시 현금 잠금 평가, 시장 급락 구간 점검 등 보완 가설을 하나씩 세워 검증하고, 통과하지 못한 것은 못 했다고 기록</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>이번 대회의 수익률은 목표에 크게 못 미쳤지만, 원인을 목표 설정·데이터 한계·연구 범위로 나누어 기록했고, 다음 대회에 쓸 검증 구조와 가상 이력 방법을 남겼습니다. <span class="basis basis-replay">재현 시뮬레이션</span></p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/mt-etf-king-2026/tree/main/src/arena/">arena/</a></p></div>
-  </details><details class="case" id="anchor">
+  </details><details class="case" id="start-date">
     <summary class="c-sum">
       <div class="c-kicker"><span class="c-num">CASE 02</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
+      <h3>시작일을 옮겨 보고 재현 수익률의 신뢰도를 하향 조정</h3>
+      <p class="c-brief">+53.37%를 전략의 실력으로 보지 않고, 특정 장세에 의존하는 전략으로 판정했습니다.</p>
+    </summary>
+    <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>2025년 대회 구간을 재현하면 +53.37%로 당시 우승 수익률(+47.82%)을 넘었습니다. 하지만 한 구간의 결과만으로는 전략의 실력인지 시작일이 맞았던 것인지 구분할 수 없었습니다.</p></section></div><figure class="chart">
+    <figcaption class="chart-title">시작일을 옮겼을 때 같은 전략의 36거래일 수익률 <span class="chart-unit">%</span> <span class="basis basis-replay">재현 시뮬레이션</span></figcaption>
+    <div class="chart-body" style="--zero:0.00%"><div class="chart-row">
+        <div class="chart-label">10일 앞</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:100.00%"></span></div>
+        <div class="chart-val">84.31</div>
+      </div><div class="chart-row">
+        <div class="chart-label">5일 앞</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:73.00%"></span></div>
+        <div class="chart-val">61.55</div>
+      </div><div class="chart-row">
+        <div class="chart-label">기준일</div>
+        <div class="chart-track"><span class="cbar hl" style="left:0.00%;width:63.30%"></span></div>
+        <div class="chart-val hl">53.37</div>
+      </div><div class="chart-row">
+        <div class="chart-label">5일 뒤</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:26.87%"></span></div>
+        <div class="chart-val">22.65</div>
+      </div><div class="chart-row">
+        <div class="chart-label">10일 뒤</div>
+        <div class="chart-track"><span class="cbar" style="left:0.00%;width:15.80%"></span></div>
+        <div class="chart-val">13.32</div>
+      </div></div>
+    <p class="chart-caption">기준 시작일 2025.9.22, 거래일 단위 이동. 당시 우승 수익률 +47.82% (2026.9.7 감사 보고서)</p>
+  </figure><div class="paar"><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>시작일에 따라 +13.32%에서 +84.31%까지 벌어졌고, 1~2주 늦게 시작하면 당시 우승 수익률에 크게 못 미쳤습니다.</li><li>이 구간은 개발 중 검증용으로 반복해 참고해, 처음 보는 데이터의 성과로 볼 수 없다고 판정했습니다.</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>+53.37%를 전략의 실력으로 보지 않고, 특정 장세에 의존하는 전략으로 판정했습니다. <span class="basis basis-replay">재현 시뮬레이션</span></p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/mt-etf-king-2026/blob/f0a46c0/docs/research/2026_championship_feasibility_audit.md">감사 보고서(2026.9.7 커밋)</a></p></div>
+  </details><details class="case" id="anchor">
+    <summary class="c-sum">
+      <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
       <h3>급락 직후 반등을 잡는 앵커 전략 설계</h3>
       <p class="c-brief">8주 +30% 도달 비율과 하위 5% 평균 손실이 모두 기본형보다 나아졌습니다(연구 결과, 수치는 개요 결과 참고).</p>
     </summary>
@@ -78,27 +110,26 @@
   </figure></div>
   </details><details class="case" id="krx-clean">
     <summary class="c-sum">
-      <div class="c-kicker"><span class="c-num">CASE 03</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
+      <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
       <h3>수집 단계에서 빈 값과 휴장일 데이터 정리</h3>
       <p class="c-brief">정리 규칙과 운영 중 수정 2건을 코드와 커밋 기록으로 확인할 수 있습니다.</p>
     </summary>
     <div class="c-body"><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>가격이 빈 값이 숫자 변환에서 0이 되면 수익률이 틀어지고, 휴장일에도 가격이 빈 데이터가 들어옵니다.</p></section></div><ol class="tl"><li><time>09.11</time><span>수정: 한국거래소 API가 0건을 돌려준 날을 원본 캐시에 영구 저장하지 않도록 변경</span></li><li><time>09.11</time><span>수정: 휴장일 같은 가짜 세션의 결측이 롤링 계산으로 번지던 문제 수정</span></li></ol><div class="ex"><div class="ex-title">입력 → 처리</div><ul><li><span class="ex-in">가격이 빈 문자열</span><span class="ex-arrow">→</span><span class="ex-out">'값 없음'으로 변환</span><span class="ex-note">0으로 바뀌는 것 방지</span></li><li><span class="ex-in">유효 가격 50% 미만인 날</span><span class="ex-arrow">→</span><span class="ex-out">휴장일로 분류</span><span class="ex-note">분류 기준값 0.5</span></li><li><span class="ex-in">거래소 달력에 있는데 빠진 날</span><span class="ex-arrow">→</span><span class="ex-out">빠진 거래일로 표시</span><span class="ex-note">어긋난 종목도 표시</span></li></ul></div><div class="paar"><section class="p-r"><h5><b>R</b> 결과</h5><p>정리 규칙과 운영 중 수정 2건을 코드와 커밋 기록으로 확인할 수 있습니다. </p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/mt-etf-king-2026/blob/main/src/data/validation.py">validation.py</a></p></div>
   </details><details class="case" id="pit">
     <summary class="c-sum">
-      <div class="c-kicker"><span class="c-num">CASE 04</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
+      <div class="c-kicker"><span class="c-num">CASE 05</span><span class="c-proj">MT ETF King 2026</span><span class="kind kind-personal">개인</span></div>
       <h3>미래 정보가 섞이면 실행 중단</h3>
       <p class="c-brief">미래 데이터가 섞이면 조용히 넘어가지 않고 실행이 멈춥니다.</p>
     </summary>
     <div class="c-body"><ol class="flow" style="--n:5"><li class="hl"><strong>신호</strong><span>결정일까지의 데이터</span></li><li class="hl"><strong>미래 데이터 검사</strong><span>있으면 오류로 중단</span></li><li><strong>주문 생성</strong><span>다음 거래일 예약</span></li><li class="hl"><strong>시가 체결</strong><span>비용·유동성 반영</span></li><li><strong>거래 기록</strong><span>보유 내역 갱신</span></li></ol><div class="paar"><section class="p-p"><h5><b>P</b> 문제</h5><p>오늘 종가를 보고 종목을 골라 같은 종가에 샀다고 계산하면 현실에서 불가능한 수익이 나옵니다.</p></section><section class="p-a"><h5><b>A</b> 분석</h5><ul><li>개발자 주의에 맡기면 실수 한 번에 결과 전체가 오염돼 제외, 결정일 이후 데이터가 보이면 멈추는 강제 장치를 선택</li><li>신호와 체결을 한 단계에 두면 같은 날 가격을 쓰게 돼 분리, 신호 다음 거래일 시가에만 체결</li></ul></section><section class="p-r"><h5><b>R</b> 결과</h5><p>미래 데이터가 섞이면 조용히 넘어가지 않고 실행이 멈춥니다. </p></section></div><p class="c-code"><span>구현 코드</span><a href="https://github.com/KTHYEONG/mt-etf-king-2026/blob/main/src/features/pit.py">pit.py</a></p></div>
   </details></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">운용 채택 기준 미통과</strong><span class="lim-d">연구용으로만 분류되며 반등 앵커 개선은 실험 결과일 뿐 운용 전략 확정이 아닙니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">겹치는 구간과 다중 시험</strong><span class="lim-d">약 2,090개 구간의 실효 표본은 약 58개이고 다중검정 보정 없이 여러 변형을 시험했으며, 모든 수치는 과거 백테스트입니다.</span></div></li><li><span class="lim-k k-learn">배운 점</span><div><strong class="lim-t">목표 설정과 연구 범위</strong><span class="lim-d">과거 우승선보다 낮게 둔 목표를 대회 중 올렸고, 검증할 수 없는 순위표 장치를 새 구조(arena)에서 제외했습니다. 신규 상장 단일종목 레버리지를 연구 범위에 늦게 넣은 것도 반성점입니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">대회 결과는 원장 계산값</strong><span class="lim-d">-70.9%는 일일 구간 카드 규칙대로 매매했다고 보고 계산한 원장 값입니다. 앱 화면 수익률과 대조하지 않았고, 순위표 상위 50위 밖이라 정확한 등수는 모릅니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">정량 지표와 체결 가정</strong><span class="lim-d">수집 단계 수정의 수치 영향·유입 건수는 측정하지 않았고, 모의 체결 규칙은 비공개라 보수적으로 가정했으며 배수 ETF는 추적오차가 다를 수 있습니다.</span></div></li></ul><p class="pj-readme">구현과 실행 방법은 <a href="https://github.com/KTHYEONG/mt-etf-king-2026#readme">저장소 README</a>에 있습니다.</p></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ul class="lim lim-rich"><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">운용 채택 기준 미통과</strong><span class="lim-d">연구용으로만 분류되며 반등 앵커 개선은 실험 결과일 뿐 운용 전략 확정이 아닙니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">겹치는 구간과 다중 시험</strong><span class="lim-d">약 2,090개 구간의 실효 표본은 약 58개이고 다중검정 보정 없이 여러 변형을 시험했으며, 모든 수치는 과거 백테스트입니다.</span></div></li><li><span class="lim-k k-learn">배운 점</span><div><strong class="lim-t">목표 설정과 연구 범위</strong><span class="lim-d">과거 우승선보다 낮게 둔 목표를 대회 중 올렸고, 검증할 수 없는 순위표 장치를 새 구조(arena)에서 제외했습니다. 신규 상장 단일종목 레버리지를 연구 범위에 늦게 넣은 것도 반성점입니다.</span></div></li><li><span class="lim-k k-warn">해석 주의</span><div><strong class="lim-t">대회 결과는 원장 계산값</strong><span class="lim-d">-70.9%는 일일 구간 카드 규칙대로 매매했다고 보고 계산한 원장 값입니다. 앱 화면 수익률과 대조하지 않았고, 순위표 상위 50위 밖이라 정확한 등수는 모릅니다.</span></div></li><li><span class="lim-k k-unk">미검증</span><div><strong class="lim-t">정량 지표와 체결 가정</strong><span class="lim-d">수집 단계 수정의 수치 영향·유입 건수는 측정하지 않았고, 모의 체결 규칙은 비공개라 보수적으로 가정했으며 배수 ETF는 추적오차가 다를 수 있습니다.</span></div></li></ul></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <a class="pn prev" href="crypto-pilot.html"><span>이전 프로젝트</span><strong>Crypto Pilot</strong></a>
     <a class="pn next" href="etf-manager.html"><span>다음 프로젝트</span><strong>ETF-Manager</strong></a>
   </nav>
 </main>
-<footer class="site-foot"><div class="wrap">김태형 · <a href="mailto:xogud3624@gmail.com">xogud3624@gmail.com</a> · <a href="https://github.com/KTHYEONG">github.com/KTHYEONG</a></div></footer>
 <script>
 (function () {
   var all = Array.prototype.slice.call(document.querySelectorAll('details.case'));
