@@ -928,6 +928,41 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .panel li.hl .pl-track i { background: #1d4f91; }
 .panels figcaption { grid-column: 1 / -1; font-size: 12.5px; color: var(--muted); }
 
+/* 누적 수익률 선 */
+.line { margin: 0 0 4px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px 6px; }
+.ln-legend { list-style: none; margin: 0 0 8px; padding: 0; display: flex; gap: 16px; font-size: 13px; font-weight: 700; }
+.ln-legend li::before { content: ''; display: inline-block; width: 16px; height: 3px; margin-right: 6px; vertical-align: middle; background: #1d4f91; }
+.ln-legend li.ln-ref::before { background: #8a949e; }
+.ln-plot { position: relative; height: 230px; margin: 0 58px 0 46px; }
+.ln-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ln-plot polyline { fill: none; stroke-width: 2.2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.ln-plot polyline.ln-main { stroke: #1d4f91; }
+.ln-plot polyline.ln-ref { stroke: #8a949e; stroke-dasharray: 5 3; }
+.ln-tick { position: absolute; left: 0; right: 0; border-top: 1px solid #eef0f2; }
+.ln-tick.zero { border-top-color: #9aa3ab; }
+.ln-tick em { position: absolute; right: calc(100% + 6px); top: -9px; font-style: normal; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.ln-end { position: absolute; left: calc(100% + 6px); transform: translateY(-50%); font-size: 12.5px; font-weight: 800; white-space: nowrap; }
+.ln-end.ln-main { color: #1d4f91; }
+.ln-end.ln-ref { color: var(--muted); }
+.ln-x { display: flex; justify-content: space-between; margin: 6px 58px 0 46px; font-size: 11.5px; color: var(--muted); }
+.print .ln-plot { height: 170px; }
+.print .day-lead, .print .coin td span, .print .coin th { font-size: 9pt; }
+.print .coin { break-inside: avoid; }
+.print .line { break-inside: avoid; }
+
+.day-lead { margin: 0 0 16px; font-size: 14.5px; line-height: 1.75; }
+
+/* 동전 던지기 비교 */
+.coin { margin: 0 0 12px; }
+.coin table { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 4px; }
+.coin thead td, .coin tbody th { width: 96px; }
+.coin th { font-size: 12.5px; color: var(--muted); font-weight: 800; text-align: center; }
+.coin tbody th { text-align: left; color: var(--ink); font-size: 13.5px; }
+.coin td span { display: block; text-align: center; font-size: 14px; font-weight: 800; border: 1.5px solid; border-radius: 8px; padding: 8px 0; }
+.coin .up { background: #edf7f0; border-color: #9cc9ad; color: #2f6f4b; }
+.coin .down { background: #fdf1ef; border-color: #e0a79b; color: #8c2f1d; }
+.coin figcaption { margin-top: 4px; font-size: 12.5px; color: var(--muted); }
+
 /* 비율 합성 */
 .mix { margin: 0 0 12px; }
 .mix-bar { display: flex; gap: 2px; }
@@ -936,7 +971,7 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .mix figcaption { margin-top: 4px; text-align: right; font-size: 13.5px; font-weight: 700; }
 
 /* 판정 갈래 */
-.board { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 10px; }
+.board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; }
 .board section { border: 1.5px solid; border-radius: 10px; padding: 10px 14px; }
 .board h4 { margin: 0 0 6px; font-size: 14px; font-weight: 800; }
 .board ul { margin: 0; padding-left: 16px; font-size: 13.5px; line-height: 1.6; }
@@ -1012,7 +1047,11 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
   .seq-msgs span, .seq-actors li { font-size: 12px; }
   .seq-out li { grid-template-columns: 1fr; gap: 2px; }
   .split thead td, .split tbody th { width: 64px; }
-  .panels, .board { grid-template-columns: 1fr; }
+  .panels { grid-template-columns: 1fr; }
+  .board { grid-auto-flow: row; }
+  .coin thead td, .coin tbody th { width: 62px; }
+  .coin tbody th { font-size: 12px; }
+  .coin td span { font-size: 12.5px; }
   .mix-bar span { font-size: 12.5px; padding: 8px 4px; }
   .mix-bar span.hl { min-width: 104px; }
   .tradeoff li { grid-template-columns: repeat(2, minmax(0, 1fr)); }

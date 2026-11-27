@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Crypto Pilot · 김태형 포트폴리오"><meta property="og:description" content="바이낸스 선물 전략 검증과 모의 자동 매매"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=b9c8a43b">
+<link rel="stylesheet" href="../styles.css?v=6573e926">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -35,6 +35,7 @@
   
   
   <section class="pj-sec"><h2 class="part">동작 흐름</h2><figure class="day">
+    
     <p class="day-note">하루 한 번, 정해진 시각의 데이터로 목표를 만들고 주문합니다 (한국 시간).</p>
     <ol class="day-steps" style="--n:4"><li><time>07:00</time><strong>신호 기준 시각</strong><span>이 시각까지의 값으로 순위 계산</span></li><li><time>08:00</time><strong>목표 비중 공개</strong><span>이 시각 전에는 주문에 쓰지 않음</span></li><li class="hl"><time>08:00 직후</time><strong>지정가 모의 주문</strong><span>최대 30분 대기, 실제 거래 기록으로 체결 판정</span></li><li><time>이후</time><strong>기록·점검</strong><span>모의 체결과 거래 기록의 차이를 점검</span></li></ol>
     <p class="day-foot">그 밖에: 시세 상시 수집 · 5분마다 생존 확인 · 매일 데이터 백업. 실주문은 내지 않음</p>

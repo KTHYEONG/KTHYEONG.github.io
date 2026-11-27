@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="K-Stock Engine · 김태형 포트폴리오"><meta property="og:description" content="국내주식 팩터 전략의 연구·검증과 장전 목표 가상 기록"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=b9c8a43b">
+<link rel="stylesheet" href="../styles.css?v=6573e926">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -35,6 +35,7 @@
   
   
   <section class="pj-sec"><h2 class="part">동작 흐름</h2><figure class="day">
+    
     <p class="day-note">목표는 장 시작 전에 확정해야 해서, 수집·점검·확정을 정해진 시각에 나눠 실행합니다.</p>
     <ol class="day-steps" style="--n:4"><li><time>전날 저녁</time><strong>수급·공시·재무 수집</strong><span>다음 날 판단에 쓸 데이터</span></li><li><time>07:30</time><strong>사전 점검</strong><span>확정에 필요한 데이터를 읽기만 해서 확인</span></li><li class="hl"><time>08:32</time><strong>목표 확정·가상 장부</strong><span>앞 기록과 해시로 연결, 늦게 확정해도 지난 시점에는 소급하지 않음</span></li><li><time>21:40</time><strong>일일 감사</strong><span>작업 기록과 실제 산출물 대조</span></li></ol>
     <p class="day-foot">그 밖에: 장전 호가 수집 · 매일 데이터 백업 · 주간 리포트. 증권사 호출 한도(초당 18건)는 같은 서버의 프로젝트와 공유. 실주문은 내지 않음</p>
@@ -48,6 +49,7 @@
   </details><details class="case free" id="pit">
     <summary class="c-sum"><h3>재무 실적은 공시된 뒤부터 사용</h3><p class="c-key">결산일이 아니라 실제 공시 접수일 기준 </p></summary>
     <div class="c-body"><p class="c-lead">연간 실적은 12월 31일 기준의 값이지만 공시는 다음 해에 나옵니다. 결산일부터 쓰면 아무도 모르던 실적을 미리 아는 셈입니다.</p><figure class="day">
+    
     
     <ol class="day-steps" style="--n:3"><li><time>12월 31일</time><strong>결산일</strong><span>아직 공개 전이라 사용하지 않음</span></li><li><time>다음 해</time><strong>공시 접수</strong><span>장 마감 뒤일 수 있어 당일에도 사용하지 않음</span></li><li class="hl"><time>접수 다음 거래일</time><strong>사용 시작</strong><span>장 시작 이후의 계산부터 사용</span></li></ol>
     
