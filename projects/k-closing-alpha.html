@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="K-Closing Alpha · 김태형 포트폴리오"><meta property="og:description" content="장 마감 직전 정보로 종가에 사서 다음 날 시초가에 파는 퀀트"><meta property="og:type" content="website">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=be693c65">
+<link rel="stylesheet" href="../styles.css?v=b9c8a43b">
 </head>
 <body class="web proj-page">
 <header class="site-head"><div class="wrap bar">
@@ -29,7 +29,7 @@
     <dl class="meta"><div><dt>기간</dt><dd>2025.12 ~ 진행 중</dd></div><div><dt>역할</dt><dd>설계, 검증, 서버 운영 (개인 프로젝트, 구현에 AI 도구 활용)</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>LightGBM</li><li>pandas</li><li>PyArrow(Parquet)</li><li>aiohttp</li><li>pydantic</li><li>pytest</li><li>systemd</li></ul></dd></div><div><dt>저장소</dt><dd><a class="pc-gh repo-pill" href="https://github.com/KTHYEONG/k-closing-alpha" aria-label="K-Closing Alpha GitHub 저장소"><svg class="gh-ic" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a></dd></div></dl>
     </div></div>
     
-    <ul class="metrics"><li class="metric"><div class="m-label">일평균 순수익</div><div class="m-value">+31.27bp</div><div class="m-note">운영 전략(LGBM 상위 3종목 균등 가중), 886거래일(2023-01~2026-09), 비공개 연구 문서의 현행 운영 기준 (1bp=0.01%)</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">샤프지수(수익 대비 변동 크기)</div><div class="m-value">2.57</div><div class="m-note">같은 전략의 최대낙폭(고점 대비 최대 하락) 25.03%</div><span class="basis basis-backtest">백테스트</span></li></ul>
+    <ul class="metrics"><li class="metric"><div class="m-label">일평균 순수익</div><div class="m-value">+31.27bp</div><div class="m-note">운영 전략(LGBM 상위 3종목 균등 가중), 886거래일(2023-01~2026-09) (1bp=0.01%)</div><span class="basis basis-backtest">백테스트</span></li><li class="metric"><div class="m-label">샤프지수(수익 대비 변동 크기)</div><div class="m-value">2.57</div><div class="m-note">같은 전략의 최대낙폭(고점 대비 최대 하락) 25.03%</div><span class="basis basis-backtest">백테스트</span></li></ul>
   </section>
   
   
@@ -44,7 +44,7 @@
     <h2 class="part">사례 <button type="button" class="cases-toggle" id="cases-toggle">모두 펼치기</button></h2>
     <div class="cases"><details class="case free" id="journal" open>
     <summary class="c-sum"><h3>주문 응답이 불확실하면, 다시 보내기 전에 먼저 확인</h3><p class="c-key">보내기 전에 기록 → 증권사 주문 목록과 대조 </p></summary>
-    <div class="c-body"><div class="tri"><div><h5>문제</h5><p>주문 뒤 응답이 불확실하면 접수 여부를 알 수 없고, 그대로 다시 보내면 두 번 살 수 있습니다.</p></div><div><h5>판단</h5><p>재시도 횟수를 줄여도 이미 접수된 주문은 막지 못합니다. 보내기 전에 기록하고, 확인을 먼저 합니다.</p></div><div><h5>결과</h5><p>주문 상태 판단과 기존 주문 인정 로직을 구현하고 단위 테스트를 작성했습니다.</p></div></div><figure class="seq" style="--n:3">
+    <div class="c-body"><div class="tri"><div><h5>문제</h5><p>주문 뒤 응답이 불확실하면 접수 여부를 알 수 없고, 그대로 다시 보내면 두 번 살 수 있습니다.</p></div><div><h5>판단</h5><p>재시도 횟수를 줄여도 이미 접수된 주문은 막지 못합니다. 보내기 전에 기록하고, 확인을 먼저 합니다.</p></div><div><h5>결과</h5><p>접수된 주문은 그대로 인정하고, 불확실한 상태에서는 확인 없이 다시 보내지 않습니다.</p></div></div><figure class="seq" style="--n:3">
     <ol class="seq-actors"><li>주문 실행기</li><li>주문 기록장</li><li>증권사 API</li></ol>
     <ol class="seq-msgs"><li style="grid-column:1 / 3;--inset:25.000%" class="fwd"><span>① 살 주문을 기록</span><i aria-hidden="true"></i></li><li style="grid-column:1 / 3;--inset:25.000%" class="fwd"><span>② 보낸다고 기록</span><i aria-hidden="true"></i></li><li style="grid-column:1 / 4;--inset:16.667%" class="fwd"><span>③ 주문 전송</span><i aria-hidden="true"></i></li><li style="grid-column:1 / 4;--inset:16.667%" class="back dash"><span>응답 불확실</span><i aria-hidden="true"></i></li><li style="grid-column:1 / 4;--inset:16.667%" class="fwd"><span>④ 오늘 주문 목록 조회</span><i aria-hidden="true"></i></li></ol>
     <div class="seq-out"><h6>조회 결과에 따라 (매수 기준)</h6><ul><li class="o-ok"><strong>같은 주문 1건</strong><span>새로 보내지 않고 그 주문을 내 주문으로 인정</span></li><li class="o-hold"><strong>후보 2건 이상</strong><span>단정하지 않고 '미확인'으로 남김</span></li><li class="o-stop"><strong>0건</strong><span>전달 실패로 판단되는 통신 오류일 때만 5초 뒤 재확인 후 1회 재전송. 실거래 자동 재전송은 꺼 둠</span></li></ul></div>
@@ -52,10 +52,7 @@
   </figure></div>
   </details><details class="case free" id="rehearsal">
     <summary class="c-sum"><h3>가상·모의 매매를 돌리며 찾은 실패를 수정</h3><p class="c-key">조회 1회 실패로 모의 매수 0건 → 마감 전까지 재시도 <span class="basis basis-ops">운영 기록</span></p></summary>
-    <div class="c-body"><div class="gt-wrap"><table class="gt"><thead><tr><th>겪은 문제와 위험</th><th>고친 방법</th></tr></thead><tbody><tr><td data-l="겪은 문제와 위험"><strong>11.13</strong> 주문 가능 금액 조회가 한 번 실패해, 마감까지 7분 넘게 남았는데 그날 모의 매수가 0건</td><td data-l="고친 방법">읽기 조회는 15:26까지 5초 간격으로 재시도. 끝내 알 수 없으면 사지 않고 알림</td></tr><tr><td data-l="겪은 문제와 위험"><strong>11.13</strong> 체결 확인을 당일 한 번만 시도해, 실패하면 매수한 종목이 보유 장부에 반영되지 않고 다음 날 매도와 알림에서 모두 빠질 수 있었음</td><td data-l="고친 방법">다음 실행에서 과거의 미확정 주문부터 확정하고, 남으면 계속 알림</td></tr><tr><td data-l="겪은 문제와 위험"><strong>09.21</strong> 가상 매매가 하루 두 번 실행되어, 앞선 진입 기록을 더 작은 주문으로 덮어씀 (301주 → 50주)</td><td data-l="고친 방법">당일 진입 기록이 있으면 두 번째 실행은 건너뜀</td></tr></tbody></table></div><details class="c-proc"><summary>과정 보기</summary><ol class="tl"><li><time>10.12</time><span>서버의 주문 경로를 모의투자로 전환. 조회가 1.3~4.6초 걸려 5초 제한에 가깝고, 취소 행이 기존 주문으로 오인될 수 있어 보정</span></li><li><time>10.15</time><span>전일 미확인 주문의 이월 복구와 운영자 수동 해소 경로 추가</span></li><li><time>11.07</time><span>실거래 주문 한도를 환경 변수로 명시하지 않으면 실거래 연결 거부</span></li></ol></details></div>
-  </details><details class="case free" id="pit">
-    <summary class="c-sum"><h3>15:20에 알 수 있는 값만 판단에 사용</h3><p class="c-key">섞여 있던 당일 미확정 수급을 찾아 전일 확정치로 교체 </p></summary>
-    <div class="c-body"><p class="c-lead">종가는 15:30에 정해집니다. 10분 뒤의 값이 판단에 섞이면 실제로는 불가능한 수익이 나옵니다.</p><div class="gt-wrap"><table class="gt"><thead><tr><th>항목</th><th>판단에 쓰는 값</th><th>판단에 쓰지 않는 값</th></tr></thead><tbody><tr><td data-l="항목">가격</td><td data-l="판단에 쓰는 값">15:20 가격 (과거 구간은 1분봉으로 복원)</td><td data-l="판단에 쓰지 않는 값">15:30 확정 종가: 별도 컬럼에 저장</td></tr><tr><td data-l="항목">투자자별 수급</td><td data-l="판단에 쓰는 값">전일 확정치</td><td data-l="판단에 쓰지 않는 값">당일 미확정 값</td></tr></tbody></table></div><p class="c-note">09.15에 수급 입력에 당일 미확정 값이 섞인 <strong>미래 참조(look-ahead)</strong> 문제를 발견해 고치고, 학습과 실시간 추론의 기준을 맞췄습니다.</p><details class="c-proc"><summary>과정 보기</summary><ol class="tl"><li><time>09.14</time><span>과거 날짜를 다시 실행해도 확정 종가를 덮어쓰지 못하게 가드 추가</span></li><li><time>09.15</time><span>당일 수급을 전일 확정치로 교체</span></li></ol></details></div>
+    <div class="c-body"><div class="gt-wrap"><table class="gt"><thead><tr><th>겪은 문제와 위험</th><th>고친 방법</th></tr></thead><tbody><tr><td data-l="겪은 문제와 위험">주문 가능 금액 조회가 한 번 실패해, 마감까지 7분 넘게 남았는데 <strong>그날 매수 0건</strong></td><td data-l="고친 방법">읽기 조회는 마감 전까지 반복해서 재시도. 끝내 알 수 없으면 사지 않고 알림</td></tr><tr><td data-l="겪은 문제와 위험">체결 확인을 당일 한 번만 해서, 실패하면 산 종목이 <strong>다음 날 매도와 알림에서 빠질 수 있었음</strong></td><td data-l="고친 방법">다음 실행에서 확인 못 한 주문부터 확정하고, 남으면 계속 알림</td></tr><tr><td data-l="겪은 문제와 위험">가상 매매가 하루 두 번 실행되어 <strong>앞선 기록을 덮어씀</strong> (301주 → 50주)</td><td data-l="고친 방법">당일 기록이 있으면 두 번째 실행은 건너뜀</td></tr></tbody></table></div></div>
   </details><details class="case free" id="cost">
     <summary class="c-sum"><h3>호가 한 칸이 큰 종목은 순위를 매기기 전에 제외</h3><p class="c-key">왕복 비용 1칸 → 6칸: +41.92 → -5.88bp <span class="basis basis-backtest">백테스트</span></p></summary>
     <div class="c-body"><p class="c-lead">전략의 수익은 거래 비용 가정에 크게 좌우됩니다. 그래서 호가 한 칸이 가격의 0.12%(12bp)를 넘는 종목은 후보에서 뺍니다.</p><figure class="chart">
@@ -81,15 +78,15 @@
         <div class="chart-track"><span class="cbar neg" style="left:0.00%;width:12.30%"></span></div>
         <div class="chart-val">-5.88</div>
       </div></div>
-    <p class="chart-caption">886거래일 비용 민감도 시험. 연구용 구성이라 2칸 값(+32.36)이 운영 전략 수치(+31.27)와 다름</p>
-  </figure><div class="c-points"><h4>상한을 7.5bp에서 12bp로 넓힌 이유</h4><dl><div><dt>목적</dt><dd>후보를 2.6배로 늘려, 순위 모델이 고를 수 있는 폭을 확보</dd></div><div><dt>비교</dt><dd>종목 수 1~8개, 왕복 비용 0~8칸의 모든 조건에서 7.5bp보다 우위</dd></div><div><dt>결과</dt><dd>연구 문서 기준 샤프지수가 7.5bp보다 0.84 높음</dd></div></dl></div></div>
+    <p class="chart-caption">886거래일 백테스트, 연구용 구성이라 대표 수치와 조금 다름</p>
+  </figure><p class="c-note">상한을 7.5bp에서 <strong>12bp</strong>로 넓혀 후보를 2.6배로 늘리자, 순위 모델의 선택 폭이 커지고 샤프지수가 0.84 높아졌습니다.</p></div>
   </details><details class="case free" id="default-off">
     <summary class="c-sum"><h3>AI 도구가 반복해 넣은 '기본 꺼짐' 스위치를 규칙과 테스트로 차단</h3><p class="c-key">플래그 7개 삭제, 새 스위치는 등록 필수 <span class="basis basis-ops">운영 기록</span></p></summary>
-    <div class="c-body"><div class="gt-wrap"><table class="gt"><thead><tr><th>항목</th><th>이전</th><th>이후</th></tr></thead><tbody><tr><td data-l="항목">새 기능 배포</td><td data-l="이전">꺼진 채 배포되어 서버에서 다시 켜야 적용</td><td data-l="이후">켜진 채 배포하고, 문제가 있으면 되돌려 재배포</td></tr><tr><td data-l="항목">서버 설정 유실</td><td data-l="이전">09.24 환경을 다시 만들며 설정이 빠져, 수집 작업이 조용히 꺼짐</td><td data-l="이후">항상 켜 두던 플래그 7개와 꺼짐 분기 삭제 (27개 파일)</td></tr><tr><td data-l="항목">새 스위치</td><td data-l="이전">AI 도구가 같은 패턴을 반복해 추가</td><td data-l="이후">등록부에 없으면 정책 테스트 실패</td></tr></tbody></table></div><details class="c-proc"><summary>과정 보기</summary><ol class="tl"><li><time>09.18</time><span>꺼진 수집 작업이 실패 코드를 돌려줘 거짓 경보 발생, 정상 종료로 수정</span></li><li><time>09.24</time><span>설정 유실 확인 후 환경 생성 검증 추가</span></li><li><time>11.11</time><span>플래그와 꺼짐 분기를 삭제하고 규칙, 등록부, 정책 테스트 추가</span></li></ol></details></div>
+    <div class="c-body"><div class="gt-wrap"><table class="gt"><thead><tr><th>항목</th><th>이전</th><th>이후</th></tr></thead><tbody><tr><td data-l="항목">새 기능 배포</td><td data-l="이전">꺼진 채 배포되어 서버에서 다시 켜야 적용</td><td data-l="이후">켜진 채 배포하고, 문제가 있으면 되돌려 재배포</td></tr><tr><td data-l="항목">서버 설정 유실</td><td data-l="이전">서버 환경을 다시 만들며 설정이 빠져, 수집 작업이 조용히 꺼짐</td><td data-l="이후">항상 켜 두던 스위치 7개와 꺼짐 분기를 삭제</td></tr><tr><td data-l="항목">새 스위치</td><td data-l="이전">AI 도구가 같은 패턴을 반복해 추가</td><td data-l="이후">등록부에 없으면 정책 테스트 실패</td></tr></tbody></table></div></div>
   </details></div>
   </section>
-  <section class="pj-sec"><h2 class="part">한계</h2><ol class="ladder"><li class="st-done"><i>확인함</i><strong>백테스트</strong><span>886거래일, 일평균 +31.27bp (비용 차감, 수수료는 내 계좌 기준)</span></li><li class="st-now"><i>진행 중</i><strong>모의투자</strong><span>10.12부터 주문 경로 리허설. 손익 기록은 아직 없음</span></li><li class="st-todo"><i>아직 아님</i><strong>실계좌</strong><span>손익 기록 없음</span></li></ol>
-  <table class="caution"><caption>주의 사항</caption><tbody><tr><th scope="row">여러 전략 중 고른 결과</th><td>118개를 비교했고 선택 편향을 보정한 값은 없습니다.</td></tr><tr><th scope="row">비용 시험의 기준 구성이 다름</th><td>비용 차트는 연구용 구성의 값이라 대표 수치(+31.27bp)와 같은 조건이 아닙니다.</td></tr><tr><th scope="row">저장소만으로 재검증 불가</th><td>연구 문서는 비공개 저장소에 있고 원본 데이터는 공개하지 않았습니다.</td></tr></tbody></table></section>
+  <section class="pj-sec"><h2 class="part">한계</h2><ol class="ladder"><li class="st-done"><i>확인함</i><strong>백테스트</strong><span>886거래일, 일평균 +31.27bp (비용 차감)</span></li><li class="st-now"><i>진행 중</i><strong>모의투자</strong><span>모의로 주문 과정을 점검 중. 손익 기록은 아직 없음</span></li><li class="st-todo"><i>아직 아님</i><strong>실계좌</strong><span>손익 기록 없음</span></li></ol>
+  <table class="caution"><caption>주의 사항</caption><tbody><tr><th scope="row">여러 전략 중 고른 결과</th><td>118개를 비교했고 선택 편향을 보정한 값은 없습니다.</td></tr><tr><th scope="row">저장소만으로 재검증 불가</th><td>연구 문서는 비공개 저장소에 있고 원본 데이터는 공개하지 않았습니다.</td></tr></tbody></table></section>
   <nav class="pj-nav" aria-label="다른 프로젝트">
     <span></span>
     <a class="pn next" href="k-stock-engine.html"><span>다음 프로젝트</span><strong>K-Stock Engine</strong></a>
