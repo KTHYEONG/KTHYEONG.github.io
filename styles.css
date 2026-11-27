@@ -222,6 +222,7 @@ details.subs li { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
 .kind-personal { background: var(--accent-soft); color: var(--accent); }
 .kind-team { background: #f6ecdc; color: #8a5a00; }
 .status { margin-left: 6px; font-size: 11.5px; font-weight: 700; color: var(--pos); background: var(--mine); padding: 3px 8px; border-radius: 99px; }
+.status.st-done { color: #4b5563; background: #eef0f3; }
 .repo { word-break: break-all; font-size: 13px; }
 .repo.none { color: var(--faint); }
 
@@ -993,6 +994,14 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 @media (max-width: 640px) { .need li { grid-template-columns: 1fr; gap: 18px; } .need li + li { margin-top: 8px; } .need-solve::before { content: '↓'; left: 50%; top: -11px; } .heat table { border-spacing: 2px; } .heat thead td, .heat tbody th { width: 38px; } .heat th { font-size: 11px; } .heat td span { font-size: 11.5px; } }
 .c-sample { margin: 0 0 12px; }
 .board + .gt-wrap { margin-top: 12px; }
+.contest { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 0; margin: 10px 0 0; font-size: 14px; color: var(--muted); word-break: keep-all; }
+.contest .ev-ic { flex: none; width: 15px; height: 15px; margin-right: 7px; color: #9a6a12; }
+.contest strong { color: var(--ink); font-weight: 700; }
+.contest span::before { content: '·'; margin: 0 8px; color: var(--muted); }
+.contest .ct-host { font-size: 13px; }
+.print .contest { margin-top: 4px; }
+.print .contest, .print .contest .ct-host { font-size: 9pt; }
+@media (max-width: 640px) { .contest strong { flex: 1 1 calc(100% - 22px); } .contest span { flex: 1 1 100%; padding-left: 22px; } .contest span::before { content: none; } }
 .coin th.sel { color: #1d4f91; }
 .coin td.sel span { box-shadow: 0 0 0 2.5px #1d4f91; }
 .coin figcaption { margin-top: 4px; font-size: 12.5px; color: var(--muted); }
