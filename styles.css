@@ -991,6 +991,8 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .print .need p, .print .need-pain span, .print .heat th, .print .heat td span { font-size: 9pt; }
 .print .need li, .print .need-merge, .print .heat { break-inside: avoid; }
 @media (max-width: 640px) { .need li { grid-template-columns: 1fr; gap: 18px; } .need li + li { margin-top: 8px; } .need-solve::before { content: '↓'; left: 50%; top: -11px; } .heat table { border-spacing: 2px; } .heat thead td, .heat tbody th { width: 38px; } .heat th { font-size: 11px; } .heat td span { font-size: 11.5px; } }
+.c-sample { margin: 0 0 12px; }
+.board + .gt-wrap { margin-top: 12px; }
 .coin th.sel { color: #1d4f91; }
 .coin td.sel span { box-shadow: 0 0 0 2.5px #1d4f91; }
 .coin figcaption { margin-top: 4px; font-size: 12.5px; color: var(--muted); }
