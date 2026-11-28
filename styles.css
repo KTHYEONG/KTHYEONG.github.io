@@ -1125,3 +1125,44 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 
 /* 자유 형식 사례는 짧으므로 제목과 그림이 갈라지지 않게 통째로 둔다. */
 .print .case.free { break-inside: avoid; }
+
+/* 번호 맞춤 비교, 도착 순서, 호가 소진 */
+.lanes, .arrive, .book { margin: 14px 0; }
+.lanes table, .book table { width: 100%; border-collapse: collapse; }
+.lanes table { table-layout: fixed; }
+.lanes thead th { font-size: 13px; color: var(--muted); padding: 4px 2px; text-align: center; font-variant-numeric: tabular-nums; }
+.lanes thead th:first-child, .lanes tbody th { width: 30%; text-align: left; font-size: 13px; }
+.lanes tbody th { padding: 6px 8px 6px 0; }
+.lanes td { padding: 3px 2px; }
+.lanes td span { display: block; padding: 7px 0; border-radius: 6px; text-align: center; font-size: 12px; font-weight: 700; border: 1.5px solid transparent; }
+.lanes .ln-got { background: #eef1f4; color: var(--muted); }
+.lanes .ln-miss { border-color: var(--neg); border-style: dashed; color: var(--neg); }
+.lanes .ln-fill { background: var(--accent); color: #fff; }
+.lanes tr.hl > * { border-top: 2px solid var(--ink); padding-top: 8px; }
+.lanes figcaption, .book figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
+.arrive > p { margin: 0 0 8px; font-size: 13px; font-weight: 700; color: var(--muted); }
+.arrive ol { display: flex; gap: 22px; margin: 0; padding: 0; list-style: none; }
+.arrive li { position: relative; flex: 1; min-width: 0; padding: 8px 4px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); text-align: center; }
+.arrive li + li::before { content: '→'; position: absolute; left: -18px; top: 50%; transform: translateY(-50%); color: var(--faint); }
+.arrive li b { display: block; font-size: 17px; }
+.arrive li span { display: block; font-size: 12px; color: var(--muted); }
+.arrive li.late { border: 1.5px solid var(--neg); }
+.arrive li.late span { color: var(--neg); font-weight: 700; }
+.bk-head { margin: 0 0 6px; font-size: 14px; }
+.book th, .book td { padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); text-align: left; font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.book thead th { color: var(--muted); font-size: 12px; }
+.book th:first-child { width: 22%; }
+.book th:last-child, .book td:last-child { width: 22%; text-align: right; padding-right: 0; }
+.book .bk-bar { display: block; height: 14px; border-radius: 4px; background: #e6eaee; overflow: hidden; }
+.book .bk-bar i { display: block; height: 100%; background: var(--accent); }
+.book tr:not(.hl) { color: var(--faint); }
+@media (max-width: 560px) {
+  .lanes thead th:first-child, .lanes tbody th { width: 34%; font-size: 12px; }
+  .lanes td span { font-size: 11px; }
+  .arrive ol { gap: 16px; }
+  .arrive li + li::before { left: -14px; }
+}
+.panel li b { white-space: nowrap; }
+.split.split-fix td.keep { background: #f1f3f5; border: 1px solid var(--line); color: var(--ink); }
+.split.split-fix td.chg { background: var(--mine); border: 1.5px solid var(--pos); color: var(--ink); }
+.split.split-fix figcaption { background: transparent; border: 0; padding: 0; text-align: left; font-size: 13px; color: var(--muted); }
