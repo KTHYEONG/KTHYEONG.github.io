@@ -876,6 +876,9 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .day-steps li { position: relative; display: flex; flex-direction: column; gap: 3px; background: var(--card); border: 1px solid var(--line); border-top: 3px solid #9fb2c8; border-radius: 10px; padding: 10px 12px 12px; }
 .day-steps li.hl { border-top-color: var(--accent); background: #eef4fc; }
 .day-steps li + li::before { content: '→'; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); color: var(--faint); font-size: 13px; }
+.day.par .day-steps { gap: 10px; }
+.day.par .day-steps li + li::before { content: none; }
+.panels + .gt-wrap { margin-top: 14px; }
 .day-steps time { font-size: 12.5px; font-weight: 800; color: var(--accent); }
 .day-steps strong { font-size: 14.5px; line-height: 1.4; }
 .day-steps span { font-size: 13px; line-height: 1.5; color: #4d5964; }
@@ -928,6 +931,12 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
 .panel li.hl .pl-k { color: var(--ink); font-weight: 800; }
 .panel li.hl .pl-track i { background: #1d4f91; }
 .panels figcaption { grid-column: 1 / -1; font-size: 12.5px; color: var(--muted); }
+.panels.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.panels.three li { grid-template-columns: 66px minmax(0, 1fr) 40px; gap: 6px; }
+.panels.three .pl-k { white-space: nowrap; }
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.proj-page .shots .shot { max-width: none; margin: 0; }
+.shots-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
 
 /* 누적 수익률 선 */
 .line { margin: 0 0 4px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px 6px; }
@@ -1262,3 +1271,5 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
   .sk-k b { display: inline; margin-left: 6px; }
   .outcome ol li { grid-template-columns: 1fr; gap: 3px; }
 }
+@media (max-width: 880px) { .panels.three { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .shots { grid-template-columns: 1fr; } }

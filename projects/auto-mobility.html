@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>auto-mobility · 김태형 포트폴리오</title>
+<meta name="description" content="RGB-D 카메라로 찍은 실내 공간을 3D로 복원하고 센서 깊이로 검증하는 팀 프로젝트">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="auto-mobility · 김태형 포트폴리오"><meta property="og:description" content="RGB-D 카메라로 찍은 실내 공간을 3D로 복원하고 센서 깊이로 검증하는 팀 프로젝트"><meta property="og:type" content="website">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css?v=d61a132b">
+</head>
+<body class="web proj-page">
+<header class="site-head"><div class="wrap bar">
+  <a class="brand" href="../">김태형</a>
+  <nav aria-label="페이지 이동"><a href="../#tracks">← 목록</a><a class="gh" href="https://github.com/KTHYEONG/auto-mobility">GitHub</a></nav>
+</div></header>
+<main class="wrap proj">
+  <header class="pj-head">
+    <p class="crumb"><a href="../">포트폴리오</a> / 프로젝트</p>
+    <div class="pj-kicker"><span class="kind kind-team">팀</span><span class="status st-done">완료</span></div>
+    <h1>auto-mobility</h1>
+    <p class="pj-tag">RGB-D 카메라로 찍은 실내 공간을 3D로 복원하고 센서 깊이로 검증하는 팀 프로젝트</p>
+    
+  </header>
+  <section class="pj-sec">
+    <h2 class="part">개요</h2>
+    <div class="pj-ov"><div class="pj-ov-main">
+    <p class="pj-summary">자율주행·로봇을 시뮬레이터에서 시험하려면 실제 공간을 닮은 3D 환경이 필요합니다. 전용 스캐너 대신 <strong>RGB-D 카메라(색과 거리를 함께 찍는 카메라)</strong> 한 대로 실내를 복원하고, 그 결과가 실제와 얼마나 다른지 확인하는 흐름을 만든 <strong>피지컬 AI(Real-to-Sim)</strong> 팀 프로젝트입니다. 온라인 현장실습(협력기관 (주)퓨처드라이브)으로 진행했습니다.</p>
+    <dl class="meta"><div><dt>기간</dt><dd>2026.07 ~ 2026.08</dd></div><div><dt>역할</dt><dd>Visual SLAM 비교·평가, 전체 설계, 파이프라인 구현 (3인 팀)</dd></div><div><dt>기술</dt><dd><ul class="chips"><li>Python</li><li>C++</li><li>ROS2</li><li>RTAB-Map</li><li>cuVSLAM</li><li>Open3D</li><li>OpenCV</li><li>RealSense D435i</li><li>WSL2</li></ul></dd></div><div><dt>저장소</dt><dd><a class="pc-gh repo-pill" href="https://github.com/KTHYEONG/auto-mobility" aria-label="auto-mobility GitHub 저장소"><svg class="gh-ic" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a></dd></div></dl>
+    </div></div>
+    <div class="scope">
+        <div class="scope-mine"><h5>제가 맡은 일</h5><ul><li>두 SLAM(RTAB-Map·cuVSLAM)의 비교와 벤치마크 평가</li><li>촬영부터 평가까지의 파이프라인 구조와 실행 스크립트</li><li>데이터 수집·프레임 추출·프레임 분할, GPU 복원 연결 구현 주도</li></ul></div>
+        <div class="scope-others"><h5>팀원 담당·팀 공통</h5><p>3D 복원·메쉬 생성과 개발 환경·센서 통신 최적화는 팀원이 주로 맡았습니다. 세 명 모두 처음 접한 분야였고, 공용 노트북 1대라 촬영과 환경 문제는 함께 풀었습니다.</p></div>
+      </div>
+    
+  </section>
+  <section class="pj-sec"><h2 class="part">결과 예시</h2><div class="shots"><figure class="shot"><img src="../assets/auto-mobility/mesh-rtab.jpg" alt="RTAB-Map 이동 경로로 복원한 복도 메쉬" loading="lazy"><figcaption>RTAB-Map 이동 경로로 복원</figcaption></figure><figure class="shot"><img src="../assets/auto-mobility/mesh-cuvslam.jpg" alt="cuVSLAM 이동 경로로 복원한 복도 메쉬" loading="lazy"><figcaption>cuVSLAM 이동 경로로 복원</figcaption></figure></div><p class="shots-cap">실제 촬영 데이터로 복원한 복도입니다. 검은 부분은 표면이 복원되지 않은 곳입니다. 두 화면은 보는 위치가 달라 <strong>두 방식의 우열 비교용은 아닙니다.</strong></p></section>
+  
+  
+  
+  <section class="pj-sec"><h2 class="part">동작 흐름</h2><figure class="day">
+    <p class="day-lead">카메라가 어디를 어떻게 움직였는지 구하고(<strong>SLAM</strong>), 그 위치에 깊이 사진을 겹쳐 3D 표면을 만듭니다.</p>
+    
+    <ol class="day-steps" style="--n:4"><li><time>촬영</time><strong>센서 데이터 저장</strong><span>색·깊이·관성 값을 녹화 파일로 보존</span></li><li class="hl"><time>위치 추정</time><strong>SLAM 2종</strong><span>RTAB-Map과 cuVSLAM으로 이동 경로 계산</span></li><li><time>복원</time><strong>3D 메쉬</strong><span>깊이 사진을 하나의 표면으로 합침 (TSDF)</span></li><li class="hl"><time>평가</time><strong>깊이 대조</strong><span>메쉬에서 다시 그린 깊이와 센서 깊이를 픽셀 단위로 비교</span></li></ol>
+    <p class="day-foot">녹화와 계산을 나눴기 때문에, 같은 원본에 알고리즘과 설정을 바꿔 가며 다시 돌릴 수 있습니다.</p>
+  </figure></section>
+  
+  <section class="pj-sec">
+    <h2 class="part">사례 <button type="button" class="cases-toggle" id="cases-toggle">모두 펼치기</button></h2>
+    <div class="cases"><details class="case free" id="capture" open>
+    <summary class="c-sum"><h3>촬영: 끊기는 프레임을 설정과 환경으로 해결 (팀 공동)</h3><p class="c-key">측정하며 해상도·환경·설정을 바꾸고, 녹화와 SLAM 계산을 분리 <span class="basis basis-ops">운영 기록</span></p></summary>
+    <div class="c-body"><p class="c-lead">가상머신(VMware)에서는 카메라 프레임이 제대로 들어오지 않았고, GPU도 쓸 수 없었습니다. 무엇이 수신 속도를 떨어뜨리는지 <strong>측정하며</strong> 좁혔습니다.</p><figure class="panels three"><div class="panel"><h5>해상도별 깊이 수신 (VMware, 초당 장수)</h5><ul><li class="hl"><span class="pl-k">640×480</span><span class="pl-track"><i style="width:100.0%"></i></span><b>29.1</b></li><li><span class="pl-k">848×480</span><span class="pl-track"><i style="width:66.7%"></i></span><b>19.4</b></li></ul></div><div class="panel"><h5>촬영 중 위치 계산 속도 (VMware, 초당 횟수)</h5><ul><li><span class="pl-k">8초 후</span><span class="pl-track"><i style="width:100.0%"></i></span><b>28</b></li><li><span class="pl-k">18초 후</span><span class="pl-track"><i style="width:50.0%"></i></span><b>14</b></li><li><span class="pl-k">28초 후</span><span class="pl-track"><i style="width:42.9%"></i></span><b>12</b></li></ul></div><div class="panel"><h5>전송 방식(QoS) 설정 (WSL2, 초당 장수)</h5><ul><li><span class="pl-k">설정 지정</span><span class="pl-track"><i style="width:33.3%"></i></span><b>약 10</b></li><li class="hl"><span class="pl-k">설정 제거</span><span class="pl-track"><i style="width:100.0%"></i></span><b>30.0</b></li></ul></div></figure><div class="gt-wrap"><table class="gt"><thead><tr><th>확인한 것</th><th>바꾼 것</th></tr></thead><tbody><tr><td data-l="확인한 것">848×480에서 깊이 프레임이 빠짐</td><td data-l="바꾼 것"><strong>640×480, 초당 30장</strong>으로 고정</td></tr><tr><td data-l="확인한 것">시작 직후에는 빠르던 위치 계산이 시간이 지나며 느려짐</td><td data-l="바꾼 것"><strong>먼저 녹화하고, SLAM은 녹화 파일로 나중에 실행</strong></td></tr><tr><td data-l="확인한 것">가상머신에서는 GPU 연산을 쓸 수 없음</td><td data-l="바꾼 것"><strong>WSL2</strong>로 환경 이전</td></tr><tr><td data-l="확인한 것">전송 방식 설정을 넣으면 카메라 속도가 급락</td><td data-l="바꾼 것">해당 설정을 제거하고, 다시 들어가지 않도록 테스트로 확인</td></tr></tbody></table></div><div class="verdict"><p class="vd-head"><em>결론</em>시작 몇 초의 속도가 아니라 촬영 내내 유지되는지를 확인</p><p class="vd-d">천천히 움직이고 카메라를 고정하는 촬영 요령도 함께 익혔습니다.</p></div></div>
+  </details><details class="case free" id="mesh">
+    <summary class="c-sum"><h3>조각난 3D 복원: 좌표 기준과 깊이 거르기 규칙을 수정 (팀 공동)</h3><p class="c-key">공간이 어긋나고 부서지는 원인을 코드의 입출력에서 확인 </p></summary>
+    <div class="c-body"><p class="c-lead">복원 결과가 조각난 표면으로 나왔고, 한쪽 결과는 <strong>같은 공간이 90° 돌아간 채 겹쳐</strong> 보였습니다. 센서 녹화를 먼저 점검한 뒤, 단계 사이에서 <strong>무엇을 기준으로 값을 주고받는지</strong> 확인했습니다.</p><figure class="day par">
+    
+    
+    <ol class="day-steps" style="--n:3"><li class="hl"><time>원인 1</time><strong>좌표 기준 불일치</strong><span>SLAM은 로봇 몸체 기준 위치를 내보내고, 복원은 카메라 렌즈 기준으로 해석 → 렌즈 기준으로 변환해 출력</span></li><li class="hl"><time>원인 2</time><strong>깊이 과다 제거</strong><span>초안 메쉬와 비교해 거르면서, 비교할 표면이 없는 곳의 측정값까지 버림 → 비교할 수 없으면 유지하고, 크게 다를 때만 제거</span></li><li><time>원인 3</time><strong>시간이 먼 위치 연결</strong><span>최대 0.2초 차이 나는 위치를 그대로 사용 → 0.05초 이내에서 앞뒤 위치를 보간</span></li></ol>
+    
+  </figure><div class="c-points"><dl><div><dt>재발 방지</dt><dd>저장해 둔 이동 경로에 좌표 기준이 적혀 있지 않거나 옛 형식이면 다시 계산하도록 변경</dd></div></dl></div><div class="verdict"><p class="vd-head"><em>결론</em>값만 넘기지 않고, 좌표 기준까지 맞춰서 연결</p><p class="vd-d">원인별로 결과가 얼마나 좋아졌는지를 따로 측정한 기록은 확인하지 못했습니다.</p></div></div>
+  </details><details class="case free" id="compare">
+    <summary class="c-sum"><h3>두 SLAM 비교: CPU 방식과 GPU 방식을 노트북 1대에서 실행</h3><p class="c-key">CPU와 GPU를 함께 활용하되, 무거운 작업은 순서대로 배치 </p></summary>
+    <div class="c-body"><p class="c-lead">위치 추정은 계산 방식이 다른 CPU 중심의 <strong>RTAB-Map</strong>과 GPU를 쓰는 <strong>cuVSLAM</strong>을 비교했습니다. 정해진 기간에 노트북 1대의 성능을 최대한 쓰려 했지만, 무거운 작업이 겹치면 과부하가 걸릴 수 있었습니다. 그래서 <strong>한 번에 하나씩 실행하고 CPU 스레드(동시에 계산하는 작업 줄기) 수를 단계마다 나눴습니다.</strong></p><figure class="day">
+    
+    
+    <ol class="day-steps" style="--n:3"><li class="hl"><time>1단계 · GPU</time><strong>cuVSLAM 위치 추정</strong><span>계산은 GPU가 담당 · CPU 스레드 3개</span></li><li><time>2단계 · CPU</time><strong>RTAB-Map 위치 추정</strong><span>CPU 계산이 중심 · CPU 스레드 6개</span></li><li class="hl"><time>3단계 · GPU</time><strong>3D 복원</strong><span>GPU 작업은 한 번에 하나 · CPU 스레드 4개</span></li></ol>
+    
+  </figure><div class="c-points"><dl><div><dt>메모리</dt><dd>cuVSLAM과 3D 복원은 별도 프로세스로 실행해, 끝나면 GPU 메모리를 돌려받도록 구성</dd></div><div><dt>특성</dt><dd>RTAB-Map은 지도 관리와 경로 보정, cuVSLAM은 GPU 처리 속도에 강점이 있었습니다. 대신 cuVSLAM은 무늬 없는 벽·어두운 곳·흔들림에 민감했습니다.</dd></div><div><dt>같은 조건</dt><dd>두 방식 모두 지나온 경로를 보정한 결과를 카메라 렌즈 기준으로 내보내고, 같은 평가 프레임을 쓰도록 맞춤</dd></div></dl></div><div class="verdict"><p class="vd-head"><em>결론</em>처리 장치가 다른 두 방식을 한 노트북의 한 흐름에 연결</p><p class="vd-d">같은 조건으로 맞춘 뒤의 정량 비교 결과는 확인하지 못해, 어느 방식이 낫다고 결론 내리지 않습니다.</p></div></div>
+  </details><details class="case free" id="holdout">
+    <summary class="c-sum"><h3>메쉬 품질 평가: 눈으로 보는 확인에서 수치 측정으로</h3><p class="c-key">복원에 쓰지 않은 프레임의 센서 깊이와 메쉬를 픽셀 단위로 대조 </p></summary>
+    <div class="c-body"><p class="c-lead">메쉬를 화면에서 돌려 보는 것만으로는 어느 결과가 센서가 본 공간에 더 가까운지 판단하기 어렵습니다. 그래서 같은 카메라 위치에서 <strong>메쉬를 깊이 사진으로 다시 그리고, 센서 깊이와 비교하는 평가</strong>를 만들었습니다.</p><figure class="day par">
+    
+    
+    <ol class="day-steps" style="--n:3"><li class="hl"><time>얼마나 어긋났나</time><strong>깊이 오차</strong><span>두 깊이 차이의 평균, 그리고 오차의 95%가 들어오는 값</span></li><li class="hl"><time>얼마나 가깝게 맞나</time><strong>허용 범위 안 비율</strong><span>차이가 10·20·50mm 이내인 픽셀의 비율</span></li><li class="hl"><time>얼마나 복원됐나</time><strong>복원 범위</strong><span>센서 깊이가 있는 픽셀 중 메쉬도 있는 비율</span></li></ol>
+    
+  </figure><figure class="mix"><div class="mix-bar"><span style="flex-grow:76"><b>복원용</b> 약 76%</span><span style="flex-grow:12"><b>조정용</b> 12%</span><span class="hl" style="flex-grow:12"><b>평가용</b> 12%</span></div><figcaption>→ 평가용은 마지막 채점에만 사용</figcaption></figure><div class="c-points"><dl><div><dt>함께 보기</dt><dd>오차는 메쉬가 있는 곳에서만 계산됩니다. 구멍이 많아도 좋아 보일 수 있어 <strong>복원 범위를 함께</strong> 확인합니다.</dd></div><div><dt>누출 차단</dt><dd>평가 프레임이 복원에도 들어가던 것을 점검에서 확인해, 복원 단계에서 제외하고 섞이면 실행이 멈추도록 검사</dd></div><div><dt>나누는 법</dt><dd>바로 옆 프레임은 거의 같은 장면이라 이동 경로의 <strong>연속 구간 단위</strong>로 분리하고, 두 SLAM에 같은 평가 구간을 사용</dd></div><div><dt>결과물</dt><dd>채점용 메쉬와 별도로, 평가 프레임까지 포함해 다시 복원한 최종 사용용 메쉬를 생성</dd></div></dl></div><div class="verdict"><p class="vd-head"><em>결론</em>눈으로 확인하는 데서 그치지 않고, 같은 기준의 수치로 비교하는 평가를 시도</p><p class="vd-d">센서 깊이를 기준으로 한 평가라 실제 치수의 정확도와는 다릅니다. 평가 프레임을 분리한 뒤의 최종 측정값은 확인하지 못했습니다.</p></div></div>
+  </details></div>
+  </section>
+  <section class="pj-sec"><h2 class="part">한계</h2><table class="caution scoped"><caption>주의 사항</caption><tbody><tr><th scope="row">복원 정확도</th><td><strong>최종 성능 수치는 확인하지 못함</strong><span>확인한 자료에는 평가 프레임을 분리하기 전의 중간 결과만 있어, 최종 성능 수치로 쓰지 않았습니다.</span></td></tr><tr><th scope="row">시뮬레이터</th><td><strong>Isaac Sim 주행 검증은 하지 못함</strong><span>만든 메쉬를 불러오는 스크립트까지 작성했습니다.</span></td></tr><tr><th scope="row">촬영 측정</th><td><strong>특정 장비와 환경의 값</strong><span>카메라 속도는 사용한 노트북과 가상 환경에서 잰 짧은 측정이며, 다른 환경에는 그대로 적용할 수 없습니다.</span></td></tr><tr><th scope="row">복원 품질</th><td><strong>구멍이 남아 있음</strong><span>보급형 카메라의 시야각·해상도·롤링 셔터 같은 한계가 있었고, 복도처럼 무늬가 적은 공간은 위치 추정도 어려웠습니다.</span></td></tr></tbody></table></section>
+  <nav class="pj-nav" aria-label="다른 프로젝트">
+    <span></span>
+    <span></span>
+  </nav>
+</main>
+<script>
+(function () {
+  var all = Array.prototype.slice.call(document.querySelectorAll('details.case'));
+  var btn = document.getElementById('cases-toggle');
+  function openHash() {
+    var id = decodeURIComponent(location.hash.replace('#', ''));
+    var el = id && document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView({ block: 'start' }); }
+  }
+  function sync() { if (btn) btn.textContent = all.every(function (d) { return d.open; }) ? '모두 접기' : '모두 펼치기'; }
+  if (btn) btn.addEventListener('click', function () { var open = !all.every(function (d) { return d.open; }); all.forEach(function (d) { d.open = open; }); sync(); });
+  all.forEach(function (d) { d.addEventListener('toggle', sync); });
+  window.addEventListener('hashchange', openHash);
+  openHash(); sync();
+})();
+</script>
+</body>
+</html>
