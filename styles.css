@@ -1226,3 +1226,39 @@ h2, h3, .pc-pitch, .c-brief, .pj-tag { text-wrap: balance; }
   .times li { grid-template-columns: 40% minmax(0, 1fr) 30px; gap: 6px; }
   .tm-k { font-size: 12px; }
 }
+
+/* 단가 구성, 판정 결과 누적 막대 */
+.stack, .outcome { margin: 14px 0; }
+.stack > p, .outcome > p { margin: 0 0 8px; font-size: 13.5px; font-weight: 800; }
+.stack figcaption, .outcome figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
+.stack ol, .stack ul, .outcome ol, .outcome ul { list-style: none; margin: 0; padding: 0; }
+.stack ol > li { display: grid; grid-template-columns: 24% minmax(0, 1fr); column-gap: 12px; margin: 10px 0; }
+.sk-k { grid-row: span 2; font-size: 13px; }
+.sk-k b { display: block; font-size: 15px; font-variant-numeric: tabular-nums; }
+.sk-bar { display: flex; height: 22px; gap: 2px; }
+.sk-bar i { display: block; height: 100%; }
+.sk-bar i.sk-paid { background: #aab4bf; }
+.sk-bar i.sk-sale { background: var(--accent); }
+.sk-bar i.sk-labor { background: #7fa3d1; }
+.stack ul { display: flex; flex-wrap: wrap; gap: 2px 14px; margin-top: 4px; }
+.stack ul li { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.stack ul li::before, .oc-legend li::before { content: ''; display: inline-block; width: 9px; height: 9px; margin-right: 5px; border-radius: 2px; background: var(--sw, #aab4bf); }
+.stack ul li.sk-sale { --sw: var(--accent); }
+.stack ul li.sk-labor { --sw: #7fa3d1; }
+.oc-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-bottom: 8px !important; }
+.oc-legend li { font-size: 12.5px; color: var(--muted); }
+.outcome ol li { display: grid; grid-template-columns: 24% minmax(0, 1fr); gap: 12px; align-items: center; margin: 7px 0; }
+.oc-k { font-size: 13px; font-weight: 700; }
+.oc-k small { font-weight: 500; color: var(--muted); }
+.oc-bar { display: flex; gap: 2px; height: 22px; }
+.oc-bar i { display: block; height: 100%; min-width: 14px; overflow: hidden; font-style: normal; font-size: 11.5px; font-weight: 800; line-height: 22px; text-align: center; }
+.oc-ok { --sw: var(--pos); } .oc-part { --sw: #8cc3a6; } .oc-hold { --sw: #f3d9a4; } .oc-wait { --sw: #dfe3e7; } .oc-no { --sw: var(--neg); } .oc-gate { --sw: #dc9d96; } .oc-out { --sw: #aab4bf; }
+.oc-bar i { background: var(--sw); color: var(--ink); }
+.oc-bar i.oc-ok, .oc-bar i.oc-no { color: #fff; }
+.print .stack, .print .outcome { break-inside: avoid; }
+@media (max-width: 560px) {
+  .stack ol > li { grid-template-columns: 1fr; }
+  .sk-k { grid-row: auto; margin-bottom: 4px; }
+  .sk-k b { display: inline; margin-left: 6px; }
+  .outcome ol li { grid-template-columns: 1fr; gap: 3px; }
+}
